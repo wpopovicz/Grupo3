@@ -1,0 +1,28 @@
+Fortmatar windows xp
+-Key
+DG8FV-B9TKY-FRT9J-6CRCC-XPQ4G
+
+-Ativar o windows
+%systemroot%\system32\oobe\msoobe.exe /a
+
+-key para ativar
+BGMY-OJYMID-YHPQ4-QRV3H-C4MRQ
+
+Instalar Microsoft Word
+-key
+T9HJX-4C3BM-MG2R6-WC933-RCBRT
+
+-ativar o Microsoft Word 2007
+<redit>(abre)
+  +HKEY_LOCAL_MACHINE
+   +SOFTWARE
+    +MICROSOFT
+     +OFICE
+      +12
+       +REGISTRATION (excluir)
+</redit>(fecha)
+
+entra no Word
+
+-Key do Word
+VB48G-H6VK9-WJ93D-9R6RM-VP7GT
