@@ -43,7 +43,9 @@ public class Credito extends javax.swing.JFrame {
 
         jLabel16.setText("jLabel16");
 
-        jTabbedPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Crédito", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), java.awt.Color.black)); // NOI18N
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jTabbedPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Crédito", 0, 0, new java.awt.Font("Dialog", 1, 18), java.awt.Color.black)); // NOI18N
 
         jPanel12.setBackground(java.awt.Color.white);
 
@@ -91,6 +93,11 @@ public class Credito extends javax.swing.JFrame {
         jLabel19.setText("Valor:");
 
         jToggleButton2.setText("Creditar");
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -147,10 +154,18 @@ public class Credito extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       if (TvalorRA1.getText() == null){
-           JOptionPane.showMessageDialog(this,"Informe um valor!");
+       if (TvalorRA1.getText().trim().equals("")){
+           JOptionPane.showMessageDialog(this,"Informe um RA!");
        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        // TODO add your handling code here:
+        if(TvalorRA2.getText().trim().equals("")){
+           JOptionPane.showMessageDialog(this,"Informe um RA!"); 
+        }
+            
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     /**
      * @param args the command line arguments

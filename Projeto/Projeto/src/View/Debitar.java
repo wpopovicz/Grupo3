@@ -40,8 +40,10 @@ public class Debitar extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
         jPanel2.setBackground(java.awt.Color.white);
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Débito", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), java.awt.Color.black)); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Débito", 0, 0, new java.awt.Font("Dialog", 1, 18), java.awt.Color.black)); // NOI18N
 
         jLabel1.setText("Valor");
 

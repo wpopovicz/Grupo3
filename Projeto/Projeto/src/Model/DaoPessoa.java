@@ -25,6 +25,7 @@ public class DaoPessoa implements Dao<Pessoa> {
         p.setNome(rs.getString("nome"));
         p.setEmail(rs.getString("email"));
         p.setSenha(rs.getString("senha"));
+        p.setSaldo(rs.getString("saldo"));
         return p;
     }
 
@@ -37,10 +38,11 @@ public class DaoPessoa implements Dao<Pessoa> {
     }
     
     private static void insert(Pessoa p) throws SQLException{
-        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("INSERT INTO Pessoa (nome, email, senha) VALUES(?,?,?)", Statement.RETURN_GENERATED_KEYS);
+        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("INSERT INTO Pessoa (nome, email, senha, saldo) VALUES(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
         pst.setString(1, p.getNome());
         pst.setString(2, p.getEmail());
         pst.setString(3, p.getSenha());
+        pst.setString(4, p.getSaldo());
 
         pst.execute();
         

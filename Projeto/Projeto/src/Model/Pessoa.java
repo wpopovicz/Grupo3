@@ -13,10 +13,19 @@ public class Pessoa {
    private String nome;
    private String Email; 
    private String Senha;
+   private String Saldo;
+
+    public String getSaldo() {
+        return Saldo;
+    }
+
+    public void setSaldo(String Saldo) {
+        this.Saldo = Saldo;
+    }
 
     @Override
     public String toString() {
-        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", Email=" + Email + ", Senha=" + Senha + '}';
+        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", Email=" + Email + ", Senha=" + Senha + " , Saldo=" + Saldo + '}';
     }
 
     public void setId(int id) {

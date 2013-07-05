@@ -8,6 +8,9 @@
       </Properties>
     </Component>
   </NonVisualComponents>
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+  </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
@@ -197,6 +200,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Creditar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton2ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
