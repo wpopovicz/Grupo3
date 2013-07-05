@@ -77,7 +77,7 @@ public class Cliente extends javax.swing.JFrame {
 
         jLabel6.setText("Função:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aluno", "Professor", "funcionarios adiministrativo", "diretor" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aluno", "Professor", "funcionarios adiministrativo", " " }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -126,7 +126,7 @@ public class Cliente extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(jToggleButton1)
                 .addGap(20, 20, 20))
         );
@@ -153,7 +153,7 @@ public class Cliente extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addGap(53, 53, 53)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                        .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                         .addGap(140, 140, 140))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -163,7 +163,7 @@ public class Cliente extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(20, 20, 20))
         );
@@ -189,7 +189,7 @@ public class Cliente extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(50, 50, 50)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                        .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                         .addGap(143, 143, 143))))
         );
         jPanel4Layout.setVerticalGroup(
@@ -199,7 +199,7 @@ public class Cliente extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(20, 20, 20))
         );
@@ -225,7 +225,7 @@ public class Cliente extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(50, 50, 50)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                        .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                         .addGap(143, 143, 143))))
         );
         jPanel5Layout.setVerticalGroup(
@@ -235,7 +235,7 @@ public class Cliente extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(20, 20, 20))
         );
