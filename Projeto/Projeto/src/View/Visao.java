@@ -15,6 +15,8 @@ public class Visao extends javax.swing.JFrame {
      */
     public Visao() {
         initComponents();
+        
+
     }
 
     /**
@@ -153,18 +155,21 @@ public class Visao extends javax.swing.JFrame {
         // TODO add your handling code here:
         Debitar d = new Debitar();
         d.setVisible(true);
+        d.setLocationRelativeTo(null); 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
         Cliente c = new Cliente();
         c.setVisible(true);
+        c.setLocationRelativeTo(null); 
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         // TODO add your handling code here:
         Credito s = new Credito();
         s.setVisible(true);
+        s.setLocationRelativeTo(null); 
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -179,6 +184,8 @@ public class Visao extends javax.swing.JFrame {
         // TODO add your handling code here:
         Consulta q = new Consulta();
         q.setVisible(true);
+        q.setLocationRelativeTo(null); 
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -211,7 +218,10 @@ public class Visao extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Visao().setVisible(true);
+                Visao v = new Visao();
+                v.setVisible(true);
+                v.setLocationRelativeTo(null);
+                
             }
         });
     }
