@@ -120,7 +120,7 @@ public class Consulta extends javax.swing.JFrame {
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         // TODO add your handling code here:
-        jToggleButton2.getTopLevelAncestor().hide(); 
+        jToggleButton2.getTopLevelAncestor().hide();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     /**
