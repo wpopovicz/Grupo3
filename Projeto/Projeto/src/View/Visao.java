@@ -4,6 +4,11 @@
  */
 package View;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+
 /**
  *
  * @author a1294121
@@ -15,7 +20,7 @@ public class Visao extends javax.swing.JFrame {
      */
     public Visao() {
         initComponents();
-        
+
 
     }
 
@@ -155,21 +160,21 @@ public class Visao extends javax.swing.JFrame {
         // TODO add your handling code here:
         Debitar d = new Debitar();
         d.setVisible(true);
-        d.setLocationRelativeTo(null); 
+        d.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
         Cliente c = new Cliente();
         c.setVisible(true);
-        c.setLocationRelativeTo(null); 
+        c.setLocationRelativeTo(null);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         // TODO add your handling code here:
         Credito s = new Credito();
         s.setVisible(true);
-        s.setLocationRelativeTo(null); 
+        s.setLocationRelativeTo(null);
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -177,14 +182,24 @@ public class Visao extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void BajudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BajudaActionPerformed
-        
+        Desktop desktop = null;
+        desktop = Desktop.getDesktop();
+        URI uri = null;
+        try {
+            uri = new URI("file:///home/todos/alunos/cm/a1294121/Grupo3/Projeto/Projeto/src/Site/Help.xhtml");
+            desktop.browse(uri);
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        } catch (URISyntaxException use) {
+            use.printStackTrace();
+        }
     }//GEN-LAST:event_BajudaActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         Consulta q = new Consulta();
         q.setVisible(true);
-        q.setLocationRelativeTo(null); 
+        q.setLocationRelativeTo(null);
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -221,7 +236,7 @@ public class Visao extends javax.swing.JFrame {
                 Visao v = new Visao();
                 v.setVisible(true);
                 v.setLocationRelativeTo(null);
-                
+
             }
         });
     }
