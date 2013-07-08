@@ -15,6 +15,18 @@ public class Pessoa {
    private String Senha;
    private String Saldo;
 
+    public Pessoa() {
+    }
+
+    public Pessoa(int id, String nome, String Senha, String Saldo) {
+        this.id = id;
+        this.nome = nome;
+        this.Senha = Senha;
+        this.Saldo = Saldo;
+    }
+   
+   
+
     public String getSaldo() {
         return Saldo;
     }
