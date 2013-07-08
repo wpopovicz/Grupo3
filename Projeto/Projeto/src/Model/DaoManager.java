@@ -16,7 +16,7 @@ public class DaoManager {
  private static final Map<Class, Dao> daos = new HashMap<Class, Dao>();
     
     static{
-        daos.put(Pessoa.class, new DaoPessoa());       
+        daos.put(Pessoa.class, new DaoPessoa());
     }
     
 

@@ -11,7 +11,6 @@ package Model;
 public class Pessoa {
    private int id;
    private String nome;
-   private String Email; 
    private String Senha;
    private String Saldo;
 
@@ -37,7 +36,7 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", Email=" + Email + ", Senha=" + Senha + " , Saldo=" + Saldo + '}';
+        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", Senha=" + Senha + " , Saldo=" + Saldo + '}';
     }
 
     public void setId(int id) {
@@ -46,10 +45,6 @@ public class Pessoa {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public void setEmail(String Email) {
-        this.Email = Email;
     }
 
     public void setSenha(String Senha) {
@@ -62,10 +57,6 @@ public class Pessoa {
 
     public String getNome() {
         return nome;
-    }
-
-    public String getEmail() {
-        return Email;
     }
 
     public String getSenha() {

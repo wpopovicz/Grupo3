@@ -68,7 +68,7 @@ public class Visao extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setText("Consulta por RA");
+        jTextField1.setText("Consulta por Nome");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);

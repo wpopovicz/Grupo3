@@ -21,7 +21,6 @@ public class DaoPessoa implements Dao<Pessoa> {
         Pessoa p = new Pessoa();
         p.setId(rs.getInt("id"));
         p.setNome(rs.getString("nome"));
-        p.setEmail(rs.getString("email"));
         p.setSenha(rs.getString("senha"));
         p.setSaldo(rs.getString("saldo"));
         return p;
@@ -36,11 +35,10 @@ public class DaoPessoa implements Dao<Pessoa> {
     }
     
     private static void insert(Pessoa p) throws SQLException{
-        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("INSERT INTO Pessoa (nome, email, senha, saldo) VALUES(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("INSERT INTO Pessoa (nome, senha, saldo) VALUES(?,?,?)", Statement.RETURN_GENERATED_KEYS);
         pst.setString(1, p.getNome());
-        pst.setString(2, p.getEmail());
-        pst.setString(3, p.getSenha());
-        pst.setString(4, p.getSaldo());
+        pst.setString(2, p.getSenha());
+        pst.setString(3, p.getSaldo());
 
         pst.execute();
         
@@ -63,11 +61,10 @@ public class DaoPessoa implements Dao<Pessoa> {
     }
 
     private static void update(Pessoa p) throws SQLException{
-        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("UPDATE Pessoa SET nome = ?, Email = ?,Senha = ? WHERE id = ?");
+        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("UPDATE Pessoa SET nome = ?, Senha = ? WHERE id = ?");
         pst.setString(1, p.getNome());
-        pst.setString(2, p.getEmail());
-        pst.setString(3,p.getSenha());
-        pst.setInt(4, p.getId());
+        pst.setString(2,p.getSenha());
+        pst.setInt(3, p.getId());
         pst.execute();
     }
     
