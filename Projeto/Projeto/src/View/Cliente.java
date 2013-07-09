@@ -342,14 +342,14 @@ public class Cliente extends javax.swing.JFrame {
         prof.setSenha(jPasswordField1.getText());
         
         try {
-            daoPessoa.persist(p);
+            daoPessoa.persist(prof);
             JOptionPane.showMessageDialog(this, "Cadastro Realizado Com Sucesso!");
             jTextFieldEmail.setText("");
             jTextFieldNome.setText("");
             jPasswordField1.setText("");
             jTextFieldRA.setText("");
-        } catch (SQLException ex) {
-            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, e);
         }
            }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
