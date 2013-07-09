@@ -25,6 +25,9 @@ public class Professor extends Pessoa{
         return "Professor{" + "Email=" + Email + '}';
     }
 
+    public Professor() {
+    }
+
     public String getEmail() {
         return Email;
     }
