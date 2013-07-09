@@ -4,16 +4,16 @@
  */
 package View;
 
+import Model.Aluno;
 import Model.DaoAluno;
 import Model.DaoFuncionario;
 import Model.DaoPessoa;
 import Model.DaoProfessor;
-import Model.Pessoa;
+import Model.Funcionario;
 import Model.Professor;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
@@ -342,25 +342,83 @@ public class Cliente extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
-           if (jComboBoxFuncao.getSelectedItem()== "Professor"){
-        Professor prof = new Professor();
-        prof.setNome(jTextFieldNome.getText());
-        prof.setSenha(jPasswordField1.getPassword());
-        prof.setEmail(jTextFieldEmail.getText());
-        prof.setSiape(jTextFieldRA.getText());
-        
-        
-        try {
-            daoProfessor.persist(prof);
-            JOptionPane.showMessageDialog(this, "Cadastro Realizado Com Sucesso!");
-            jTextFieldEmail.setText("");
-            jTextFieldNome.setText("");
-            jPasswordField1.setText("");
-            jTextFieldRA.setText("");
-        } catch (SQLException e) {
-            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, e);
+           if (jComboBoxFuncao.getSelectedItem() == "Professor") {
+            if (jTextFieldRA.getText().trim().equals("") || jTextFieldNome.getText().trim().equals("")
+                    || jPasswordField1.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(this, "Campos em branco");
+            }
+         else {
+
+            Professor prof = new Professor();
+            prof.setNome(jTextFieldNome.getText());
+            prof.setSenha(jPasswordField1.getPassword());   
+            //prof.setEmail(jTextFieldEmail.getText());
+            prof.setSiape(jTextFieldRA.getText());
+            try {
+                //daoProfessor.persist(prof);
+                daoPessoa.persist(prof);
+                jTextFieldEmail.setText("");
+                jTextFieldNome.setText("");
+                jPasswordField1.setText("");
+                jTextFieldRA.setText("");
+                JOptionPane.showMessageDialog(this, "Cadastro Realizado Com Sucesso!");
+            } catch (SQLException e) {
+                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, e);
+            }
         }
-           }
+        }
+           if (jComboBoxFuncao.getSelectedItem() == "Aluno") {
+            if (jTextFieldRA.getText().trim().equals("") || jTextFieldNome.getText().trim().equals("")
+                    || jPasswordField1.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(this, "Campos em branco");
+            }
+         else {
+
+            Aluno a= new Aluno();
+            a.setNome(jTextFieldNome.getText());
+            a.setSenha(jPasswordField1.getPassword());   
+            //prof.setEmail(jTextFieldEmail.getText());
+            a.setRA(jTextFieldRA.getText());
+            try {
+                //daoProfessor.persist(prof);
+                daoPessoa.persist(a);
+                jTextFieldEmail.setText("");
+                jTextFieldNome.setText("");
+                jPasswordField1.setText("");
+                jTextFieldRA.setText("");
+                JOptionPane.showMessageDialog(this, "Cadastro Realizado Com Sucesso!");
+            } catch (SQLException e) {
+                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        }
+           if (jComboBoxFuncao.getSelectedItem() == "Funcionário") {
+            if (jTextFieldRA.getText().trim().equals("") || jTextFieldNome.getText().trim().equals("")
+                    || jPasswordField1.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(this, "Campos em branco");
+            }
+         else {
+
+            Funcionario f= new Funcionario();
+            f.setNome(jTextFieldNome.getText());
+            f.setSenha(jPasswordField1.getPassword());   
+            //prof.setEmail(jTextFieldEmail.getText());
+            f.setSiape(jTextFieldRA.getText());
+            try {
+                //daoProfessor.persist(prof);
+                daoPessoa.persist(f);
+                jTextFieldEmail.setText("");
+                jTextFieldNome.setText("");
+                jPasswordField1.setText("");
+                jTextFieldRA.setText("");
+                JOptionPane.showMessageDialog(this, "Cadastro Realizado Com Sucesso!");
+            } catch (SQLException e) {
+                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        }
+                 
+
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
