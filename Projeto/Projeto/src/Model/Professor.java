@@ -28,6 +28,9 @@ public class Professor extends Pessoa{
         this.Siape = Siape;
     }
 
+    public Professor() {
+    }
+
     public Professor(String Siape, int id, String nome, String Senha, String Saldo, String cod) {
         super(id, nome, Senha, Saldo, cod);
         this.Siape = Siape;

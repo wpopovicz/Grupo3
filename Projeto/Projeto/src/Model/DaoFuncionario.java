@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author imape
  */
-public class DaoFuncionario {
+public class DaoFuncionario implements Dao<Funcionario> {
    private static Funcionario converterRsParaFuncionario(ResultSet rs) throws SQLException {
         Funcionario f = new Funcionario();
         f.setSiape(rs.getString("siape"));
