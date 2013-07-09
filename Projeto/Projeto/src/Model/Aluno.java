@@ -20,8 +20,8 @@ public class Aluno extends Pessoa{
         this.RA = RA;
     }
 
-    public Aluno(String RA, int id, String nome, String Senha, String Saldo) {
-        super(id, nome, Senha, Saldo);
+    public Aluno(String RA, int id, String nome, String Senha, String Saldo, String cod) {
+        super(id, nome, Senha, Saldo, cod);
         this.RA = RA;
     }
 

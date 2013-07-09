@@ -340,6 +340,9 @@ public class Cliente extends javax.swing.JFrame {
         Professor prof = new Professor();
         prof.setNome(jTextFieldNome.getText());
         prof.setSenha(jPasswordField1.getText());
+        prof.setEmail(jTextFieldEmail.getText());
+        prof.setcod(jTextFieldRA.getText());
+        
         
         try {
             daoPessoa.persist(prof);

@@ -27,8 +27,8 @@ public class Funcionario extends Pessoa{
         this.codigo = codigo;
     }
 
-    public Funcionario(String codigo, int id, String nome, String Senha, String Saldo) {
-        super(id, nome, Senha, Saldo);
+    public Funcionario(String codigo, int id, String nome, String Senha, String Saldo, String cod) {
+        super(id, nome, Senha, Saldo, cod);
         this.codigo = codigo;
     }
     private String codigo;

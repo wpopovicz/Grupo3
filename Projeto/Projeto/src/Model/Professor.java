@@ -15,8 +15,8 @@ public class Professor extends Pessoa{
         this.Email = Email;
     }
 
-    public Professor(String Email, int id, String nome, String Senha, String Saldo) {
-        super(id, nome, Senha, Saldo);
+    public Professor(String Email, int id, String nome, String Senha, String Saldo, String cod) {
+        super(id, nome, Senha, Saldo, cod);
         this.Email = Email;
     }
 
