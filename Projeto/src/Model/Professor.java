@@ -36,4 +36,8 @@ public class Professor extends Pessoa{
         this.Siape = Siape;
     }
 
+    public void setSenha(char[] password) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

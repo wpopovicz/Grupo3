@@ -4,6 +4,12 @@
  */
 package View;
 
+import Model.Aluno;
+import Model.DaoAluno;
+import Model.DaoFuncionario;
+import Model.DaoPessoa;
+import Model.DaoProfessor;
+import Model.Pessoa;
 import java.awt.Point;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -14,12 +20,18 @@ import javax.swing.JOptionPane;
  */
 public class Debitar extends javax.swing.JFrame {
 
+    DaoPessoa daoPessoa = new DaoPessoa();
+    DaoProfessor daoProfessor = new DaoProfessor();
+    DaoAluno DaoAluno = new DaoAluno();
+    DaoFuncionario DaoFuncionario = new DaoFuncionario();
+    
+
     /**
      * Creates new form Debitar
      */
     public Debitar() {
         initComponents();
-        setLocationRelativeTo(null);  
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -33,35 +45,29 @@ public class Debitar extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldValor = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldRA = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
+        jPasswordFieldSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel2.setBackground(java.awt.Color.white);
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Débito", 0, 0, new java.awt.Font("Dialog", 1, 18), java.awt.Color.black)); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Débito", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), java.awt.Color.black)); // NOI18N
 
         jLabel1.setText("Valor");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldValor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextFieldValorActionPerformed(evt);
             }
         });
 
         jLabel2.setText("RA");
 
         jLabel3.setText("Senha");
-
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
 
         jToggleButton1.setText("Debitar");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -84,9 +90,9 @@ public class Debitar extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(20, 20, 20)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldRA, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jToggleButton1))
                 .addContainerGap(145, Short.MAX_VALUE))
         );
@@ -96,16 +102,16 @@ public class Debitar extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldRA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                    .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jToggleButton1)
                 .addGap(20, 20, 20))
         );
@@ -124,27 +130,28 @@ public class Debitar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextFieldValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldValorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextFieldValorActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
+        Aluno a = new Aluno();
+        a.setSaldo(jTextFieldValor.getText());
+        a.setRa(jTextFieldRA.getText());
+        a.setSenha(jPasswordFieldSenha.getPassword());
+        
         Boolean temSaldo = false; //metodo que verifica o saldo do cara
         if (temSaldo) {
-        JOptionPane.showMessageDialog(this,"Debitado com sucesso!");
+            JOptionPane.showMessageDialog(this, "Debitado com sucesso!");
             
         } else {
-            JOptionPane.showMessageDialog(this,"Falha ao tentar Debitar!");
+            JOptionPane.showMessageDialog(this, "Falha ao tentar Debitar!");
         }
-        
-       
-       
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+
+
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,7 +184,7 @@ public class Debitar extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Debitar().setVisible(true);
-                
+
             }
         });
     }
@@ -186,9 +193,9 @@ public class Debitar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JPasswordField jPasswordFieldSenha;
+    private javax.swing.JTextField jTextFieldRA;
+    private javax.swing.JTextField jTextFieldValor;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

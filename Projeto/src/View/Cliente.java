@@ -345,14 +345,13 @@ public class Cliente extends javax.swing.JFrame {
            if (jComboBoxFuncao.getSelectedItem()== "Professor"){
         Professor prof = new Professor();
         prof.setNome(jTextFieldNome.getText());
-        prof.setSenha(jPasswordField1.getText());
-        //prof.setEmail(jTextFieldEmail.getText());
+        prof.setSenha(jPasswordField1.getPassword());
+        prof.setEmail(jTextFieldEmail.getText());
         prof.setSiape(jTextFieldRA.getText());
         
         
         try {
-            //daoProfessor.persist(prof);
-            daoPessoa.persist(prof);
+            daoProfessor.persist(prof);
             JOptionPane.showMessageDialog(this, "Cadastro Realizado Com Sucesso!");
             jTextFieldEmail.setText("");
             jTextFieldNome.setText("");

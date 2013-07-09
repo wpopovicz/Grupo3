@@ -71,4 +71,8 @@ public class Pessoa {
     public String toString() {
         return "Pessoa{" + "id=" + id + ", nome=" + nome + ", Senha=" + Senha + ", Saldo=" + Saldo + ", Email=" + Email + '}';
     }
+
+    public void setSenha(char[] password) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

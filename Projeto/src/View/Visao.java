@@ -20,8 +20,6 @@ public class Visao extends javax.swing.JFrame {
      */
     public Visao() {
         initComponents();
-
-
     }
 
     /**

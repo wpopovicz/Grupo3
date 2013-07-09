@@ -35,4 +35,8 @@ public class Aluno extends Pessoa{
 
     public Aluno() {
     }
+
+    public void setRa(String text) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

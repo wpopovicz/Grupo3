@@ -15,4 +15,5 @@ public interface Dao<T> {
     void delete(T o)  throws Exception;
     T retrieve(int id)  throws Exception;
     List<T> list()  throws Exception;
+
 }
