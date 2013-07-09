@@ -17,6 +17,8 @@ public class DaoManager {
     
     static{
         daos.put(Pessoa.class, new DaoPessoa());
+        daos.put(Aluno.class, new DaoAluno());
+        daos.put(Professor.class, new DaoProfessor());    
     }
     
 

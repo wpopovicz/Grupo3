@@ -9,27 +9,30 @@ package Model;
  * @author imape
  */
 public class Funcionario extends Pessoa{
+    private String Siape;
+
+    public Funcionario(String Siape) {
+        this.Siape = Siape;
+    }
+
+    public Funcionario(String Siape, int id, String nome, String Senha, String Saldo, String cod) {
+        super(id, nome, Senha, Saldo, cod);
+        this.Siape = Siape;
+        
+    }
+
+    public String getSiape() {
+        return Siape;
+    }
+
+    public void setSiape(String Siape) {
+        this.Siape = Siape;
+    }
 
     @Override
     public String toString() {
-        return "Funcionario{" + "codigo=" + codigo + '}';
+        return "Funcionario{" + "Siape=" + Siape + '}';
     }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
-    public Funcionario(String codigo) {
-        this.codigo = codigo;
-    }
-
-    public Funcionario(String codigo, int id, String nome, String Senha, String Saldo, String cod) {
-        super(id, nome, Senha, Saldo, cod);
-        this.codigo = codigo;
-    }
-    private String codigo;
+    
+    
 }

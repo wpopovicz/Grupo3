@@ -9,30 +9,28 @@ package Model;
  * @author Popovicz
  */
 public class Professor extends Pessoa{
-    private String Email;
-
-    public Professor(String Email) {
-        this.Email = Email;
-    }
-
-    public Professor(String Email, int id, String nome, String Senha, String Saldo, String cod) {
-        super(id, nome, Senha, Saldo, cod);
-        this.Email = Email;
-    }
+    private String Siape;
 
     @Override
     public String toString() {
-        return "Professor{" + "Email=" + Email + '}';
+        return "Professor{" + "siape=" + Siape + '}';
     }
 
-    public Professor() {
+    public String getSiape() {
+        return Siape;
     }
 
-    public String getEmail() {
-        return Email;
+    public void setSiape(String Siape) {
+        this.Siape = Siape;
     }
 
-    public void setEmail(String Email) {
-        this.Email = Email;
+    public Professor(String Siape) {
+        this.Siape = Siape;
     }
+
+    public Professor(String Siape, int id, String nome, String Senha, String Saldo, String cod) {
+        super(id, nome, Senha, Saldo, cod);
+        this.Siape = Siape;
+    }
+
 }
