@@ -35,7 +35,11 @@ public class DaoAluno implements Dao<Aluno> {
     private static void insert(Aluno a) throws SQLException{
 
         PreparedStatement pst =  Conection.prepareConnection().prepareStatement("INSERT INTO pessoa (nome, senha, saldo, email, ra) VALUES(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
-        pst.setString(1, a.getRA());
+        pst.setString(1, a.getNome());
+        pst.setString(2, a.getSenha());
+        pst.setString(3, a.getSaldo());
+        pst.setString(4, a.getEmail());
+        pst.setString(5, a.getRA());
 
         pst.execute();
         
@@ -58,9 +62,13 @@ public class DaoAluno implements Dao<Aluno> {
     }
 
     private static void update(Aluno a) throws SQLException{
-        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("UPDATE pessoa SET ra = ? WHERE id = ?");
-        pst.setString(1, a.getRA());
-        pst.setInt(2, a.getId());
+        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("UPDATE pessoa SET nome = ?, Senha = ?, saldo = ?, email = ?, ra = ?, WHERE id = ?");
+        pst.setString(1, a.getNome());
+        pst.setString(2, a.getSenha());
+        pst.setString(3, a.getSaldo());
+        pst.setString(4, a.getEmail());
+        pst.setString(5, a.getRA());
+        pst.setInt(6, a.getId());
         pst.execute();
     }
     

@@ -60,9 +60,13 @@ public class DaoFuncionario implements Dao<Funcionario> {
     }
 
     private static void update(Funcionario f) throws SQLException{
-        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("UPDATE pessoa SET siape = ? WHERE id = ?");
-        pst.setString(1, f.getSiape());
-        pst.setInt(2, f.getId());
+        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("UPDATE pessoa SET nome = ?, Senha = ?, saldo = ?, email = ?, siape = ?, WHERE id = ?");
+        pst.setString(1, f.getNome());
+        pst.setString(2, f.getSenha());
+        pst.setString(3, f.getSaldo());
+        pst.setString(4, f.getEmail());
+        pst.setString(5, f.getSiape());
+        pst.setInt(6, f.getId());
         pst.execute();
     }
     

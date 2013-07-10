@@ -33,7 +33,7 @@ public class DaoProfessor implements Dao<Professor> {
     }
     
     private static void insert(Professor w) throws SQLException{
-        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("INSERT INTO pessoa (nome, senha, saldo, email, siape) VALUES(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("INSERT INTO pessoa (nome, senha, saldo, email, siape) VALUES(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
         pst.setString(1, w.getNome());
         pst.setString(2, w.getSenha());
         pst.setString(3, w.getSaldo());
@@ -61,9 +61,13 @@ public class DaoProfessor implements Dao<Professor> {
     }
 
     private static void update(Professor w) throws SQLException{
-        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("UPDATE pessoa SET siape = ? WHERE id = ?");
-        pst.setString(1, w.getSiape());
-        pst.setInt(2, w.getId());
+        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("UPDATE pessoa SET nome = ?, Senha = ?, saldo = ?, email = ?, siape = ?, WHERE id = ?");
+        pst.setString(1, w.getNome());
+        pst.setString(2,w.getSenha());
+        pst.setString(3, w.getSaldo());
+        pst.setString(4, w.getEmail());
+        pst.setString(5, w.getSiape());
+        pst.setInt(6, w.getId());
         pst.execute();
     }
     

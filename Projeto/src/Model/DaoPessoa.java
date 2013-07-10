@@ -65,7 +65,7 @@ public class DaoPessoa implements Dao<Pessoa> {
     private static void update(Pessoa p) throws SQLException{
         PreparedStatement pst =  Conection.prepareConnection().prepareStatement("UPDATE pessoa SET nome = ?, Senha = ?, saldo = ?, email = ? WHERE id = ?");
         pst.setString(1, p.getNome());
-        pst.setString(2,p.getSenha());
+        pst.setString(2, p.getSenha());
         pst.setString(3, p.getSaldo());
         pst.setString(4, p.getEmail());
         pst.setInt(5, p.getId());

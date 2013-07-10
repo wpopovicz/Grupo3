@@ -315,7 +315,7 @@ public class Cliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        // alterar o cliente
         if (jTextField6.getText().trim().equals("")){
             JOptionPane.showMessageDialog(this,"Informe um RA!");
         }
