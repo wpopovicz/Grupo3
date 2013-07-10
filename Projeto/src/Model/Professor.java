@@ -11,9 +11,16 @@ package Model;
 public class Professor extends Pessoa{
     private String Siape;
 
-    @Override
-    public String toString() {
-        return "Professor{" + "siape=" + Siape + '}';
+    public Professor() {
+    }
+
+    public Professor(String Siape) {
+        this.Siape = Siape;
+    }
+
+    public Professor(String Siape, int id, String nome, String Senha, String Saldo, String Email) {
+        super(id, nome, Senha, Saldo, Email);
+        this.Siape = Siape;
     }
 
     public String getSiape() {
@@ -24,20 +31,9 @@ public class Professor extends Pessoa{
         this.Siape = Siape;
     }
 
-    public Professor(String Siape) {
-        this.Siape = Siape;
-    }
-
-    public Professor() {
-    }
-
-    public Professor(String Siape, int id, String nome, String Senha, String Saldo, String cod) {
-        super(id, nome, Senha, Saldo, cod);
-        this.Siape = Siape;
-    }
-
-    public void setSenha(char[] password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public String toString() {
+        return "Professor{" + "Siape=" + Siape + '}';
     }
 
 }

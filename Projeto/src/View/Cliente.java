@@ -22,10 +22,10 @@ import javax.swing.JOptionPane;
  */
 public class Cliente extends javax.swing.JFrame {
 
-       DaoPessoa daoPessoa = new DaoPessoa();
-       DaoProfessor daoProfessor = new DaoProfessor();
-       DaoAluno DaoAluno = new DaoAluno();
-       DaoFuncionario DaoFuncionario = new DaoFuncionario();
+       private DaoPessoa daoPessoa = new DaoPessoa();
+       private DaoProfessor daoProfessor = new DaoProfessor();
+       private DaoAluno daoAluno = new DaoAluno();
+       private DaoFuncionario daoFuncionario = new DaoFuncionario();
        
     /**
      * Creates new form Cliente
@@ -342,9 +342,10 @@ public class Cliente extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
+        String password = new String(jPasswordField1.getPassword());
            if (jComboBoxFuncao.getSelectedItem() == "Professor") {
             if (jTextFieldRA.getText().trim().equals("") || jTextFieldNome.getText().trim().equals("")
-                    || jPasswordField1.getText().trim().equals("")) {
+                    || password.trim().equals("")) {
                 JOptionPane.showMessageDialog(this, "Campos em branco");
             }
          else {
@@ -352,11 +353,10 @@ public class Cliente extends javax.swing.JFrame {
             Professor prof = new Professor();
             prof.setNome(jTextFieldNome.getText());
             prof.setSenha(jPasswordField1.getPassword());   
-            //prof.setEmail(jTextFieldEmail.getText());
+            prof.setEmail(jTextFieldEmail.getText());
             prof.setSiape(jTextFieldRA.getText());
             try {
-                //daoProfessor.persist(prof);
-                daoPessoa.persist(prof);
+                daoProfessor.persist(prof);
                 jTextFieldEmail.setText("");
                 jTextFieldNome.setText("");
                 jPasswordField1.setText("");
@@ -369,7 +369,7 @@ public class Cliente extends javax.swing.JFrame {
         }
            if (jComboBoxFuncao.getSelectedItem() == "Aluno") {
             if (jTextFieldRA.getText().trim().equals("") || jTextFieldNome.getText().trim().equals("")
-                    || jPasswordField1.getText().trim().equals("")) {
+                    || password.trim().equals("")) {
                 JOptionPane.showMessageDialog(this, "Campos em branco");
             }
          else {
@@ -377,11 +377,10 @@ public class Cliente extends javax.swing.JFrame {
             Aluno a= new Aluno();
             a.setNome(jTextFieldNome.getText());
             a.setSenha(jPasswordField1.getPassword());   
-            //prof.setEmail(jTextFieldEmail.getText());
+            a.setEmail(jTextFieldEmail.getText());
             a.setRA(jTextFieldRA.getText());
-            try {
-                //daoProfessor.persist(prof);
-                daoPessoa.persist(a);
+            try {;
+                daoAluno.persist(a);
                 jTextFieldEmail.setText("");
                 jTextFieldNome.setText("");
                 jPasswordField1.setText("");
@@ -394,19 +393,19 @@ public class Cliente extends javax.swing.JFrame {
         }
            if (jComboBoxFuncao.getSelectedItem() == "Funcionário") {
             if (jTextFieldRA.getText().trim().equals("") || jTextFieldNome.getText().trim().equals("")
-                    || jPasswordField1.getText().trim().equals("")) {
+                    || password.trim().equals("")) {
                 JOptionPane.showMessageDialog(this, "Campos em branco");
             }
          else {
 
-            Funcionario f= new Funcionario();
+            Funcionario f = new Funcionario();
             f.setNome(jTextFieldNome.getText());
             f.setSenha(jPasswordField1.getPassword());   
-            //prof.setEmail(jTextFieldEmail.getText());
+            f.setEmail(jTextFieldEmail.getText());
             f.setSiape(jTextFieldRA.getText());
             try {
-                //daoProfessor.persist(prof);
-                daoPessoa.persist(f);
+                
+                daoFuncionario.persist(f);
                 jTextFieldEmail.setText("");
                 jTextFieldNome.setText("");
                 jPasswordField1.setText("");

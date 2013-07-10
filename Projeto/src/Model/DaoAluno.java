@@ -33,7 +33,8 @@ public class DaoAluno implements Dao<Aluno> {
     }
     
     private static void insert(Aluno a) throws SQLException{
-        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("INSERT INTO Aluno (ra) VALUES(?)", Statement.RETURN_GENERATED_KEYS);
+
+        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("INSERT INTO pessoa (nome, senha, saldo, email, ra) VALUES(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
         pst.setString(1, a.getRA());
 
         pst.execute();
@@ -47,7 +48,7 @@ public class DaoAluno implements Dao<Aluno> {
     @Override
     public Aluno retrieve(int id) throws SQLException{
         Statement st =  Conection.prepareConnection().createStatement();                                
-        st.execute("SELECT * FROM Pessoa WHERE id =" + id);
+        st.execute("SELECT * FROM pessoa WHERE id =" + id);
         ResultSet rs = st.getResultSet();
         
         rs.next();
@@ -57,7 +58,7 @@ public class DaoAluno implements Dao<Aluno> {
     }
 
     private static void update(Aluno a) throws SQLException{
-        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("UPDATE Aluno SET ra = ? WHERE id = ?");
+        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("UPDATE pessoa SET ra = ? WHERE id = ?");
         pst.setString(1, a.getRA());
         pst.setInt(2, a.getId());
         pst.execute();
@@ -66,7 +67,7 @@ public class DaoAluno implements Dao<Aluno> {
     @Override
     public void delete(Aluno a) throws SQLException{
         Statement st =  Conection.prepareConnection().createStatement();                                
-        st.execute("DELETE FROM Pessoa WHERE id = " + a.getId());
+        st.execute("DELETE FROM pessoa WHERE id = " + a.getId());
     }
     
     @Override
@@ -74,7 +75,7 @@ public class DaoAluno implements Dao<Aluno> {
         List<Aluno> Alunos = new ArrayList<Aluno>();
         
         Statement st =  Conection.prepareConnection().createStatement();                                
-        ResultSet rs =  st.executeQuery("SELECT * FROM Aluno");
+        ResultSet rs =  st.executeQuery("SELECT * FROM pessoa");
         
         while(rs.next()){
             Aluno a = converteRsParaAluno(rs);

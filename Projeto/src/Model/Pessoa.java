@@ -12,9 +12,9 @@ public class Pessoa {
 
     private int id;
     private String nome;
-    private String Senha;
-    private String Saldo;
-    private String Email;
+    private String senha;
+    private String saldo;
+    private String email;
 
     public Pessoa() {
     }
@@ -22,9 +22,9 @@ public class Pessoa {
     public Pessoa(int id, String nome, String Senha, String Saldo, String Email) {
         this.id = id;
         this.nome = nome;
-        this.Senha = Senha;
-        this.Saldo = Saldo;
-        this.Email = Email;
+        this.senha = Senha;
+        this.saldo = Saldo;
+        this.email = Email;
     }
 
     public int getId() {
@@ -44,35 +44,39 @@ public class Pessoa {
     }
 
     public String getSenha() {
-        return Senha;
+        return senha;
+    }
+    
+    
+
+    public void setSenha(char[] senha) {
+        this.senha = new String(senha);
     }
 
-    public void setSenha(String Senha) {
-        this.Senha = Senha;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public String getSaldo() {
-        return Saldo;
+        return saldo;
     }
 
     public void setSaldo(String Saldo) {
-        this.Saldo = Saldo;
+        this.saldo = Saldo;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String Email) {
-        this.Email = Email;
+        this.email = Email;
     }
 
     @Override
     public String toString() {
-        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", Senha=" + Senha + ", Saldo=" + Saldo + ", Email=" + Email + '}';
+        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", senha=" + senha + ", saldo=" + saldo + ", email=" + email + '}';
     }
 
-    public void setSenha(char[] password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }

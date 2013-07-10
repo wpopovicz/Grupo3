@@ -33,8 +33,12 @@ public class DaoProfessor implements Dao<Professor> {
     }
     
     private static void insert(Professor w) throws SQLException{
-        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("INSERT INTO Professor (siape) VALUES(?)", Statement.RETURN_GENERATED_KEYS);
-        pst.setString(1, w.getSiape());
+        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("INSERT INTO pessoa (nome, senha, saldo, email, siape) VALUES(?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+        pst.setString(1, w.getNome());
+        pst.setString(2, w.getSenha());
+        pst.setString(3, w.getSaldo());
+        pst.setString(4, w.getEmail());
+        pst.setString(5, w.getSiape());
 
         pst.execute();
         
@@ -47,7 +51,7 @@ public class DaoProfessor implements Dao<Professor> {
     @Override
     public Professor retrieve(int id) throws SQLException{
         Statement st =  Conection.prepareConnection().createStatement();                                
-        st.execute("SELECT * FROM Professor WHERE id =" + id);
+        st.execute("SELECT * FROM pessoa WHERE id =" + id);
         ResultSet rs = st.getResultSet();
         
         rs.next();
@@ -57,7 +61,7 @@ public class DaoProfessor implements Dao<Professor> {
     }
 
     private static void update(Professor w) throws SQLException{
-        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("UPDATE Professor SET siape = ? WHERE id = ?");
+        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("UPDATE pessoa SET siape = ? WHERE id = ?");
         pst.setString(1, w.getSiape());
         pst.setInt(2, w.getId());
         pst.execute();
@@ -66,7 +70,7 @@ public class DaoProfessor implements Dao<Professor> {
     @Override
     public void delete(Professor w) throws SQLException{
         Statement st =  Conection.prepareConnection().createStatement();                                
-        st.execute("DELETE FROM Professor WHERE id = " + w.getId());
+        st.execute("DELETE FROM pessoa WHERE id = " + w.getId());
     }
     
     @Override
@@ -74,7 +78,7 @@ public class DaoProfessor implements Dao<Professor> {
         List<Professor> Professores = new ArrayList<Professor>();
         
         Statement st =  Conection.prepareConnection().createStatement();                                
-        ResultSet rs =  st.executeQuery("SELECT * FROM Professor");
+        ResultSet rs =  st.executeQuery("SELECT * FROM pessoa");
         
         while(rs.next()){
             Professor w = converteRsParaProfessor(rs);

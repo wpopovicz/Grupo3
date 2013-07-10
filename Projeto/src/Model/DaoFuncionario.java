@@ -32,9 +32,13 @@ public class DaoFuncionario implements Dao<Funcionario> {
     }
     
     private static void insert(Funcionario f) throws SQLException{
-        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("INSERT INTO Funcionario (siape) VALUES(?)", Statement.RETURN_GENERATED_KEYS);
-        pst.setString(1, f.getSiape());
-
+        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("INSERT INTO pessoa (nome, senha, saldo, email, siape) VALUES(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+        pst.setString(1, f.getNome());
+        pst.setString(2, f.getSenha());
+        pst.setString(3, f.getSaldo());
+        pst.setString(4, f.getEmail());
+        pst.setString(5, f.getSiape());
+        
         pst.execute();
         
         ResultSet rs = pst.getGeneratedKeys();
@@ -46,7 +50,7 @@ public class DaoFuncionario implements Dao<Funcionario> {
     @Override
     public Funcionario retrieve(int id) throws SQLException{
         Statement st =  Conection.prepareConnection().createStatement();                                
-        st.execute("SELECT * FROM Funcionario WHERE id =" + id);
+        st.execute("SELECT * FROM pessoa WHERE id =" + id);
         ResultSet rs = st.getResultSet();
         
         rs.next();
@@ -56,7 +60,7 @@ public class DaoFuncionario implements Dao<Funcionario> {
     }
 
     private static void update(Funcionario f) throws SQLException{
-        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("UPDATE Funcionario SET siape = ? WHERE id = ?");
+        PreparedStatement pst =  Conection.prepareConnection().prepareStatement("UPDATE pessoa SET siape = ? WHERE id = ?");
         pst.setString(1, f.getSiape());
         pst.setInt(2, f.getId());
         pst.execute();
@@ -65,7 +69,7 @@ public class DaoFuncionario implements Dao<Funcionario> {
     @Override
     public void delete(Funcionario f) throws SQLException{
         Statement st =  Conection.prepareConnection().createStatement();                                
-        st.execute("DELETE FROM Funcionario WHERE id = " + f.getId());
+        st.execute("DELETE FROM pessoa WHERE id = " + f.getId());
     }
     
     @Override
@@ -73,7 +77,7 @@ public class DaoFuncionario implements Dao<Funcionario> {
         List<Funcionario> Funcionarios = new ArrayList<Funcionario>();
         
         Statement st =  Conection.prepareConnection().createStatement();                                
-        ResultSet rs =  st.executeQuery("SELECT * FROM Funcionario");
+        ResultSet rs =  st.executeQuery("SELECT * FROM pessoa");
         
         while(rs.next()){
             Funcionario f = converterRsParaFuncionario(rs);
