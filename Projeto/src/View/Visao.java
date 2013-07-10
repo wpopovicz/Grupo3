@@ -184,7 +184,8 @@ public class Visao extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
-        Cliente c = new Cliente();
+        this.setEnabled(false);
+        Cliente c = new Cliente(this);
         c.setVisible(true);
         c.setLocationRelativeTo(null);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
