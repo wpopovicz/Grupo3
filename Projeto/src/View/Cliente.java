@@ -23,11 +23,12 @@ import javax.swing.JOptionPane;
  */
 public class Cliente extends javax.swing.JFrame {
 
-       private DaoPessoa daoPessoa = new DaoPessoa();
-       private DaoProfessor daoProfessor = new DaoProfessor();
-       private DaoAluno daoAluno = new DaoAluno();
-       private DaoFuncionario daoFuncionario = new DaoFuncionario();
-       private Visao telaAnterior; 
+    private DaoPessoa daoPessoa = new DaoPessoa();
+    private DaoProfessor daoProfessor = new DaoProfessor();
+    private DaoAluno daoAluno = new DaoAluno();
+    private DaoFuncionario daoFuncionario = new DaoFuncionario();
+    private Visao telaAnterior;
+
     /**
      * Creates new form Cliente
      */
@@ -68,9 +69,17 @@ public class Cliente extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
 
         jLabel5.setText("jLabel5");
 
@@ -217,14 +226,34 @@ public class Cliente extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel8.setText("Ra:");
-
         jButton2.setText("Alterar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("ID:");
+
+        jLabel9.setText("Nome:");
+
+        jLabel11.setText("Ra:");
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Saldo:");
+
+        jLabel13.setText("E-mail:");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -233,23 +262,50 @@ public class Cliente extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(50, 50, 50)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
-                        .addGap(143, 143, 143))))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel7))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(30, 30, 30)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(11, 11, 11))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(20, 20, 20))
         );
@@ -279,28 +335,51 @@ public class Cliente extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // alterar o cliente
-        if (jTextField6.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(this,"Informe um RA!");
+        if (jTextField1.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "Informe um ID!");
         }
+        Aluno a = new Aluno();
+        Pessoa p = new Pessoa();
+        p.setId(Integer.parseInt(jTextField1.getText()));
+        a.setRA(jTextField5.getText());
+        p.setNome(jTextField2.getText());
+        p.setEmail(jTextField3.getText());
+        p.setSaldo(jTextField4.getText());
+        try {
+            daoPessoa.update(p);
+        } catch (SQLException ex) {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            daoAluno.update(a);
+        } catch (SQLException ex) {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+
+
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Excluir
-        if (jTextField8ID.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(this,"Informe um RA!");
-        }else {
+        if (jTextField8ID.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "Informe um RA!");
+        } else {
             Pessoa p = new Pessoa();
 
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBoxFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFuncaoActionPerformed
-        if (jComboBoxFuncao.getSelectedItem()== "Professor"){
+        if (jComboBoxFuncao.getSelectedItem() == "Professor") {
             jLabel1.setText("SIAPE:");
-        }else if (jComboBoxFuncao.getSelectedItem() == "Aluno"){
+        } else if (jComboBoxFuncao.getSelectedItem() == "Aluno") {
             jLabel1.setText("RA:");
 
-        }else if (jComboBoxFuncao.getSelectedItem() == "Funcionário"){
+        } else if (jComboBoxFuncao.getSelectedItem() == "Funcionário") {
             jLabel1.setText("SIAPE:");
 
         }
@@ -311,10 +390,9 @@ public class Cliente extends javax.swing.JFrame {
         String password = new String(jPasswordField1.getPassword());
         if (jComboBoxFuncao.getSelectedItem() == "Professor") {
             if (jTextFieldRA.getText().trim().equals("") || jTextFieldNome.getText().trim().equals("")
-                || password.trim().equals("")) {
+                    || password.trim().equals("")) {
                 JOptionPane.showMessageDialog(this, "Campos em branco");
-            }
-            else {
+            } else {
 
                 Professor prof = new Professor();
                 prof.setNome(jTextFieldNome.getText());
@@ -335,12 +413,11 @@ public class Cliente extends javax.swing.JFrame {
         }
         if (jComboBoxFuncao.getSelectedItem() == "Aluno") {
             if (jTextFieldRA.getText().trim().equals("") || jTextFieldNome.getText().trim().equals("")
-                || password.trim().equals("")) {
+                    || password.trim().equals("")) {
                 JOptionPane.showMessageDialog(this, "Campos em branco");
-            }
-            else {
+            } else {
 
-                Aluno a= new Aluno();
+                Aluno a = new Aluno();
                 a.setNome(jTextFieldNome.getText());
                 a.setSenha(jPasswordField1.getPassword());
                 a.setEmail(jTextFieldEmail.getText());
@@ -359,10 +436,9 @@ public class Cliente extends javax.swing.JFrame {
         }
         if (jComboBoxFuncao.getSelectedItem() == "Funcionário") {
             if (jTextFieldRA.getText().trim().equals("") || jTextFieldNome.getText().trim().equals("")
-                || password.trim().equals("")) {
+                    || password.trim().equals("")) {
                 JOptionPane.showMessageDialog(this, "Campos em branco");
-            }
-            else {
+            } else {
 
                 Funcionario f = new Funcionario();
                 f.setNome(jTextFieldNome.getText());
@@ -384,6 +460,14 @@ public class Cliente extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -425,18 +509,26 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxFuncao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField8ID;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldNome;
