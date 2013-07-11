@@ -71,10 +71,6 @@ public class Cliente extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
 
         jLabel5.setText("jLabel5");
 
@@ -88,7 +84,7 @@ public class Cliente extends javax.swing.JFrame {
         });
 
         jTabbedPane1.setBackground(new java.awt.Color(0, 0, 0));
-        jTabbedPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(0, 0, 0)), "Cliente", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Arial", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
+        jTabbedPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), new java.awt.Color(0, 0, 0)), "Cliente", 4, 1, new java.awt.Font("Arial", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -145,7 +141,7 @@ public class Cliente extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jTextFieldNome)
                                 .addComponent(jTextFieldRA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)))))
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,7 +166,7 @@ public class Cliente extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jToggleButton1)
                 .addGap(20, 20, 20))
         );
@@ -202,7 +198,7 @@ public class Cliente extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addGap(50, 50, 50)
-                        .addComponent(jTextField8ID, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                        .addComponent(jTextField8ID, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
                         .addGap(143, 143, 143))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -212,7 +208,7 @@ public class Cliente extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jTextField8ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(20, 20, 20))
         );
@@ -243,7 +239,7 @@ public class Cliente extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(50, 50, 50)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                        .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
                         .addGap(143, 143, 143))))
         );
         jPanel4Layout.setVerticalGroup(
@@ -253,53 +249,12 @@ public class Cliente extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(20, 20, 20))
         );
 
         jTabbedPane1.addTab("Alterar", jPanel4);
-
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel9.setText("Ra:");
-
-        jButton3.setText("Consultar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(50, 50, 50)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                        .addGap(143, 143, 143))))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(20, 20, 20))
-        );
-
-        jTabbedPane1.addTab("Consultar", jPanel5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -317,6 +272,11 @@ public class Cliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // CloseOperation
+        telaAnterior.setEnabled(true);
+    }//GEN-LAST:event_formWindowClosed
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // alterar o cliente
         if (jTextField6.getText().trim().equals("")){
@@ -327,10 +287,10 @@ public class Cliente extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Excluir
         if (jTextField8ID.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(this,"Informe um RA!");           
+            JOptionPane.showMessageDialog(this,"Informe um RA!");
         }else {
             Pessoa p = new Pessoa();
-            
+
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -349,94 +309,81 @@ public class Cliente extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
         String password = new String(jPasswordField1.getPassword());
-           if (jComboBoxFuncao.getSelectedItem() == "Professor") {
+        if (jComboBoxFuncao.getSelectedItem() == "Professor") {
             if (jTextFieldRA.getText().trim().equals("") || jTextFieldNome.getText().trim().equals("")
-                    || password.trim().equals("")) {
+                || password.trim().equals("")) {
                 JOptionPane.showMessageDialog(this, "Campos em branco");
             }
-         else {
+            else {
 
-            Professor prof = new Professor();
-            prof.setNome(jTextFieldNome.getText());
-            prof.setSenha(jPasswordField1.getPassword());   
-            prof.setEmail(jTextFieldEmail.getText());
-            prof.setSiape(jTextFieldRA.getText());
-            try {
-                daoProfessor.persist(prof);
-                jTextFieldEmail.setText("");
-                jTextFieldNome.setText("");
-                jPasswordField1.setText("");
-                jTextFieldRA.setText("");
-                JOptionPane.showMessageDialog(this, "Cadastro Realizado Com Sucesso!");
-            } catch (SQLException e) {
-                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, e);
+                Professor prof = new Professor();
+                prof.setNome(jTextFieldNome.getText());
+                prof.setSenha(jPasswordField1.getPassword());
+                prof.setEmail(jTextFieldEmail.getText());
+                prof.setSiape(jTextFieldRA.getText());
+                try {
+                    daoProfessor.persist(prof);
+                    jTextFieldEmail.setText("");
+                    jTextFieldNome.setText("");
+                    jPasswordField1.setText("");
+                    jTextFieldRA.setText("");
+                    JOptionPane.showMessageDialog(this, "Cadastro Realizado Com Sucesso!");
+                } catch (SQLException e) {
+                    Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, e);
+                }
             }
         }
-        }
-           if (jComboBoxFuncao.getSelectedItem() == "Aluno") {
+        if (jComboBoxFuncao.getSelectedItem() == "Aluno") {
             if (jTextFieldRA.getText().trim().equals("") || jTextFieldNome.getText().trim().equals("")
-                    || password.trim().equals("")) {
+                || password.trim().equals("")) {
                 JOptionPane.showMessageDialog(this, "Campos em branco");
             }
-         else {
+            else {
 
-            Aluno a= new Aluno();
-            a.setNome(jTextFieldNome.getText());
-            a.setSenha(jPasswordField1.getPassword());   
-            a.setEmail(jTextFieldEmail.getText());
-            a.setRA(jTextFieldRA.getText());
-            try {;
-                daoAluno.persist(a);
-                jTextFieldEmail.setText("");
-                jTextFieldNome.setText("");
-                jPasswordField1.setText("");
-                jTextFieldRA.setText("");
-                JOptionPane.showMessageDialog(this, "Cadastro Realizado Com Sucesso!");
-            } catch (SQLException e) {
-                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, e);
+                Aluno a= new Aluno();
+                a.setNome(jTextFieldNome.getText());
+                a.setSenha(jPasswordField1.getPassword());
+                a.setEmail(jTextFieldEmail.getText());
+                a.setRA(jTextFieldRA.getText());
+                try {;
+                    daoAluno.persist(a);
+                    jTextFieldEmail.setText("");
+                    jTextFieldNome.setText("");
+                    jPasswordField1.setText("");
+                    jTextFieldRA.setText("");
+                    JOptionPane.showMessageDialog(this, "Cadastro Realizado Com Sucesso!");
+                } catch (SQLException e) {
+                    Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, e);
+                }
             }
         }
-        }
-           if (jComboBoxFuncao.getSelectedItem() == "Funcionário") {
+        if (jComboBoxFuncao.getSelectedItem() == "Funcionário") {
             if (jTextFieldRA.getText().trim().equals("") || jTextFieldNome.getText().trim().equals("")
-                    || password.trim().equals("")) {
+                || password.trim().equals("")) {
                 JOptionPane.showMessageDialog(this, "Campos em branco");
             }
-         else {
+            else {
 
-            Funcionario f = new Funcionario();
-            f.setNome(jTextFieldNome.getText());
-            f.setSenha(jPasswordField1.getPassword());   
-            f.setEmail(jTextFieldEmail.getText());
-            f.setSiape(jTextFieldRA.getText());
-            try {
-                
-                daoFuncionario.persist(f);
-                jTextFieldEmail.setText("");
-                jTextFieldNome.setText("");
-                jPasswordField1.setText("");
-                jTextFieldRA.setText("");
-                JOptionPane.showMessageDialog(this, "Cadastro Realizado Com Sucesso!");
-            } catch (SQLException e) {
-                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, e);
+                Funcionario f = new Funcionario();
+                f.setNome(jTextFieldNome.getText());
+                f.setSenha(jPasswordField1.getPassword());
+                f.setEmail(jTextFieldEmail.getText());
+                f.setSiape(jTextFieldRA.getText());
+                try {
+
+                    daoFuncionario.persist(f);
+                    jTextFieldEmail.setText("");
+                    jTextFieldNome.setText("");
+                    jPasswordField1.setText("");
+                    jTextFieldRA.setText("");
+                    JOptionPane.showMessageDialog(this, "Cadastro Realizado Com Sucesso!");
+                } catch (SQLException e) {
+                    Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, e);
+                }
             }
         }
-        }
-                 
 
     }//GEN-LAST:event_jToggleButton1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        if (jTextField7.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(this,"Informe um RA!");
-        }
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        // CloseOperation
-        telaAnterior.setEnabled(true);
-    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -475,7 +422,6 @@ public class Cliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox jComboBoxFuncao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -485,15 +431,12 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8ID;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldNome;

@@ -4,6 +4,8 @@
  */
 package View;
 
+import Model.Aluno;
+import Model.DaoAluno;
 import Model.DaoPessoa;
 import Model.Pessoa;
 import java.sql.SQLException;
@@ -17,6 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class Consulta extends javax.swing.JFrame {
     DaoPessoa daoPessoa = new DaoPessoa();
+    DaoAluno daoAluno = new DaoAluno();
     /**
      * Creates new form Consulta
      */
@@ -117,7 +120,7 @@ public class Consulta extends javax.swing.JFrame {
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jToggleButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jToggleButton2)))
                 .addContainerGap(92, Short.MAX_VALUE))
         );
@@ -188,16 +191,23 @@ public class Consulta extends javax.swing.JFrame {
            
            
         }
-         Pessoa p = new Pessoa();
+         Aluno a = new Aluno();
+         Pessoa p = new Pessoa ();
          p.setId(Integer.parseInt(jTextField1.getText()));
-        try {
+        try {         
+        
+            a = daoAluno.retrieve(p.getId());
             p = daoPessoa.retrieve(p.getId());
             jTextField2.setText(p.getNome());
             jTextField3.setText(p.getEmail());
             jTextField4.setText(p.getSaldo());
+            jTextField5.setText(a.getRA());
+            
         } catch (SQLException ex) {
             Logger.getLogger(Consulta.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+            
          
          
          
