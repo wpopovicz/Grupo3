@@ -65,7 +65,7 @@ public class Cliente extends javax.swing.JFrame {
         jComboBoxFuncao = new javax.swing.JComboBox();
         jPasswordField1 = new javax.swing.JPasswordField();
         jPanel3 = new javax.swing.JPanel();
-        jTextField8ID = new javax.swing.JTextField();
+        jTextFieldID = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -207,7 +207,7 @@ public class Cliente extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addGap(50, 50, 50)
-                        .addComponent(jTextField8ID, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                        .addComponent(jTextFieldID, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
                         .addGap(143, 143, 143))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -216,7 +216,7 @@ public class Cliente extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField8ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(20, 20, 20))
@@ -365,11 +365,26 @@ public class Cliente extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Excluir
-        if (jTextField8ID.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(this, "Informe um RA!");
-        } else {
-            Pessoa p = new Pessoa();
-
+      
+         Funcionario f = new Funcionario();
+         Professor w = new Professor();
+         Aluno a = new Aluno();
+         Pessoa p = new Pessoa ();
+         p.setId(Integer.parseInt(jTextFieldID.getText()));
+        try {         
+        
+            f = daoFuncionario.retrieve(p.getId());
+            w = daoProfessor.retrieve(p.getId());
+            a = daoAluno.retrieve(p.getId());
+            p = daoPessoa.retrieve(p.getId());
+            
+            daoProfessor.delete(w);
+            daoAluno.delete(a);
+            daoFuncionario.delete(f);
+            daoPessoa.delete(p);
+            JOptionPane.showMessageDialog(this,"Excluido com Sucesso!"); 
+             } catch (SQLException ex) {
+            Logger.getLogger(Consulta.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -529,8 +544,8 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField8ID;
     private javax.swing.JTextField jTextFieldEmail;
+    private javax.swing.JTextField jTextFieldID;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldRA;
     private javax.swing.JToggleButton jToggleButton1;

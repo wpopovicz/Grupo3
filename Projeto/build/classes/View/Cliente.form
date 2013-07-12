@@ -255,7 +255,7 @@
                           <Group type="102" attributes="0">
                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                              <Component id="jTextField8ID" pref="164" max="32767" attributes="0"/>
+                              <Component id="jTextFieldID" pref="164" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -268,7 +268,7 @@
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField8ID" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldID" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="179" max="32767" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
@@ -278,7 +278,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="jTextField8ID">
+            <Component class="javax.swing.JTextField" name="jTextFieldID">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
               <Properties>
