@@ -1,12 +1,48 @@
-/* 
-    Document   : ArrumaroHelp
-    Created on : 04/07/2013, 13:42:57
-    Author     : imape
-    Description:
-        Purpose of the stylesheet follows.
-*/
-
-root { 
-    display: block;
+body { 
+    background-color:azure; 
+    background-image: url("utfpr.gif");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: 50% 0%;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 11em;
+    font-family: Georgia, "Times New Roman",Times, serif;
+}
+ul.navbar {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 2em;
+  left: 1em;
+  width: 9em 
+}
+h1 {
+  font-family: Helvetica, Geneva, Arial,
+        SunSans-Regular, sans-seri 
+}
+ul.navbar li {
+  background: white;
+  margin: 0.5em 0;
+  padding: 0.3em;
+  border-right: 1em solid black 
+}
+ul.navbar a {
+    font-size: 14px;
+    font-family: Arial,Helvetica,sans-serif;
+    text-align: left;
+}
+a:link {
+  color: blue 
+}
+a:visited {
+  color: purple 
+}
+p{      
+    font-style: italic;   
+    font-size: smaller;   
+    text-indent: 0;    
+    margin-top: 0px;
 }
 
