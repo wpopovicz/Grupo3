@@ -80,17 +80,66 @@ public class DaoPessoa implements Dao<Pessoa> {
     }
     
     @Override
-    public List<Pessoa> list() throws SQLException{
-        List<Pessoa> Pessoas = new ArrayList<Pessoa>();
+    public List<Pessoa> list(String whereClause, String orderClause) throws SQLException{
+        List<Pessoa> pessoas = new ArrayList<Pessoa>();
         
         Statement st =  Conection.prepareConnection().createStatement();                                
-        ResultSet rs =  st.executeQuery("SELECT * FROM pessoa");
+        ResultSet rs =  st.executeQuery("SELECT * FROM pessoa" + 
+                (whereClause==null || whereClause.trim().isEmpty()?"":" WHERE " + whereClause) + 
+                (orderClause==null || orderClause.trim().isEmpty()?"":" ORDER BY " + orderClause));
         
         while(rs.next()){
             Pessoa p = converteRsParaPessoa(rs);
-            Pessoas.add(p);
+            pessoas.add(p);
         }
         
-        return Pessoas;
+        return pessoas;
+    }
+    
+    @Override
+    public List<Pessoa> list(Filter... filters) throws SQLException{
+        
+        List<Pessoa> pessoas = new ArrayList<Pessoa>();
+        
+        ResultSet rs = null;
+        
+        /* Verifica se algum friltro foi fornecido para o método */
+        if(filters == null || filters.length == 0){
+            Statement st =  Conection.prepareConnection().createStatement();
+            rs =  st.executeQuery("SELECT * FROM pessoa");
+        }else{
+            String sql = "SELECT * FROM pessoa WHERE ";
+            
+            for(int i = 0; i < filters.length; i++){
+                Filter f = filters[i];
+                System.out.println(f);
+                switch(f.getOperator()){
+                    case IS_NOT_NULL: sql += f.getAttribute() + " IS NOT NULL"; break;
+                    case IS_NULL: sql += f.getAttribute() + " IS NULL"; break;
+                    case LIKE: sql += f.getAttribute() + " LIKE '%?" + f.getValue()+ "%'"; break;
+                    case EQUAL: sql += f.getAttribute() + "='?" + f.getValue()+ "'"; break;
+                    case MORE_THAN: sql += f.getAttribute() + ">?'" + f.getValue()+ "'"; break;
+                    case MORE_THAN_EQUAL: sql += f.getAttribute() + ">=?'" + f.getValue()+ "'"; break;
+                    default:
+                        throw new RuntimeException("Tipo de operador não suportado:" + f.getOperator());
+                }
+                
+                /* No ultimo elemento não se coloca o operador AND */
+                if(i < filters.length -1){
+                    sql += " AND ";
+                }
+            }
+            PreparedStatement pst =  Conection.prepareConnection().prepareStatement(sql);
+            System.out.println("SQL:" + sql);
+            rs =  pst.executeQuery();
+        }
+        
+        /* Converte o ResultSet da query para uma lista de objetos */
+        while(rs.next()){
+            Pessoa p = converteRsParaPessoa(rs);
+            pessoas.add(p);
+        }
+        
+        return pessoas;
     }
 }

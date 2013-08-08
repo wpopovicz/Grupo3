@@ -5,11 +5,13 @@
 package Model.Entidade;
 
 import Model.Entidade.Pessoa;
+import javax.persistence.Entity;
 
 /**
  *
  * @author Popovicz
  */
+@Entity
 public class Aluno extends Pessoa{
     private String RA;
 

@@ -4,10 +4,13 @@
  */
 package Model.Entidade;
 
+import javax.persistence.Entity;
+
 /**
  *
  * @author Popovicz
  */
+@Entity
 public class Produto {
     private Long codigo;
     private String nome;
