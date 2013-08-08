@@ -51,18 +51,5 @@ List objs = new ArrayList();
     public T get(int index) {
         return (T) objs.get(index);
     }
-   public static void main(String[] args) {
-        ListaGen<Pessoa> lp = new ListaGen();
-        lp.add(new Pessoa());
-        lp.add(new Pessoa());
-        lp.get(0).setNome("Primeira pessoa");
-        lp.get(1).setNome("Segunda pessoa");
-        
-        List l = new ArrayList();
-        l.add(new Pessoa());
-        l.add(new Pessoa());
-        ((Pessoa) l.get(0)).setNome("Primeira Pessoa");
-        ((Pessoa) l.get(1)).setNome("sgunda Pessoa");
-        
-    }
+   
 }
