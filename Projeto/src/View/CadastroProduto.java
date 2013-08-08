@@ -5,7 +5,7 @@
 package View;
 
 import Control.ControleProduto;
-import Model.Produto;
+import Model.Entidade.Produto;
 import javax.swing.JOptionPane;
 
 /**

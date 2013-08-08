@@ -4,7 +4,7 @@
  */
 package Control;
 
-import Model.Produto;
+import Model.Entidade.Produto;
 
 /**
  *

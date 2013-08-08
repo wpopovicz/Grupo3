@@ -4,6 +4,7 @@
  */
 package Model;
 
+import Model.Entidade.Funcionario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

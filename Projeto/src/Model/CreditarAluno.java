@@ -4,6 +4,8 @@
  */
 package Model;
 
+import Model.Entidade.Aluno;
+import Model.Entidade.Pessoa;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

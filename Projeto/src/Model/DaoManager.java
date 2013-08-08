@@ -4,6 +4,10 @@
  */
 package Model;
 
+import Model.Entidade.Aluno;
+import Model.Entidade.Funcionario;
+import Model.Entidade.Pessoa;
+import Model.Entidade.Professor;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

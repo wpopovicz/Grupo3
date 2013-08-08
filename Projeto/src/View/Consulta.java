@@ -4,14 +4,14 @@
  */
 package View;
 
-import Model.Aluno;
+import Model.Entidade.Aluno;
 import Model.DaoAluno;
 import Model.DaoFuncionario;
 import Model.DaoPessoa;
 import Model.DaoProfessor;
-import Model.Funcionario;
-import Model.Pessoa;
-import Model.Professor;
+import Model.Entidade.Funcionario;
+import Model.Entidade.Pessoa;
+import Model.Entidade.Professor;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

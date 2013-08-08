@@ -4,7 +4,7 @@
  */
 package Control;
 
-import Model.Pessoa;
+import Model.Entidade.Pessoa;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
