@@ -76,7 +76,7 @@ public class Visao extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(java.awt.Color.white);
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cartão Universitário", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cartão Universitário", 0, 0, new java.awt.Font("Dialog", 1, 18), javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"))); // NOI18N
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1373341100_shopping_cart.png"))); // NOI18N
         jButton1.setToolTipText("Debitar");
@@ -164,7 +164,7 @@ public class Visao extends javax.swing.JFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -186,6 +186,11 @@ public class Visao extends javax.swing.JFrame {
         jMenuItemClienteCadastrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK));
         jMenuItemClienteCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1375980201_executive.png"))); // NOI18N
         jMenuItemClienteCadastrar.setText("Cadastrar");
+        jMenuItemClienteCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemClienteCadastrarActionPerformed(evt);
+            }
+        });
         jMenu1Cliente.add(jMenuItemClienteCadastrar);
 
         jMenuItemClienteAlterar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_MASK));
@@ -201,11 +206,21 @@ public class Visao extends javax.swing.JFrame {
         jMenuItemClienteExcluir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.SHIFT_MASK));
         jMenuItemClienteExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1375980249_delete.png"))); // NOI18N
         jMenuItemClienteExcluir.setText("Excluir");
+        jMenuItemClienteExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemClienteExcluirActionPerformed(evt);
+            }
+        });
         jMenu1Cliente.add(jMenuItemClienteExcluir);
 
         jMenuItemClienteConsultar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.SHIFT_MASK));
         jMenuItemClienteConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1375980081_find.png"))); // NOI18N
         jMenuItemClienteConsultar.setText("Consultar");
+        jMenuItemClienteConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemClienteConsultarActionPerformed(evt);
+            }
+        });
         jMenu1Cliente.add(jMenuItemClienteConsultar);
 
         jMenuBar1.add(jMenu1Cliente);
@@ -215,9 +230,9 @@ public class Visao extends javax.swing.JFrame {
         jMenuItemProdutoCadastro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
         jMenuItemProdutoCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1375981249_product.png"))); // NOI18N
         jMenuItemProdutoCadastro.setText("Cadastrar");
-        jMenuItemProdutoCadastro.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItemProdutoCadastroMouseClicked(evt);
+        jMenuItemProdutoCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemProdutoCadastroActionPerformed(evt);
             }
         });
         jMenu2Produto.add(jMenuItemProdutoCadastro);
@@ -225,16 +240,31 @@ public class Visao extends javax.swing.JFrame {
         jMenuItemProdutoAlterar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK));
         jMenuItemProdutoAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1375980328_121.png"))); // NOI18N
         jMenuItemProdutoAlterar.setText("Alterar");
+        jMenuItemProdutoAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemProdutoAlterarActionPerformed(evt);
+            }
+        });
         jMenu2Produto.add(jMenuItemProdutoAlterar);
 
         jMenuItemProdutoExcluir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK));
         jMenuItemProdutoExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1375980249_delete.png"))); // NOI18N
         jMenuItemProdutoExcluir.setText("Excluir");
+        jMenuItemProdutoExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemProdutoExcluirActionPerformed(evt);
+            }
+        });
         jMenu2Produto.add(jMenuItemProdutoExcluir);
 
         jMenuItemProdutoConsultar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.ALT_MASK));
         jMenuItemProdutoConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1375980081_find.png"))); // NOI18N
         jMenuItemProdutoConsultar.setText("Consultar");
+        jMenuItemProdutoConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemProdutoConsultarActionPerformed(evt);
+            }
+        });
         jMenu2Produto.add(jMenuItemProdutoConsultar);
 
         jMenuBar1.add(jMenu2Produto);
@@ -346,11 +376,39 @@ public class Visao extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuBar1FocusLost
 
-    private void jMenu2SobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2SobreMouseClicked
-        Sobre w = new Sobre();
-        w.setVisible(true);
-        w.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jMenu2SobreMouseClicked
+    private void jMenuItemClienteExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteExcluirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemClienteExcluirActionPerformed
+
+    private void jMenuItemClienteCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteCadastrarActionPerformed
+        this.setEnabled(false);
+        Cliente c = new Cliente(this);
+        c.setVisible(true);
+        c.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuItemClienteCadastrarActionPerformed
+
+    private void jMenuItemProdutoAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoAlterarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemProdutoAlterarActionPerformed
+
+    private void jMenuItemProdutoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoExcluirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemProdutoExcluirActionPerformed
+
+    private void jMenuItemProdutoConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoConsultarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemProdutoConsultarActionPerformed
+
+    private void jMenuItemClienteConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteConsultarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemClienteConsultarActionPerformed
+
+    private void jMenuItemProdutoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoCadastroActionPerformed
+        this.setEnabled(false);
+        CadastroProduto l = new CadastroProduto(this);
+        l.setVisible(true);
+        l.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuItemProdutoCadastroActionPerformed
 
     private void jMenu1AjudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1AjudaMouseClicked
         Desktop desktop = null;
@@ -358,34 +416,33 @@ public class Visao extends javax.swing.JFrame {
         URI uri = null;
         try {
             String local = System.getProperty("user.dir"); 
-            uri = new URI("file:///home/todos/alunos/cm/a1294121/%C3%81rea%20de%20Trabalho/Projeto/Site/Help.xhtml");
-            //uri = new URI("file://"+local+"/Site/Help.xhtml");
+            //uri = new URI("file:///home/todos/alunos/cm/a1294121/%C3%81rea%20de%20Trabalho/Projeto/Site/Help.xhtml");
+            uri = new URI("file://"+local+"/Site/Help.xhtml");
             desktop.browse(uri);
         } catch (IOException ioe) {
             ioe.printStackTrace();
         } catch (URISyntaxException use) {
             use.printStackTrace();
-        }
+        }                            
     }//GEN-LAST:event_jMenu1AjudaMouseClicked
+
+    private void jMenu2SobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2SobreMouseClicked
+        Sobre w = new Sobre();
+        w.setVisible(true);
+        w.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenu2SobreMouseClicked
+
+    private void jMenu6CreditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu6CreditarMouseClicked
+       Credito s = new Credito();
+        s.setVisible(true);
+        s.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenu6CreditarMouseClicked
 
     private void jMenu7DebitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7DebitarMouseClicked
         Debitar d = new Debitar();
         d.setVisible(true);
         d.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenu7DebitarMouseClicked
-
-    private void jMenu6CreditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu6CreditarMouseClicked
-        Credito s = new Credito();
-        s.setVisible(true);
-        s.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jMenu6CreditarMouseClicked
-
-    private void jMenuItemProdutoCadastroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItemProdutoCadastroMouseClicked
-        this.setEnabled(false);
-        CadastroProduto l = new CadastroProduto(this);
-        l.setVisible(true);
-        l.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jMenuItemProdutoCadastroMouseClicked
 
     /**
      * @param args the command line arguments
