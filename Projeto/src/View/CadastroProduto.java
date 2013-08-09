@@ -15,7 +15,9 @@ import javax.swing.JOptionPane;
 public class CadastroProduto extends javax.swing.JFrame {
 
     private Visao telaAnterior;
-
+    private Produto produto;
+    private AtualizarProduto atualizarProduto;
+    
     /**
      * Creates new form CadastroProduto
      */
@@ -26,6 +28,12 @@ public class CadastroProduto extends javax.swing.JFrame {
     public CadastroProduto(Visao telaAnterior) {
         this();
         this.telaAnterior = telaAnterior;
+    }
+    public CadastroProduto(AtualizarProduto atualizarProduto, Produto p) {
+        this();
+        
+        this.atualizarProduto = atualizarProduto;
+        this.produto = p;
     }
 
     /**

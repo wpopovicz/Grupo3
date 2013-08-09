@@ -331,6 +331,7 @@ public class Cliente extends javax.swing.JFrame {
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // CloseOperation
         telaAnterior.setEnabled(true);
+        this.telaAnterior.toFront();
     }//GEN-LAST:event_formWindowClosed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

@@ -4,14 +4,14 @@
  */
 package Model.Entidade;
 
-import javax.persistence.Entity;
+
 
 /**
  *
  * @author Popovicz
  */
-@Entity
-public class Produto {
+
+    public class Produto {
     private Long codigo;
     private String nome;
     private String especificacoes;
@@ -77,6 +77,16 @@ public class Produto {
 
     public void setHabilitadoVendas(boolean habilitadoVendas) {
         this.habilitadoVendas = habilitadoVendas;
+    }
+    @Override
+    public String toString() {
+        String valores = "codigo="+codigo+
+                         ", nome="+nome+
+                         ", preco custo="+precoCusto+
+                         ", preco venda="+precoVenda+
+                         ", habilitado vendas="+habilitadoVendas;
+        
+        return valores;
     }
   
 }

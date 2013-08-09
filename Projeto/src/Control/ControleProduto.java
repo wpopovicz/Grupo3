@@ -12,13 +12,48 @@ import Model.Entidade.Produto;
  */
 public class ControleProduto {
 
-    public boolean cadastrarProduto(Produto q) {
+    public boolean cadastrarProduto(Produto p) {
+     
         boolean result = false;
-        if (q != null && q.getNome().length() > 0 && q.getEspecificacoes().length() > 0
-                && q.getPrecoCusto() != 0.0f && q.getPrecoVenda() != 0.0f) {
-
+        
+        if (p != null && p.getNome().length() > 0
+                && p.getEspecificacoes().length() > 0 && p.getPrecoCusto() != 0.0f
+                && p.getPrecoVenda() != 0.0f) {
+            
+            // seta codigo valido
+            p.setCodigo(RepositoriosManager.getInstance().getContadorProdutos());
+            
+            // insere no modelo de dados
+            RepositoriosManager.getInstance().inserirProduto(p);
+            
+            System.out.println(p.toString());
+            
             result = true;
         }
+        
+        
         return result;
+    }
+
+    public boolean atualizarProduto(Produto p) {
+        
+        
+        boolean result = false;
+        
+        if (p != null && p.getNome().length() > 0
+                && p.getEspecificacoes().length() > 0 && p.getPrecoCusto() != 0.0f
+                && p.getPrecoVenda() != 0.0f) {
+            
+            
+           
+            RepositoriosManager.getInstance().modificarProduto(p);
+            System.out.println("UPDATED -> " + p.toString());
+            result = true;
+        }
+        
+        
+        return result;
+        
+        
     }
 }

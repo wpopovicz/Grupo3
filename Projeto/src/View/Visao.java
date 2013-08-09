@@ -370,7 +370,10 @@ public class Visao extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemClienteCadastrarActionPerformed
 
     private void jMenuItemProdutoAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoAlterarActionPerformed
-        // TODO add your handling code here:
+        this.setEnabled(false);
+        AtualizarProduto a = new AtualizarProduto(this);
+        a.setVisible(true);
+        a.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItemProdutoAlterarActionPerformed
 
     private void jMenuItemProdutoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoExcluirActionPerformed
