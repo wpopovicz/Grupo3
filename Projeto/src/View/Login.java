@@ -106,15 +106,14 @@ public class Login extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if (jTextFieldUsuario.getText() == "admin") {
+        if (jTextFieldUsuario.getText().equals("admin")) {
             Visao v = new Visao();
             v.setVisible(true);
             v.setLocationRelativeTo(null);
+            this.setVisible(false);
          
         }else {
-            Visao v = new Visao();
-            v.setVisible(true);
-            v.setLocationRelativeTo(null);
+            JOptionPane.showMessageDialog(this, "Usuario incorreto!");
         }
     
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -150,6 +149,7 @@ public class Login extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Login dialog = new Login(new javax.swing.JFrame(), true);
+                dialog.setLocationRelativeTo(null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
