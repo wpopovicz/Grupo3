@@ -10,8 +10,12 @@ import Model.Entidade.Pessoa;
 import Model.Entidade.Produto;
 import Model.Entidade.Professor;
 import java.sql.Connection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
@@ -55,7 +59,15 @@ public class HibernateDao implements Dao<Object>{
 
     @Override
     public void delete(Object o) throws Exception {
-        EntityManager em = HibernateFactory.getEntityManager();
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("hibernate.connection.driver", "com.mysql.jdbc.Driver");
+        map.put("hibernate.connection.url", "jdbc:mysql://localhost/aluno");
+        map.put("hibernate.connection.user", "aluno");
+        map.put("hibernate.connection.password", "aluno");
+
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("mySystem", map);
+
+        EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         em.remove(o);
         em.getTransaction().commit();

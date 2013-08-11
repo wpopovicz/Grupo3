@@ -8,7 +8,7 @@ package Model;
  *
  * @author Popovicz
  */
-public enum Operator {
+public enum Operator{
     IS_NULL, 
     IS_NOT_NULL, 
     LIKE, 

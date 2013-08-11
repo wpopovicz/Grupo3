@@ -4,7 +4,9 @@
  */
 package Model.Entidade;
 
+import Control.Metadata;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  *
@@ -12,6 +14,7 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Pessoa {
+    @Id
     private int id;
     private String nome;
     private String senha;
@@ -28,7 +31,7 @@ public class Pessoa {
         this.saldo = Saldo;
         this.email = Email;
     }
-
+    @Metadata(label="Id", minValue=0)
     public int getId() {
         return id;
     }
@@ -36,7 +39,7 @@ public class Pessoa {
     public void setId(int id) {
         this.id = id;
     }
-
+    @Metadata(label="Nome", required=true, size=150)
     public String getNome() {
         return nome;
     }
@@ -44,7 +47,7 @@ public class Pessoa {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
+    @Metadata(label="Senha", required=true, size=150)
     public String getSenha() {
         return senha;
     }
@@ -66,7 +69,7 @@ public class Pessoa {
     public void setSaldo(String Saldo) {
         this.saldo = Saldo;
     }
-
+    @Metadata(label="E-Mail", mask="########@#######.###")
     public String getEmail() {
         return email;
     }
