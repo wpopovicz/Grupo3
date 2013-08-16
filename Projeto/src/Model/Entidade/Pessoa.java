@@ -5,8 +5,11 @@
 package Model.Entidade;
 
 import Control.Metadata;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
 
 /**
  *
@@ -15,10 +18,14 @@ import javax.persistence.Id;
 @Entity
 public class Pessoa {
     @Id
+    @GeneratedValue()
     private int id;
+    @Column(length = 100)
     private String nome;
+    @Column(length = 100)
     private String senha;
     private String saldo;
+    @Column(length = 100)
     private String email;
 
     public Pessoa() {

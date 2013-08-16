@@ -5,6 +5,7 @@
 package Model;
 
 import Model.Entidade.Aluno;
+import Model.Entidade.Compra;
 import Model.Entidade.Funcionario;
 import Model.Entidade.Pessoa;
 import Model.Entidade.Produto;
@@ -19,6 +20,7 @@ import javax.persistence.Persistence;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.tool.hbm2ddl.SchemaExport;
 
 /**
  *
@@ -39,10 +41,13 @@ public class HibernateDao implements Dao<Object>{
 //        cfg.setProperty("hibernate.connection.autocommit", "true");
 
         cfg.addAnnotatedClass(Pessoa.class);
-        cfg.addAnnotatedClass(Aluno.class);
-        cfg.addAnnotatedClass(Funcionario.class);
-        cfg.addAnnotatedClass(Professor.class);
         cfg.addAnnotatedClass(Produto.class);
+        cfg.addAnnotatedClass(Compra.class);
+        
+        SchemaExport se = new SchemaExport(cfg);
+        
+        se.setOutputFile("MeuEsquema.sql");
+        se.execute(true, false , false, true);
         
         SessionFactory sessionFactory = cfg.buildSessionFactory();
         

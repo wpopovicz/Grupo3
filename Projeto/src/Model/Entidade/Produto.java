@@ -4,21 +4,37 @@
  */
 package Model.Entidade;
 
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
 
 
 /**
  *
  * @author Popovicz
  */
-
+    @Entity
     public class Produto {
+    @Id
+    @GeneratedValue
     private Long codigo;
+    @Column(length= 100)
     private String nome;
+    @Column(length= 100)
     private String especificacoes;
     private float precoVenda;
     private float precoCusto;
     private boolean habilitadoVendas;
-
+    
+    @ManyToMany(cascade= CascadeType.PERSIST)
+    private Set<Compra> compras = new HashSet<Compra>();
+    
     public Produto() {
     }
 

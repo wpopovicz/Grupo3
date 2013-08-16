@@ -400,8 +400,8 @@ public class Visao extends javax.swing.JFrame {
         URI uri = null;
         try {
             String local = System.getProperty("user.dir"); 
-            //uri = new URI("file:///home/todos/alunos/cm/a1294121/%C3%81rea%20de%20Trabalho/Projeto/Site/Help.xhtml");
-            uri = new URI("file://"+local+"/Site/Help.xhtml");
+            //uri = new URI("C:\\Users\\willian\\Desktop\\Grupo3\\Projeto\\Site");
+            uri = new URI(local+"\\Site\\Help.xhtml");
             desktop.browse(uri);
         } catch (IOException ioe) {
             ioe.printStackTrace();

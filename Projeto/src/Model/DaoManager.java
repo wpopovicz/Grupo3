@@ -4,10 +4,8 @@
  */
 package Model;
 
-import Model.Entidade.Aluno;
-import Model.Entidade.Funcionario;
+
 import Model.Entidade.Pessoa;
-import Model.Entidade.Professor;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,10 +18,8 @@ public class DaoManager {
  private static final Map<Class, Dao> daos = new HashMap<Class, Dao>();
     
     static{
-        daos.put(Pessoa.class, new DaoPessoa());
-        daos.put(Aluno.class, new DaoAluno());
-        daos.put(Professor.class, new DaoProfessor());    
-        daos.put(Funcionario.class, new DaoFuncionario());    
+        daos.put(Pessoa.class, new DaoPessoa() {});
+   
     }
     
 
