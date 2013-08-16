@@ -11,8 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -31,16 +29,17 @@ public class Compra {
         
     @ManyToMany(mappedBy="compras")
     private Set<Produto> Produtos = new HashSet<Produto>();
-    
-    @ManyToOne
-    private Set<Pessoa> pessoas = new HashSet<Pessoa>();
-    
+
+    public Compra() {
+              
+//        Pessoa p = new Pessoa();
+//        p.setCategoria(Categoria.PROFESSOR);
+//        p.getCategoria().equals(Categoria.ALUNO);
+    }
+
     public Compra(int id, float refeicao) {
         this.id = id;
         this.refeicao = refeicao;
-    }
-
-    public Compra() {
     }
 
     public int getId() {
@@ -49,13 +48,6 @@ public class Compra {
 
     public void setId(int id) {
         this.id = id;
-    }  
-    public float getRefeicao() {
-        return refeicao;
-    }
-
-    public void setRefeicao(float refeicao) {
-        this.refeicao = refeicao;
     }
 
     public Calendar getDataCompra() {
@@ -66,6 +58,14 @@ public class Compra {
         this.dataCompra = dataCompra;
     }
 
+    public float getRefeicao() {
+        return refeicao;
+    }
+
+    public void setRefeicao(float refeicao) {
+        this.refeicao = refeicao;
+    }
+
     public Set<Produto> getProdutos() {
         return Produtos;
     }
@@ -74,19 +74,10 @@ public class Compra {
         this.Produtos = Produtos;
     }
 
-    public Set<Pessoa> getPessoas() {
-        return pessoas;
-    }
-
-    public void setPessoas(Set<Pessoa> pessoas) {
-        this.pessoas = pessoas;
-    }
-
     @Override
     public String toString() {
-        return "Compra{" + "id=" + id + ", dataCompra=" + dataCompra + ", refeicao=" + refeicao + ", Produtos=" + Produtos + ", pessoas=" + pessoas + '}';
+        return "Compra{" + "id=" + id + ", dataCompra=" + dataCompra + ", refeicao=" + refeicao + ", Produtos=" + Produtos + '}';
     }
     
-
 }
 

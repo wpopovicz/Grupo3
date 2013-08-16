@@ -4,12 +4,9 @@
  */
 package Model;
 
-import Model.Entidade.Aluno;
 import Model.Entidade.Compra;
-import Model.Entidade.Funcionario;
 import Model.Entidade.Pessoa;
 import Model.Entidade.Produto;
-import Model.Entidade.Professor;
 import java.sql.Connection;
 import java.util.HashMap;
 import java.util.List;
