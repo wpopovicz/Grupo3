@@ -127,10 +127,10 @@ public class Login extends javax.swing.JDialog {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (jTextFieldUsuario.getText().equals("admin")) {
+            this.setVisible(false);
             Visao v = new Visao();
             v.setVisible(true);
             v.setLocationRelativeTo(null);
-            this.setVisible(false);
          
         }else {
             JOptionPane.showMessageDialog(this, "Usuario incorreto!");

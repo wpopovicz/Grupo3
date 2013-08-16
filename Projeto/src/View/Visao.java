@@ -339,7 +339,7 @@ public class Visao extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Consulta q = new Consulta();
+        NewConsulta q = new NewConsulta();
         q.setVisible(true);
         q.setLocationRelativeTo(null);
 

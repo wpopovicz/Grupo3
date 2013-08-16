@@ -5,10 +5,7 @@
 package View;
 
 import Model.Entidade.Aluno;
-import Model.DaoAluno;
-import Model.DaoFuncionario;
 import Model.DaoPessoa;
-import Model.DaoProfessor;
 import Model.Entidade.Funcionario;
 import Model.Entidade.Pessoa;
 import Model.Entidade.Professor;
@@ -24,9 +21,6 @@ import javax.swing.JOptionPane;
 public class Cliente extends javax.swing.JFrame {
 
     private DaoPessoa daoPessoa = new DaoPessoa();
-    private DaoProfessor daoProfessor = new DaoProfessor();
-    private DaoAluno daoAluno = new DaoAluno();
-    private DaoFuncionario daoFuncionario = new DaoFuncionario();
     private Visao telaAnterior;
 
     /**
@@ -188,6 +182,58 @@ public class Cliente extends javax.swing.JFrame {
         this.telaAnterior.toFront();
     }//GEN-LAST:event_formWindowClosed
 
+<<<<<<< Updated upstream
+=======
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // alterar o cliente
+        if (jTextField1.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "Informe um ID!");
+        }
+        Aluno a = new Aluno();
+        Pessoa p = new Pessoa();
+        p.setId(Integer.parseInt(jTextField1.getText()));
+        a.setRA(jTextField5.getText());
+        p.setNome(jTextField2.getText());
+        p.setEmail(jTextField3.getText());
+        p.setSaldo(jTextField4.getText());
+        try {
+            daoPessoa.update(p);
+        } catch (SQLException ex) {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+
+
+
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // Excluir
+
+        Funcionario f = new Funcionario();
+        Professor w = new Professor();
+        Aluno a = new Aluno();
+        Pessoa p = new Pessoa();
+        p.setId(Integer.parseInt(jTextFieldID.getText()));
+        try {
+
+            p = daoPessoa.retrieve(p.getId());
+
+            daoPessoa.delete(p);
+            JOptionPane.showMessageDialog(this, "Excluido com Sucesso!");
+        } catch (SQLException ex) {
+            Logger.getLogger(Consulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+>>>>>>> Stashed changes
     private void jComboBoxFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFuncaoActionPerformed
         if (jComboBoxFuncao.getSelectedItem() == "Professor") {
             jLabel1.setText("SIAPE:");
@@ -215,7 +261,6 @@ public class Cliente extends javax.swing.JFrame {
                 prof.setEmail(jTextFieldEmail.getText());
                 prof.setSiape(jTextFieldRA.getText());
                 try {
-                    daoProfessor.persist(prof);
                     jTextFieldEmail.setText("");
                     jTextFieldNome.setText("");
                     jPasswordField1.setText("");
@@ -238,7 +283,6 @@ public class Cliente extends javax.swing.JFrame {
                 a.setEmail(jTextFieldEmail.getText());
                 a.setRA(jTextFieldRA.getText());
                 try {;
-                    daoAluno.persist(a);
                     jTextFieldEmail.setText("");
                     jTextFieldNome.setText("");
                     jPasswordField1.setText("");
@@ -262,7 +306,6 @@ public class Cliente extends javax.swing.JFrame {
                 f.setSiape(jTextFieldRA.getText());
                 try {
 
-                    daoFuncionario.persist(f);
                     jTextFieldEmail.setText("");
                     jTextFieldNome.setText("");
                     jPasswordField1.setText("");
