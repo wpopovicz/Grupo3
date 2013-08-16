@@ -21,8 +21,8 @@ public class Categoria {
     @Id
     @GeneratedValue()
     private int id;
-    
-    public static String ALUNO="Aluno";
-    public static String PROFESSOR="Professor";
-    public static String FUNCIONARIO="Funcionário";
+    private String cargo;
+//    public static String ALUNO="Aluno";
+//    public static String PROFESSOR="Professor";
+//    public static String FUNCIONARIO="Funcionário";
 }

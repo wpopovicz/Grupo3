@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -29,7 +30,9 @@ public class Compra {
         
     @ManyToMany(mappedBy="compras")
     private Set<Produto> Produtos = new HashSet<Produto>();
-
+    
+    @ManyToOne
+    private Pessoa pessoa;
     public Compra() {
               
 //        Pessoa p = new Pessoa();
@@ -37,9 +40,10 @@ public class Compra {
 //        p.getCategoria().equals(Categoria.ALUNO);
     }
 
-    public Compra(int id, float refeicao) {
+    public Compra(int id, float refeicao, Pessoa pessoa) {
         this.id = id;
         this.refeicao = refeicao;
+        this.pessoa = pessoa;
     }
 
     public int getId() {
@@ -74,9 +78,17 @@ public class Compra {
         this.Produtos = Produtos;
     }
 
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+
     @Override
     public String toString() {
-        return "Compra{" + "id=" + id + ", dataCompra=" + dataCompra + ", refeicao=" + refeicao + ", Produtos=" + Produtos + '}';
+        return "Compra{" + "id=" + id + ", dataCompra=" + dataCompra + ", refeicao=" + refeicao + ", Produtos=" + Produtos + ", pessoa=" + pessoa + '}';
     }
     
 }

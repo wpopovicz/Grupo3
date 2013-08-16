@@ -32,17 +32,20 @@ public class Pessoa {
     private String saldo;
     @Column(length = 100)
     private String email;
-    private String categoria = Categoria.ALUNO;
+    @ManyToOne
+    private Categoria categoria;
 
+    //    private String categoria = Categoria.ALUNO;
     public Pessoa() {
     }
 
-    public Pessoa(int id, String nome, String senha, String saldo, String email) {
+    public Pessoa(int id, String nome, String senha, String saldo, String email, Categoria categoria) {
         this.id = id;
         this.nome = nome;
         this.senha = senha;
         this.saldo = saldo;
         this.email = email;
+        this.categoria = categoria;
     }
 
     public int getId() {
@@ -85,11 +88,11 @@ public class Pessoa {
         this.email = email;
     }
 
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 
