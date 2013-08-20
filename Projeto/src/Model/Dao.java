@@ -12,9 +12,14 @@ import java.util.List;
  * @author a1294121
  */
 public interface Dao<T> {
-    void persist(T o)  throws Exception;
-    void delete(T o)  throws Exception;
-    T retrieve(int id)  throws Exception;
-    List<T> list(String whereClause, String orderClause)  throws Exception;
-    List<T> list(Filter... filters)  throws Exception;
+
+    void persistir(T entidade);
+
+    void remover(T entidade);
+
+    T findById(int id);
+
+    List<T> listar(String filtro);
+
+    List<T> listar();
 }
