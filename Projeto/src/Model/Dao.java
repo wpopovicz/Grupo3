@@ -14,7 +14,6 @@ import java.util.List;
 public interface Dao<T> {
     void persist(T o)  throws Exception;
     void delete(T o)  throws Exception;
-    void delete(T o, Connection con)  throws Exception;
     T retrieve(int id)  throws Exception;
     List<T> list(String whereClause, String orderClause)  throws Exception;
     List<T> list(Filter... filters)  throws Exception;

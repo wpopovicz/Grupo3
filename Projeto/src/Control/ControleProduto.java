@@ -16,6 +16,7 @@ public class ControleProduto {
      
         boolean result = false;
         
+        
         if (p != null && p.getNome().length() > 0
                 && p.getEspecificacoes().length() > 0 && p.getPrecoCusto() != 0.0f
                 && p.getPrecoVenda() != 0.0f) {

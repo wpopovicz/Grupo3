@@ -4,6 +4,7 @@
  */
 package Model.Entidade;
 
+import Control.Metadata;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -28,7 +29,9 @@ import javax.persistence.ManyToMany;
     private String nome;
     @Column(length= 100)
     private String especificacoes;
+    @Column(length= 100)
     private float precoVenda;
+    @Column(length= 100)
     private float precoCusto;
     private boolean habilitadoVendas;
     
@@ -46,7 +49,7 @@ import javax.persistence.ManyToMany;
         this.precoCusto = precoCusto;
         this.habilitadoVendas = habilitadoVendas;
     }
-    
+    @Metadata(label="Codigo", minValue=0)
     public Long getCodigo() {
         return codigo;
     }
@@ -70,7 +73,7 @@ import javax.persistence.ManyToMany;
     public void setEspecificacoes(String especificacoes) {
         this.especificacoes = especificacoes;
     }
-
+    @Metadata(label="precoVenda", mask="000.00", required=true)
     public float getPrecoVenda() {
         return precoVenda;
     }
@@ -78,7 +81,7 @@ import javax.persistence.ManyToMany;
     public void setPrecoVenda(float precoVenda) {
         this.precoVenda = precoVenda;
     }
-
+    @Metadata(label="precoCusto", mask="000.00", required=true)
     public float getPrecoCusto() {
         return precoCusto;
     }
@@ -89,6 +92,14 @@ import javax.persistence.ManyToMany;
 
     public boolean isHabilitadoVendas() {
         return habilitadoVendas;
+    }
+
+    public Set<Compra> getCompras() {
+        return compras;
+    }
+
+    public void setCompras(Set<Compra> compras) {
+        this.compras = compras;
     }
 
     public void setHabilitadoVendas(boolean habilitadoVendas) {
@@ -103,6 +114,10 @@ import javax.persistence.ManyToMany;
                          ", habilitado vendas="+habilitadoVendas;
         
         return valores;
+    }
+
+    public void setcodigo(long aLong) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
   
 }

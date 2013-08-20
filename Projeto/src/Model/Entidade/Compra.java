@@ -4,6 +4,7 @@
  */
 package Model.Entidade;
 
+import Control.Metadata;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
@@ -45,7 +46,7 @@ public class Compra {
         this.refeicao = refeicao;
         this.pessoa = pessoa;
     }
-
+    @Metadata(label="Id", minValue=0)
     public int getId() {
         return id;
     }

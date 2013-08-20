@@ -189,6 +189,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldRA">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldRAActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldNome">
             </Component>

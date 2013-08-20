@@ -4,6 +4,7 @@
  */
 package Model;
 
+import Model.Entidade.Categoria;
 import Model.Entidade.Compra;
 import Model.Entidade.Pessoa;
 import Model.Entidade.Produto;
@@ -33,13 +34,14 @@ public class HibernateDao implements Dao<Object>{
         cfg.setProperty("hibernate.format_sql", "true");
         cfg.setProperty("hibernate.connection.driver", "com.mysql.jdbc.Driver");
         cfg.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/aluno");
-        cfg.setProperty("hibernate.connection.user", "aluno");
-        cfg.setProperty("hibernate.connection.password", "aluno");
+        cfg.setProperty("hibernate.connection.user", "root");
+        cfg.setProperty("hibernate.connection.password", "root");
 //        cfg.setProperty("hibernate.connection.autocommit", "true");
 
         cfg.addAnnotatedClass(Pessoa.class);
         cfg.addAnnotatedClass(Produto.class);
         cfg.addAnnotatedClass(Compra.class);
+        cfg.addAnnotatedClass(Categoria.class);
         
         SchemaExport se = new SchemaExport(cfg);
         
@@ -73,11 +75,6 @@ public class HibernateDao implements Dao<Object>{
         em.getTransaction().begin();
         em.remove(o);
         em.getTransaction().commit();
-    }
-
-    @Override
-    public void delete(Object o, Connection con) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override

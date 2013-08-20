@@ -4,14 +4,9 @@
  */
 package View;
 
-import Model.Entidade.Aluno;
-import Model.DaoAluno;
-import Model.DaoFuncionario;
 import Model.DaoPessoa;
-import Model.DaoProfessor;
-import Model.Entidade.Funcionario;
+import Model.Entidade.Categoria;
 import Model.Entidade.Pessoa;
-import Model.Entidade.Professor;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,9 +18,8 @@ import javax.swing.JOptionPane;
  */
 public class Consulta extends javax.swing.JFrame {
     DaoPessoa daoPessoa = new DaoPessoa();
-    DaoAluno daoAluno = new DaoAluno();
-    DaoProfessor daoProfessor = new DaoProfessor();
-    DaoFuncionario daoFuncionario = new DaoFuncionario();
+    Categoria categoria;
+  
     /**
      * Creates new form Consulta
      */
@@ -197,23 +191,17 @@ public class Consulta extends javax.swing.JFrame {
            
            
         }
-         Funcionario f = new Funcionario();
-         Professor w = new Professor();
-         Aluno a = new Aluno();
          Pessoa p = new Pessoa ();
+         categoria = new Categoria();
          p.setId(Integer.parseInt(jTextField1.getText()));
         try {         
         
-            f = daoFuncionario.retrieve(p.getId());
-            w = daoProfessor.retrieve(p.getId());
-            a = daoAluno.retrieve(p.getId());
             p = daoPessoa.retrieve(p.getId());
             jTextField2.setText(p.getNome());
             jTextField3.setText(p.getEmail());
             jTextField4.setText(p.getSaldo());
-            jTextField5.setText(a.getRA());
-            jTextField5.setText(w.getSiape());
-            jTextField5.setText(f.getSiape());
+            jTextField5.setText(categoria.getCargo());
+
             
         } catch (SQLException ex) {
             Logger.getLogger(Consulta.class.getName()).log(Level.SEVERE, null, ex);

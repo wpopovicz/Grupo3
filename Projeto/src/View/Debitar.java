@@ -4,16 +4,9 @@
  */
 package View;
 
-import Model.Entidade.Aluno;
-import Model.DaoAluno;
-import Model.DaoFuncionario;
+import Control.RepositoriosManager;
 import Model.DaoPessoa;
-import Model.DaoProfessor;
-import Model.Entidade.Funcionario;
-import Model.Entidade.Pessoa;
-import Model.Entidade.Professor;
-import java.awt.Point;
-import javax.swing.JDialog;
+import Model.Entidade.Produto;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,9 +16,7 @@ import javax.swing.JOptionPane;
 public class Debitar extends javax.swing.JFrame {
 
     DaoPessoa daoPessoa = new DaoPessoa();
-    DaoProfessor daoProfessor = new DaoProfessor();
-    DaoAluno DaoAluno = new DaoAluno();
-    DaoFuncionario DaoFuncionario = new DaoFuncionario();
+    
 
     /**
      * Creates new form Debitar
@@ -102,9 +93,19 @@ public class Debitar extends javax.swing.JFrame {
 
         jButtonAdicionarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/adicionar.png"))); // NOI18N
         jButtonAdicionarProduto.setToolTipText("Adicionar");
+        jButtonAdicionarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAdicionarProdutoActionPerformed(evt);
+            }
+        });
 
         jButtonDiminuirProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/Excluir.png"))); // NOI18N
         jButtonDiminuirProduto.setToolTipText("Excluir");
+        jButtonDiminuirProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDiminuirProdutoActionPerformed(evt);
+            }
+        });
 
         jComboBoxCliente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Aluno", "Professor", "Funcionário" }));
 
@@ -210,48 +211,36 @@ public class Debitar extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
-        if (jComboBoxCliente.getSelectedItem() == "Aluno") {
-            Aluno a = new Aluno();
-            a.setSaldo(jTextFieldValor.getText());
-            a.setRa(jTextFieldRA.getText());
-            a.setSenha(jPasswordFieldSenha.getPassword());
-
-            Boolean temSaldo = false; //metodo que verifica o saldo do cara
-            if (temSaldo) {
-                JOptionPane.showMessageDialog(this, "Debitado com sucesso!");
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Falha ao tentar Debitar!");
-            }
-        }else if(jComboBoxCliente.getSelectedItem() == "Funcionário") {
-            Funcionario f = new Funcionario();
-            f.setSaldo(jTextFieldValor.getText());
-            f.setSiape(jTextFieldRA.getText());
-            f.setSenha(jPasswordFieldSenha.getPassword());
-
-            Boolean temSaldo = false; //metodo que verifica o saldo do cara
-            if (temSaldo) {
-                JOptionPane.showMessageDialog(this, "Debitado com sucesso!");
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Falha ao tentar Debitar!");
-            }
-        }else if(jComboBoxCliente.getSelectedItem() == "Professor"){
-            Professor w = new Professor();
-            w.setSaldo(jTextFieldValor.getText());
-            w.setSiape(jTextFieldRA.getText());
-            w.setSenha(jPasswordFieldSenha.getPassword());
-
-            Boolean temSaldo = false; //metodo que verifica o saldo do cara
-            if (temSaldo) {
-                JOptionPane.showMessageDialog(this, "Debitado com sucesso!");
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Falha ao tentar Debitar!");
-            }
-        }
+        
         
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jButtonAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarProdutoActionPerformed
+        // Abrir a tela para adicionar o produto e valor para ser comprado:
+        CompraProduto k = new CompraProduto();
+        k.setVisible(true);
+        k.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jButtonAdicionarProdutoActionPerformed
+
+    private void jButtonDiminuirProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDiminuirProdutoActionPerformed
+        // excluir da lista de compra o produto selecionado:
+         try {
+            int linha = jTable1.getSelectedRow();
+
+            Produto p = RepositoriosManager.getInstance().obterListaProdutos().get(linha);
+            System.out.println(p.toString());
+
+            this.setEnabled(false);
+            jButtonDiminuirProduto.setEnabled(false);
+            //fazer o excluir e os JOption perguntando se tem certeza que quer excluir
+            JOptionPane.showConfirmDialog(this, p, "Tem Certeza que Deseja Excluir?", 0);
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(this, "Selecione um produto!");
+            jButtonDiminuirProduto.setEnabled(false);
+        }
+    }//GEN-LAST:event_jButtonDiminuirProdutoActionPerformed
     
     
 

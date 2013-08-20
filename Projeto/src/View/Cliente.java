@@ -4,11 +4,11 @@
  */
 package View;
 
-import Model.Entidade.Aluno;
+import Model.DaoCategoria;
 import Model.DaoPessoa;
-import Model.Entidade.Funcionario;
+import Model.Entidade.Categoria;
 import Model.Entidade.Pessoa;
-import Model.Entidade.Professor;
+import Model.HibernateDao;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,7 +22,9 @@ public class Cliente extends javax.swing.JFrame {
 
     private DaoPessoa daoPessoa = new DaoPessoa();
     private Visao telaAnterior;
-
+    private Categoria categoria = new Categoria();
+    private DaoCategoria categoriaDao = new DaoCategoria();
+    private HibernateDao hibernatedao = new HibernateDao();
     /**
      * Creates new form Cliente
      */
@@ -83,6 +85,12 @@ public class Cliente extends javax.swing.JFrame {
         jLabel3.setText("E-mail:");
 
         jLabel4.setText("Senha:");
+
+        jTextFieldRA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldRAActionPerformed(evt);
+            }
+        });
 
         jToggleButton1.setText("Cadastrar");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -182,58 +190,38 @@ public class Cliente extends javax.swing.JFrame {
         this.telaAnterior.toFront();
     }//GEN-LAST:event_formWindowClosed
 
-<<<<<<< Updated upstream
-=======
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // alterar o cliente
-        if (jTextField1.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(this, "Informe um ID!");
-        }
-        Aluno a = new Aluno();
-        Pessoa p = new Pessoa();
-        p.setId(Integer.parseInt(jTextField1.getText()));
-        a.setRA(jTextField5.getText());
-        p.setNome(jTextField2.getText());
-        p.setEmail(jTextField3.getText());
-        p.setSaldo(jTextField4.getText());
-        try {
-            daoPessoa.update(p);
-        } catch (SQLException ex) {
-            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-
-        } catch (SQLException ex) {
-            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-
-
+//        if (jTextFieldRA.getText().trim().equals("")) {
+//            JOptionPane.showMessageDialog(this, "Informe um ID!");
+//        }
+//        Pessoa p = new Pessoa();
+//        if (jComboBoxFuncao.getSelectedItem() == "Aluno") {
+//            categoria = new Categoria();
+//            //testar se vai pegar texto do combo box correto
+//            categoria.setCargo(jComboBoxFuncao.getSelectedItem().toString());
+//            categoria.setRA(Integer.parseInt(jTextFieldRA.getText()));
+//            p.setCategoria(categoria);
+//            p.setNome(jTextFieldNome.getText());
+//            p.setEmail(jTextFieldEmail.getText());
+//            //testar se pega a senha correta
+//            p.setSenha(jPasswordField1.getPassword().toString());
+//        }
+//
+//        try {
+//            daoPessoa.persist(p);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
 
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // Excluir
-
-        Funcionario f = new Funcionario();
-        Professor w = new Professor();
-        Aluno a = new Aluno();
-        Pessoa p = new Pessoa();
-        p.setId(Integer.parseInt(jTextFieldID.getText()));
-        try {
-
-            p = daoPessoa.retrieve(p.getId());
-
-            daoPessoa.delete(p);
-            JOptionPane.showMessageDialog(this, "Excluido com Sucesso!");
-        } catch (SQLException ex) {
-            Logger.getLogger(Consulta.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
->>>>>>> Stashed changes
     private void jComboBoxFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFuncaoActionPerformed
         if (jComboBoxFuncao.getSelectedItem() == "Professor") {
             jLabel1.setText("SIAPE:");
@@ -247,76 +235,73 @@ public class Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxFuncaoActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-        String password = new String(jPasswordField1.getPassword());
-        if (jComboBoxFuncao.getSelectedItem() == "Professor") {
-            if (jTextFieldRA.getText().trim().equals("") || jTextFieldNome.getText().trim().equals("")
-                || password.trim().equals("")) {
-                JOptionPane.showMessageDialog(this, "Campos em branco");
-            } else {
-
-                Professor prof = new Professor();
-                prof.setNome(jTextFieldNome.getText());
-                prof.setSenha(jPasswordField1.getPassword());
-                prof.setEmail(jTextFieldEmail.getText());
-                prof.setSiape(jTextFieldRA.getText());
-                try {
-                    jTextFieldEmail.setText("");
-                    jTextFieldNome.setText("");
-                    jPasswordField1.setText("");
-                    jTextFieldRA.setText("");
-                    JOptionPane.showMessageDialog(this, "Cadastro Realizado Com Sucesso!");
-                } catch (SQLException e) {
-                    Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, e);
-                }
-            }
-        }
+        // TODO add your handling code here:        
+        categoria = new Categoria();
+        Pessoa p = new Pessoa();
         if (jComboBoxFuncao.getSelectedItem() == "Aluno") {
-            if (jTextFieldRA.getText().trim().equals("") || jTextFieldNome.getText().trim().equals("")
-                || password.trim().equals("")) {
-                JOptionPane.showMessageDialog(this, "Campos em branco");
-            } else {
-
-                Aluno a = new Aluno();
-                a.setNome(jTextFieldNome.getText());
-                a.setSenha(jPasswordField1.getPassword());
-                a.setEmail(jTextFieldEmail.getText());
-                a.setRA(jTextFieldRA.getText());
-                try {;
-                    jTextFieldEmail.setText("");
-                    jTextFieldNome.setText("");
-                    jPasswordField1.setText("");
-                    jTextFieldRA.setText("");
-                    JOptionPane.showMessageDialog(this, "Cadastro Realizado Com Sucesso!");
-                } catch (SQLException e) {
-                    Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, e);
-                }
+            
+            //testar se vai pegar texto do combo box correto
+            try {
+                hibernatedao.persist(categoria);
+            } catch (Exception ex) {
+                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
             }
+            p.setCategoria(categoria);
+            p.setNome(jTextFieldNome.getText());
+            p.setEmail(jTextFieldEmail.getText());
+            //testar se pega a senha correta
+            p.setSenha(jPasswordField1.getPassword().toString());
+        }
+        if (jComboBoxFuncao.getSelectedItem() == "Professor") {
+            if (jTextFieldRA.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(this, "Informe um RA!");
+              }
+            //testar se vai pegar texto do combo box correto
+            categoria.setCargo(jComboBoxFuncao.getSelectedItem().toString());
+            categoria.setRA(Integer.parseInt(jTextFieldRA.getText()));
+            try {
+                hibernatedao.persist(categoria);
+            } catch (Exception ex) {
+                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            p.setCategoria(categoria);
+            p.setNome(jTextFieldNome.getText());
+            p.setEmail(jTextFieldEmail.getText());
+            //testar se pega a senha correta
+            p.setSenha(jPasswordField1.getPassword().toString());
         }
         if (jComboBoxFuncao.getSelectedItem() == "Funcionário") {
-            if (jTextFieldRA.getText().trim().equals("") || jTextFieldNome.getText().trim().equals("")
-                || password.trim().equals("")) {
-                JOptionPane.showMessageDialog(this, "Campos em branco");
-            } else {
-
-                Funcionario f = new Funcionario();
-                f.setNome(jTextFieldNome.getText());
-                f.setSenha(jPasswordField1.getPassword());
-                f.setEmail(jTextFieldEmail.getText());
-                f.setSiape(jTextFieldRA.getText());
-                try {
-
-                    jTextFieldEmail.setText("");
-                    jTextFieldNome.setText("");
-                    jPasswordField1.setText("");
-                    jTextFieldRA.setText("");
-                    JOptionPane.showMessageDialog(this, "Cadastro Realizado Com Sucesso!");
-                } catch (SQLException e) {
-                    Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, e);
-                }
+            //testar se vai pegar texto do combo box correto
+            categoria.setCargo(jComboBoxFuncao.getSelectedItem().toString());
+            categoria.setRA(Integer.parseInt(jTextFieldRA.getText()));
+            try {
+                hibernatedao.persist(categoria);
+            } catch (Exception ex) {
+                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
             }
+            p.setCategoria(categoria);
+            p.setNome(jTextFieldNome.getText());
+            p.setEmail(jTextFieldEmail.getText());
+            //testar se pega a senha correta
+            p.setSenha(jPasswordField1.getPassword().toString());
+        }   if (jTextFieldRA.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(this, "Informe um RA!"); 
         }
+        //fazer uma lista de validação
+         if (p != null && p.getNome().length() > 0&& p.getEmail().length() > 0 && p.getSenha().length() > 0) {
+            try {
+                //daoPessoa.insert(p);
+                hibernatedao.persist(p);
+            } catch (Exception ex) {
+                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+         }           
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jTextFieldRAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldRAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldRAActionPerformed
 
     /**
      * @param args the command line arguments

@@ -73,7 +73,7 @@ public class RepositoriosManager {
      */
     private void loadProdutosParaTestes() {
         
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 2; i++) {
             Produto p = new Produto(
                     new Long(contadorProdutos), // codigo 
                     "Coca-Cola "+(i+1),  // nome do produto

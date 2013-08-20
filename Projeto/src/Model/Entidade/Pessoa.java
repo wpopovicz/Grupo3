@@ -47,7 +47,7 @@ public class Pessoa {
         this.email = email;
         this.categoria = categoria;
     }
-
+    @Metadata(label="Id", minValue=0)
     public int getId() {
         return id;
     }

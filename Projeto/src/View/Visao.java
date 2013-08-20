@@ -48,15 +48,11 @@ public class Visao extends javax.swing.JFrame {
         jMenu1Cliente = new javax.swing.JMenu();
         jMenuItemClienteCadastrar = new javax.swing.JMenuItem();
         jMenuItemClienteAlterar = new javax.swing.JMenuItem();
-        jMenuItemClienteExcluir = new javax.swing.JMenuItem();
-        jMenuItemClienteConsultar = new javax.swing.JMenuItem();
         jMenu2Produto = new javax.swing.JMenu();
         jMenuItemProdutoCadastro = new javax.swing.JMenuItem();
         jMenuItemProdutoAlterar = new javax.swing.JMenuItem();
-        jMenuItemProdutoExcluir = new javax.swing.JMenuItem();
-        jMenuItemProdutoConsultar = new javax.swing.JMenuItem();
-        jMenu6Creditar = new javax.swing.JMenu();
         jMenu7Debitar = new javax.swing.JMenu();
+        jMenu6Creditar = new javax.swing.JMenu();
         jMenu1Ajuda = new javax.swing.JMenu();
         jMenu2Sobre = new javax.swing.JMenu();
 
@@ -149,7 +145,7 @@ public class Visao extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,7 +165,8 @@ public class Visao extends javax.swing.JFrame {
             }
         });
 
-        jMenu1Cliente.setText("Cliente");
+        jMenu1Cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1373341006_client.png"))); // NOI18N
+        jMenu1Cliente.setToolTipText("Cliente");
 
         jMenuItemClienteCadastrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK));
         jMenuItemClienteCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1375980201_executive.png"))); // NOI18N
@@ -183,7 +180,7 @@ public class Visao extends javax.swing.JFrame {
 
         jMenuItemClienteAlterar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_MASK));
         jMenuItemClienteAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1375980328_121.png"))); // NOI18N
-        jMenuItemClienteAlterar.setText("Alterar");
+        jMenuItemClienteAlterar.setText("Localizar");
         jMenuItemClienteAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemClienteAlterarActionPerformed(evt);
@@ -191,29 +188,10 @@ public class Visao extends javax.swing.JFrame {
         });
         jMenu1Cliente.add(jMenuItemClienteAlterar);
 
-        jMenuItemClienteExcluir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.SHIFT_MASK));
-        jMenuItemClienteExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1375980249_delete.png"))); // NOI18N
-        jMenuItemClienteExcluir.setText("Excluir");
-        jMenuItemClienteExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemClienteExcluirActionPerformed(evt);
-            }
-        });
-        jMenu1Cliente.add(jMenuItemClienteExcluir);
-
-        jMenuItemClienteConsultar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.SHIFT_MASK));
-        jMenuItemClienteConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1375980081_find.png"))); // NOI18N
-        jMenuItemClienteConsultar.setText("Consultar");
-        jMenuItemClienteConsultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemClienteConsultarActionPerformed(evt);
-            }
-        });
-        jMenu1Cliente.add(jMenuItemClienteConsultar);
-
         jMenuBar1.add(jMenu1Cliente);
 
-        jMenu2Produto.setText("Produto");
+        jMenu2Produto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/product.png"))); // NOI18N
+        jMenu2Produto.setToolTipText("Produto");
 
         jMenuItemProdutoCadastro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
         jMenuItemProdutoCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1375981249_product.png"))); // NOI18N
@@ -227,7 +205,7 @@ public class Visao extends javax.swing.JFrame {
 
         jMenuItemProdutoAlterar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK));
         jMenuItemProdutoAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1375980328_121.png"))); // NOI18N
-        jMenuItemProdutoAlterar.setText("Alterar");
+        jMenuItemProdutoAlterar.setText("Localizar");
         jMenuItemProdutoAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemProdutoAlterarActionPerformed(evt);
@@ -235,37 +213,10 @@ public class Visao extends javax.swing.JFrame {
         });
         jMenu2Produto.add(jMenuItemProdutoAlterar);
 
-        jMenuItemProdutoExcluir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.ALT_MASK));
-        jMenuItemProdutoExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1375980249_delete.png"))); // NOI18N
-        jMenuItemProdutoExcluir.setText("Excluir");
-        jMenuItemProdutoExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemProdutoExcluirActionPerformed(evt);
-            }
-        });
-        jMenu2Produto.add(jMenuItemProdutoExcluir);
-
-        jMenuItemProdutoConsultar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.ALT_MASK));
-        jMenuItemProdutoConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1375980081_find.png"))); // NOI18N
-        jMenuItemProdutoConsultar.setText("Consultar");
-        jMenuItemProdutoConsultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemProdutoConsultarActionPerformed(evt);
-            }
-        });
-        jMenu2Produto.add(jMenuItemProdutoConsultar);
-
         jMenuBar1.add(jMenu2Produto);
 
-        jMenu6Creditar.setText("Creditar");
-        jMenu6Creditar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu6CreditarMouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(jMenu6Creditar);
-
-        jMenu7Debitar.setText("Debitar");
+        jMenu7Debitar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1373341100_shopping_cart.png"))); // NOI18N
+        jMenu7Debitar.setToolTipText("Debitar");
         jMenu7Debitar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu7DebitarMouseClicked(evt);
@@ -273,7 +224,17 @@ public class Visao extends javax.swing.JFrame {
         });
         jMenuBar1.add(jMenu7Debitar);
 
-        jMenu1Ajuda.setText("Ajuda");
+        jMenu6Creditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1373340942_03.png"))); // NOI18N
+        jMenu6Creditar.setToolTipText("Creditar");
+        jMenu6Creditar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu6CreditarMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu6Creditar);
+
+        jMenu1Ajuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1373341015_help-browser.png"))); // NOI18N
+        jMenu1Ajuda.setToolTipText("Ajuda");
         jMenu1Ajuda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu1AjudaMouseClicked(evt);
@@ -281,7 +242,8 @@ public class Visao extends javax.swing.JFrame {
         });
         jMenuBar1.add(jMenu1Ajuda);
 
-        jMenu2Sobre.setText("Sobre");
+        jMenu2Sobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1373342732_application-x-desktop.png"))); // NOI18N
+        jMenu2Sobre.setToolTipText("Sobre");
         jMenu2Sobre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu2SobreMouseClicked(evt);
@@ -346,7 +308,9 @@ public class Visao extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jMenuItemClienteAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteAlterarActionPerformed
-        // TODO add your handling code here:
+        NewConsulta q = new NewConsulta();
+        q.setVisible(true);
+        q.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItemClienteAlterarActionPerformed
 
     private void jMenuBar1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jMenuBar1FocusGained
@@ -357,42 +321,12 @@ public class Visao extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuBar1FocusLost
 
-    private void jMenuItemClienteExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteExcluirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemClienteExcluirActionPerformed
-
     private void jMenuItemClienteCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteCadastrarActionPerformed
         this.setEnabled(false);
         Cliente c = new Cliente(this);
         c.setVisible(true);
         c.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItemClienteCadastrarActionPerformed
-
-    private void jMenuItemProdutoAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoAlterarActionPerformed
-        this.setEnabled(false);
-        AtualizarProduto a = new AtualizarProduto(this);
-        a.setVisible(true);
-        a.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jMenuItemProdutoAlterarActionPerformed
-
-    private void jMenuItemProdutoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoExcluirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemProdutoExcluirActionPerformed
-
-    private void jMenuItemProdutoConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoConsultarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemProdutoConsultarActionPerformed
-
-    private void jMenuItemClienteConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteConsultarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemClienteConsultarActionPerformed
-
-    private void jMenuItemProdutoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoCadastroActionPerformed
-        this.setEnabled(false);
-        CadastroProduto l = new CadastroProduto(this);
-        l.setVisible(true);
-        l.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jMenuItemProdutoCadastroActionPerformed
 
     private void jMenu1AjudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1AjudaMouseClicked
         Desktop desktop = null;
@@ -427,6 +361,20 @@ public class Visao extends javax.swing.JFrame {
         d.setVisible(true);
         d.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenu7DebitarMouseClicked
+
+    private void jMenuItemProdutoAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoAlterarActionPerformed
+        this.setEnabled(false);
+        AtualizarProduto a = new AtualizarProduto(this);
+        a.setVisible(true);
+        a.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuItemProdutoAlterarActionPerformed
+
+    private void jMenuItemProdutoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoCadastroActionPerformed
+        this.setEnabled(false);
+        CadastroProduto l = new CadastroProduto(this);
+        l.setVisible(true);
+        l.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuItemProdutoCadastroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -484,12 +432,8 @@ public class Visao extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItemClienteAlterar;
     private javax.swing.JMenuItem jMenuItemClienteCadastrar;
-    private javax.swing.JMenuItem jMenuItemClienteConsultar;
-    private javax.swing.JMenuItem jMenuItemClienteExcluir;
     private javax.swing.JMenuItem jMenuItemProdutoAlterar;
     private javax.swing.JMenuItem jMenuItemProdutoCadastro;
-    private javax.swing.JMenuItem jMenuItemProdutoConsultar;
-    private javax.swing.JMenuItem jMenuItemProdutoExcluir;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton1;

@@ -248,6 +248,7 @@ public class CadastroProduto extends javax.swing.JFrame {
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
         telaAnterior.setEnabled(true);
+        this.telaAnterior.toFront();
     }//GEN-LAST:event_formWindowClosed
 
     /**
@@ -300,4 +301,15 @@ public class CadastroProduto extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     // End of variables declaration//GEN-END:variables
+         private void carregarProdutoNosCampos() {
+        
+        jTextFieldnome.setText(this.produto.getNome());
+        jTextFieldvenda.setText(this.produto.getPrecoVenda()+"");
+        jTextFieldcusto.setText(this.produto.getPrecoCusto()+"");
+        jTextArea1.setText(this.produto.getEspecificacoes());
+        jComboBox1.setSelectedIndex(this.produto.isHabilitadoVendas() ? 1 : 0);
+        
+        
+    }
+        
 }
