@@ -25,6 +25,7 @@ public class Cliente extends javax.swing.JFrame {
     private Categoria categoria = new Categoria();
     private DaoCategoria categoriaDao = new DaoCategoria();
     private HibernateDao hibernatedao = new HibernateDao();
+
     /**
      * Creates new form Cliente
      */
@@ -89,6 +90,17 @@ public class Cliente extends javax.swing.JFrame {
         jTextFieldRA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldRAActionPerformed(evt);
+            }
+        });
+        jTextFieldRA.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldRAKeyTyped(evt);
+            }
+        });
+
+        jTextFieldNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNomeKeyTyped(evt);
             }
         });
 
@@ -213,13 +225,9 @@ public class Cliente extends javax.swing.JFrame {
 //        } catch (SQLException ex) {
 //            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-
-
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBoxFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFuncaoActionPerformed
@@ -239,7 +247,7 @@ public class Cliente extends javax.swing.JFrame {
         categoria = new Categoria();
         Pessoa p = new Pessoa();
         if (jComboBoxFuncao.getSelectedItem() == "Aluno") {
-            
+
             //testar se vai pegar texto do combo box correto
             try {
                 hibernatedao.persist(categoria);
@@ -255,7 +263,7 @@ public class Cliente extends javax.swing.JFrame {
         if (jComboBoxFuncao.getSelectedItem() == "Professor") {
             if (jTextFieldRA.getText().trim().equals("")) {
                 JOptionPane.showMessageDialog(this, "Informe um RA!");
-              }
+            }
             //testar se vai pegar texto do combo box correto
             categoria.setCargo(jComboBoxFuncao.getSelectedItem().toString());
             categoria.setRA(Integer.parseInt(jTextFieldRA.getText()));
@@ -284,24 +292,39 @@ public class Cliente extends javax.swing.JFrame {
             p.setEmail(jTextFieldEmail.getText());
             //testar se pega a senha correta
             p.setSenha(jPasswordField1.getPassword().toString());
-        }   if (jTextFieldRA.getText().trim().equals("")) {
-                JOptionPane.showMessageDialog(this, "Informe um RA!"); 
+        }
+        if (jTextFieldRA.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "Informe um RA!");
         }
         //fazer uma lista de validação
-         if (p != null && p.getNome().length() > 0&& p.getEmail().length() > 0 && p.getSenha().length() > 0) {
+        if (p != null && p.getNome().length() > 0 && p.getEmail().length() > 0 && p.getSenha().length() > 0) {
             try {
                 //daoPessoa.insert(p);
                 hibernatedao.persist(p);
             } catch (Exception ex) {
                 Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
-         }           
+
+        }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jTextFieldRAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldRAActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldRAActionPerformed
+
+    private void jTextFieldRAKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldRAKeyTyped
+        String caracteres = "0987654321";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldRAKeyTyped
+
+    private void jTextFieldNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNomeKeyTyped
+        String caracteres = "qwertyuiopasdfghjklçzxcvbnmQWERTYUIOPASDFGHJKLÇZXCVBNM";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldNomeKeyTyped
 
     /**
      * @param args the command line arguments
