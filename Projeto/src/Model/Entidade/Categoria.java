@@ -5,22 +5,18 @@
 package Model.Entidade;
 
 import Control.Metadata;
-import java.util.HashSet;
-import java.util.Set;
-import javax.persistence.CascadeType;
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**
  *
  * @author willian
  */
 @Entity
-public class Categoria {
+public class Categoria implements Serializable{
     @Id
     @GeneratedValue()
     private int id;

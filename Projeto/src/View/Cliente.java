@@ -247,13 +247,11 @@ public class Cliente extends javax.swing.JFrame {
         categoria = new Categoria();
         Pessoa p = new Pessoa();
         if (jComboBoxFuncao.getSelectedItem() == "Aluno") {
-
-            //testar se vai pegar texto do combo box correto
-//            try {
-//                hibernatedao.persist(categoria);
-//            } catch (Exception ex) {
-//                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-//            }
+            if (jTextFieldRA.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(this, "Informe um RA!");
+            }
+            categoria.setCargo(jComboBoxFuncao.getSelectedItem().toString());
+            categoria.setRA(Integer.parseInt(jTextFieldRA.getText()));
             p.setCategoria(categoria);
             p.setNome(jTextFieldNome.getText());
             p.setEmail(jTextFieldEmail.getText());
@@ -262,16 +260,12 @@ public class Cliente extends javax.swing.JFrame {
         }
         if (jComboBoxFuncao.getSelectedItem() == "Professor") {
             if (jTextFieldRA.getText().trim().equals("")) {
-                JOptionPane.showMessageDialog(this, "Informe um RA!");
+                JOptionPane.showMessageDialog(this, "Informe um SIAPE!");
             }
             //testar se vai pegar texto do combo box correto
             categoria.setCargo(jComboBoxFuncao.getSelectedItem().toString());
             categoria.setRA(Integer.parseInt(jTextFieldRA.getText()));
-//            try {
-//                hibernatedao.persist(categoria);
-//            } catch (Exception ex) {
-//                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-//            }
+
             p.setCategoria(categoria);
             p.setNome(jTextFieldNome.getText());
             p.setEmail(jTextFieldEmail.getText());
@@ -280,13 +274,12 @@ public class Cliente extends javax.swing.JFrame {
         }
         if (jComboBoxFuncao.getSelectedItem() == "Funcionário") {
             //testar se vai pegar texto do combo box correto
+            if (jTextFieldRA.getText().trim().equals("")) {
+                JOptionPane.showMessageDialog(this, "Informe um SIAPE!");
+            }
             categoria.setCargo(jComboBoxFuncao.getSelectedItem().toString());
             categoria.setRA(Integer.parseInt(jTextFieldRA.getText()));
-//            try {
-//                hibernatedao.persist(categoria);
-//            } catch (Exception ex) {
-//                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-//            }
+
             p.setCategoria(categoria);
             p.setNome(jTextFieldNome.getText());
             p.setEmail(jTextFieldEmail.getText());
