@@ -5,6 +5,7 @@
 package Model.Entidade;
 
 import Control.Metadata;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -21,7 +22,7 @@ import javax.persistence.ManyToMany;
  * @author Popovicz
  */
     @Entity
-    public class Produto {
+    public class Produto implements Serializable{
     @Id
     @GeneratedValue
     private Long codigo;

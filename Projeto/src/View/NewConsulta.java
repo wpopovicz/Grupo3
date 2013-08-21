@@ -84,6 +84,11 @@ public class NewConsulta extends javax.swing.JFrame {
                 jTextFieldPesquisarMouseEntered(evt);
             }
         });
+        jTextFieldPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldPesquisarActionPerformed(evt);
+            }
+        });
         jTextFieldPesquisar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextFieldPesquisarFocusGained(evt);
@@ -107,8 +112,9 @@ public class NewConsulta extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
                 .addComponent(jTextFieldPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonPesquisar)
                 .addGap(28, 28, 28)
                 .addComponent(jButton2)
@@ -158,6 +164,10 @@ public class NewConsulta extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
+
+    private void jTextFieldPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPesquisarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldPesquisarActionPerformed
 
     /**
      * @param args the command line arguments

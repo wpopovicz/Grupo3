@@ -5,6 +5,7 @@
 package Model.Entidade;
 
 import Control.Metadata;
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,7 +22,7 @@ import javax.persistence.TemporalType;
  * @author willian
  */
 @Entity
-public class Compra {
+public class Compra implements Serializable {
     @Id
     @GeneratedValue
     private int id;
