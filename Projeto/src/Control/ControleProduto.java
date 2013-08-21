@@ -12,7 +12,8 @@ import Model.Entidade.Produto;
  */
 public class ControleProduto {
 
-    public boolean cadastrarProduto(Produto p) {
+
+    public boolean cadastrarProduto(Produto p) throws Exception {
      
         boolean result = false;
         
@@ -26,7 +27,6 @@ public class ControleProduto {
             
             // insere no modelo de dados
             RepositoriosManager.getInstance().inserirProduto(p);
-            
             System.out.println(p.toString());
             
             result = true;

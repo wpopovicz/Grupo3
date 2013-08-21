@@ -249,11 +249,11 @@ public class Cliente extends javax.swing.JFrame {
         if (jComboBoxFuncao.getSelectedItem() == "Aluno") {
 
             //testar se vai pegar texto do combo box correto
-            try {
-                hibernatedao.persist(categoria);
-            } catch (Exception ex) {
-                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-            }
+//            try {
+//                hibernatedao.persist(categoria);
+//            } catch (Exception ex) {
+//                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+//            }
             p.setCategoria(categoria);
             p.setNome(jTextFieldNome.getText());
             p.setEmail(jTextFieldEmail.getText());
@@ -267,11 +267,11 @@ public class Cliente extends javax.swing.JFrame {
             //testar se vai pegar texto do combo box correto
             categoria.setCargo(jComboBoxFuncao.getSelectedItem().toString());
             categoria.setRA(Integer.parseInt(jTextFieldRA.getText()));
-            try {
-                hibernatedao.persist(categoria);
-            } catch (Exception ex) {
-                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-            }
+//            try {
+//                hibernatedao.persist(categoria);
+//            } catch (Exception ex) {
+//                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+//            }
             p.setCategoria(categoria);
             p.setNome(jTextFieldNome.getText());
             p.setEmail(jTextFieldEmail.getText());
@@ -282,11 +282,11 @@ public class Cliente extends javax.swing.JFrame {
             //testar se vai pegar texto do combo box correto
             categoria.setCargo(jComboBoxFuncao.getSelectedItem().toString());
             categoria.setRA(Integer.parseInt(jTextFieldRA.getText()));
-            try {
-                hibernatedao.persist(categoria);
-            } catch (Exception ex) {
-                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-            }
+//            try {
+//                hibernatedao.persist(categoria);
+//            } catch (Exception ex) {
+//                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+//            }
             p.setCategoria(categoria);
             p.setNome(jTextFieldNome.getText());
             p.setEmail(jTextFieldEmail.getText());

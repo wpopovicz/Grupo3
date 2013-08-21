@@ -6,6 +6,9 @@ package View;
 
 import Control.ControleProduto;
 import Model.Entidade.Produto;
+import Model.HibernateDao;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,10 +16,10 @@ import javax.swing.JOptionPane;
  * @author imape
  */
 public class CadastroProduto extends javax.swing.JFrame {
-
     private Visao telaAnterior;
     private Produto produto;
     private AtualizarProduto atualizarProduto;
+    private HibernateDao hibernatedao = new HibernateDao();
     
     /**
      * Creates new form CadastroProduto
@@ -104,10 +107,20 @@ public class CadastroProduto extends javax.swing.JFrame {
                 jTextFieldvendaActionPerformed(evt);
             }
         });
+        jTextFieldvenda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldvendaKeyTyped(evt);
+            }
+        });
 
         jLabel4.setText("Preço Custo");
 
         jTextFieldcusto.setToolTipText("Informe o preço de custo");
+        jTextFieldcusto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldcustoKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("Habilitador de vendas");
 
@@ -203,7 +216,7 @@ public class CadastroProduto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldvendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldvendaActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextFieldvendaActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
@@ -238,10 +251,15 @@ public class CadastroProduto extends javax.swing.JFrame {
                 itemSelecionado == 0 ? false : true);
         
         ControleProduto controlador = new ControleProduto();
-        if(controlador.cadastrarProduto(q)){
-            JOptionPane.showMessageDialog(this,"Cadastrado com Sucesso");
-        }else{
-            JOptionPane.showMessageDialog(this,"Cadastro não realizado"+"\n \n Faltando dados");
+        try {
+            if(controlador.cadastrarProduto(q)){
+                JOptionPane.showMessageDialog(this,"Cadastrado com Sucesso");
+                hibernatedao.persist(q);
+            }else{
+                JOptionPane.showMessageDialog(this,"Cadastro não realizado"+"\n \n Faltando dados");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
@@ -250,6 +268,20 @@ public class CadastroProduto extends javax.swing.JFrame {
         telaAnterior.setEnabled(true);
         this.telaAnterior.toFront();
     }//GEN-LAST:event_formWindowClosed
+
+    private void jTextFieldvendaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldvendaKeyTyped
+        String caracteres = "0987654321.";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldvendaKeyTyped
+
+    private void jTextFieldcustoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldcustoKeyTyped
+         String caracteres = "0987654321.";
+        if (!caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextFieldcustoKeyTyped
 
     /**
      * @param args the command line arguments

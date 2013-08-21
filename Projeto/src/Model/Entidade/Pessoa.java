@@ -5,8 +5,10 @@
 package Model.Entidade;
 
 import Control.Metadata;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +22,7 @@ import javax.persistence.OneToMany;
  * @author a1294121
  */
 @Entity
-public class Pessoa {
+public class Pessoa implements Serializable{
     @Id
     @GeneratedValue()
     private int id;
@@ -32,7 +34,7 @@ public class Pessoa {
     private String saldo;
     @Column(length = 100)
     private String email;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Categoria categoria;
 
     //    private String categoria = Categoria.ALUNO;

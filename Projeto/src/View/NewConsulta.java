@@ -4,12 +4,22 @@
  */
 package View;
 
+import Model.DaoCategoria;
+import Model.Entidade.Categoria;
+import Model.Entidade.Pessoa;
+import Model.HibernateDao;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 /**
  *
  * @author Paulo
  */
 public class NewConsulta extends javax.swing.JFrame {
-
+    private Categoria categoria = new Categoria();
+    private DaoCategoria categoriaDao = new DaoCategoria();
+    private HibernateDao hibernatedao = new HibernateDao();
     /**
      * Creates new form NewConsulta
      */
@@ -81,6 +91,11 @@ public class NewConsulta extends javax.swing.JFrame {
         });
 
         jButtonPesquisar.setText("Pesquisar");
+        jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPesquisarActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Voltar");
 
@@ -136,6 +151,13 @@ public class NewConsulta extends javax.swing.JFrame {
     private void jTextFieldPesquisarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPesquisarFocusGained
         
     }//GEN-LAST:event_jTextFieldPesquisarFocusGained
+
+    private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
+        categoria = new Categoria();
+        Pessoa p = new Pessoa();
+
+
+    }//GEN-LAST:event_jButtonPesquisarActionPerformed
 
     /**
      * @param args the command line arguments

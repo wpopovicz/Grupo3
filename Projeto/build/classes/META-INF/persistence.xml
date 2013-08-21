@@ -1,19 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+     http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+    version="2.0">
 
-<!DOCTYPE hibernate-configuration SYSTEM "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd" PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN">
--<hibernate-configuration>-<session-factory name="">
-<!-- properties -->
-<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-<property name="hibernate.connection.username">root</property>
-<property name="hibernate.connection.password">root</property>
-<property name="hibernate.connection.url"> jdbc:mysql://localhost:3306/aluno</property>
-<property name="hibernate.show_sql">true</property>
-<property name="hibernate.connection.autocommit">true</property>
-<property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
-<!-- mapping files -->
-<mapping class="Model.Entidade.Pessoa"/>
-<mapping class="Model.Entidade.Compra"/>
-<mapping class="Model.Entidade.Categoria"/>
-<mapping class="Model.Entidade.Produto"/>
-</session-factory>
-</hibernate-configuration>
+ <persistence-unit name="mySystem">
+
+   <!-- provedor/implementacao do JPA -->
+   <provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+   <!-- entidade mapaeada -->
+   <mapping class="Model.Entidade.Pessoa"/>
+    <mapping class="Model.Entidade.Compra"/>
+    <mapping class="Model.Entidade.Categoria"/>
+    <mapping class="Model.Entidade.Produto"/>
+
+   <properties>
+  <!-- dados da conexao -->
+  <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+  <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/aluno" />
+  <property name="javax.persistence.jdbc.user" value="root" />
+  <property name="javax.persistence.jdbc.password" value="root" />
+
+   <!--  propriedades do hibernate -->
+  <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+  <property name="hibernate.show_sql" value="true" />
+  <property name="hibernate.format_sql" value="true" />
+
+  <!--  atualiza o banco, gera as tableas se for preciso -->
+  <property name="hibernate.hbm2ddl.auto" value="update" />
+    
+   </properties>
+ </persistence-unit>
+</persistence>

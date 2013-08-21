@@ -4,6 +4,7 @@
  */
 package Control;
 
+
 import Model.Entidade.Produto;
 import java.util.ArrayList;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  * @author imape
  */
 public class RepositoriosManager {
-    
+
     // metodos serao acessado usando padrao SINGLETON
     private static RepositoriosManager instancia;
     
@@ -39,7 +40,6 @@ public class RepositoriosManager {
     private RepositoriosManager() {
         
         listaProdutos = new ArrayList<Produto>();
-        loadProdutosParaTestes();
         
     }
     
@@ -54,10 +54,9 @@ public class RepositoriosManager {
     
     
     
-    public void inserirProduto(Produto p) {
+    public void inserirProduto(Produto p) throws Exception {
         
         listaProdutos.add(p);
-        
         contadorProdutos++; // atualizar contador de produtos
         
     }
@@ -66,28 +65,6 @@ public class RepositoriosManager {
     public ArrayList<Produto> obterListaProdutos() {
         
         return listaProdutos;
-    }
-
-    /**
-     * Cadastra dados FAKE para testes
-     */
-    private void loadProdutosParaTestes() {
-        
-        for (int i = 0; i < 2; i++) {
-            Produto p = new Produto(
-                    new Long(contadorProdutos), // codigo 
-                    "Coca-Cola "+(i+1),  // nome do produto
-                    "Garrafa de 3 litros", // especificacoes
-                    5.0f, // preco venda
-                    2.8f, // preco custo
-                    true); // habilitado
-            
-            
-            contadorProdutos++;
-            listaProdutos.add(p);
-        }
-        
-        
     }
 
     /**
