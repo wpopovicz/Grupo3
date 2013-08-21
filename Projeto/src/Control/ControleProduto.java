@@ -13,7 +13,7 @@ import Model.HibernateDao;
  */
 public class ControleProduto {
 
-private HibernateDao hibernatedao = new HibernateDao();
+
     public boolean cadastrarProduto(Produto p) throws Exception {
      
         boolean result = false;
@@ -27,7 +27,7 @@ private HibernateDao hibernatedao = new HibernateDao();
             p.setCodigo(RepositoriosManager.getInstance().getContadorProdutos());
             
             // insere no modelo de dados
-            hibernatedao.persist(p);
+
             RepositoriosManager.getInstance().inserirProduto(p);
             System.out.println(p.toString());
             

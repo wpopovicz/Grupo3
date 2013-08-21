@@ -294,6 +294,7 @@ public class Cliente extends javax.swing.JFrame {
             try {
                 //daoPessoa.insert(p);
                 hibernatedao.persist(p);
+                JOptionPane.showMessageDialog(this,"Cadastrado com Sucesso");
             } catch (Exception ex) {
                 Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
             }

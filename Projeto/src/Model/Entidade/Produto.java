@@ -120,5 +120,9 @@ import javax.persistence.ManyToMany;
     public void setcodigo(long aLong) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public void setHabilitadoVendas(String toString) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
   
 }

@@ -68,6 +68,9 @@ public class CadastroProduto extends javax.swing.JFrame {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
             }
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -226,7 +229,6 @@ public class CadastroProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // Salvar
         String nome = jTextFieldnome.getText();
         String especificacoes = jTextArea1.getText();
         String precoCusto = jTextFieldcusto.getText();
@@ -250,11 +252,17 @@ public class CadastroProduto extends javax.swing.JFrame {
                 pc,
                 itemSelecionado == 0 ? false : true);
         
+//        q.setNome(jTextFieldnome.getText());
+//        q.setEspecificacoes(jTextArea1.getText());
+//        q.setPrecoCusto(Integer.parseInt(jTextFieldcusto.getText()));
+//        q.setPrecoVenda(Integer.parseInt(jTextFieldvenda.getText()));
+//        q.setHabilitadoVendas(jComboBox1.getSelectedItem().toString());
+        
         ControleProduto controlador = new ControleProduto();
         try {
             if(controlador.cadastrarProduto(q)){
                 JOptionPane.showMessageDialog(this,"Cadastrado com Sucesso");
-                hibernatedao.persist(q);
+//                hibernatedao.persist(q);
             }else{
                 JOptionPane.showMessageDialog(this,"Cadastro não realizado"+"\n \n Faltando dados");
             }
@@ -282,6 +290,10 @@ public class CadastroProduto extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_jTextFieldcustoKeyTyped
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -317,6 +329,7 @@ public class CadastroProduto extends javax.swing.JFrame {
             }
         });
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -343,5 +356,6 @@ public class CadastroProduto extends javax.swing.JFrame {
         
         
     }
+      
         
 }
