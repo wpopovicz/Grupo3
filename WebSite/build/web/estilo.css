@@ -1,0 +1,75 @@
+body{
+    background-image: url("banner_ru.jpg");
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    background-position: bottom;
+
+}
+
+h1 {
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+
+#menuhor {
+    border:none;
+    margin: 0;
+    font: 20px Arial, sans-serif;
+}
+#menuhor li {
+    list-style: none; 
+    margin: 0;
+    display: inline;
+}
+#menuhor li a {
+    height:1px; /* IE5.0 bug */
+    padding: 3px 1px; 
+    margin:0;
+    border: 1px solid #000099; 
+    background: #999900;
+    text-decoration: none;
+}
+#menuhor li a:link {
+    color: #fff;
+}
+#menuhor li a:visited {
+    color: #fff;
+}
+#menuhor li a:hover {
+    background: #ccc;
+    color: #099; 
+    border-color: #099;
+}
+
+#menubv {
+    width: 12em;
+    padding: 0;
+    margin: 0;
+    font: 14px Verdana, sans-serif;
+}
+#menubv ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#menubv li {
+    border-bottom: 1px solid #CCFFFF;
+    margin: 0;
+}
+#menubv li a {
+    display: block;
+    padding: 5px 5px 5px 0.5em;
+    font-weight:bold;
+    border-left: 10px solid #99FFCC;
+    border-right: 10px solid #99FFCC;
+    background-color: #3333CC;
+    color: #CCFFCC;
+    text-decoration: none;
+}
+#menubv li a:hover {
+    border-left: 10px solid #99FFFF;
+    border-right: 10px solid #999999;
+    background-color:#00FF99;
+    color: #33FFCC;
+}

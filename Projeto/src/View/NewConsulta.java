@@ -161,7 +161,8 @@ public class NewConsulta extends javax.swing.JFrame {
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
         categoria = new Categoria();
         Pessoa p = new Pessoa();
-
+        p.setNome(jTextFieldPesquisar.getText());
+        
 
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
 

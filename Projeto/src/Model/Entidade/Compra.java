@@ -9,11 +9,12 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -28,9 +29,10 @@ public class Compra implements Serializable {
     private int id;
     @Temporal(TemporalType.DATE)
     private Calendar dataCompra = Calendar.getInstance();
+   // @Column(precision = 2)
     private float refeicao;
         
-    @ManyToMany(mappedBy="compras")
+    @OneToMany(mappedBy="compras")
     private Set<Produto> Produtos = new HashSet<Produto>();
     
     @ManyToOne

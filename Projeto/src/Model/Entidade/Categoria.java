@@ -26,6 +26,9 @@ public class Categoria implements Serializable{
     private int SIAPE;
     @Column(length = 100)
     private String cargo;
+//    @Column(precision = 2)
+//    private float refeicao;
+//        
 
     
     public Categoria() {

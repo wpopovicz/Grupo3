@@ -31,7 +31,7 @@ public class Pessoa implements Serializable{
     private String saldo;
     @Column(length = 100)
     private String email;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     private Categoria categoria;
 
     //    private String categoria = Categoria.ALUNO;

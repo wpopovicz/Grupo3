@@ -28,10 +28,13 @@ import javax.persistence.ManyToMany;
     private Long codigo;
     @Column(length= 100)
     private String nome;
+    //@Column(length= 200)
     @Column(length= 100)
     private String especificacoes;
+    //@Column(precision = 2)
     @Column(length= 100)
     private float precoVenda;
+    //@Column(precision = 2)
     @Column(length= 100)
     private float precoCusto;
     private boolean habilitadoVendas;
