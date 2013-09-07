@@ -12,11 +12,25 @@
 <html>
     <head>
         <title>Restaurante Universitário</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="estilo.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="estilo.css"/>
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     </head>
     <body>
-        <h1>Adicionar Crédito</h1>
+         <ul class="nav nav-pills">
+            <li class="active">
+                <a href="inicial.jsp">Login</a>
+            </li>
+            <li><a href="ConsultarCredito">Consultar Crédito</a></li>
+            <li><a href="ConfirmaCredito">Adicionar Crédito</a></li>
+        </ul>
+
+        <h1>
+            Restaurante <br/>
+            Universitário
+        </h1> 
+        <h2>Adicionar Crédito</h2>
         Atenção! Você realmente deseja inserir crédito?
         <br/><br/>
         <% NovoCredito creditar = (NovoCredito) session.getAttribute("novoCredito"); 

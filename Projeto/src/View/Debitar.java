@@ -5,7 +5,6 @@
 package View;
 
 import Control.RepositoriosManager;
-import Model.DaoPessoa;
 import Model.Entidade.Produto;
 import javax.swing.JOptionPane;
 
@@ -14,9 +13,7 @@ import javax.swing.JOptionPane;
  * @author a1294121
  */
 public class Debitar extends javax.swing.JFrame {
-
-    DaoPessoa daoPessoa = new DaoPessoa();
-    
+   
 
     /**
      * Creates new form Debitar

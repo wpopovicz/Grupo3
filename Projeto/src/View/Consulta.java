@@ -4,20 +4,13 @@
  */
 package View;
 
-import Model.DaoPessoa;
 import Model.Entidade.Categoria;
-import Model.Entidade.Pessoa;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author a1294083
  */
 public class Consulta extends javax.swing.JFrame {
-    DaoPessoa daoPessoa = new DaoPessoa();
     Categoria categoria;
   
     /**
@@ -186,31 +179,27 @@ public class Consulta extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-         if(jTextField1.getText().trim().equals("")){
-           JOptionPane.showMessageDialog(this,"Informe um Nome!"); 
-           
-           
-        }
-         Pessoa p = new Pessoa ();
-         categoria = new Categoria();
-         p.setId(Integer.parseInt(jTextField1.getText()));
-        try {         
-        
-            p = daoPessoa.retrieve(p.getId());
-            jTextField2.setText(p.getNome());
-            jTextField3.setText(p.getEmail());
-            jTextField4.setText(p.getSaldo());
-            jTextField5.setText(categoria.getCargo());
-
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(Consulta.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-            
-         
-         
-         
+//         if(jTextField1.getText().trim().equals("")){
+//           JOptionPane.showMessageDialog(this,"Informe um Nome!"); 
+//           
+//           
+//        }
+//         Pessoa p = new Pessoa ();
+//         categoria = new Categoria();
+//         p.setId(Integer.parseInt(jTextField1.getText()));
+//        try {         
+//        
+//            p = daoPessoa.retrieve(p.getId());
+//            jTextField2.setText(p.getNome());
+//            jTextField3.setText(p.getEmail());
+//            jTextField4.setText(p.getSaldo());
+//            jTextField5.setText(categoria.getCargo());
+//
+//            
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Consulta.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+                 
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed

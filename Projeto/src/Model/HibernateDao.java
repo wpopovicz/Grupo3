@@ -4,17 +4,9 @@
  */
 package Model;
 
-import Model.Entidade.Categoria;
-import Model.Entidade.Compra;
-import Model.Entidade.Pessoa;
-import Model.Entidade.Produto;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.tool.hbm2ddl.SchemaExport;
 
 /**
  *
@@ -26,34 +18,8 @@ public class HibernateDao<T> implements Dao<T> {
 
     @Override
     public void persist(T o) throws Exception {
-//        AnnotationConfiguration cfg = new AnnotationConfiguration();
-//        cfg.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-//        cfg.setProperty("hibernate.hbm2ddl.auto", "update");
-//        cfg.setProperty("hibernate.show_sql", "true");
-//        cfg.setProperty("hibernate.format_sql", "true");
-//        cfg.setProperty("hibernate.connection.driver", "com.mysql.jdbc.Driver");
-//        cfg.setProperty("hibernate.connection.url", "jdbc:mysql://localhost/aluno");
-//        cfg.setProperty("hibernate.connection.user", "root");
-//        cfg.setProperty("hibernate.connection.password", "root");
-////        cfg.setProperty("hibernate.connection.autocommit", "true");
-//
-//        cfg.addAnnotatedClass(Pessoa.class);
-//        cfg.addAnnotatedClass(Produto.class);
-//        cfg.addAnnotatedClass(Compra.class);
-//        cfg.addAnnotatedClass(Categoria.class);
-//
-//        SchemaExport se = new SchemaExport(cfg);
-//
-//        se.setOutputFile("MeuEsquema.sql");
-//        se.execute(true, false, false, true);
-//
-//        SessionFactory sessionFactory = cfg.buildSessionFactory();
-//
-//        Session session = sessionFactory.openSession();
-
-
         EntityManager em = HibernateFactory.getEntityManager();
-        
+
         em.getTransaction().begin();
         em.persist(o);
         em.getTransaction().commit();
@@ -73,15 +39,14 @@ public class HibernateDao<T> implements Dao<T> {
 
     @Override
     public T retrieve(int id) throws Exception {
-        Query query;
-        T objeto = null;
+        T o = null;
         if (id > 0) {
             EntityManager em = HibernateFactory.getEntityManager();
-            query = em.createQuery("FROM" + classe.getSimpleName() + " where id = " + id);
-            objeto = (T) query.getSingleResult();
+            em.getTransaction().begin();
+            o = (T) em.find(classe, id);
+            em.getTransaction().commit();
         }
-        return objeto;
-
+        return o;
     }
 
     /**
@@ -95,17 +60,19 @@ public class HibernateDao<T> implements Dao<T> {
     public List<T> list(String whereClause, String orderClause) throws Exception {
         EntityManager em = HibernateFactory.getEntityManager();
 
-        Query query = em.createQuery("FROM" + classe.getSimpleName());
-
-        return (List<T>) query;
+        Query q = em.createQuery("FROM" + classe.getSimpleName());
+        List<T> result = q.getResultList();
+        return result;
     }
 
     @Override
     public List<T> list(Filter... filters) throws Exception {
-        Query query;
+        Query q;
+        List<T> result;
         EntityManager em = HibernateFactory.getEntityManager();
         if (filters == null || filters.length == 0) {
-            query = em.createQuery(" FROM " + classe.getSimpleName());
+            q = em.createQuery(" FROM " + classe.getSimpleName());
+            result = q.getResultList();
         } else {
             String sql = "SELECT * FROM " + classe.getSimpleName() + " WHERE ";
 
@@ -140,8 +107,9 @@ public class HibernateDao<T> implements Dao<T> {
                     sql += " AND ";
                 }
             }
-            query = em.createQuery(" FROM " + classe.getSimpleName() + sql);
+            q = em.createQuery(" FROM " + classe.getSimpleName() + sql);
+            result = q.getResultList();
         }
-        return (List<T>) query;
+        return result;
     }
 }

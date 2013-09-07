@@ -17,18 +17,17 @@ public class ControleProduto {
     public boolean cadastrarProduto(Produto p) throws Exception {
      
         boolean result = false;
-        
-        
+          
         if (p != null && p.getNome().length() > 0
                 && p.getEspecificacoes().length() > 0 && p.getPrecoCusto() != 0.0f
                 && p.getPrecoVenda() != 0.0f) {
             
             // seta codigo valido
-            p.setCodigo(RepositoriosManager.getInstance().getContadorProdutos());
+            p.setId((int) RepositoriosManager.getInstance().getContadorProdutos());
             
             // insere no modelo de dados
-
             RepositoriosManager.getInstance().inserirProduto(p);
+            
             System.out.println(p.toString());
             
             result = true;
@@ -48,7 +47,7 @@ public class ControleProduto {
                 && p.getPrecoVenda() != 0.0f) {
             
             
-           
+            //NOVO CODIGO
             RepositoriosManager.getInstance().modificarProduto(p);
             System.out.println("UPDATED -> " + p.toString());
             result = true;

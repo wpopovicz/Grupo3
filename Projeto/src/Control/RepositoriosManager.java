@@ -18,7 +18,7 @@ public class RepositoriosManager {
     private static RepositoriosManager instancia;
     
     // contador de produtos
-    private long contadorProdutos = 1;
+    private int contadorProdutos = 1;
 
     
     // guarda os dados de PRODUTOS
@@ -40,7 +40,7 @@ public class RepositoriosManager {
     private RepositoriosManager() {
         
         listaProdutos = new ArrayList<Produto>();
-        
+        loadProdutosParaTestes();
     }
     
     
@@ -65,6 +65,27 @@ public class RepositoriosManager {
     public ArrayList<Produto> obterListaProdutos() {
         
         return listaProdutos;
+    }
+    /**
+     * Cadastra dados FAKE para testes
+     */
+    private void loadProdutosParaTestes() {
+        
+        for (int i = 0; i < 20; i++) {
+            Produto p = new Produto(
+                    (contadorProdutos), // codigo 
+                    "Coca-Cola "+(i+1),  // nome do produto
+                    "Garrafa de "+ i +" Litros", // especificacoes
+                    i+3.0f, // preco venda
+                    i+2.0f, // preco custo
+                    false); // habilitado
+            
+            
+            contadorProdutos++;
+            listaProdutos.add(p);
+        }
+        
+        
     }
 
     /**

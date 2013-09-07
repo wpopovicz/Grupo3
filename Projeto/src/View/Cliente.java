@@ -4,12 +4,10 @@
  */
 package View;
 
-import Model.DaoCategoria;
-import Model.DaoPessoa;
+
 import Model.Entidade.Categoria;
 import Model.Entidade.Pessoa;
 import Model.HibernateDao;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -20,10 +18,8 @@ import javax.swing.JOptionPane;
  */
 public class Cliente extends javax.swing.JFrame {
 
-    private DaoPessoa daoPessoa = new DaoPessoa();
     private Visao telaAnterior;
     private Categoria categoria = new Categoria();
-    private DaoCategoria categoriaDao = new DaoCategoria();
     private HibernateDao hibernatedao = new HibernateDao();
 
     /**

@@ -15,14 +15,19 @@ import javax.swing.table.DefaultTableModel;
  * @author a1294121
  */
 public class AtualizarProduto extends javax.swing.JFrame {
-
     private Visao telaAnterior;
 
     /**
      * Creates new form AtualizarProduto
      */
     public AtualizarProduto() {
-        initComponents();
+         initComponents();
+        
+        
+        // see more:
+        // http://docs.oracle.com/javase/tutorial/uiswing/components/table.html#modelchange
+        
+        carregarJTable();
     }
 
     public AtualizarProduto(Visao telaAnterior) {
@@ -194,19 +199,19 @@ public class AtualizarProduto extends javax.swing.JFrame {
         ArrayList<Produto> lista = RepositoriosManager.getInstance().obterListaProdutos();
 
         DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
-        modelo.addColumn("Código");
+        modelo.addColumn("Id");
         modelo.addColumn("Nome");
         modelo.addColumn("Preço Venda");
         modelo.addColumn("Preço Custo");
         modelo.addColumn("Habilitado");
 
-//        if (lista.isEmpty()) {
-//            modelo.addRow(new String[]{"Sem dados",
-//                null,
-//                null,
-//                null,
-//                null});
-//        }
+        if (lista.size() == 0) {
+            modelo.addRow(new String[]{"Sem dados",
+                        null,
+                        null,
+                        null,
+                        null});
+        }
 
         for (int i = 0; i < lista.size(); i++) {
             Produto p = lista.get(i);
@@ -214,7 +219,7 @@ public class AtualizarProduto extends javax.swing.JFrame {
 
 
             // Alimenta as linhas de dados  
-            modelo.addRow(new String[]{p.getCodigo().toString(),
+            modelo.addRow(new String[]{Integer.toString(p.getId()),
                 p.getNome(),
                 p.getPrecoVenda() + "",
                 p.getPrecoCusto() + "",
@@ -232,12 +237,12 @@ public class AtualizarProduto extends javax.swing.JFrame {
             System.out.println(p.toString());
 
             this.setEnabled(false);
-            jButton1.setEnabled(false);
+            jToggleButton1.setEnabled(false);
             new CadastroProduto(this, p).setVisible(true);
         } catch (Exception e) {
 
             JOptionPane.showMessageDialog(this, "Selecione um produto!");
-            jButton1.setEnabled(false);
+            jToggleButton1.setEnabled(false);
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 

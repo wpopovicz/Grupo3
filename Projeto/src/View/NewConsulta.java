@@ -4,13 +4,11 @@
  */
 package View;
 
-import Model.DaoCategoria;
+
 import Model.Entidade.Categoria;
 import Model.Entidade.Pessoa;
 import Model.HibernateDao;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
+
 
 /**
  *
@@ -18,7 +16,6 @@ import javax.persistence.Query;
  */
 public class NewConsulta extends javax.swing.JFrame {
     private Categoria categoria = new Categoria();
-    private DaoCategoria categoriaDao = new DaoCategoria();
     private HibernateDao hibernatedao = new HibernateDao();
     /**
      * Creates new form NewConsulta

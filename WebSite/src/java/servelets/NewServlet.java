@@ -61,9 +61,9 @@ public class NewServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        throws ServletException, IOException {
         processRequest(request, response);
-         PrintWriter out = response.getWriter();
+        PrintWriter out = response.getWriter();
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
         if(senha.equals("123mudar")){

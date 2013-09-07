@@ -25,17 +25,14 @@ import javax.persistence.ManyToMany;
     public class Produto implements Serializable{
     @Id
     @GeneratedValue
-    private Long codigo;
+    private int id;
     @Column(length= 100)
     private String nome;
-    //@Column(length= 200)
-    @Column(length= 100)
+    @Column(length= 200)
     private String especificacoes;
-    //@Column(precision = 2)
-    @Column(length= 100)
+    @Column(precision = 2)
     private float precoVenda;
-    //@Column(precision = 2)
-    @Column(length= 100)
+    @Column(precision = 2)
     private float precoCusto;
     private boolean habilitadoVendas;
     
@@ -45,21 +42,21 @@ import javax.persistence.ManyToMany;
     public Produto() {
     }
 
-    public Produto(Long codigo, String nome, String especificacoes, float precoVenda, float precoCusto, boolean habilitadoVendas) {
-        this.codigo = codigo;
+    public Produto(int id, String nome, String especificacoes, float precoVenda, float precoCusto, boolean habilitadoVendas) {
+        this.id = id;
         this.nome = nome;
         this.especificacoes = especificacoes;
         this.precoVenda = precoVenda;
         this.precoCusto = precoCusto;
         this.habilitadoVendas = habilitadoVendas;
     }
-    @Metadata(label="Codigo", minValue=0)
-    public Long getCodigo() {
-        return codigo;
+    @Metadata(label="id", minValue=0)
+    public int getId() {
+        return id;
     }
 
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -111,17 +108,13 @@ import javax.persistence.ManyToMany;
     }
     @Override
     public String toString() {
-        String valores = "codigo="+codigo+
+        String valores = "id="+id+
                          ", nome="+nome+
                          ", preco custo="+precoCusto+
                          ", preco venda="+precoVenda+
                          ", habilitado vendas="+habilitadoVendas;
         
         return valores;
-    }
-
-    public void setcodigo(long aLong) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void setHabilitadoVendas(String toString) {

@@ -16,11 +16,12 @@ import javax.swing.JOptionPane;
  * @author imape
  */
 public class CadastroProduto extends javax.swing.JFrame {
+
     private Visao telaAnterior;
     private Produto produto;
     private AtualizarProduto atualizarProduto;
     private HibernateDao hibernatedao = new HibernateDao();
-    
+
     /**
      * Creates new form CadastroProduto
      */
@@ -32,9 +33,10 @@ public class CadastroProduto extends javax.swing.JFrame {
         this();
         this.telaAnterior = telaAnterior;
     }
+
     public CadastroProduto(AtualizarProduto atualizarProduto, Produto p) {
         this();
-        
+
         this.atualizarProduto = atualizarProduto;
         this.produto = p;
     }
@@ -219,62 +221,145 @@ public class CadastroProduto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldvendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldvendaActionPerformed
-
     }//GEN-LAST:event_jTextFieldvendaActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // cancelar
         this.dispose();
-        telaAnterior.setEnabled(true);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        System.out.println("Salvar aqui");
+
         String nome = jTextFieldnome.getText();
         String especificacoes = jTextArea1.getText();
-        String precoCusto = jTextFieldcusto.getText();
-        String precoVenda = jTextFieldcusto.getText();
+
+        String precoVenda = jTextFieldvenda.getText(); // preco venda
+        String precoCusto = jTextFieldcusto.getText(); // preco custo
+
+
         int itemSelecionado = jComboBox1.getSelectedIndex();
+        // se for 0 -> nao esta habilitado, 1 está.
+        int id = 0;
         float pv = 0.0f;
-        float pc = 0.0f; 
-        
-        try{
-        pv =Float.parseFloat(precoVenda);
-        pc = Float.parseFloat(precoCusto);
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(this,"Preço inválido");
+        float pc = 0.0f;
+
+        try {
+            pv = Float.parseFloat(precoVenda);
+            pc = Float.parseFloat(precoCusto);
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this,
+                    "Preço inválido");
+
             return;
         }
-        
-        Produto q = new Produto(null,
-                nome, 
-                especificacoes,
-                pv,
-                pc,
-                itemSelecionado == 0 ? false : true);
-        
+
+        Produto p = this.produto;
+
+        if (p == null) {
+            // criar um objeto Produto
+            p = new Produto (id,
+                    nome,
+                    especificacoes,
+                    pv,
+                    pc,
+                    itemSelecionado == 0 ? false : true);
+
+
+        } else {
+            // atualiza dados do produto
+            p.setNome(nome);
+            p.setEspecificacoes(especificacoes);
+            p.setPrecoCusto(pc);
+            p.setPrecoVenda(pv);
+            p.setHabilitadoVendas(itemSelecionado == 0 ? false : true);
+
+        }
+
+        // chamar o controle para tentar cadastrar
+        ControleProduto controlador = new ControleProduto();
+        if (this.produto == null) {
+            try {
+                if (controlador.cadastrarProduto(p)) {
+                    JOptionPane.showMessageDialog(this, "Cadastrado com sucesso");
+
+                    this.dispose();
+                    this.telaAnterior.toFront();
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "Cadastro Não realizado. "
+                            + "\n\nFaltando dados");
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(CadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else {
+
+
+            if (controlador.atualizarProduto(p)) {
+                JOptionPane.showMessageDialog(this, "Atualizado com sucesso");
+                if (this.atualizarProduto != null) {
+                    System.out.println("tentando repintar tela");
+                    this.atualizarProduto.atualizarModelo();
+                }
+                this.dispose();
+                this.atualizarProduto.toFront();
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Atualização Não realizada. "
+                        + "\n\nFaltando dados");
+            }
+
+        }
+//        String nome = jTextFieldnome.getText();
+//        String especificacoes = jTextArea1.getText();
+//        String precoCusto = jTextFieldcusto.getText();
+//        String precoVenda = jTextFieldcusto.getText();
+//        int itemSelecionado = jComboBox1.getSelectedIndex();
+//        float pv = 0.0f;
+//        float pc = 0.0f; 
+//        //Util.validaComponente(jTextFieldcusto, true);
+//        //Util.validaComponente(jTextFieldvenda, true);
+//        Produto q = new Produto();
 //        q.setNome(jTextFieldnome.getText());
 //        q.setEspecificacoes(jTextArea1.getText());
 //        q.setPrecoCusto(Integer.parseInt(jTextFieldcusto.getText()));
 //        q.setPrecoVenda(Integer.parseInt(jTextFieldvenda.getText()));
 //        q.setHabilitadoVendas(jComboBox1.getSelectedItem().toString());
-        
-        ControleProduto controlador = new ControleProduto();
-        try {
-            if(controlador.cadastrarProduto(q)){
-                JOptionPane.showMessageDialog(this,"Cadastrado com Sucesso");
-//                hibernatedao.persist(q);
-            }else{
-                JOptionPane.showMessageDialog(this,"Cadastro não realizado"+"\n \n Faltando dados");
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(CadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//       
+//        try{
+//        pv = Float.parseFloat(precoVenda);
+//        pc = Float.parseFloat(precoCusto);
+//        }catch(Exception e){
+//            JOptionPane.showMessageDialog(this,"Preço inválido");
+//            return;
+//        }
+
+
+//        ControleProduto controlador = new ControleProduto();
+//        try {
+//            if(controlador.cadastrarProduto(q)){
+//                JOptionPane.showMessageDialog(this,"Cadastrado com Sucesso");
+////                hibernatedao.persist(q);
+//            }else{
+//                JOptionPane.showMessageDialog(this,"Cadastro não realizado"+"\n \n Faltando dados");
+//            }
+//        } catch (Exception ex) {
+//            Logger.getLogger(CadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
-        telaAnterior.setEnabled(true);
-        this.telaAnterior.toFront();
+        if (this.produto == null) {
+            telaAnterior.setEnabled(true);
+            this.telaAnterior.toFront();
+        } else {
+            atualizarProduto.setEnabled(true);
+            atualizarProduto.toFront();
+        }
     }//GEN-LAST:event_formWindowClosed
 
     private void jTextFieldvendaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldvendaKeyTyped
@@ -285,14 +370,16 @@ public class CadastroProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldvendaKeyTyped
 
     private void jTextFieldcustoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldcustoKeyTyped
-         String caracteres = "0987654321.";
+        String caracteres = "0987654321.";
         if (!caracteres.contains(evt.getKeyChar() + "")) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextFieldcustoKeyTyped
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-
+        if (this.produto != null) {
+            carregarProdutoNosCampos();
+        }
     }//GEN-LAST:event_formWindowActivated
 
     /**
@@ -329,7 +416,6 @@ public class CadastroProduto extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -346,16 +432,15 @@ public class CadastroProduto extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     // End of variables declaration//GEN-END:variables
-         private void carregarProdutoNosCampos() {
-        
+
+    private void carregarProdutoNosCampos() {
+
         jTextFieldnome.setText(this.produto.getNome());
-        jTextFieldvenda.setText(this.produto.getPrecoVenda()+"");
-        jTextFieldcusto.setText(this.produto.getPrecoCusto()+"");
+        jTextFieldvenda.setText(this.produto.getPrecoVenda() + "");
+        jTextFieldcusto.setText(this.produto.getPrecoCusto() + "");
         jTextArea1.setText(this.produto.getEspecificacoes());
         jComboBox1.setSelectedIndex(this.produto.isHabilitadoVendas() ? 1 : 0);
-        
-        
+
+
     }
-      
-        
 }
