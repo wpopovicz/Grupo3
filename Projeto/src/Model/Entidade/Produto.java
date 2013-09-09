@@ -6,14 +6,11 @@ package Model.Entidade;
 
 import Control.Metadata;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+
 
 
 
@@ -35,10 +32,7 @@ import javax.persistence.ManyToMany;
     @Column(precision = 2)
     private float precoCusto;
     private boolean habilitadoVendas;
-    
-    @ManyToMany(cascade= CascadeType.PERSIST)
-    private Set<Compra> compras = new HashSet<Compra>();
-    
+        
     public Produto() {
     }
 
@@ -93,14 +87,6 @@ import javax.persistence.ManyToMany;
 
     public boolean isHabilitadoVendas() {
         return habilitadoVendas;
-    }
-
-    public Set<Compra> getCompras() {
-        return compras;
-    }
-
-    public void setCompras(Set<Compra> compras) {
-        this.compras = compras;
     }
 
     public void setHabilitadoVendas(boolean habilitadoVendas) {

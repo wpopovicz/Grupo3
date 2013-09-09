@@ -9,8 +9,10 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -29,26 +31,19 @@ public class Compra implements Serializable {
     private int id;
     @Temporal(TemporalType.DATE)
     private Calendar dataCompra = Calendar.getInstance();
-   // @Column(precision = 2)
+    @Column(precision = 2)
     private float refeicao;
         
-    @OneToMany(mappedBy="compras")
-    private Set<Produto> Produtos = new HashSet<Produto>();
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    private Set<Produto> produtos = new HashSet<Produto>();
     
     @ManyToOne
     private Pessoa pessoa;
+    
     public Compra() {
-              
-//        Pessoa p = new Pessoa();
-//        p.setCategoria(Categoria.PROFESSOR);
-//        p.getCategoria().equals(Categoria.ALUNO);
+
     }
 
-    public Compra(int id, float refeicao, Pessoa pessoa) {
-        this.id = id;
-        this.refeicao = refeicao;
-        this.pessoa = pessoa;
-    }
     @Metadata(label="Id", minValue=0)
     public int getId() {
         return id;
@@ -58,6 +53,14 @@ public class Compra implements Serializable {
         this.id = id;
     }
 
+    public Set<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(Set<Produto> produtos) {
+        this.produtos = produtos;
+    }
+    
     public Calendar getDataCompra() {
         return dataCompra;
     }
@@ -74,14 +77,6 @@ public class Compra implements Serializable {
         this.refeicao = refeicao;
     }
 
-    public Set<Produto> getProdutos() {
-        return Produtos;
-    }
-
-    public void setProdutos(Set<Produto> Produtos) {
-        this.Produtos = Produtos;
-    }
-
     public Pessoa getPessoa() {
         return pessoa;
     }
@@ -92,8 +87,9 @@ public class Compra implements Serializable {
 
     @Override
     public String toString() {
-        return "Compra{" + "id=" + id + ", dataCompra=" + dataCompra + ", refeicao=" + refeicao + ", Produtos=" + Produtos + ", pessoa=" + pessoa + '}';
+        return "Compra{" + "id=" + id + ", dataCompra=" + dataCompra + ", refeicao=" + refeicao + ", produtos=" + produtos + ", pessoa=" + pessoa + '}';
     }
+ 
     
 }
 
