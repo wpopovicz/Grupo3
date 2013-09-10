@@ -13,8 +13,7 @@ import javax.persistence.Query;
  * @author Popovicz
  */
 public class HibernateDao<T> implements Dao<T> {
-
-    Class classe = null;
+    protected static Class clazz;
 
     @Override
     public void persist(T o) throws Exception {
@@ -43,7 +42,7 @@ public class HibernateDao<T> implements Dao<T> {
         if (id > 0) {
             EntityManager em = HibernateFactory.getEntityManager();
             em.getTransaction().begin();
-            o = (T) em.find(classe, id);
+            o = (T) em.find(clazz, id);
             em.getTransaction().commit();
         }
         return o;
@@ -60,7 +59,7 @@ public class HibernateDao<T> implements Dao<T> {
     public List<T> list(String whereClause, String orderClause) throws Exception {
         EntityManager em = HibernateFactory.getEntityManager();
 
-        Query q = em.createQuery("FROM" + classe.getSimpleName());
+        Query q = em.createQuery("FROM" + clazz.getSimpleName());
         List<T> result = q.getResultList();
         return result;
     }
@@ -71,10 +70,10 @@ public class HibernateDao<T> implements Dao<T> {
         List<T> result;
         EntityManager em = HibernateFactory.getEntityManager();
         if (filters == null || filters.length == 0) {
-            q = em.createQuery(" FROM " + classe.getSimpleName());
+            q = em.createQuery(" FROM " + clazz.getSimpleName());
             result = q.getResultList();
         } else {
-            String sql = "SELECT * FROM " + classe.getSimpleName() + " WHERE ";
+            String sql = "SELECT * FROM " + clazz.getSimpleName() + " WHERE ";
 
             for (int i = 0; i < filters.length; i++) {
                 Filter f = filters[i];
@@ -107,7 +106,7 @@ public class HibernateDao<T> implements Dao<T> {
                     sql += " AND ";
                 }
             }
-            q = em.createQuery(" FROM " + classe.getSimpleName() + sql);
+            q = em.createQuery(" FROM " + clazz.getSimpleName() + sql);
             result = q.getResultList();
         }
         return result;

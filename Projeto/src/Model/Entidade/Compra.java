@@ -10,7 +10,6 @@ import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -31,8 +30,6 @@ public class Compra implements Serializable {
     private int id;
     @Temporal(TemporalType.DATE)
     private Calendar dataCompra = Calendar.getInstance();
-    @Column(precision = 2)
-    private float refeicao;
         
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     private Set<Produto> produtos = new HashSet<Produto>();
@@ -43,6 +40,12 @@ public class Compra implements Serializable {
     public Compra() {
 
     }
+
+    public Compra(int id, Pessoa pessoa) {
+        this.id = id;
+        this.pessoa = pessoa;
+    }
+    
 
     @Metadata(label="Id", minValue=0)
     public int getId() {
@@ -69,14 +72,6 @@ public class Compra implements Serializable {
         this.dataCompra = dataCompra;
     }
 
-    public float getRefeicao() {
-        return refeicao;
-    }
-
-    public void setRefeicao(float refeicao) {
-        this.refeicao = refeicao;
-    }
-
     public Pessoa getPessoa() {
         return pessoa;
     }
@@ -87,7 +82,7 @@ public class Compra implements Serializable {
 
     @Override
     public String toString() {
-        return "Compra{" + "id=" + id + ", dataCompra=" + dataCompra + ", refeicao=" + refeicao + ", produtos=" + produtos + ", pessoa=" + pessoa + '}';
+        return "Compra{" + "id=" + id + ", dataCompra=" + dataCompra + ", produtos=" + produtos + ", pessoa=" + pessoa + '}';
     }
  
     
