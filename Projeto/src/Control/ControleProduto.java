@@ -12,7 +12,7 @@ import Model.HibernateDao;
  * @author imape
  */
 public class ControleProduto {
-
+private HibernateDao hibernatedao = new HibernateDao();
 
     public boolean cadastrarProduto(Produto p) throws Exception {
      
@@ -27,7 +27,7 @@ public class ControleProduto {
             
             // insere no modelo de dados
             RepositoriosManager.getInstance().inserirProduto(p);
-            
+            hibernatedao.persist(p);
             System.out.println(p.toString());
             
             result = true;
@@ -37,7 +37,7 @@ public class ControleProduto {
         return result;
     }
 
-    public boolean atualizarProduto(Produto p) {
+    public boolean atualizarProduto(Produto p) throws Exception {
         
         
         boolean result = false;
@@ -49,6 +49,7 @@ public class ControleProduto {
             
             //NOVO CODIGO
             RepositoriosManager.getInstance().modificarProduto(p);
+            hibernatedao.persist(p);
             System.out.println("UPDATED -> " + p.toString());
             result = true;
         }

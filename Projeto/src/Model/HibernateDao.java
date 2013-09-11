@@ -4,6 +4,7 @@
  */
 package Model;
 
+
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -23,8 +24,8 @@ public class HibernateDao<T> implements Dao<T> {
         em.persist(o);
         em.getTransaction().commit();
 
-        em.flush();
-        em.close();
+//        em.flush();
+//        em.close();
     }
 
     @Override

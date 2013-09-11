@@ -40,7 +40,7 @@ public class RepositoriosManager {
     private RepositoriosManager() {
         
         listaProdutos = new ArrayList<Produto>();
-        loadProdutosParaTestes();
+//        loadProdutosParaTestes();
     }
     
     
@@ -69,24 +69,24 @@ public class RepositoriosManager {
     /**
      * Cadastra dados FAKE para testes
      */
-    private void loadProdutosParaTestes() {
+//    private void loadProdutosParaTestes() {
+//        
+//        for (int i = 0; i < 20; i++) {
+//            Produto p = new Produto(
+//                    (contadorProdutos), // codigo 
+//                    "Coca-Cola "+(i+1),  // nome do produto
+//                    "Garrafa de "+ i +" Litros", // especificacoes
+//                    i+3.0f, // preco venda
+//                    i+2.0f, // preco custo
+//                    false); // habilitado
+//            
+//            
+//            contadorProdutos++;
+//            listaProdutos.add(p);
+//        }
         
-        for (int i = 0; i < 20; i++) {
-            Produto p = new Produto(
-                    (contadorProdutos), // codigo 
-                    "Coca-Cola "+(i+1),  // nome do produto
-                    "Garrafa de "+ i +" Litros", // especificacoes
-                    i+3.0f, // preco venda
-                    i+2.0f, // preco custo
-                    false); // habilitado
-            
-            
-            contadorProdutos++;
-            listaProdutos.add(p);
-        }
         
-        
-    }
+//    }
 
     /**
      * Altera o produto.
