@@ -5,8 +5,8 @@
 package View;
 
 
-import Model.Entidade.Categoria;
-import Model.Entidade.Pessoa;
+import entities.Categoria;
+import entities.Pessoa;
 import Model.HibernateDao;
 
 

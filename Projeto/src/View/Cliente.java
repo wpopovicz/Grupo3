@@ -5,12 +5,13 @@
 package View;
 
 
-import Model.Entidade.Categoria;
-import Model.Entidade.Pessoa;
+import entities.Categoria;
+import entities.Pessoa;
 import Model.HibernateDao;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.text.Style;
 
 /**
  *
@@ -290,7 +291,8 @@ public class Cliente extends javax.swing.JFrame {
             try {
                 //daoPessoa.insert(p);
                 hibernatedao.persist(p);
-                JOptionPane.showMessageDialog(this,"Cadastrado com Sucesso");
+//                JOptionPane.showMessageDialog(this,"Cadastrado com Sucesso");
+                Cliente.makeText("Annotations were successfully saved.", Style.SUCCESS).display();
             } catch (Exception ex) {
                 Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
             }

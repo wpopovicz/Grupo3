@@ -2,11 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model.Entidade;
+package entities;
 
-import Control.Metadata;
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,22 +29,14 @@ public class Pessoa implements Serializable{
     private String saldo;
     @Column(length = 100)
     private String email;
+    @Column(length = 7)
+    private int codigo;
     @ManyToOne
     private Categoria categoria;
 
-    //    private String categoria = Categoria.ALUNO;
     public Pessoa() {
     }
 
-    public Pessoa(int id, String nome, String senha, String saldo, String email, Categoria categoria) {
-        this.id = id;
-        this.nome = nome;
-        this.senha = senha;
-        this.saldo = saldo;
-        this.email = email;
-        this.categoria = categoria;
-    }
-    @Metadata(label="Id", minValue=0)
     public int getId() {
         return id;
     }
@@ -87,6 +77,14 @@ public class Pessoa implements Serializable{
         this.email = email;
     }
 
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
     public Categoria getCategoria() {
         return categoria;
     }
@@ -95,9 +93,20 @@ public class Pessoa implements Serializable{
         this.categoria = categoria;
     }
 
+    public Pessoa(int id, String nome, String senha, String saldo, String email, int codigo, Categoria categoria) {
+        this.id = id;
+        this.nome = nome;
+        this.senha = senha;
+        this.saldo = saldo;
+        this.email = email;
+        this.codigo = codigo;
+        this.categoria = categoria;
+    }
+
     @Override
     public String toString() {
-        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", senha=" + senha + ", saldo=" + saldo + ", email=" + email + ", categoria=" + categoria + '}';
+        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", senha=" + senha + ", saldo=" + saldo + ", email=" + email + ", codigo=" + codigo + ", categoria=" + categoria + '}';
     }
-       
+
+    
 }

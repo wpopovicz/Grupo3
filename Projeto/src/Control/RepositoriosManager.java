@@ -5,7 +5,7 @@
 package Control;
 
 
-import Model.Entidade.Produto;
+import entities.Produto;
 import java.util.ArrayList;
 
 /**

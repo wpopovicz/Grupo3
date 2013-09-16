@@ -4,7 +4,7 @@
  */
 package View;
 
-import Model.Entidade.Categoria;
+import entities.Categoria;
 
 /**
  *

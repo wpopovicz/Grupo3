@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model.Entidade;
+package entities;
 
 import Control.Metadata;
 import java.io.Serializable;
@@ -102,9 +102,5 @@ import javax.persistence.Id;
         
         return valores;
     }
-
-    public void setHabilitadoVendas(String toString) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-  
+     
 }

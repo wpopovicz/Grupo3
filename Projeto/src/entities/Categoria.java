@@ -2,9 +2,8 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model.Entidade;
+package entities;
 
-import Control.Metadata;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,30 +20,13 @@ public class Categoria implements Serializable{
     @GeneratedValue()
     private int id;
     @Column(length = 100)
-    private int RA;
-    @Column(length = 100)
-    private int SIAPE;
-    @Column(length = 100)
     private String cargo;
     @Column(precision = 2)
     private float refeicao;
-    
+
     public Categoria() {
     }
 
-    public Categoria(int id) {
-        this.id = id;
-    }
-    
-//    public static String ALUNO="Aluno";
-//    public static String PROFESSOR="Professor";
-//    public static String FUNCIONARIO="Funcionário";
-
-    @Override
-    public String toString() {
-        return "Categoria{" + "id=" + id + ", cargo=" + cargo + '}';
-    }
-    @Metadata(label="Id", minValue=0)
     public int getId() {
         return id;
     }
@@ -61,20 +43,24 @@ public class Categoria implements Serializable{
         this.cargo = cargo;
     }
 
-    public int getRA() {
-        return RA;
+    public float getRefeicao() {
+        return refeicao;
     }
 
-    public void setRA(int RA) {
-        this.RA = RA;
+    public void setRefeicao(float refeicao) {
+        this.refeicao = refeicao;
     }
 
-    public int getSIAPE() {
-        return SIAPE;
+    public Categoria(int id, String cargo, float refeicao) {
+        this.id = id;
+        this.cargo = cargo;
+        this.refeicao = refeicao;
     }
 
-    public void setSIAPE(int SIAPE) {
-        this.SIAPE = SIAPE;
+    @Override
+    public String toString() {
+        return "Categoria{" + "id=" + id + ", cargo=" + cargo + ", refeicao=" + refeicao + '}';
     }
     
+   
 }

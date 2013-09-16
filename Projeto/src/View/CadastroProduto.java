@@ -5,7 +5,7 @@
 package View;
 
 import Control.ControleProduto;
-import Model.Entidade.Produto;
+import entities.Produto;
 import Model.HibernateDao;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -230,6 +230,7 @@ public class CadastroProduto extends javax.swing.JFrame {
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         System.out.println("Salvar aqui");
+        Produto p = new Produto();
 
         String nome = jTextFieldnome.getText();
         String especificacoes = jTextArea1.getText();
@@ -239,81 +240,88 @@ public class CadastroProduto extends javax.swing.JFrame {
 
 
         int itemSelecionado = jComboBox1.getSelectedIndex();
-        // se for 0 -> nao esta habilitado, 1 está.
-        int id = 0;
-        float pv = 0.0f;
-        float pc = 0.0f;
-
         try {
-            pv = Float.parseFloat(precoVenda);
-            pc = Float.parseFloat(precoCusto);
-        } catch (Exception e) {
+            hibernatedao.persist(p);
+            // se for 0 -> nao esta habilitado, 1 está.
+    //        int id = 0;
+    //        float pv = 0.0f;
+    //        float pc = 0.0f;
+    //
+    //        try {
+    //            pv = Float.parseFloat(precoVenda);
+    //            pc = Float.parseFloat(precoCusto);
+    //        } catch (Exception e) {
+    //
+    //            JOptionPane.showMessageDialog(this,
+    //                    "Preço inválido");
+    //
+    //            return;
+    //        }
+    //
+    //        Produto p = this.produto;
+    //
+    //        if (p == null) {
+    //            // criar um objeto Produto
+    //            p = new Produto (id,
+    //                    nome,
+    //                    especificacoes,
+    //                    pv,
+    //                    pc,
+    //                    itemSelecionado == 0 ? false : true);
+    //
+    //
+    //        } else {
+    //            // atualiza dados do produto
+    //            p.setNome(nome);
+    //            p.setEspecificacoes(especificacoes);
+    //            p.setPrecoCusto(pc);
+    //            p.setPrecoVenda(pv);
+    //            p.setHabilitadoVendas(itemSelecionado == 0 ? false : true);
+    //            
+    //        }
 
-            JOptionPane.showMessageDialog(this,
-                    "Preço inválido");
-
-            return;
-        }
-
-        Produto p = this.produto;
-
-        if (p == null) {
-            // criar um objeto Produto
-            p = new Produto (id,
-                    nome,
-                    especificacoes,
-                    pv,
-                    pc,
-                    itemSelecionado == 0 ? false : true);
-
-
-        } else {
-            // atualiza dados do produto
-            p.setNome(nome);
-            p.setEspecificacoes(especificacoes);
-            p.setPrecoCusto(pc);
-            p.setPrecoVenda(pv);
-            p.setHabilitadoVendas(itemSelecionado == 0 ? false : true);
-
-        }
-
-        // chamar o controle para tentar cadastrar
-        ControleProduto controlador = new ControleProduto();
-        if (this.produto == null) {
-            try {
-                if (controlador.cadastrarProduto(p)) {
-                    JOptionPane.showMessageDialog(this, "Cadastrado com sucesso");
-
-                    this.dispose();
-                    this.telaAnterior.toFront();
-
-                } else {
-                    JOptionPane.showMessageDialog(this, "Cadastro Não realizado. "
-                            + "\n\nFaltando dados");
-                }
-            } catch (Exception ex) {
-                Logger.getLogger(CadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        } else {
-            try {
-                if (controlador.atualizarProduto(p)) {
-                    JOptionPane.showMessageDialog(this, "Atualizado com sucesso");
-                    if (this.atualizarProduto != null) {
-                        System.out.println("tentando repintar tela");
-                        this.atualizarProduto.atualizarModelo();
-                    }
-                    this.dispose();
-                    this.atualizarProduto.toFront();
-
-                } else {
-                    JOptionPane.showMessageDialog(this, "Atualização Não realizada. "
-                            + "\n\nFaltando dados");
-                }
-            } catch (Exception ex) {
-                Logger.getLogger(CadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
+    //        // chamar o controle para tentar cadastrar
+    //        ControleProduto controlador = new ControleProduto();
+    //        if (this.produto == null) {
+    //            try {
+    //                if (controlador.cadastrarProduto(p)) {
+    //                    hibernatedao.persist(p);
+    //                    
+    //                    JOptionPane.showMessageDialog(this, "Cadastrado com sucesso");
+    //                    this.dispose();
+    //                    this.telaAnterior.toFront();
+    //
+    //                } else {
+    //                    JOptionPane.showMessageDialog(this, "Cadastro Não realizado. "
+    //                            + "\n\nFaltando dados");
+    //                }
+    //            } catch (Exception ex) {
+    //                Logger.getLogger(CadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
+    //            }
+    //
+    //        } else {
+    //            try {
+    //                if (controlador.atualizarProduto(p)) {
+    //                    hibernatedao.persist(p);
+    //                    JOptionPane.showMessageDialog(this, "Atualizado com sucesso");
+    //                    if (this.atualizarProduto != null) {
+    //                        System.out.println("tentando repintar tela");
+    //                        this.atualizarProduto.atualizarModelo();
+    //                    }
+    //                    this.dispose();
+    //                    this.atualizarProduto.toFront();
+    //
+    //                } else {
+    //                    JOptionPane.showMessageDialog(this, "Atualização Não realizada. "
+    //                            + "\n\nFaltando dados");
+    //                }
+    //            } catch (Exception ex) {
+    //                Logger.getLogger(CadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
+    //            }
+    //
+    //        }
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_jToggleButton2ActionPerformed

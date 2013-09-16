@@ -16,6 +16,7 @@ import javax.persistence.Persistence;
  * @author Popovicz
  */
 public class HibernateFactory {
+
     private static EntityManager entityManager = null;
     private static EntityManagerFactory entityManagerFactory = null;
 
@@ -36,7 +37,13 @@ public class HibernateFactory {
             map.put("hibernate.show_sql", DatabaseConfig.HIBERNATE_SHOW_SQL);
             map.put("hibernate.format_sql", DatabaseConfig.HIBERNATE_FORMAT_SQL);
             map.put("hibernate.hbm2ddl.auto", DatabaseConfig.HIBERNATE_CREATE_TABLES);
-
+//            map.put("hibernate.connection.driver", "com.mysql.jdbc.Driver");
+//            map.put("hibernate.connection.url", "jdbc:mysql://localhost/aluno");
+//            map.put("hibernate.connection.user", "aluno");
+//            map.put("hibernate.connection.password", "aluno");
+//            map.put("hibernate.show_sql", "true");
+//            map.put("hibernate.format_sql", "true");
+//            map.put("hibernate.hbm2ddl.auto", "update");
             
             EntityManagerFactory emf = Persistence.createEntityManagerFactory("mySystem", map);
             entityManager = emf.createEntityManager();

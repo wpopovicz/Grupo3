@@ -24,8 +24,8 @@ public class HibernateDao<T> implements Dao<T> {
         em.persist(o);
         em.getTransaction().commit();
 
-//        em.flush();
-//        em.close();
+        em.flush();
+        em.close();
     }
 
     @Override

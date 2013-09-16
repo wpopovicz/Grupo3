@@ -5,7 +5,7 @@
 package View;
 
 import Control.RepositoriosManager;
-import Model.Entidade.Produto;
+import entities.Produto;
 import javax.swing.JOptionPane;
 
 /**
@@ -74,6 +74,11 @@ public class Debitar extends javax.swing.JFrame {
         });
 
         jRadioButton1.setText("Refeição");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -230,7 +235,7 @@ public class Debitar extends javax.swing.JFrame {
             this.setEnabled(false);
             jButtonDiminuirProduto.setEnabled(false);
             //fazer o excluir e os JOption perguntando se tem certeza que quer excluir
-            JOptionPane.showConfirmDialog(this, p, "Tem Certeza que Deseja Excluir?", 0);
+            JOptionPane.showConfirmDialog(this, p, "Tem Certeza que Deseja Excluir do carrinho?", 0);
             
         } catch (Exception e) {
             
@@ -238,6 +243,10 @@ public class Debitar extends javax.swing.JFrame {
             jButtonDiminuirProduto.setEnabled(false);
         }
     }//GEN-LAST:event_jButtonDiminuirProdutoActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
     
     
 

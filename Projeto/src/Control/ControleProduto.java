@@ -4,7 +4,7 @@
  */
 package Control;
 
-import Model.Entidade.Produto;
+import entities.Produto;
 import Model.HibernateDao;
 
 /**
@@ -27,7 +27,7 @@ private HibernateDao hibernatedao = new HibernateDao();
             
             // insere no modelo de dados
             RepositoriosManager.getInstance().inserirProduto(p);
-            hibernatedao.persist(p);
+  
             System.out.println(p.toString());
             
             result = true;
@@ -49,7 +49,6 @@ private HibernateDao hibernatedao = new HibernateDao();
             
             //NOVO CODIGO
             RepositoriosManager.getInstance().modificarProduto(p);
-            hibernatedao.persist(p);
             System.out.println("UPDATED -> " + p.toString());
             result = true;
         }

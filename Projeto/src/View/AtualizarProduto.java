@@ -5,7 +5,7 @@
 package View;
 
 import Control.RepositoriosManager;
-import Model.Entidade.Produto;
+import entities.Produto;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -119,10 +119,10 @@ public class AtualizarProduto extends javax.swing.JFrame {
             }
         });
         jTable2.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 jTable2InputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         jScrollPane2.setViewportView(jTable2);
@@ -155,9 +155,9 @@ public class AtualizarProduto extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jButton2)
                 .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addGap(26, 26, 26)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(411, 411, 411))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -237,12 +237,12 @@ public class AtualizarProduto extends javax.swing.JFrame {
             System.out.println(p.toString());
 
             this.setEnabled(false);
-            jToggleButton1.setEnabled(false);
+            jToggleButton1.setEnabled(true);
             new CadastroProduto(this, p).setVisible(true);
         } catch (Exception e) {
 
             JOptionPane.showMessageDialog(this, "Selecione um produto!");
-            jToggleButton1.setEnabled(false);
+            jToggleButton1.setEnabled(true);
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 

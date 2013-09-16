@@ -2,9 +2,8 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model.Entidade;
+package entities;
 
-import Control.Metadata;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.HashSet;
@@ -36,18 +35,10 @@ public class Compra implements Serializable {
     
     @ManyToOne
     private Pessoa pessoa;
-    
+
     public Compra() {
-
     }
 
-    public Compra(int id, Pessoa pessoa) {
-        this.id = id;
-        this.pessoa = pessoa;
-    }
-    
-
-    @Metadata(label="Id", minValue=0)
     public int getId() {
         return id;
     }
@@ -56,20 +47,20 @@ public class Compra implements Serializable {
         this.id = id;
     }
 
-    public Set<Produto> getProdutos() {
-        return produtos;
-    }
-
-    public void setProdutos(Set<Produto> produtos) {
-        this.produtos = produtos;
-    }
-    
     public Calendar getDataCompra() {
         return dataCompra;
     }
 
     public void setDataCompra(Calendar dataCompra) {
         this.dataCompra = dataCompra;
+    }
+
+    public Set<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(Set<Produto> produtos) {
+        this.produtos = produtos;
     }
 
     public Pessoa getPessoa() {
@@ -80,11 +71,17 @@ public class Compra implements Serializable {
         this.pessoa = pessoa;
     }
 
+    public Compra(int id, Pessoa pessoa) {
+        this.id = id;
+        this.pessoa = pessoa;
+    }
+
     @Override
     public String toString() {
         return "Compra{" + "id=" + id + ", dataCompra=" + dataCompra + ", produtos=" + produtos + ", pessoa=" + pessoa + '}';
     }
- 
+    
+   
     
 }
 
