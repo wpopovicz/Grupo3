@@ -4,6 +4,9 @@
  */
 package Model;
 
+import entities.Categoria;
+import entities.Pessoa;
+
 /**
  *
  * @author willian
@@ -17,4 +20,13 @@ public enum Operator {
     MORE_THAN_EQUAL, 
     LESS_THAN, 
     LESS_THAN_EQUAL;
+    public static void main(String[] args) throws Exception {
+        Pessoa p = new Pessoa();
+        Categoria c = new Categoria();
+        c.setCargo("Funcionário");
+        float refeicao = 2.5f;
+        c.setRefeicao(refeicao);
+        HibernateDao h = new HibernateDao();
+        h.persist(c);
+    }
 }

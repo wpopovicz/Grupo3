@@ -22,7 +22,7 @@ public class Categoria implements Serializable{
     @Column(length = 100)
     private String cargo;
     @Column(precision = 2)
-    private float refeicao;
+    private double refeicao;
 
     public Categoria() {
     }
@@ -43,19 +43,15 @@ public class Categoria implements Serializable{
         this.cargo = cargo;
     }
 
-    public float getRefeicao() {
+    public double getRefeicao() {
         return refeicao;
     }
 
-    public void setRefeicao(float refeicao) {
+    public void setRefeicao(double refeicao) {
         this.refeicao = refeicao;
     }
 
-    public Categoria(int id, String cargo, float refeicao) {
-        this.id = id;
-        this.cargo = cargo;
-        this.refeicao = refeicao;
-    }
+    
 
     @Override
     public String toString() {
