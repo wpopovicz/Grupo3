@@ -5,8 +5,13 @@
 package View;
 
 import Control.RepositoriosManager;
+import Model.DaoProduto;
+import Model.HibernateDao;
 import entities.Produto;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,23 +19,26 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author a1294121
  */
-public class AtualizarProduto extends javax.swing.JFrame {
+public class AtualizarProduto extends javax.swing.JDialog {
+
     private Visao telaAnterior;
+    private HibernateDao hibernatedao = new HibernateDao();
+    private DaoProduto produto = new DaoProduto();
 
     /**
      * Creates new form AtualizarProduto
      */
-    public AtualizarProduto() {
-         initComponents();
-        
-        
+    public AtualizarProduto() throws Exception {
+        initComponents();
+
+
         // see more:
         // http://docs.oracle.com/javase/tutorial/uiswing/components/table.html#modelchange
-        
+
         carregarJTable();
     }
 
-    public AtualizarProduto(Visao telaAnterior) {
+    public AtualizarProduto(Visao telaAnterior) throws Exception {
         this();
         this.telaAnterior = telaAnterior;
     }
@@ -50,9 +58,11 @@ public class AtualizarProduto extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jToggleButtonEditar = new javax.swing.JToggleButton();
+        jButtonVoltar = new javax.swing.JButton();
+        jButtonExcluir = new javax.swing.JButton();
+        jTextFieldConsultar = new javax.swing.JTextField();
+        jButtonConsultar = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -67,13 +77,10 @@ public class AtualizarProduto extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
-            }
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
             }
         });
 
@@ -107,9 +114,16 @@ public class AtualizarProduto extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, true, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jTable2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -119,32 +133,39 @@ public class AtualizarProduto extends javax.swing.JFrame {
             }
         });
         jTable2.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 jTable2InputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         jScrollPane2.setViewportView(jTable2);
 
-        jToggleButton1.setText("Editar");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        jToggleButtonEditar.setText("Editar");
+        jToggleButtonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                jToggleButtonEditarActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Voltar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonVoltar.setText("Voltar");
+        jButtonVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonVoltarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Excluir");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonExcluir.setText("Excluir");
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
+
+        jButtonConsultar.setText("Consultar");
+        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarActionPerformed(evt);
             }
         });
 
@@ -154,26 +175,34 @@ public class AtualizarProduto extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonConsultar)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(26, 26, 26)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(411, 411, 411))
+                .addComponent(jToggleButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
+                .addComponent(jButtonExcluir)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(262, 262, 262))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
+                    .addComponent(jTextFieldConsultar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(jTextFieldConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton1)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jToggleButtonEditar)
+                    .addComponent(jButtonVoltar)
+                    .addComponent(jButtonExcluir)
+                    .addComponent(jButtonConsultar))
                 .addGap(0, 11, Short.MAX_VALUE))
         );
 
@@ -189,14 +218,15 @@ public class AtualizarProduto extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void carregarJTable() {
-        ArrayList<Produto> lista = RepositoriosManager.getInstance().obterListaProdutos();
+
+    private void carregarJTable() throws Exception {
+        List<Produto> lista = produto.list();
 
         DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
         modelo.addColumn("Id");
@@ -207,10 +237,10 @@ public class AtualizarProduto extends javax.swing.JFrame {
 
         if (lista.size() == 0) {
             modelo.addRow(new String[]{"Sem dados",
-                        null,
-                        null,
-                        null,
-                        null});
+                null,
+                null,
+                null,
+                null});
         }
 
         for (int i = 0; i < lista.size(); i++) {
@@ -226,30 +256,30 @@ public class AtualizarProduto extends javax.swing.JFrame {
                 p.isHabilitadoVendas() + ""});
         }
 
-        jTable1.setModel(modelo);
+        jTable2.setModel(modelo);
 
     }
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void jToggleButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonEditarActionPerformed
         try {
             int linha = jTable2.getSelectedRow();
 
-            Produto p = RepositoriosManager.getInstance().obterListaProdutos().get(linha);
+            Produto p = produto.list().get(linha);
             System.out.println(p.toString());
 
             this.setEnabled(false);
-            jToggleButton1.setEnabled(true);
+            jToggleButtonEditar.setEnabled(true);
             new CadastroProduto(this, p).setVisible(true);
         } catch (Exception e) {
 
             JOptionPane.showMessageDialog(this, "Selecione um produto!");
-            jToggleButton1.setEnabled(true);
+            jToggleButtonEditar.setEnabled(true);
         }
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_jToggleButtonEditarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jTable2InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTable2InputMethodTextChanged
         // TODO add your handling code here:
@@ -259,7 +289,7 @@ public class AtualizarProduto extends javax.swing.JFrame {
     private void jTable2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MousePressed
         // TODO add your handling code here:
         System.out.println("jTable1MousePressed ");
-        jButton1.setEnabled(true);
+        jButtonVoltar.setEnabled(true);
     }//GEN-LAST:event_jTable2MousePressed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -267,41 +297,74 @@ public class AtualizarProduto extends javax.swing.JFrame {
         System.out.println("form window activated");
     }//GEN-LAST:event_formWindowActivated
 
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        // TODO add your handling code here:
-        telaAnterior.setEnabled(true);
-
-        this.telaAnterior.toFront();
-    }//GEN-LAST:event_formWindowClosed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
         try {
-            int linha;
-            linha = jTable2.getSelectedRow();
+            int linha = jTable2.getSelectedRow();
 
-            Produto p = RepositoriosManager.getInstance().obterListaProdutos().get(linha);
+            Produto p = produto.list().get(linha);
             System.out.println(p.toString());
 
             this.setEnabled(false);
-            jButton1.setEnabled(false);
-            //fazer o excluir e os JOption perguntando se tem certeza que quer excluir
-            //JOptionPane.showOptionDialog(this, p, null, linha, linha, null, os, p);
-//            try {
-//                int excluir = JOptionPane.showConfirmDialog(null, "Tem Certeza que Deseja Excluir o Cliente?", "Confirmar Excluir", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-//
-//                if (excluir == JOptionPane.YES_OPTION) {
-//
-//
-//                }
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
+            jButtonExcluir.setEnabled(true);
+            Object[] options = {"OK",
+                "Cancel"};
+            int n = JOptionPane.showOptionDialog(this,
+                    "Deseja Realmente Excluir "
+                    + p.getNome() +" ?", "Excluir",
+                    
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[1]);
+            if(0 == JOptionPane.YES_NO_OPTION){
+                produto.delete(p);
+            }else{
+                
+            }
+            
         } catch (Exception e) {
-
+            e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Selecione um produto!");
-            jButton1.setEnabled(false);
+            jToggleButtonEditar.setEnabled(true);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
+
+    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
+
+        ArrayList<Produto> lista;
+        lista = (ArrayList<Produto>) hibernatedao.list("produto", LIKE, "");
+
+        DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
+        modelo.addColumn("Id");
+        modelo.addColumn("Nome");
+        modelo.addColumn("Preço Venda");
+        modelo.addColumn("Preço Custo");
+        modelo.addColumn("Habilitado");
+
+        if (lista.size() == 0) {
+            modelo.addRow(new String[]{"Sem dados",
+                null,
+                null,
+                null,
+                null});
+        }
+
+        for (int i = 0; i < lista.size(); i++) {
+            Produto p = lista.get(i);
+            //System.out.println(p.toString());
+
+
+            // Alimenta as linhas de dados  
+            modelo.addRow(new String[]{Integer.toString(p.getId()),
+                p.getNome(),
+                p.getPrecoVenda() + "",
+                p.getPrecoCusto() + "",
+                p.isHabilitadoVendas() + ""});
+        }
+
+        jTable2.setModel(modelo);
+    }//GEN-LAST:event_jButtonConsultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -333,24 +396,30 @@ public class AtualizarProduto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AtualizarProduto().setVisible(true);
+                try {
+                    new AtualizarProduto().setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(AtualizarProduto.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonConsultar;
+    private javax.swing.JButton jButtonExcluir;
+    private javax.swing.JButton jButtonVoltar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JTextField jTextFieldConsultar;
+    private javax.swing.JToggleButton jToggleButtonEditar;
     // End of variables declaration//GEN-END:variables
 
-        public void atualizarModelo() {
-        
+    public void atualizarModelo() throws Exception {
+
         System.out.println("atualizando modelo...");
         carregarJTable();
     }

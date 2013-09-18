@@ -25,7 +25,9 @@ public class HibernateDao<T> implements Dao<T> {
         em.getTransaction().commit();
 
 //        em.flush();
+
   //      em.close();
+
     }
 
     @Override
@@ -57,10 +59,10 @@ public class HibernateDao<T> implements Dao<T> {
      * @throws Exception
      */
     @Override
-    public List<T> list(String whereClause, String orderClause) throws Exception {
+    public List<T> list() throws Exception {
         EntityManager em = HibernateFactory.getEntityManager();
-
-        Query q = em.createQuery("FROM" + clazz.getSimpleName());
+        System.out.println(clazz);
+        Query q = em.createQuery("FROM " + clazz.getSimpleName());
         List<T> result = q.getResultList();
         return result;
     }

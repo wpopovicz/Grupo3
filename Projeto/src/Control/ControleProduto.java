@@ -23,10 +23,11 @@ private HibernateDao hibernatedao = new HibernateDao();
                 && p.getPrecoVenda() != 0.0f) {
             
             // seta codigo valido
-            p.setId((int) RepositoriosManager.getInstance().getContadorProdutos());
+            //p.setId((int) RepositoriosManager.getInstance().getContadorProdutos());
             
             // insere no modelo de dados
-            RepositoriosManager.getInstance().inserirProduto(p);
+            hibernatedao.persist(p);
+            //RepositoriosManager.getInstance().inserirProduto(p);
   
             System.out.println(p.toString());
             
@@ -48,7 +49,8 @@ private HibernateDao hibernatedao = new HibernateDao();
             
             
             //NOVO CODIGO
-            RepositoriosManager.getInstance().modificarProduto(p);
+            hibernatedao.persist(p);
+//            RepositoriosManager.getInstance().modificarProduto(p);
             System.out.println("UPDATED -> " + p.toString());
             result = true;
         }
