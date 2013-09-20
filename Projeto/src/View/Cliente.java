@@ -4,8 +4,8 @@
  */
 package View;
 
-
 import Model.DaoCategoria;
+import Model.DaoPessoa;
 import entities.Categoria;
 import entities.Pessoa;
 import Model.HibernateDao;
@@ -24,6 +24,7 @@ public class Cliente extends javax.swing.JFrame {
     private Visao telaAnterior;
     private Categoria categoria = new Categoria();
     private HibernateDao hibernatedao = new HibernateDao();
+    
 
     /**
      * Creates new form Cliente
@@ -36,10 +37,11 @@ public class Cliente extends javax.swing.JFrame {
             List<Categoria> lista = daoC.list();
 
             for (Categoria e : lista) {
-                jComboBoxFuncao.addItem(e.getCargo());
+                jComboBoxFuncao.addItem(e);
 
 
-    }                                        
+            }
+            
 
         } catch (Exception ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
@@ -93,7 +95,7 @@ public class Cliente extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
-        jLabel1.setText("Ra:");
+        jLabel1.setText("Codigo:");
 
         jLabel2.setText("Nome:");
 
@@ -161,7 +163,7 @@ public class Cliente extends javax.swing.JFrame {
                                 .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                                 .addComponent(jComboBoxFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
@@ -171,7 +173,7 @@ public class Cliente extends javax.swing.JFrame {
                                     .addComponent(jTextFieldRA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,73 +262,38 @@ public class Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBoxFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFuncaoActionPerformed
-        if (jComboBoxFuncao.getSelectedItem() == "Professor") {
-            jLabel1.setText("SIAPE:");
-        } else if (jComboBoxFuncao.getSelectedItem() == "Aluno") {
-            jLabel1.setText("RA:");
-
-        } else if (jComboBoxFuncao.getSelectedItem() == "Funcionário") {
-            jLabel1.setText("SIAPE:");
-
+        
+        if (jComboBoxFuncao.getSelectedItem() instanceof Categoria) {
+            categoria = (Categoria) jComboBoxFuncao.getSelectedItem(); 
+            JOptionPane.showMessageDialog(null, "Objeto categoria tem ID " + categoria.getId());
         }
     }//GEN-LAST:event_jComboBoxFuncaoActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:        
-        categoria = new Categoria();
         Pessoa p = new Pessoa();
-        if (jComboBoxFuncao.getSelectedItem() == "Aluno") {
-            if (jTextFieldRA.getText().trim().equals("")) {
-                JOptionPane.showMessageDialog(this, "Informe um RA!");
-            }
-            categoria.setCargo(jComboBoxFuncao.getSelectedItem().toString());
-            p.setCategoria(categoria);
-            p.setNome(jTextFieldNome.getText());
-            p.setEmail(jTextFieldEmail.getText());
-            //testar se pega a senha correta
-            p.setSenha(jPasswordField1.getPassword().toString());
-        }
-        if (jComboBoxFuncao.getSelectedItem() == "Professor") {
-            if (jTextFieldRA.getText().trim().equals("")) {
-                JOptionPane.showMessageDialog(this, "Informe um SIAPE!");
-            }
-            //testar se vai pegar texto do combo box correto
-            categoria.setCargo(jComboBoxFuncao.getSelectedItem().toString());
+        DaoPessoa daoPessoa = new DaoPessoa();
 
-            p.setCategoria(categoria);
-            p.setNome(jTextFieldNome.getText());
-            p.setEmail(jTextFieldEmail.getText());
-            //testar se pega a senha correta
-            p.setSenha(jPasswordField1.getPassword().toString());
-        }
-        if (jComboBoxFuncao.getSelectedItem() == "Funcionário") {
-            //testar se vai pegar texto do combo box correto
-            if (jTextFieldRA.getText().trim().equals("")) {
-                JOptionPane.showMessageDialog(this, "Informe um SIAPE!");
-            }
-            categoria.setCargo(jComboBoxFuncao.getSelectedItem().toString());
-
-            p.setCategoria(categoria);
-            p.setNome(jTextFieldNome.getText());
-            p.setEmail(jTextFieldEmail.getText());
-            //testar se pega a senha correta
-            p.setSenha(jPasswordField1.getPassword().toString());
-        }
         if (jTextFieldRA.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(this, "Informe um RA!");
         }
-        //fazer uma lista de validação
-        if (p != null && p.getNome().length() > 0 && p.getEmail().length() > 0 && p.getSenha().length() > 0) {
-            try {
-                //daoPessoa.insert(p);
-                hibernatedao.persist(p);
-//               JOptionPane.showMessageDialog(this,"Cadastrado com Sucesso");
-  //              Cliente.makeText("Annotations were successfully saved.", Style.SUCCESS).display();
-            } catch (Exception ex) {
-                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
+//        categoria.setCargo(jComboBoxFuncao.getSelectedItem().toString());
+        p.setCategoria(categoria);
+        int cod = Integer.parseInt(jTextFieldRA.getText());
+        p.setCodigo(cod);
+        p.setNome(jTextFieldNome.getText());
+        p.setEmail(jTextFieldEmail.getText());
+        String senha = new String(jPasswordField1.getPassword());
+        p.setSenha(senha);
+        try {
+            daoPessoa.persist(p);
+            JOptionPane.showMessageDialog(this, "Cadastro realizado com Sucesso");
+        } catch (Exception ex) {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+
+
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jTextFieldRAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldRAActionPerformed

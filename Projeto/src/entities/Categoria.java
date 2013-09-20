@@ -50,12 +50,11 @@ public class Categoria implements Serializable{
     public void setRefeicao(double refeicao) {
         this.refeicao = refeicao;
     }
-
     
 
     @Override
     public String toString() {
-        return "Categoria{" + "id=" + id + ", cargo=" + cargo + ", refeicao=" + refeicao + '}';
+        return this.getCargo();
     }
     
    
