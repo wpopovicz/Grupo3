@@ -6,7 +6,9 @@ package View;
 
 import Control.RepositoriosManager;
 import Model.DaoProduto;
+import Model.Filter;
 import Model.HibernateDao;
+import Model.Operator;
 import entities.Produto;
 import java.util.ArrayList;
 import java.util.List;
@@ -77,10 +79,13 @@ public class AtualizarProduto extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
+            }
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
             }
         });
 
@@ -133,10 +138,10 @@ public class AtualizarProduto extends javax.swing.JDialog {
             }
         });
         jTable2.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 jTable2InputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         jScrollPane2.setViewportView(jTable2);
@@ -304,7 +309,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
             Produto p = produto.list().get(linha);
             System.out.println(p.toString());
 
-            this.setEnabled(false);
+//            this.setEnabled(false);
             jButtonExcluir.setEnabled(true);
             Object[] options = {"OK",
                 "Cancel"};
@@ -317,12 +322,10 @@ public class AtualizarProduto extends javax.swing.JDialog {
                     null,
                     options,
                     options[1]);
-            if(0 == JOptionPane.YES_NO_OPTION){
+            if(n == JOptionPane.YES_OPTION){
                 produto.delete(p);
-            }else{
-                
+                carregarJTable();
             }
-            
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Selecione um produto!");
@@ -331,9 +334,15 @@ public class AtualizarProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
-
-        ArrayList<Produto> lista;
-        lista = (ArrayList<Produto>) hibernatedao.list("produto", LIKE, "");
+        Produto p = new Produto();
+        String consulta = jTextFieldConsultar.getText();
+        
+//        ArrayList<Produto> lista;
+//        lista = (ArrayList<Produto>) produto.list("produto" , Operator.LIKE , consulta);
+        
+        Filter f = new Filter("produto" , Operator.LIKE , consulta);
+        List ends = p.list(f);
+        for (Object e: ends) {
 
         DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
         modelo.addColumn("Id");
@@ -342,7 +351,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
         modelo.addColumn("Preço Custo");
         modelo.addColumn("Habilitado");
 
-        if (lista.size() == 0) {
+        if (ends.size() == 0) {
             modelo.addRow(new String[]{"Sem dados",
                 null,
                 null,
@@ -350,8 +359,8 @@ public class AtualizarProduto extends javax.swing.JDialog {
                 null});
         }
 
-        for (int i = 0; i < lista.size(); i++) {
-            Produto p = lista.get(i);
+        for (int i = 0; i < ends.size(); i++) {
+//            Produto p = ends.get(i);
             //System.out.println(p.toString());
 
 
@@ -362,9 +371,15 @@ public class AtualizarProduto extends javax.swing.JDialog {
                 p.getPrecoCusto() + "",
                 p.isHabilitadoVendas() + ""});
         }
-
         jTable2.setModel(modelo);
+        }
+
     }//GEN-LAST:event_jButtonConsultarActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        this.telaAnterior.setEnabled(true);
+
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

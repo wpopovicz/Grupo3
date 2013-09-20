@@ -76,7 +76,7 @@ public class HibernateDao<T> implements Dao<T> {
             q = em.createQuery(" FROM " + clazz.getSimpleName());
             result = q.getResultList();
         } else {
-            String sql = "SELECT * FROM " + clazz.getSimpleName() + " WHERE ";
+            String sql = "SELECT a FROM " + clazz.getSimpleName() + " a WHERE ";
 
             for (int i = 0; i < filters.length; i++) {
                 Filter f = filters[i];
@@ -109,7 +109,7 @@ public class HibernateDao<T> implements Dao<T> {
                     sql += " AND ";
                 }
             }
-            q = em.createQuery(" FROM " + clazz.getSimpleName() + sql);
+            q = em.createQuery(sql);
             result = q.getResultList();
         }
         return result;

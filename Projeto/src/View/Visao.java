@@ -8,6 +8,8 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -364,7 +366,12 @@ public class Visao extends javax.swing.JFrame {
 
     private void jMenuItemProdutoAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoAlterarActionPerformed
         this.setEnabled(false);
-        AtualizarProduto a = new AtualizarProduto(this);
+        AtualizarProduto a = null;
+        try {
+            a = new AtualizarProduto(this);
+        } catch (Exception ex) {
+            Logger.getLogger(Visao.class.getName()).log(Level.SEVERE, null, ex);
+        }
         a.setVisible(true);
         a.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItemProdutoAlterarActionPerformed

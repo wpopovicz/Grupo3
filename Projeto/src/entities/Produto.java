@@ -5,7 +5,9 @@
 package entities;
 
 import Control.Metadata;
+import Model.Filter;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -101,6 +103,10 @@ import javax.persistence.Id;
                          ", habilitado vendas="+habilitadoVendas;
         
         return valores;
+    }
+
+    public List list(Filter f) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
      
 }
