@@ -4,7 +4,6 @@
  */
 package View;
 
-import Control.RepositoriosManager;
 import Model.DaoProduto;
 import Model.Filter;
 import Model.HibernateDao;
@@ -120,7 +119,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -324,7 +323,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
                     options[1]);
             if(n == JOptionPane.YES_OPTION){
                 produto.delete(p);
-                carregarJTable();
+                atualizarModelo();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -360,7 +359,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
         }
 
         for (int i = 0; i < ends.size(); i++) {
-//            Produto p = ends.get(i);
+           Produto p = ends.get(i);
             //System.out.println(p.toString());
 
 

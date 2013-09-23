@@ -24,6 +24,7 @@
             </li>
             <li><a href="ConsultarCredito">Consultar Crédito</a></li>
             <li><a href="ConfirmaCredito">Adicionar Crédito</a></li>
+            <li><a href="trocarSenha">Trocar Senha</a></li>
         </ul>
 
         <h1>
@@ -40,10 +41,9 @@
         %>
         Nome: <%=nome%><br/>
         E-mail: <%=email%><br/>
-        Telefone: <%=valor%><br/>
+        Valor: <%=valor%><br/>
         <br/>
         <a href="GravarPalpiteServlet">Confirmar</a>
-        <a href="palpiteForm.jsp">Modificar</a>
         <a href="index.jsp?cancelar=sim" >Cancelar</a>
     </body>
 </html>

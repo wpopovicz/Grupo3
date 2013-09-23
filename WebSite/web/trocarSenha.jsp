@@ -28,32 +28,14 @@
 
     <body>
 
-        <!-- Wrap all page content here -->
-        <div id="wrap">
-
-            <!-- Fixed navbar -->
-            <div class="navbar navbar-default navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="#">Restaurante RU</a>
-                    </div>
-                    <div class="collapse navbar-collapse">
-                        <ul class="nav navbar-nav">
-                            <li><a href="index.jsp">Início</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="Credito" data-toggle="dropdown">Cliente <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="ConsultaCredito.jsp">Consulta de Crédito</a></li>
-                                    <li><a href="ConfirmaCredito.jsp">Creditar</a></li>
-                                    <li class="divider"></li>
-                                    <li class="dropdown-header"></li>
-                                    <li><a href="trocarSenha.jsp">Trocar Senha</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div><!--/.nav-collapse -->
-                </div>
-            </div>
+         <ul class="nav nav-pills">
+            <li class="active">
+                <a href="inicial.jsp">Login</a>
+            </li>
+            <li><a href="ConsultarCredito">Consultar Crédito</a></li>
+            <li><a href="ConfirmaCredito">Adicionar Crédito</a></li>
+            <li><a href="trocarSenha">Trocar Senha</a></li>
+        </ul>
 
             <!-- Begin page content -->
 
@@ -61,7 +43,7 @@
                 <div class="page-header">
                     <h1>Troca de Senha</h1>
                 </div>
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="alterarSenha" method="POST">
 
                     <div class="panel panel-default">
                         <div class="panel-heading">altere sua senha</div>
@@ -70,25 +52,25 @@
                                 <div class="form-group">
                                     <label for="inputEmail1" class="col-lg-2 control-label">Email</label>
                                     <div class="col-lg-5">
-                                        <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
+                                        <input type="email" class="form-control" name="Email" id="inputEmail1" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
                                     <div class="col-lg-5">
-                                        <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+                                        <input type="password" class="form-control" name="Passoword" id="inputPassword1" placeholder="Password">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPasswordnovo" class="col-lg-2 control-label">Novo Password</label>
                                     <div class="col-lg-5">
-                                        <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+                                        <input type="password" class="form-control" name="novoPassword" id="inputPassword1" placeholder="Password">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPasswordconfirma" class="col-lg-2 control-label">Confirma Password</label>
                                     <div class="col-lg-5">
-                                        <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+                                        <input type="password" class="form-control" name="confirmaPassoword" id="inputPassword1" placeholder="Password">
                                     </div>
                                 </div>
                         </div>
@@ -100,7 +82,7 @@
                                 <div class="col-lg-offset-2 col-lg-10">
                                     <button type="submit" class="btn btn-success">Salvar</button>
                                     <button type="submit" class="btn btn-warning">Limpar</button>
-                                    <button type="submit" class="btn btn-danger">Cancelar</button>
+                                    <button type="submit" class="btn btn-danger" onclick="inicial.jsp">Cancelar</button>
                                 </div>
                             </div>
                         </div>
@@ -114,11 +96,6 @@
                 <p class="text-muted credit">Layout Bootstrap |<a href="#">Willian Lopes popovicz</a>.</p>
             </div>
         </div>
-
-
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
 
         <script src="js/bootstrap.js"></script>
     </body>

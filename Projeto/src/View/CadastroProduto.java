@@ -226,6 +226,8 @@ public class CadastroProduto extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // cancelar
         this.dispose();
+        telaAnterior.setEnabled(true);
+        this.telaAnterior.toFront();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
@@ -289,9 +291,10 @@ public class CadastroProduto extends javax.swing.JFrame {
                 try {
                     if (controlador.cadastrarProduto(p)) {                    
                         JOptionPane.showMessageDialog(this, "Cadastrado com sucesso");
-                        this.dispose();
-                        this.telaAnterior.toFront();
-    
+                        jTextFieldnome.setText("");
+                        jTextFieldcusto.setText("");
+                        jTextFieldvenda.setText("");
+                        jTextArea1.setText("");
                     } else {
                         JOptionPane.showMessageDialog(this, "Cadastro Não realizado. "
                                 + "\n\nFaltando dados");
@@ -385,7 +388,10 @@ public class CadastroProduto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroProduto().setVisible(true);
+                CadastroProduto v = new CadastroProduto();
+                v.setVisible(true);
+                v.setLocationRelativeTo(null);
+
             }
         });
     }

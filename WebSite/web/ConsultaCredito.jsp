@@ -25,6 +25,7 @@
             </li>
             <li><a href="ConsultarCredito">Consultar Crédito</a></li>
             <li><a href="ConfirmaCredito">Adicionar Crédito</a></li>
+            <li><a href="trocarSenha">Trocar Senha</a></li>
         </ul>   
 
         <h1>
