@@ -11,19 +11,11 @@
 
 <html>
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="keywords" content="cadastro do sistema RU">
-        <link rel="shortcut icon" href="favicon.png">
         <title>Restaurante Universitário</title>
-        <!-- Bootstrap core CSS -->
-        <link href="css/bootstrap.css" rel="stylesheet">
-
-        <!-- Custom styles for this template -->
-        <link href="css/personalizado.css" rel="stylesheet">
-
-        <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="estilo.css"/>
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     </head>
     <body>
          <ul class="nav nav-pills">
@@ -32,58 +24,26 @@
             </li>
             <li><a href="ConsultarCredito">Consultar Crédito</a></li>
             <li><a href="ConfirmaCredito">Adicionar Crédito</a></li>
-            <li><a href="trocarSenha">Trocar Senha</a></li>
         </ul>
-        
-        <div class="container">
-                <div class="page-header">
-                    <h1>
-                        Restaurante <br/>
-                        Universitário
-                    </h1>
-                </div>
-                <form class="form-horizontal" action="credito" method="POST">
 
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Adicionar Crédito</div>
-                        <div class="panel-body">
-                            <form class="form-horizontal" role="form">
-                                <div class="form-group">
-                                    <label for="inputEmail1" class="col-lg-2 control-label">Email</label>
-                                    <div class="col-lg-5">
-                                        <input type="email" class="form-control" name="email" id="inputEmail1" placeholder="email">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
-                                    <div class="col-lg-5">
-                                        <input type="password" class="form-control" name="passoword" id="inputPassword1" placeholder="password">
-                                    </div>
-                                </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Opções</div>
-                        <div class="panel-body">
-                            <div class="form-group">
-                                <div class="col-lg-offset-2 col-lg-10">
-                                    <button type="submit" class="btn btn-success">Salvar</button>
-                                    <button type="submit" class="btn btn-warning">Limpar</button>
-                                    <button type="submit" class="btn btn-danger" onclick="ConsultaCredito.jsp;">Cancelar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div id="footer">
-            <div class="container">
-                <p class="text-muted credit">Layout Bootstrap |<a href="#">Willian Lopes popovicz</a>.</p>
-            </div>
-        </div>
-        
-        <script src="js/bootstrap.js"></script>
+        <h1>
+            Restaurante <br/>
+            Universitário
+        </h1> 
+        <h2>Adicionar Crédito</h2>
+        Atenção! Você realmente deseja inserir crédito?
+        <br/><br/>
+        <% NovoCredito creditar = (NovoCredito) session.getAttribute("novoCredito"); 
+            String nome = creditar.getNome();
+            String email = creditar.getEmail();
+            String valor = creditar.getValor();
+        %>
+        Nome: <%=nome%><br/>
+        E-mail: <%=email%><br/>
+        Telefone: <%=valor%><br/>
+        <br/>
+        <a href="GravarPalpiteServlet">Confirmar</a>
+        <a href="palpiteForm.jsp">Modificar</a>
+        <a href="index.jsp?cancelar=sim" >Cancelar</a>
     </body>
 </html>

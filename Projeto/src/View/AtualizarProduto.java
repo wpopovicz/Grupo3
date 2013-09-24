@@ -4,6 +4,7 @@
  */
 package View;
 
+import Control.RepositoriosManager;
 import Model.DaoProduto;
 import Model.Filter;
 import Model.HibernateDao;
@@ -119,7 +120,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, true, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -323,7 +324,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
                     options[1]);
             if(n == JOptionPane.YES_OPTION){
                 produto.delete(p);
-                atualizarModelo();
+                carregarJTable();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -339,9 +340,20 @@ public class AtualizarProduto extends javax.swing.JDialog {
 //        ArrayList<Produto> lista;
 //        lista = (ArrayList<Produto>) produto.list("produto" , Operator.LIKE , consulta);
         
+        
         Filter f = new Filter("produto" , Operator.LIKE , consulta);
-        List ends = p.list(f);
-        for (Object e: ends) {
+        List<Produto> lista = null;
+        try {
+            lista = produto.list(f);
+            for(Produto e: lista){
+                
+            System.out.println(e);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(AtualizarProduto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+//        List ends = p.list(f);
+        for (Produto e: lista) {
 
         DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
         modelo.addColumn("Id");
@@ -350,7 +362,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
         modelo.addColumn("Preço Custo");
         modelo.addColumn("Habilitado");
 
-        if (ends.size() == 0) {
+        if (lista.size() == 0) {
             modelo.addRow(new String[]{"Sem dados",
                 null,
                 null,
@@ -358,8 +370,8 @@ public class AtualizarProduto extends javax.swing.JDialog {
                 null});
         }
 
-        for (int i = 0; i < ends.size(); i++) {
-           Produto p = ends.get(i);
+        for (int i = 0; i < lista.size(); i++) {
+//            Produto p = lista.get(i);
             //System.out.println(p.toString());
 
 

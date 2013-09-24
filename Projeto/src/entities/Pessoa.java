@@ -4,6 +4,7 @@
  */
 package entities;
 
+import Model.HibernateDao;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -108,7 +109,6 @@ public class Pessoa implements Serializable{
         return "Pessoa{" + "id=" + id + ", nome=" + nome + ", senha=" + senha + ", saldo=" + saldo + ", email=" + email + ", codigo=" + codigo + ", categoria=" + categoria + '}';
     }
 
-    
 
     
 }

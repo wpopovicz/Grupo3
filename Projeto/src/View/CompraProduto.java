@@ -4,32 +4,17 @@
  */
 package View;
 
-import Model.DaoProduto;
-import Model.HibernateDao;
-import entities.Produto;
-import java.util.List;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-
 /**
  *
  * @author willian
  */
 public class CompraProduto extends javax.swing.JFrame {
-   private Debitar telaAnterior;
-    private DaoProduto produto = new DaoProduto();
-    private HibernateDao hibernatedao = new HibernateDao();
-    private AtualizarProduto atualizarProduto;
+
     /**
      * Creates new form CompraProduto
      */
-    public CompraProduto() throws Exception {
+    public CompraProduto() {
         initComponents();
-        carregarJTable();
-    }
-    public CompraProduto(Debitar telaAnterior) throws Exception {
-        this();
-        this.telaAnterior = telaAnterior;
     }
 
     /**
@@ -66,15 +51,7 @@ public class CompraProduto extends javax.swing.JFrame {
             new String [] {
                 "Produto", "Preço R$"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane1.setViewportView(jTable1);
 
         jButtonAdicionar.setText("Adicionar");
@@ -129,63 +106,16 @@ public class CompraProduto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-        private void carregarJTable() throws Exception {
-        List<Produto> lista = produto.list();
-
-        DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
-        modelo.addColumn("Nome");
-        modelo.addColumn("Preço Venda");
-
-        if (lista.size() == 0) {
-            modelo.addRow(new String[]{"Sem dados",
-                null});
-        }
-
-        for (int i = 0; i < lista.size(); i++) {
-            Produto p = lista.get(i);
-            //System.out.println(p.toString());
-
-
-            // Alimenta as linhas de dados
-            if(lista.get(i).isHabilitadoVendas() == true){
-            modelo.addRow(new String[]{
-                p.getNome(),
-                p.getPrecoVenda() + ""});
-            }
-        }
-
-        jTable1.setModel(modelo);
-
-    }
-
     private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
-        try {
-            int linha = jTable1.getSelectedRow();
-
-            Produto p = produto.list().get(linha);
-            System.out.println(p.toString());
-
-            this.setEnabled(false);
-            jButtonAdicionar.setEnabled(true);
-            telaAnterior.add(this, p);
-        } catch (Exception e) {
-
-            JOptionPane.showMessageDialog(this, "Selecione um produto!");
-            jButtonAdicionar.setEnabled(true);
-        }
+        
     }//GEN-LAST:event_jButtonAdicionarActionPerformed
 
     private void jToggleButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonCadastrarActionPerformed
-        this.setEnabled(false);
-        CadastroProduto v = new CadastroProduto(null);
-                v.setVisible(true);
-                v.setLocationRelativeTo(null);
+        // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButtonCadastrarActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        this.dispose();
-        telaAnterior.setEnabled(true);
-        this.telaAnterior.toFront();
+       
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     /**
@@ -218,7 +148,7 @@ public class CompraProduto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+                new CompraProduto().setVisible(true);
             }
         });
     }

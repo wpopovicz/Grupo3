@@ -226,8 +226,6 @@ public class CadastroProduto extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // cancelar
         this.dispose();
-        telaAnterior.setEnabled(true);
-        this.telaAnterior.toFront();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
@@ -242,7 +240,12 @@ public class CadastroProduto extends javax.swing.JFrame {
 
 
         int itemSelecionado = jComboBox1.getSelectedIndex();
-
+//        try {
+//            hibernatedao.persist(p);
+            // se for 0 -> nao esta habilitado, 1 está.
+//           } catch (Exception ex) {
+//            Logger.getLogger(CadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
+//        }
             int id = 0;
             float pv = 0.0f;
             float pc = 0.0f;
@@ -286,10 +289,9 @@ public class CadastroProduto extends javax.swing.JFrame {
                 try {
                     if (controlador.cadastrarProduto(p)) {                    
                         JOptionPane.showMessageDialog(this, "Cadastrado com sucesso");
-                        jTextFieldnome.setText("");
-                        jTextFieldcusto.setText("");
-                        jTextFieldvenda.setText("");
-                        jTextArea1.setText("");
+                        this.dispose();
+                        this.telaAnterior.toFront();
+    
                     } else {
                         JOptionPane.showMessageDialog(this, "Cadastro Não realizado. "
                                 + "\n\nFaltando dados");
@@ -383,10 +385,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CadastroProduto v = new CadastroProduto();
-                v.setVisible(true);
-                v.setLocationRelativeTo(null);
-
+                new CadastroProduto().setVisible(true);
             }
         });
     }
