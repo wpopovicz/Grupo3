@@ -14,7 +14,7 @@ import java.util.List;
 public interface Dao<T> {
     void persist(T o)  throws Exception;
     void delete(T o)  throws Exception;
-    T retrieve(int id)  throws Exception;
+    T retrieve(String email)  throws Exception;
     List<T> list()  throws Exception;
     List<T> list(Filter... filters)  throws Exception;
 }

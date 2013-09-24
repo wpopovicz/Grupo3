@@ -82,7 +82,7 @@
                                 <div class="col-lg-offset-2 col-lg-10">
                                     <button type="submit" class="btn btn-success">Salvar</button>
                                     <button type="submit" class="btn btn-warning">Limpar</button>
-                                    <button type="submit" class="btn btn-danger" onclick="inicial.jsp">Cancelar</button>
+                                    <button type="submit" class="btn btn-danger" onclick="ConsultaCredito.jsp;">Cancelar</button>
                                 </div>
                             </div>
                         </div>

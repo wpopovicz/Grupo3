@@ -4,6 +4,7 @@
  */
 package servelets;
 
+import Beans.Pessoa;
 import Model.HibernateDao;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -67,13 +68,17 @@ public class alterarSenha extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         PrintWriter out = response.getWriter();
+
         String email = request.getParameter("Email");
         String passoword = request.getParameter("Passoword");
         String novoPassoword = request.getParameter("novoPassoword");
         String confirmaPassoword = request.getParameter("confirmaPassoword");
         
-        if((!(passoword.equals(novoPassoword)))&&(novoPassoword.equals(confirmaPassoword))){
-            HibernateDao hibernatedao = new HibernateDao();
+        if((!passoword.equals(novoPassoword))&&(novoPassoword.equals(confirmaPassoword))){
+              HibernateDao hibernatedao = new HibernateDao();
+              Pessoa p = new Pessoa();
+            
+
             ///tenho que buscar o usuario e persistir a nova senha
             //hibernatedao.persist(u);
         }

@@ -18,8 +18,8 @@ import javax.swing.table.DefaultTableModel;
 public class CompraProduto extends javax.swing.JFrame {
    private Debitar telaAnterior;
     private DaoProduto produto = new DaoProduto();
-    private AtualizarProduto atualizarProduto;
     private HibernateDao hibernatedao = new HibernateDao();
+    private AtualizarProduto atualizarProduto;
     /**
      * Creates new form CompraProduto
      */
@@ -177,7 +177,7 @@ public class CompraProduto extends javax.swing.JFrame {
 
     private void jToggleButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonCadastrarActionPerformed
         this.setEnabled(false);
-        CadastroProduto v = new CadastroProduto();
+        CadastroProduto v = new CadastroProduto(null);
                 v.setVisible(true);
                 v.setLocationRelativeTo(null);
     }//GEN-LAST:event_jToggleButtonCadastrarActionPerformed

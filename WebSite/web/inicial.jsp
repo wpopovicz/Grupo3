@@ -39,17 +39,17 @@
         </br>
         </br>
         <div class="container-left">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" action="NewServlet" method="POST">
                 <div class="form-group">
                     <label for="inputEmail1" class="col-lg-5 control-label">Email</label>
                     <div class="col-lg-3">
-                        <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
+                        <input type="email" class="form-control" name="email" id="inputEmail1" placeholder="Email">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword1" class="col-lg-5 control-label">Password</label>
                     <div class="col-lg-3">
-                        <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+                        <input type="password" class="form-control" name="senha" id="inputPassword1" placeholder="Password">
                     </div>
                 </div>
                 <div class="form-group">

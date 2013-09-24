@@ -242,12 +242,7 @@ public class CadastroProduto extends javax.swing.JFrame {
 
 
         int itemSelecionado = jComboBox1.getSelectedIndex();
-//        try {
-//            hibernatedao.persist(p);
-            // se for 0 -> nao esta habilitado, 1 está.
-//           } catch (Exception ex) {
-//            Logger.getLogger(CadastroProduto.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+
             int id = 0;
             float pv = 0.0f;
             float pc = 0.0f;

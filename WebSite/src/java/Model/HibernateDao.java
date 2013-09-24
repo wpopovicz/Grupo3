@@ -40,12 +40,12 @@ public class HibernateDao<T> implements Dao<T> {
     }
 
     @Override
-    public T retrieve(int id) throws Exception {
+    public T retrieve(String email) throws Exception {
         T o = null;
-        if (id > 0) {
+        if (!(email.equals(null))) {
             EntityManager em = HibernateFactory.getEntityManager();
             em.getTransaction().begin();
-            o = (T) em.find(clazz, id);
+            o = (T) em.find(clazz, email);
             em.getTransaction().commit();
         }
         return o;
