@@ -24,7 +24,8 @@ public class Cliente extends javax.swing.JFrame {
     private Visao telaAnterior;
     private Categoria categoria = new Categoria();
     private HibernateDao hibernatedao = new HibernateDao();
-    
+    private NewConsulta newConsulta = new NewConsulta();
+    private Pessoa pessoa = new Pessoa();
 
     /**
      * Creates new form Cliente
@@ -41,7 +42,7 @@ public class Cliente extends javax.swing.JFrame {
 
 
             }
-            
+
 
         } catch (Exception ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
@@ -228,7 +229,13 @@ public class Cliente extends javax.swing.JFrame {
         telaAnterior.setEnabled(true);
         this.telaAnterior.toFront();
     }//GEN-LAST:event_formWindowClosed
+    public Cliente(NewConsulta newConsulta, Pessoa p) {
+        this();
 
+        this.newConsulta = newConsulta;
+        this.pessoa = p;
+        carregarPessoaNosCampos();
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // alterar o cliente
 //        if (jTextFieldRA.getText().trim().equals("")) {
@@ -262,10 +269,10 @@ public class Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBoxFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFuncaoActionPerformed
-        
+
         if (jComboBoxFuncao.getSelectedItem() instanceof Categoria) {
-            categoria = (Categoria) jComboBoxFuncao.getSelectedItem(); 
-            JOptionPane.showMessageDialog(null, "Objeto categoria tem ID " + categoria.getId());
+            categoria = (Categoria) jComboBoxFuncao.getSelectedItem();
+//            JOptionPane.showMessageDialog(null, "Objeto categoria tem ID " + categoria.getId());
         }
     }//GEN-LAST:event_jComboBoxFuncaoActionPerformed
 
@@ -365,4 +372,12 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldRA;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
+private void carregarPessoaNosCampos() {
+        String s = String.valueOf(this.pessoa.getCodigo());
+        jTextFieldRA.setText(s);
+        jTextFieldEmail.setText(this.pessoa.getEmail()+ "");
+        jTextFieldNome.setText(this.pessoa.getNome()+ "");
+
+
+    }
 }
