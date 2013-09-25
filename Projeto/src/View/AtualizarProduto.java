@@ -4,7 +4,6 @@
  */
 package View;
 
-import Control.RepositoriosManager;
 import Model.DaoProduto;
 import Model.Filter;
 import Model.HibernateDao;
@@ -117,7 +116,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -320,7 +319,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
                     options[1]);
             if (n == JOptionPane.YES_OPTION) {
                 produto.delete(p);
-                carregarJTable();
+                atualizarModelo();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -331,24 +330,21 @@ public class AtualizarProduto extends javax.swing.JDialog {
 
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
         Produto p = new Produto();
-        DaoProduto daoP = new DaoProduto();
+        DaoProduto dp = new DaoProduto();
         String consulta = jTextFieldConsultar.getText();
-        
+
 //        ArrayList<Produto> lista;
 //        lista = (ArrayList<Produto>) produto.list("produto" , Operator.LIKE , consulta);
-        
-        
-        Filter f = new Filter("nome" , Operator.LIKE , consulta);
+
+        Filter f = new Filter("produto", Operator.LIKE, consulta);
         List lista = null;
         try {
-            lista = daoP.list(f);
-            for(Object e: lista){
-            }
+            lista = dp.list(f);
+            for (Object e : lista) {
+        }
         } catch (Exception ex) {
             Logger.getLogger(AtualizarProduto.class.getName()).log(Level.SEVERE, null, ex);
-        }
-//        List ends = p.list(f);
-        for (Object e: lista) {
+        }       
 
         DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
         modelo.addColumn("Id");
@@ -366,11 +362,11 @@ public class AtualizarProduto extends javax.swing.JDialog {
         }
 
         for (int i = 0; i < lista.size(); i++) {
-            p = (Produto) lista.get(i);
+             p = (Produto) lista.get(i);
             //System.out.println(p.toString());
 
 
-            // Alimenta as linhas de dados   
+            // Alimenta as linhas de dados  
             modelo.addRow(new String[]{Integer.toString(p.getId()),
                 p.getNome(),
                 p.getPrecoVenda() + "",
@@ -378,7 +374,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
                 p.isHabilitadoVendas() + ""});
         }
         jTable2.setModel(modelo);
-        }
+    
     }//GEN-LAST:event_jButtonConsultarActionPerformed
 
     /**

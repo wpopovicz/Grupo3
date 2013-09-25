@@ -4,15 +4,7 @@
  */
 package entities;
 
-import Model.DaoPessoa;
-import Model.DaoProduto;
-import Model.Filter;
-import Model.Operator;
-import View.AtualizarProduto;
 import java.io.Serializable;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -64,7 +56,6 @@ public class Categoria implements Serializable{
     public String toString() {
         return this.getCargo();
     }
-
     
    
 }

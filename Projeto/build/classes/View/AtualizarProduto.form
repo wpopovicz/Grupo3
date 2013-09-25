@@ -140,7 +140,7 @@
                   <Table columnCount="5" rowCount="17">
                     <Column editable="false" title="C&#xf3;digo" type="java.lang.String"/>
                     <Column editable="false" title="Nome" type="java.lang.String"/>
-                    <Column editable="true" title="Pre&#xe7;o Venda" type="java.lang.String"/>
+                    <Column editable="false" title="Pre&#xe7;o Venda" type="java.lang.String"/>
                     <Column editable="false" title="Pre&#xe7;o Custo" type="java.lang.String"/>
                     <Column editable="false" title="Habilitado" type="java.lang.String"/>
                   </Table>

@@ -5,7 +5,10 @@
 package View;
 
 import Control.RepositoriosManager;
+import Model.HibernateDao;
 import entities.Produto;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,7 +16,10 @@ import javax.swing.JOptionPane;
  * @author a1294121
  */
 public class Debitar extends javax.swing.JFrame {
-   
+    private Visao telaAnterior;
+    private Produto produto;
+    private AtualizarProduto atualizarProduto;
+    private HibernateDao hibernatedao = new HibernateDao();
 
     /**
      * Creates new form Debitar
@@ -21,6 +27,18 @@ public class Debitar extends javax.swing.JFrame {
     public Debitar() {
         initComponents();
         setLocationRelativeTo(null);
+    }
+    
+        public Debitar(Visao telaAnterior) {
+        this();
+        this.telaAnterior = telaAnterior;
+    }
+        
+        public Debitar(AtualizarProduto atualizarProduto, Produto p) {
+        this();
+
+        this.atualizarProduto = atualizarProduto;
+        this.produto = p;
     }
 
     /**
@@ -90,7 +108,15 @@ public class Debitar extends javax.swing.JFrame {
             new String [] {
                 "Produto", "Valor R$"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButtonAdicionarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/adicionar.png"))); // NOI18N
@@ -219,7 +245,12 @@ public class Debitar extends javax.swing.JFrame {
 
     private void jButtonAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarProdutoActionPerformed
         // Abrir a tela para adicionar o produto e valor para ser comprado:
-        CompraProduto k = new CompraProduto();
+        CompraProduto k = null;
+        try {
+            k = new CompraProduto();
+        } catch (Exception ex) {
+            Logger.getLogger(Debitar.class.getName()).log(Level.SEVERE, null, ex);
+        }
         k.setVisible(true);
         k.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButtonAdicionarProdutoActionPerformed
@@ -280,7 +311,9 @@ public class Debitar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Debitar().setVisible(true);
+                Debitar d = new Debitar();
+                d.setVisible(true);
+                d.setLocationRelativeTo(null);
 
             }
         });
@@ -303,4 +336,11 @@ public class Debitar extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldValor;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
+    private void carregarProdutoNosCampos() {
+
+        
+        
+
+
+    }
 }

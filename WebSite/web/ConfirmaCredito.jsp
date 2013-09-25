@@ -11,11 +11,19 @@
 
 <html>
     <head>
-        <title>Restaurante Universitário</title>
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="estilo.css"/>
-        <!-- Bootstrap -->
-        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <meta name="description" content="">
+        <meta name="keywords" content="cadastro do sistema RU">
+        <link rel="shortcut icon" href="favicon.png">
+        <title>Restaurante Universitário</title>
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="css/personalizado.css" rel="stylesheet">
+
+        <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
     </head>
     <body>
          <ul class="nav nav-pills">
@@ -24,6 +32,7 @@
             </li>
             <li><a href="ConsultarCredito">Consultar Crédito</a></li>
             <li><a href="ConfirmaCredito">Adicionar Crédito</a></li>
+            <li><a href="trocarSenha">Trocar Senha</a></li>
         </ul>
         
         <div class="container">
@@ -75,5 +84,12 @@
             </div>
         </div>
 
+        <div id="footer">
+            <div class="container">
+                <p class="text-muted credit">Layout Bootstrap |<a href="#">Willian Lopes popovicz</a>.</p>
+            </div>
+        </div>
+        
+        <script src="js/bootstrap.js"></script>
     </body>
 </html>

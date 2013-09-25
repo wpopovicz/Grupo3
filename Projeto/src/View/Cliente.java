@@ -9,7 +9,6 @@ import Model.DaoPessoa;
 import entities.Categoria;
 import entities.Pessoa;
 import Model.HibernateDao;
-import entities.Produto;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,8 +24,6 @@ public class Cliente extends javax.swing.JFrame {
     private Visao telaAnterior;
     private Categoria categoria = new Categoria();
     private HibernateDao hibernatedao = new HibernateDao();
-    private NewConsulta newConsulta = new NewConsulta();
-    private Pessoa pessoa = new Pessoa();
     
 
     /**
@@ -51,7 +48,7 @@ public class Cliente extends javax.swing.JFrame {
         }
     }
 
-    public Cliente(Visao telaAnterior) throws Exception  {
+    public Cliente(Visao telaAnterior) {
         this();
         this.telaAnterior = telaAnterior;
     }
@@ -232,13 +229,6 @@ public class Cliente extends javax.swing.JFrame {
         this.telaAnterior.toFront();
     }//GEN-LAST:event_formWindowClosed
 
-    public Cliente(NewConsulta newConsulta, Pessoa p) {
-        this();
-
-        this.newConsulta = newConsulta;
-        this.pessoa = p;
-        carregarPessoaNosCampos();
-    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // alterar o cliente
 //        if (jTextFieldRA.getText().trim().equals("")) {
@@ -275,7 +265,7 @@ public class Cliente extends javax.swing.JFrame {
         
         if (jComboBoxFuncao.getSelectedItem() instanceof Categoria) {
             categoria = (Categoria) jComboBoxFuncao.getSelectedItem(); 
-//            JOptionPane.showMessageDialog(null, "Objeto categoria tem ID " + categoria.getId());
+            JOptionPane.showMessageDialog(null, "Objeto categoria tem ID " + categoria.getId());
         }
     }//GEN-LAST:event_jComboBoxFuncaoActionPerformed
 
@@ -287,9 +277,7 @@ public class Cliente extends javax.swing.JFrame {
         if (jTextFieldRA.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(this, "Informe um RA!");
         }
-        if (p == null){
 //        categoria.setCargo(jComboBoxFuncao.getSelectedItem().toString());
-            
         p.setCategoria(categoria);
         int cod = Integer.parseInt(jTextFieldRA.getText());
         p.setCodigo(cod);
@@ -302,22 +290,6 @@ public class Cliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Cadastro realizado com Sucesso");
         } catch (Exception ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        }else{
-            p.setId(p.getId());
-        p.setCategoria(categoria);
-        int cod = Integer.parseInt(jTextFieldRA.getText());
-        p.setCodigo(cod);
-        p.setNome(jTextFieldNome.getText());
-        p.setEmail(jTextFieldEmail.getText());
-        String senha = new String(jPasswordField1.getPassword());
-        p.setSenha(senha);
-        try {
-            daoPessoa.persist(p);
-            JOptionPane.showMessageDialog(this, "Cadastro realizado com Sucesso");
-        } catch (Exception ex) {
-            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
         }
 
 
@@ -393,12 +365,4 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldRA;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
-private void carregarPessoaNosCampos() {
-        String s = String.valueOf(this.pessoa.getCodigo());
-        jTextFieldRA.setText(s);
-        jTextFieldEmail.setText(this.pessoa.getEmail()+ "");
-        jTextFieldNome.setText(this.pessoa.getNome()+ "");
-
-
-    }
 }

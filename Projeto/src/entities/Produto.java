@@ -105,5 +105,8 @@ import javax.persistence.Id;
         return valores;
     }
 
-   
+    public List list(Filter f) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+     
 }
