@@ -285,9 +285,15 @@ public class Visao extends javax.swing.JFrame {
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
         this.setEnabled(false);
-        Cliente c = new Cliente(this);
-        c.setVisible(true);
+        Cliente c;
+        try {
+            c = new Cliente(this);
+            c.setVisible(true);
         c.setLocationRelativeTo(null);
+        } catch (Exception ex) {
+            Logger.getLogger(Visao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
@@ -324,10 +330,15 @@ public class Visao extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuBar1FocusLost
 
     private void jMenuItemClienteCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteCadastrarActionPerformed
-        this.setEnabled(false);
-        Cliente c = new Cliente(this);
-        c.setVisible(true);
+       this.setEnabled(false);
+        Cliente c;
+        try {
+            c = new Cliente(this);
+            c.setVisible(true);
         c.setLocationRelativeTo(null);
+        } catch (Exception ex) {
+            Logger.getLogger(Visao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuItemClienteCadastrarActionPerformed
 
     private void jMenu1AjudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1AjudaMouseClicked

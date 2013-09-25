@@ -84,9 +84,6 @@ public class AtualizarProduto extends javax.swing.JDialog {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
-            }
         });
 
         jPanel1.setBackground(java.awt.Color.white);
@@ -138,10 +135,10 @@ public class AtualizarProduto extends javax.swing.JDialog {
             }
         });
         jTable2.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 jTable2InputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         jScrollPane2.setViewportView(jTable2);
@@ -315,14 +312,13 @@ public class AtualizarProduto extends javax.swing.JDialog {
                 "Cancel"};
             int n = JOptionPane.showOptionDialog(this,
                     "Deseja Realmente Excluir "
-                    + p.getNome() +" ?", "Excluir",
-                    
+                    + p.getNome() + " ?", "Excluir",
                     JOptionPane.YES_NO_OPTION,
                     JOptionPane.QUESTION_MESSAGE,
                     null,
                     options,
                     options[1]);
-            if(n == JOptionPane.YES_OPTION){
+            if (n == JOptionPane.YES_OPTION) {
                 produto.delete(p);
                 carregarJTable();
             }
@@ -335,25 +331,24 @@ public class AtualizarProduto extends javax.swing.JDialog {
 
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
         Produto p = new Produto();
+        DaoProduto daoP = new DaoProduto();
         String consulta = jTextFieldConsultar.getText();
         
 //        ArrayList<Produto> lista;
 //        lista = (ArrayList<Produto>) produto.list("produto" , Operator.LIKE , consulta);
         
         
-        Filter f = new Filter("produto" , Operator.LIKE , consulta);
-        List<Produto> lista = null;
+        Filter f = new Filter("nome" , Operator.LIKE , consulta);
+        List lista = null;
         try {
-            lista = produto.list(f);
-            for(Produto e: lista){
-                
-            System.out.println(e);
+            lista = daoP.list(f);
+            for(Object e: lista){
             }
         } catch (Exception ex) {
             Logger.getLogger(AtualizarProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
 //        List ends = p.list(f);
-        for (Produto e: lista) {
+        for (Object e: lista) {
 
         DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
         modelo.addColumn("Id");
@@ -371,11 +366,11 @@ public class AtualizarProduto extends javax.swing.JDialog {
         }
 
         for (int i = 0; i < lista.size(); i++) {
-//            Produto p = lista.get(i);
+            p = (Produto) lista.get(i);
             //System.out.println(p.toString());
 
 
-            // Alimenta as linhas de dados  
+            // Alimenta as linhas de dados   
             modelo.addRow(new String[]{Integer.toString(p.getId()),
                 p.getNome(),
                 p.getPrecoVenda() + "",
@@ -384,13 +379,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
         }
         jTable2.setModel(modelo);
         }
-
     }//GEN-LAST:event_jButtonConsultarActionPerformed
-
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        this.telaAnterior.setEnabled(true);
-
-    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -406,16 +395,40 @@ public class AtualizarProduto extends javax.swing.JDialog {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+                
+
+
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AtualizarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AtualizarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AtualizarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AtualizarProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AtualizarProduto.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+
+
+
+catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(AtualizarProduto.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+
+
+
+catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(AtualizarProduto.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+
+
+
+catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(AtualizarProduto.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -424,12 +437,17 @@ public class AtualizarProduto extends javax.swing.JDialog {
             public void run() {
                 try {
                     new AtualizarProduto().setVisible(true);
-                } catch (Exception ex) {
-                    Logger.getLogger(AtualizarProduto.class.getName()).log(Level.SEVERE, null, ex);
+                
+
+} catch (Exception ex) {
+                    Logger.getLogger(AtualizarProduto.class  
+
+.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonConsultar;
     private javax.swing.JButton jButtonExcluir;

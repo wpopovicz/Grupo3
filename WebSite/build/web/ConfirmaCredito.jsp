@@ -25,25 +25,55 @@
             <li><a href="ConsultarCredito">Consultar Crédito</a></li>
             <li><a href="ConfirmaCredito">Adicionar Crédito</a></li>
         </ul>
+        
+        <div class="container">
+                <div class="page-header">
+                    <h1>
+                        Restaurante <br/>
+                        Universitário
+                    </h1>
+                </div>
+                <form class="form-horizontal" action="credito" method="POST">
 
-        <h1>
-            Restaurante <br/>
-            Universitário
-        </h1> 
-        <h2>Adicionar Crédito</h2>
-        Atenção! Você realmente deseja inserir crédito?
-        <br/><br/>
-        <% NovoCredito creditar = (NovoCredito) session.getAttribute("novoCredito"); 
-            String nome = creditar.getNome();
-            String email = creditar.getEmail();
-            String valor = creditar.getValor();
-        %>
-        Nome: <%=nome%><br/>
-        E-mail: <%=email%><br/>
-        Telefone: <%=valor%><br/>
-        <br/>
-        <a href="GravarPalpiteServlet">Confirmar</a>
-        <a href="palpiteForm.jsp">Modificar</a>
-        <a href="index.jsp?cancelar=sim" >Cancelar</a>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Adicionar Crédito</div>
+                        <div class="panel-body">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label for="inputEmail1" class="col-lg-2 control-label">Email</label>
+                                    <div class="col-lg-5">
+                                        <input type="email" class="form-control" name="email" id="inputEmail1" placeholder="email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
+                                    <div class="col-lg-5">
+                                        <input type="password" class="form-control" name="passoword" id="inputPassword1" placeholder="password">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputValor1" class="col-lg-2 control-label">R$</label>
+                                    <div class="col-lg-5">
+                                        <input type="valor" class="form-control" name="valor" id="inputPassword1" placeholder="valor">
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Opções</div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-lg-offset-2 col-lg-10">
+                                    <button type="submit" class="btn btn-success">Salvar</button>
+                                    <button type="submit" class="btn btn-warning">Limpar</button>
+                                    <button type="submit" class="btn btn-danger" onclick="ConsultaCredito.jsp;">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
     </body>
 </html>
