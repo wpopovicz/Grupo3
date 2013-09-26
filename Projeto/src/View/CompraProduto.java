@@ -165,7 +165,6 @@ public class CompraProduto extends javax.swing.JFrame {
             Produto p = produto.list().get(linha);
             System.out.println(p.toString());
 
-            this.setEnabled(false);
             jButtonAdicionar.setEnabled(true);
             telaAnterior.add(this, p);
         } catch (Exception e) {

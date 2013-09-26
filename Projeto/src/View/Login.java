@@ -41,7 +41,7 @@ public class Login extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(java.awt.Color.white);
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Login", 0, 0, new java.awt.Font("Dialog", 1, 18), java.awt.Color.black)); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Login", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), java.awt.Color.black)); // NOI18N
 
         jButton1.setText("Cancelar");
 
@@ -49,6 +49,15 @@ public class Login extends javax.swing.JDialog {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        jPasswordField.setText("admin");
+
+        jTextFieldUsuario.setText("admin");
+        jTextFieldUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldUsuarioActionPerformed(evt);
             }
         });
 
@@ -137,6 +146,10 @@ public class Login extends javax.swing.JDialog {
         }
     
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextFieldUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldUsuarioActionPerformed
 
     /**
      * @param args the command line arguments

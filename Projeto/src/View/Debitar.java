@@ -4,22 +4,26 @@
  */
 package View;
 
-import Control.RepositoriosManager;
+import Model.DaoProduto;
 import Model.HibernateDao;
 import entities.Produto;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author a1294121
  */
 public class Debitar extends javax.swing.JFrame {
+
     private Visao telaAnterior;
     private Produto produto;
     private AtualizarProduto atualizarProduto;
     private HibernateDao hibernatedao = new HibernateDao();
+    private DaoProduto daoP = new DaoProduto();
 
     /**
      * Creates new form Debitar
@@ -28,13 +32,13 @@ public class Debitar extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
-    
-        public Debitar(Visao telaAnterior) {
+
+    public Debitar(Visao telaAnterior) {
         this();
         this.telaAnterior = telaAnterior;
     }
-        
-        public Debitar(AtualizarProduto atualizarProduto, Produto p) {
+
+    public Debitar(AtualizarProduto atualizarProduto, Produto p) {
         this();
 
         this.atualizarProduto = atualizarProduto;
@@ -66,8 +70,17 @@ public class Debitar extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jComboBoxCliente = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
+        Cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel2.setBackground(java.awt.Color.white);
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Débito", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), java.awt.Color.black)); // NOI18N
@@ -139,6 +152,13 @@ public class Debitar extends javax.swing.JFrame {
 
         jLabel4.setText("Cliente");
 
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -172,8 +192,13 @@ public class Debitar extends javax.swing.JFrame {
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jButtonAdicionarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jButtonDiminuirProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Cancelar)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -209,7 +234,9 @@ public class Debitar extends javax.swing.JFrame {
                     .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
-                .addComponent(jToggleButton1)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jToggleButton1)
+                    .addComponent(Cancelar))
                 .addContainerGap())
         );
 
@@ -239,8 +266,6 @@ public class Debitar extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
-        
-        
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jButtonAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarProdutoActionPerformed
@@ -257,29 +282,60 @@ public class Debitar extends javax.swing.JFrame {
 
     private void jButtonDiminuirProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDiminuirProdutoActionPerformed
         // excluir da lista de compra o produto selecionado:
-         try {
+        try {
             int linha = jTable1.getSelectedRow();
 
-            Produto p = RepositoriosManager.getInstance().obterListaProdutos().get(linha);
+            Produto p = daoP.list().get(linha);
             System.out.println(p.toString());
 
-            this.setEnabled(false);
-            jButtonDiminuirProduto.setEnabled(false);
-            //fazer o excluir e os JOption perguntando se tem certeza que quer excluir
-            JOptionPane.showConfirmDialog(this, p, "Tem Certeza que Deseja Excluir do carrinho?", 0);
-            
+//            this.setEnabled(false);
+            jButtonDiminuirProduto.setEnabled(true);
+            Object[] options = {"OK",
+                "Cancel"};
+            int n = JOptionPane.showOptionDialog(this,
+                    "Deseja realmente excluir do carrinhoo produto"
+                    + p.getNome() + " ?", "Excluir",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[1]);
+            if (n == JOptionPane.YES_OPTION) {
+                //codigo para remover da tabela do carrinho
+                
+            }
         } catch (Exception e) {
-            
+            e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Selecione um produto!");
-            jButtonDiminuirProduto.setEnabled(false);
+            jButtonDiminuirProduto.setEnabled(true);
         }
     }//GEN-LAST:event_jButtonDiminuirProdutoActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
-    
-    
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        if (this.produto != null) {
+            try {
+                carregarProduto();
+            } catch (Exception ex) {
+                Logger.getLogger(Debitar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+//        this.dispose();
+//        telaAnterior.setEnabled(true);
+//        this.telaAnterior.toFront();
+    }//GEN-LAST:event_formWindowClosed
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        this.dispose();
+        telaAnterior.setEnabled(true);
+        this.telaAnterior.toFront();
+    }//GEN-LAST:event_CancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -319,6 +375,7 @@ public class Debitar extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Cancelar;
     private javax.swing.JButton jButtonAdicionarProduto;
     private javax.swing.JButton jButtonDiminuirProduto;
     private javax.swing.JComboBox jComboBoxCliente;
@@ -336,11 +393,19 @@ public class Debitar extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldValor;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
-    private void carregarProdutoNosCampos() {
 
-        
-        
+    private void carregarProduto() throws Exception {
+        List<Produto> lista = daoP.list();
+        DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
+        modelo.addColumn("Nome");
+        modelo.addColumn("Preço Venda");
 
-
+        for (int i = 0; i < lista.size(); i++) {
+            Produto p = lista.get(i);
+            modelo.addRow(new String[]{
+                p.getNome(),
+                p.getPrecoVenda() + ""});
+        }
+        jTable1.setModel(modelo);
     }
 }

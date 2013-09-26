@@ -4,7 +4,7 @@
  */
 package entities;
 
-import Control.Metadata;
+
 import Model.Filter;
 import java.io.Serializable;
 import java.util.List;
@@ -46,7 +46,7 @@ import javax.persistence.Id;
         this.precoCusto = precoCusto;
         this.habilitadoVendas = habilitadoVendas;
     }
-    @Metadata(label="id", minValue=0)
+
     public int getId() {
         return id;
     }
@@ -70,7 +70,7 @@ import javax.persistence.Id;
     public void setEspecificacoes(String especificacoes) {
         this.especificacoes = especificacoes;
     }
-    @Metadata(label="precoVenda", mask="000.00", required=true)
+
     public float getPrecoVenda() {
         return precoVenda;
     }
@@ -78,7 +78,7 @@ import javax.persistence.Id;
     public void setPrecoVenda(float precoVenda) {
         this.precoVenda = precoVenda;
     }
-    @Metadata(label="precoCusto", mask="000.00", required=true)
+
     public float getPrecoCusto() {
         return precoCusto;
     }

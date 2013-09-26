@@ -4,19 +4,31 @@
  */
 package View;
 
+import Model.HibernateDao;
+import Model.HibernateFactory;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.EntityManager;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
  * @author a1294121
  */
 public class Visao extends javax.swing.JFrame {
-
+ private HibernateDao hibernatedao = new HibernateDao();
     /**
      * Creates new form Visao
      */
@@ -39,6 +51,7 @@ public class Visao extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jToggleButton1 = new javax.swing.JToggleButton();
@@ -46,6 +59,7 @@ public class Visao extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1Cliente = new javax.swing.JMenu();
         jMenuItemClienteCadastrar = new javax.swing.JMenuItem();
@@ -55,6 +69,9 @@ public class Visao extends javax.swing.JFrame {
         jMenuItemProdutoAlterar = new javax.swing.JMenuItem();
         jMenu7Debitar = new javax.swing.JMenu();
         jMenu6Creditar = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItemProdutoFaltando = new javax.swing.JMenuItem();
+        jMenuItemCompra = new javax.swing.JMenuItem();
         jMenu1Ajuda = new javax.swing.JMenu();
         jMenu2Sobre = new javax.swing.JMenu();
 
@@ -69,6 +86,8 @@ public class Visao extends javax.swing.JFrame {
 
         jMenu5.setText("Edit");
         jMenuBar2.add(jMenu5);
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -158,6 +177,8 @@ public class Visao extends javax.swing.JFrame {
                 .addGap(28, 28, 28))
         );
 
+        jButton4.setText("jButton4");
+
         jMenuBar1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jMenuBar1FocusGained(evt);
@@ -172,7 +193,7 @@ public class Visao extends javax.swing.JFrame {
 
         jMenuItemClienteCadastrar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK));
         jMenuItemClienteCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1375980201_executive.png"))); // NOI18N
-        jMenuItemClienteCadastrar.setText("Cadastrar");
+        jMenuItemClienteCadastrar.setText("Cliente");
         jMenuItemClienteCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemClienteCadastrarActionPerformed(evt);
@@ -234,6 +255,32 @@ public class Visao extends javax.swing.JFrame {
             }
         });
         jMenuBar1.add(jMenu6Creditar);
+
+        jMenu1.setText("Relatórios");
+        jMenu1.setToolTipText("Relatório");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+
+        jMenuItemProdutoFaltando.setText("de  produto faltando");
+        jMenuItemProdutoFaltando.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemProdutoFaltandoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemProdutoFaltando);
+
+        jMenuItemCompra.setText("de venda");
+        jMenuItemCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCompraActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemCompra);
+
+        jMenuBar1.add(jMenu1);
 
         jMenu1Ajuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1373341015_help-browser.png"))); // NOI18N
         jMenu1Ajuda.setToolTipText("Ajuda");
@@ -383,6 +430,41 @@ public class Visao extends javax.swing.JFrame {
         l.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItemProdutoCadastroActionPerformed
 
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        try {
+            // obtem o arquivo de relatorio compilado
+            URL arquivo = getClass().getResource("compra.jasper");
+
+            // carrega o relatorio
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(arquivo);
+
+            // preenche o relatorio com os dados do BD
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, new HashMap(), hibernatedao.getClass().getConnection());
+
+            // cria visualizador de relatorio
+            JasperViewer jrviewer = new JasperViewer(jasperPrint, false);
+
+            // adicionar visualizador ao frame
+            JFrameReport frame = new JFrameReport();
+            // adicionamos o visualizador a um JPanel dentro do JFrame
+            frame.getjPanelReport().add(jrviewer.getContentPane());
+            frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            frame.setVisible(true);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERRO: " + e);
+        }
+    
+    }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void jMenuItemProdutoFaltandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoFaltandoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemProdutoFaltandoActionPerformed
+
+    private void jMenuItemCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCompraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemCompraActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -424,7 +506,9 @@ public class Visao extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu1Ajuda;
     private javax.swing.JMenu jMenu1Cliente;
     private javax.swing.JMenu jMenu2Produto;
@@ -436,11 +520,14 @@ public class Visao extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu7Debitar;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItemClienteAlterar;
     private javax.swing.JMenuItem jMenuItemClienteCadastrar;
+    private javax.swing.JMenuItem jMenuItemCompra;
     private javax.swing.JMenuItem jMenuItemProdutoAlterar;
     private javax.swing.JMenuItem jMenuItemProdutoCadastro;
+    private javax.swing.JMenuItem jMenuItemProdutoFaltando;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton1;

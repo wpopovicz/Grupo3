@@ -24,7 +24,8 @@ public class AtualizarProduto extends javax.swing.JDialog {
 
     private Visao telaAnterior;
     private HibernateDao hibernatedao = new HibernateDao();
-    private DaoProduto produto = new DaoProduto();
+    private DaoProduto daoP = new DaoProduto();
+    private Produto produto;
 
     /**
      * Creates new form AtualizarProduto
@@ -80,6 +81,9 @@ public class AtualizarProduto extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
@@ -227,7 +231,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void carregarJTable() throws Exception {
-        List<Produto> lista = produto.list();
+        List<Produto> lista = daoP.list();
 
         DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
         modelo.addColumn("Id");
@@ -264,7 +268,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
         try {
             int linha = jTable2.getSelectedRow();
 
-            Produto p = produto.list().get(linha);
+            Produto p = daoP.list().get(linha);
             System.out.println(p.toString());
 
             this.setEnabled(false);
@@ -280,6 +284,8 @@ public class AtualizarProduto extends javax.swing.JDialog {
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        telaAnterior.setEnabled(true);
+        this.telaAnterior.toFront();
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jTable2InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTable2InputMethodTextChanged
@@ -302,7 +308,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
         try {
             int linha = jTable2.getSelectedRow();
 
-            Produto p = produto.list().get(linha);
+            Produto p = daoP.list().get(linha);
             System.out.println(p.toString());
 
 //            this.setEnabled(false);
@@ -318,19 +324,19 @@ public class AtualizarProduto extends javax.swing.JDialog {
                     options,
                     options[1]);
             if (n == JOptionPane.YES_OPTION) {
-                produto.delete(p);
+                daoP.delete(p);
                 atualizarModelo();
             }
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Selecione um produto!");
-            jToggleButtonEditar.setEnabled(true);
+            jButtonExcluir.setEnabled(true);
         }
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
-        Produto p = new Produto();
-        DaoProduto dp = new DaoProduto();
+        Produto p;
+        DaoProduto daoP = new DaoProduto();
         String consulta = jTextFieldConsultar.getText();
 
 //        ArrayList<Produto> lista;
@@ -339,7 +345,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
         Filter f = new Filter("produto", Operator.LIKE, consulta);
         List lista = null;
         try {
-            lista = dp.list(f);
+            lista = daoP.list(f);
             for (Object e : lista) {
         }
         } catch (Exception ex) {
@@ -376,6 +382,12 @@ public class AtualizarProduto extends javax.swing.JDialog {
         jTable2.setModel(modelo);
     
     }//GEN-LAST:event_jButtonConsultarActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+       this.dispose();
+        telaAnterior.setEnabled(true);
+        this.telaAnterior.toFront();
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
