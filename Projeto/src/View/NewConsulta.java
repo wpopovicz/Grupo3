@@ -4,7 +4,6 @@
  */
 package View;
 
-
 import Model.DaoPessoa;
 import Model.Filter;
 import entities.Categoria;
@@ -18,15 +17,17 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
  * @author Paulo
  */
 public class NewConsulta extends javax.swing.JFrame {
+
     private Categoria categoria = new Categoria();
     private HibernateDao hibernatedao = new HibernateDao();
     private DaoPessoa pessoa = new DaoPessoa();
+    private Visao telaAnterior;
+
     /**
      * Creates new form NewConsulta
      */
@@ -50,6 +51,7 @@ public class NewConsulta extends javax.swing.JFrame {
         jButtonPesquisar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -94,6 +96,11 @@ public class NewConsulta extends javax.swing.JFrame {
         });
 
         jButton1.setText("Voltar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Alterar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -102,19 +109,28 @@ public class NewConsulta extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("Excluir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addComponent(jTextFieldPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonPesquisar)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addGap(25, 25, 25))
         );
@@ -126,7 +142,8 @@ public class NewConsulta extends javax.swing.JFrame {
                     .addComponent(jTextFieldPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonPesquisar)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
                 .addGap(12, 12, 12))
@@ -147,11 +164,9 @@ public class NewConsulta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldPesquisarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldPesquisarMouseEntered
-        
     }//GEN-LAST:event_jTextFieldPesquisarMouseEntered
 
     private void jTextFieldPesquisarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPesquisarFocusGained
-        
     }//GEN-LAST:event_jTextFieldPesquisarFocusGained
 
     private void jButtonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPesquisarActionPerformed
@@ -160,53 +175,53 @@ public class NewConsulta extends javax.swing.JFrame {
         DaoPessoa daoP = new DaoPessoa();
 
         String consulta = jTextFieldPesquisar.getText();
-        
+
 //        ArrayList<Produto> lista;
 //        lista = (ArrayList<Produto>) produto.list("produto" , Operator.LIKE , consulta);
-        
-        
-        Filter f = new Filter("nome" , Operator.LIKE , consulta);
+
+
+        Filter f = new Filter("nome", Operator.LIKE, consulta);
         List lista = null;
         try {
             lista = daoP.list(f);
-            for(Object e: lista){
+            for (Object e : lista) {
             }
         } catch (Exception ex) {
             Logger.getLogger(AtualizarProduto.class.getName()).log(Level.SEVERE, null, ex);
         }
 //        List ends = p.list(f);
-        for (Object e: lista) {
+        for (Object e : lista) {
 
-        DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
-        modelo.addColumn("Id");
-        modelo.addColumn("Nome");
-        modelo.addColumn("Email");
-        modelo.addColumn("Saldo");
-        modelo.addColumn("Categoria");
+            DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
+            modelo.addColumn("Id");
+            modelo.addColumn("Nome");
+            modelo.addColumn("Email");
+            modelo.addColumn("Saldo");
+            modelo.addColumn("Categoria");
 
-        if (lista.size() == 0) {
-            modelo.addRow(new String[]{"Sem dados",
-                null,
-                null,
-                null,
-                null,
-                null});
-        }
+            if (lista.size() == 0) {
+                modelo.addRow(new String[]{"Sem dados",
+                    null,
+                    null,
+                    null,
+                    null,
+                    null});
+            }
 
-        for (int i = 0; i < lista.size(); i++) {
-            p = (Pessoa) lista.get(i);
-            //System.out.println(p.toString());
+            for (int i = 0; i < lista.size(); i++) {
+                p = (Pessoa) lista.get(i);
+                //System.out.println(p.toString());
 
 
-            // Alimenta as linhas de dados  
-            modelo.addRow(new String[]{Integer.toString(
-                p.getId()),
-                p.getNome(),
-                p.getEmail()+ "",
-                p.getSaldo()+ "",
-                p.getCategoria()+ ""});
-        }
-        jTable1.setModel(modelo);
+                // Alimenta as linhas de dados  
+                modelo.addRow(new String[]{Integer.toString(
+                    p.getId()),
+                    p.getNome(),
+                    p.getEmail() + "",
+                    p.getSaldo() + "",
+                    p.getCategoria() + ""});
+            }
+            jTable1.setModel(modelo);
         }
 
     }//GEN-LAST:event_jButtonPesquisarActionPerformed
@@ -216,7 +231,7 @@ public class NewConsulta extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldPesquisarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-try {
+        try {
             int linha = jTable1.getSelectedRow();
 
             Pessoa p = pessoa.list().get(linha);
@@ -232,6 +247,42 @@ try {
         }
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try {
+            int linha = jTable1.getSelectedRow();
+
+            Pessoa p = pessoa.list().get(linha);
+            System.out.println(p.toString());
+
+//            this.setEnabled(false);
+            jButton3.setEnabled(true);
+            Object[] options = {"OK",
+                "Cancel"};
+            int n = JOptionPane.showOptionDialog(this,
+                    "Deseja Realmente Excluir "
+                    + p.getNome() + " ?", "Excluir",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[1]);
+            if (n == JOptionPane.YES_OPTION) {
+                pessoa.delete(p);
+                atualizarModelo();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Selecione um produto!");
+            jButton3.setEnabled(true);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+        telaAnterior.setEnabled(true);
+        this.telaAnterior.toFront();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,10 +321,51 @@ try {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonPesquisar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextFieldPesquisar;
     // End of variables declaration//GEN-END:variables
+    public void atualizarModelo() throws Exception {
+
+        System.out.println("atualizando modelo...");
+        carregarJTable();
+    }
+
+    private void carregarJTable() throws Exception {
+        List<Pessoa> lista = pessoa.list();
+
+        DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
+        modelo.addColumn("Id");
+        modelo.addColumn("Nome");
+        modelo.addColumn("Email");
+        modelo.addColumn("Saldo");
+        modelo.addColumn("Categoria");
+
+        if (lista.size() == 0) {
+            modelo.addRow(new String[]{"Sem dados",
+                null,
+                null,
+                null,
+                null});
+        }
+
+        for (int i = 0; i < lista.size(); i++) {
+            Pessoa p = lista.get(i);
+            //System.out.println(p.toString());
+
+
+            // Alimenta as linhas de dados  
+            modelo.addRow(new String[]{Integer.toString(
+                p.getId()),
+                p.getNome(),
+                p.getEmail() + "",
+                p.getSaldo() + "",
+                p.getCategoria() + ""});
+        }
+
+        jTable1.setModel(modelo);
+    }
 }
