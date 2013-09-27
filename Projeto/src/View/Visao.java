@@ -5,7 +5,6 @@
 package View;
 
 import Model.HibernateDao;
-import Model.HibernateFactory;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
@@ -14,7 +13,6 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.EntityManager;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -122,6 +120,14 @@ public class Visao extends javax.swing.JFrame {
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
+            }
+        });
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField1FocusLost(evt);
             }
         });
 
@@ -349,11 +355,17 @@ public class Visao extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        NewConsulta q = new NewConsulta();
-        q.setVisible(true);
-        q.setLocationRelativeTo(null);
+         try {
+             String s = jTextField1.getText();
+            this.setEnabled(false);
+            jButton2.setEnabled(true);
+            new NewConsulta(this,s).setVisible(true);
+            this.setVisible(false);
+        } catch (Exception e) {
 
+            JOptionPane.showMessageDialog(this, "Selecione um produto!");
+            jButton2.setEnabled(true);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jMenuItemClienteAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteAlterarActionPerformed
@@ -464,6 +476,16 @@ public class Visao extends javax.swing.JFrame {
     private void jMenuItemCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCompraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemCompraActionPerformed
+
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        jTextField1.setText("");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1FocusGained
+
+    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+        jTextField1.setText("Consulta por nome");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1FocusLost
 
     /**
      * @param args the command line arguments

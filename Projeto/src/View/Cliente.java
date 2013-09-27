@@ -32,6 +32,7 @@ public class Cliente extends javax.swing.JFrame {
      */
     private Cliente() {
         initComponents();
+        this.setLocationRelativeTo(null);
         try {
             DaoCategoria daoC = new DaoCategoria();
 
@@ -250,28 +251,6 @@ public class Cliente extends javax.swing.JFrame {
         carregarPessoaNosCampos();
     }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // alterar o cliente
-//        if (jTextFieldRA.getText().trim().equals("")) {
-//            JOptionPane.showMessageDialog(this, "Informe um ID!");
-//        }
-//        Pessoa p = new Pessoa();
-//        if (jComboBoxFuncao.getSelectedItem() == "Aluno") {
-//            categoria = new Categoria();
-//            //testar se vai pegar texto do combo box correto
-//            categoria.setCargo(jComboBoxFuncao.getSelectedItem().toString());
-//            categoria.setRA(Integer.parseInt(jTextFieldRA.getText()));
-//            p.setCategoria(categoria);
-//            p.setNome(jTextFieldNome.getText());
-//            p.setEmail(jTextFieldEmail.getText());
-//            //testar se pega a senha correta
-//            p.setSenha(jPasswordField1.getPassword().toString());
-//        }
-//
-//        try {
-//            daoPessoa.persist(p);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-//        }
         this.dispose();
         telaAnterior.setEnabled(true);
         this.telaAnterior.toFront();

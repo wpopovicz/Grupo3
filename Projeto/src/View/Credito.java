@@ -71,18 +71,14 @@ public class Credito extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        
-        
-        if (jTextField1.getText().trim().equals("")){
+        String cod = jTextField1.getText();
+
+        if (jTextField1.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(this, "Informe um RA/Siape");
-        }else{
-            
-        
-        this.setVisible(false);
-        Creditar2 c = new Creditar2();
-        c.setVisible(true);
-        c.setLocationRelativeTo(null);
+        } else {
+
+            this.setVisible(false);
+            new Creditar2(cod).setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

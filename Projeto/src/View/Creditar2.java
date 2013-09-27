@@ -4,7 +4,17 @@
  */
 package View;
 
+import Model.DaoCategoria;
+import Model.DaoPessoa;
+import Model.Filter;
+import Model.Operator;
+import entities.Categoria;
+import entities.Pessoa;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -12,11 +22,43 @@ import javax.swing.JOptionPane;
  */
 public class Creditar2 extends javax.swing.JFrame {
 
+    Pessoa p = new Pessoa();
+    DaoPessoa daoP = new DaoPessoa();
+    Categoria cat = new Categoria();
+
     /**
      * Creates new form Creditar2
      */
-    public Creditar2() {
+    public Creditar2(String cod) {
         initComponents();
+        this.setLocationRelativeTo(null);
+
+        String consulta = cod;
+
+
+        Filter f = new Filter("codigo", Operator.LIKE, consulta);
+        List<Pessoa> lista;
+        try {
+            lista = daoP.list(f);
+            for (Pessoa e : lista) {
+                jTextField1.setText(e.getNome());
+                jTextField2.setText(e.getSaldo());
+                p.setId(e.getId());
+                p.setSaldo(e.getSaldo());
+                p.setCategoria(e.getCategoria());
+                p.setCodigo(e.getCodigo());
+                p.setNome(e.getNome());
+                p.setSenha(e.getSenha());
+                p.setEmail(e.getEmail());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Creditar2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return;
+    }
+
+    private Creditar2() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -161,22 +203,44 @@ public class Creditar2 extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-    
+
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
-    
+
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
         if (jTextField3.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Informe um valor!");
+        } else if (p.getSaldo() == null) {
+            p.setSaldo(jTextField3.getText());
+            
+            System.out.println(p);
+            try {
+                daoP.persist(p);
+                JOptionPane.showMessageDialog(null, "Creditado com êxito!");
+            } catch (Exception ex) {
+                Logger.getLogger(Creditar2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            p.setSaldo(jTextField3.getText()+p.getSaldo());
+            
+            System.out.println(p);
+            try {
+                daoP.persist(p);
+                JOptionPane.showMessageDialog(null, "Creditado com êxito!");
+            } catch (Exception ex) {
+                Logger.getLogger(Creditar2.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
-    
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.setVisible(false);
         Credito d = new Credito();

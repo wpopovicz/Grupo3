@@ -27,6 +27,7 @@ public class NewConsulta extends javax.swing.JFrame {
     private HibernateDao hibernatedao = new HibernateDao();
     private DaoPessoa pessoa = new DaoPessoa();
     private Visao telaAnterior;
+    private String s;
 
     /**
      * Creates new form NewConsulta
@@ -165,7 +166,12 @@ public class NewConsulta extends javax.swing.JFrame {
 
     private void jTextFieldPesquisarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldPesquisarMouseEntered
     }//GEN-LAST:event_jTextFieldPesquisarMouseEntered
-
+    public NewConsulta(Visao visao, String s) throws Exception {
+        this();
+        this.telaAnterior = visao;
+        this.s = s;
+        pesquisa(s);
+    }
     private void jTextFieldPesquisarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPesquisarFocusGained
     }//GEN-LAST:event_jTextFieldPesquisarFocusGained
 
@@ -193,7 +199,7 @@ public class NewConsulta extends javax.swing.JFrame {
         for (Object e : lista) {
 
             DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
-            modelo.addColumn("Id");
+            modelo.addColumn("Codigo");
             modelo.addColumn("Nome");
             modelo.addColumn("Email");
             modelo.addColumn("Saldo");
@@ -215,7 +221,7 @@ public class NewConsulta extends javax.swing.JFrame {
 
                 // Alimenta as linhas de dados  
                 modelo.addRow(new String[]{Integer.toString(
-                    p.getId()),
+                    p.getCodigo()),
                     p.getNome(),
                     p.getEmail() + "",
                     p.getSaldo() + "",
@@ -240,6 +246,7 @@ public class NewConsulta extends javax.swing.JFrame {
             this.setEnabled(false);
             jButton2.setEnabled(true);
             new Cliente(this, p).setVisible(true);
+            this.setVisible(false);
         } catch (Exception e) {
 
             JOptionPane.showMessageDialog(this, "Selecione um produto!");
@@ -328,6 +335,7 @@ public class NewConsulta extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextFieldPesquisar;
     // End of variables declaration//GEN-END:variables
+
     public void atualizarModelo() throws Exception {
 
         System.out.println("atualizando modelo...");
@@ -367,5 +375,61 @@ public class NewConsulta extends javax.swing.JFrame {
         }
 
         jTable1.setModel(modelo);
+    }
+
+    public void pesquisa(String s) throws Exception {
+        categoria = new Categoria();
+        Pessoa p = new Pessoa();
+        DaoPessoa daoP = new DaoPessoa();
+        
+        String consulta = s;
+//        ArrayList<Produto> lista;
+//        lista = (ArrayList<Produto>) produto.list("produto" , Operator.LIKE , consulta);
+
+
+        Filter f = new Filter("nome", Operator.LIKE, consulta);
+        List lista = null;
+        try {
+            lista = daoP.list(f);
+            for (Object e : lista) {
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(AtualizarProduto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+//        List ends = p.list(f);
+        for (Object e : lista) {
+
+            DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
+            modelo.addColumn("Codigo");
+            modelo.addColumn("Nome");
+            modelo.addColumn("Email");
+            modelo.addColumn("Saldo");
+            modelo.addColumn("Categoria");
+
+            if (lista.size() == 0) {
+                modelo.addRow(new String[]{"Sem dados",
+                    null,
+                    null,
+                    null,
+                    null,
+                    null});
+            }
+
+            for (int i = 0; i < lista.size(); i++) {
+                p = (Pessoa) lista.get(i);
+                //System.out.println(p.toString());
+
+
+                // Alimenta as linhas de dados  
+                modelo.addRow(new String[]{Integer.toString(
+                    p.getCodigo()),
+                    p.getNome(),
+                    p.getEmail() + "",
+                    p.getSaldo() + "",
+                    p.getCategoria() + ""});
+            }
+            jTable1.setModel(modelo);
+        }
+
     }
 }

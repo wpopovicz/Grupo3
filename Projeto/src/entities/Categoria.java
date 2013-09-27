@@ -4,6 +4,7 @@
  */
 package entities;
 
+import Model.DaoPessoa;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -57,5 +58,6 @@ public class Categoria implements Serializable{
         return this.getCargo();
     }
     
-   
+    
+  
 }
