@@ -241,7 +241,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
         modelo.addColumn("Habilitado");
 
         if (lista.size() == 0) {
-            modelo.addRow(new String[]{"Sem dados",
+            modelo.addRow(new String[]{"Não tem produto",
                 null,
                 null,
                 null,
@@ -301,6 +301,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
+        telaAnterior.setEnabled(false);
         System.out.println("form window activated");
     }//GEN-LAST:event_formWindowActivated
 
