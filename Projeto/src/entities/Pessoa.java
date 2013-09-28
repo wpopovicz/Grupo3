@@ -26,7 +26,7 @@ public class Pessoa implements Serializable{
     @Column(length = 100)
     private String senha;
     @Column(length = 100)
-    private String saldo;
+    private double saldo;
     @Column(length = 100)
     private String email;
     @Column(length = 7)
@@ -61,13 +61,15 @@ public class Pessoa implements Serializable{
         this.senha = senha;
     }
 
-    public String getSaldo() {
+    public double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(String saldo) {
+    public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
+
+    
 
     public String getEmail() {
         return email;
@@ -93,7 +95,7 @@ public class Pessoa implements Serializable{
         this.categoria = categoria;
     }
 
-    public Pessoa(int id, String nome, String senha, String saldo, String email, int codigo, Categoria categoria) {
+    public Pessoa(int id, String nome, String senha, double saldo, String email, int codigo, Categoria categoria) {
         this.id = id;
         this.nome = nome;
         this.senha = senha;

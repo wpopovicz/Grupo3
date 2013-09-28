@@ -7,6 +7,7 @@ package View;
 import Model.DaoCategoria;
 import Model.DaoPessoa;
 import Model.Filter;
+import Model.HibernateDao;
 import Model.Operator;
 import entities.Categoria;
 import entities.Pessoa;
@@ -14,7 +15,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 /**
  *
@@ -22,27 +22,35 @@ import javax.swing.JTextField;
  */
 public class Creditar2 extends javax.swing.JFrame {
 
-    Pessoa p = new Pessoa();
+    
+       // faz o seguinte, cadastra mais dois usuarios com ra 12 e ra 1234 e tenta alterar o saldo desses 3 cara.
+    Pessoa p;
     DaoPessoa daoP = new DaoPessoa();
     Categoria cat = new Categoria();
+    DaoCategoria dcat = new DaoCategoria();
+    HibernateDao hib = new HibernateDao();
 
     /**
      * Creates new form Creditar2
      */
-    public Creditar2(String cod) {
+    public  Creditar2(String cod) {
         initComponents();
         this.setLocationRelativeTo(null);
 
         String consulta = cod;
-
-
-        Filter f = new Filter("codigo", Operator.LIKE, consulta);
+        DaoPessoa dao2 = new DaoPessoa();
+        
+        Filter f = new Filter("codigo", Operator.EQUAL, consulta);
+        // codigo é unico né, entao a lista só tem uma pessoa né, logo ela é a 0 da lista.
         List<Pessoa> lista;
         try {
-            lista = daoP.list(f);
+            lista = dao2.list(f);
+            p = lista.get(0);   
+            // vc tava criando outra pesssoa, aqui vc ta pegando a pessoa do banco n criando.
             for (Pessoa e : lista) {
                 jTextField1.setText(e.getNome());
-                jTextField2.setText(e.getSaldo());
+                String saldo = String.valueOf(e.getSaldo());
+                jTextField2.setText(saldo);
                 p.setId(e.getId());
                 p.setSaldo(e.getSaldo());
                 p.setCategoria(e.getCategoria());
@@ -214,25 +222,33 @@ public class Creditar2 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
+        
         if (jTextField3.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Informe um valor!");
-        } else if (p.getSaldo() == null) {
-            p.setSaldo(jTextField3.getText());
-            
-            System.out.println(p);
-            try {
-                daoP.persist(p);
-                JOptionPane.showMessageDialog(null, "Creditado com êxito!");
-            } catch (Exception ex) {
-                Logger.getLogger(Creditar2.class.getName()).log(Level.SEVERE, null, ex);
-            }
+//        } else if (p.getSaldo() == null) {
+//            p.setSaldo(jTextField3.getText());
+//            
+//            System.out.println(p);
+//            try {
+//                hib.persist(p);
+//                JOptionPane.showMessageDialog(null, "Creditado com êxito!");
+//            } catch (Exception ex) {
+//                Logger.getLogger(Creditar2.class.getName()).log(Level.SEVERE, null, ex);
+//            }
         }else{
-            p.setSaldo(jTextField3.getText()+p.getSaldo());
+             double cod1 = Double.parseDouble(jTextField3.getText());
+             double cod = p.getSaldo();
+             double saldo = cod+cod1;
+            p.setSaldo(cod+cod1);
             
             System.out.println(p);
             try {
                 daoP.persist(p);
                 JOptionPane.showMessageDialog(null, "Creditado com êxito!");
+                String sal;
+                sal = String.valueOf(saldo);
+                jTextField2.setText(sal);
+                jTextField3.setText("");
             } catch (Exception ex) {
                 Logger.getLogger(Creditar2.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -427,10 +427,15 @@ public class Visao extends javax.swing.JFrame {
             JasperReport jasperReport = (JasperReport) JRLoader.loadObject(arquivo);
 
             // preenche o relatorio com os dados do BD
+<<<<<<< Updated upstream
             EntityManager em = HibernateFactory.getEntityManager();
             em.getTransaction().begin();
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, new HashMap());
             em.getTransaction().commit();
+=======
+//            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, new HashMap(), hibernatedao.getClass().getConnection());
+
+>>>>>>> Stashed changes
             // cria visualizador de relatorio
             JasperViewer jrviewer = new JasperViewer(jasperPrint, false);
 
