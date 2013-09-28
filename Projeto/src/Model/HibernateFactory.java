@@ -5,6 +5,7 @@
 package Model;
 
 import Config.DatabaseConfig;
+import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 import javax.persistence.EntityManager;
@@ -49,5 +50,9 @@ public class HibernateFactory {
             entityManager = emf.createEntityManager();
         }
         return entityManager;
+    }
+
+    public static Connection getConnection() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
