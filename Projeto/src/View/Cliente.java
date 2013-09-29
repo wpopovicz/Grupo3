@@ -302,7 +302,7 @@ public class Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldRAActionPerformed
 
     private void jTextFieldRAKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldRAKeyTyped
-        String caracteres = "0987654321";
+        String caracteres = "0987654321.";
         if (!caracteres.contains(evt.getKeyChar() + "")) {
             evt.consume();
         }
