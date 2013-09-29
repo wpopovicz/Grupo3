@@ -29,7 +29,9 @@ import org.hibernate.Session;
  * @author a1294121
  */
 public class Visao extends javax.swing.JFrame {
- private HibernateDao hibernatedao = new HibernateDao();
+
+    private HibernateDao hibernatedao = new HibernateDao();
+
     /**
      * Creates new form Visao
      */
@@ -191,17 +193,25 @@ public class Visao extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1Cliente);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon("C:\\Users\\willian\\Documents\\Grupo3.git\\Projeto\\src\\Imagem\\1380342968_category_item.png")); // NOI18N
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1380342968_category_item.png"))); // NOI18N
         jMenu2.setToolTipText("Categoria");
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon("C:\\Users\\willian\\Documents\\Grupo3.git\\Projeto\\src\\Imagem\\1380342950_category_item.png")); // NOI18N
-        jMenuItem2.setText("Categoria");
+        jMenuItem2.setText("Gerenciar");
         jMenuItem2.setToolTipText("Cadastrar Categoria");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
-        jMenuItem4.setIcon(new javax.swing.ImageIcon("C:\\Users\\willian\\Documents\\Grupo3.git\\Projeto\\src\\Imagem\\1373341694_search_magnifying_glass_find.png")); // NOI18N
-        jMenuItem4.setText("Localizar");
+        jMenuItem4.setText("Cadastrar");
         jMenuItem4.setToolTipText("Localizar Categoria");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem4);
 
         jMenuBar1.add(jMenu2);
@@ -233,11 +243,16 @@ public class Visao extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2Produto);
 
-        jMenu6Creditar.setIcon(new javax.swing.ImageIcon("C:\\Users\\willian\\Documents\\Grupo3.git\\Projeto\\src\\Imagem\\dinheiro2.png")); // NOI18N
+        jMenu6Creditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1373340942_03.png"))); // NOI18N
         jMenu6Creditar.setToolTipText("Creditar");
         jMenu6Creditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu6CreditarMouseClicked(evt);
+            }
+        });
+        jMenu6Creditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu6CreditarActionPerformed(evt);
             }
         });
         jMenuBar1.add(jMenu6Creditar);
@@ -251,7 +266,6 @@ public class Visao extends javax.swing.JFrame {
         });
         jMenuBar1.add(jMenu7Debitar);
 
-        jMenu1.setIcon(new javax.swing.ImageIcon("C:\\Users\\willian\\Documents\\Grupo3.git\\Projeto\\src\\Imagem\\relatorio.png")); // NOI18N
         jMenu1.setToolTipText("Relatório");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -286,7 +300,6 @@ public class Visao extends javax.swing.JFrame {
         });
         jMenuBar1.add(jMenu1Ajuda);
 
-        jMenu2Sobre.setIcon(new javax.swing.ImageIcon("C:\\Users\\willian\\Documents\\Grupo3.git\\Projeto\\src\\Imagem\\1380342675_Information.png")); // NOI18N
         jMenu2Sobre.setToolTipText("Sobre");
         jMenu2Sobre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -365,15 +378,15 @@ public class Visao extends javax.swing.JFrame {
         desktop = Desktop.getDesktop();
         URI uri = null;
         try {
-            String local = System.getProperty("user.dir"); 
+            String local = System.getProperty("user.dir");
             //uri = new URI("C:\\Users\\willian\\Desktop\\Grupo3\\Projeto\\Site");
-            uri = new URI(local+"\\Site\\Help.xhtml");
+            uri = new URI(local + "\\Site\\Help.xhtml");
             desktop.browse(uri);
         } catch (IOException ioe) {
             ioe.printStackTrace();
         } catch (URISyntaxException use) {
             use.printStackTrace();
-        }                            
+        }
     }//GEN-LAST:event_jMenu1AjudaMouseClicked
 
     private void jMenu2SobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2SobreMouseClicked
@@ -383,7 +396,7 @@ public class Visao extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu2SobreMouseClicked
 
     private void jMenu6CreditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu6CreditarMouseClicked
-       Credito s = new Credito();
+        Credito s = new Credito();
         s.setVisible(true);
         s.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenu6CreditarMouseClicked
@@ -414,12 +427,10 @@ public class Visao extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemProdutoCadastroActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-
-    
     }//GEN-LAST:event_jMenu1MouseClicked
 
     private void jMenuItemProdutoFaltandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoFaltandoActionPerformed
-                try {
+        try {
             // obtem o arquivo de relatorio compilado
             URL arquivo = getClass().getResource("ProdutoEmFalta.jasper");
 
@@ -446,13 +457,35 @@ public class Visao extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "ERRO: " + e);
-            
+
         }
     }//GEN-LAST:event_jMenuItemProdutoFaltandoActionPerformed
 
     private void jMenuItemCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCompraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemCompraActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        try {
+            this.setVisible(false);
+            CategoriaManager c = new CategoriaManager(this, rootPaneCheckingEnabled);
+            c.setVisible(true);
+            c.setLocationRelativeTo(null);
+        } catch (Exception ex) {
+            Logger.getLogger(Visao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenu6CreditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu6CreditarActionPerformed
+        this.setVisible(false);
+        CategoriaInsert d = new CategoriaInsert();
+        d.setVisible(true);
+        d.setLocationRelativeTo(null);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu6CreditarActionPerformed
 
     /**
      * @param args the command line arguments

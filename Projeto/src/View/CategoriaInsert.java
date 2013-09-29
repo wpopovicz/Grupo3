@@ -15,12 +15,16 @@ import javax.swing.JOptionPane;
  * @author a1294083
  */
 public class CategoriaInsert extends javax.swing.JFrame {
-    
+    private Visao telaAnterior;
+    private CategoriaManager categoriaManager;
+    private Categoria c;
+    HibernateDao h = new HibernateDao();
     /**
      * Creates new form CategoriaInsert
      */
     public CategoriaInsert() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -130,16 +134,21 @@ public class CategoriaInsert extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+    public CategoriaInsert(CategoriaManager categoriaManager, Categoria c) {
+        this();
 
+        this.categoriaManager = categoriaManager;
+        this.c = c;
+        carregarCategoriaNosCampos();
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         if (jTextField1.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(this, "Informe um Nome!");}
             if (jTextField2.getText().trim().equals("")) {
                 JOptionPane.showMessageDialog(this, "Informe um Valor!");}
-
+                if (c == null){
                 Categoria c = new Categoria();
-                HibernateDao h = new HibernateDao();
                 c.setCargo(jTextField1.getText());
                 double aDouble = Double.parseDouble(jTextField2.getText());
                 c.setRefeicao(aDouble);
@@ -149,14 +158,25 @@ public class CategoriaInsert extends javax.swing.JFrame {
                 } catch (Exception ex) {
                     Logger.getLogger(CategoriaInsert.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                }else{
+                c.setCargo(jTextField1.getText());
+                double aDouble = Double.parseDouble(jTextField2.getText());
+                c.setRefeicao(aDouble);
+                try {
+                    h.persist(c);
+                    JOptionPane.showMessageDialog(this, "Registro atualizado com sucesso!");
+                } catch (Exception ex) {
+                    Logger.getLogger(CategoriaInsert.class.getName()).log(Level.SEVERE, null, ex);
+                }    
+                }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.setVisible(false);
-        Cliente c = new Cliente(null);
-        c.setVisible(true);
-        c.setLocationRelativeTo(null);
+        this.dispose();
+        Visao v = new Visao();
+        v.setVisible(true);
+        v.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton2ActionPerformed
 
             /**
@@ -204,4 +224,9 @@ public class CategoriaInsert extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
+private void carregarCategoriaNosCampos() {
+        String s = String.valueOf(this.c.getRefeicao());
+        jTextField1.setText(this.c.getCargo());
+        jTextField2.setText(s);
+    }
 }

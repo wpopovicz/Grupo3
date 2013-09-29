@@ -29,6 +29,7 @@ public class Creditar2 extends javax.swing.JFrame {
     Categoria cat = new Categoria();
     DaoCategoria dcat = new DaoCategoria();
     HibernateDao hib = new HibernateDao();
+    private Credito telaAnterior;
 
     /**
      * Creates new form Creditar2
@@ -258,10 +259,9 @@ public class Creditar2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.setVisible(false);
-        Credito d = new Credito();
-        d.setVisible(true);
-        d.setLocationRelativeTo(null);
+        this.dispose();
+        telaAnterior.setEnabled(true);
+        this.telaAnterior.toFront();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
