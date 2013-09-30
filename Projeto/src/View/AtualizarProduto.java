@@ -9,7 +9,6 @@ import Model.Filter;
 import Model.HibernateDao;
 import Model.Operator;
 import entities.Produto;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,7 +23,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
 
     private Visao telaAnterior;
     private HibernateDao hibernatedao = new HibernateDao();
-    private DaoProduto daoP = new DaoProduto();
+    private DaoProduto daoProduto = new DaoProduto();
     private Produto produto;
 
     /**
@@ -231,7 +230,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void carregarJTable() throws Exception {
-        List<Produto> lista = daoP.list();
+        List<Produto> lista = daoProduto.list();
 
         DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
         modelo.addColumn("Id");
@@ -240,7 +239,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
         modelo.addColumn("Preço Custo");
         modelo.addColumn("Habilitado");
 
-        if (lista.size() == 0) {
+        if (lista.isEmpty()) {
             modelo.addRow(new String[]{"Não tem produto",
                 null,
                 null,
@@ -268,7 +267,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
         try {
             int linha = jTable2.getSelectedRow();
 
-            Produto p = daoP.list().get(linha);
+            Produto p = daoProduto.list().get(linha);
             System.out.println(p.toString());
 
             this.setEnabled(false);
@@ -309,7 +308,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
         try {
             int linha = jTable2.getSelectedRow();
 
-            Produto p = daoP.list().get(linha);
+            Produto p = daoProduto.list().get(linha);
             System.out.println(p.toString());
 
 //            this.setEnabled(false);
@@ -325,11 +324,10 @@ public class AtualizarProduto extends javax.swing.JDialog {
                     options,
                     options[1]);
             if (n == JOptionPane.YES_OPTION) {
-                daoP.delete(p);
+                daoProduto.delete(p);
                 atualizarModelo();
             }
         } catch (Exception e) {
-            e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Selecione um produto!");
             jButtonExcluir.setEnabled(true);
         }
@@ -337,7 +335,6 @@ public class AtualizarProduto extends javax.swing.JDialog {
 
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
         Produto p;
-        DaoProduto daoP = new DaoProduto();
         String consulta = jTextFieldConsultar.getText();
 
 //        ArrayList<Produto> lista;
@@ -346,7 +343,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
         Filter f = new Filter("produto", Operator.LIKE, consulta);
         List lista = null;
         try {
-            lista = daoP.list(f);
+            lista = daoProduto.list(f);
             for (Object e : lista) {
         }
         } catch (Exception ex) {

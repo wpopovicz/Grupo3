@@ -323,7 +323,7 @@ public class CadastroProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        // TODO add your handling code here:
+        // quando fechar ou ativa a visão ou atualizaproduto
         if (this.produto == null) {
             telaAnterior.setEnabled(true);
             this.telaAnterior.toFront();

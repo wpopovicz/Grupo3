@@ -4,9 +4,15 @@
  */
 package View;
 
+import Model.DaoPessoa;
 import Model.DaoProduto;
+import Model.Filter;
 import Model.HibernateDao;
+import Model.Operator;
+import entities.Categoria;
+import entities.Pessoa;
 import entities.Produto;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,30 +26,78 @@ import javax.swing.table.DefaultTableModel;
 public class Debitar extends javax.swing.JFrame {
 
     private Visao telaAnterior;
-    private Produto produto;
     private AtualizarProduto atualizarProduto;
+    private Produto produto;
+    private Categoria categoria;
+    private DaoProduto daoProduto = new DaoProduto();
+    private DaoPessoa daoPessoa = new DaoPessoa();
     private HibernateDao hibernatedao = new HibernateDao();
-    private DaoProduto daoP = new DaoProduto();
+    private Pessoa pessoa;
+
 
     /**
      * Creates new form Debitar
      */
-    public Debitar() {
+    public Debitar() throws Exception {
         initComponents();
+        carregarProduto();
         setLocationRelativeTo(null);
     }
 
-    public Debitar(Visao telaAnterior) {
+    public Debitar(Visao telaAnterior) throws Exception {
         this();
         this.telaAnterior = telaAnterior;
     }
 
-    public Debitar(AtualizarProduto atualizarProduto, Produto p) {
+    public Debitar(AtualizarProduto atualizarProduto, Produto p) throws Exception {
         this();
 
         this.atualizarProduto = atualizarProduto;
         this.produto = p;
     }
+
+//    private Produto login() {
+//            Filter f = new Filter("codigo", Operator.EQUAL, RA);
+//            // codigo é unico né, entao a lista só tem uma pessoa né, logo ela é a 0 da lista.
+//            List<Pessoa> lista;
+//
+//            try {
+//                lista = daoP.list(f);
+//                pessoa = lista.get(0);
+//                if (lista.get(0) == null) {
+//                    JOptionPane.showMessageDialog(this, "Não existe esse RA/SIAPE"
+//                            + "\n digite novamente !");
+//                    jTextFieldRA.setText("");
+//                    jPasswordFieldSenha.setText("");
+//                }
+//
+//                for (Pessoa e : lista) {
+//                    pessoa.setId(e.getId());
+//                    pessoa.setSaldo(e.getSaldo());
+//                    pessoa.setCategoria(e.getCategoria());
+//                    pessoa.setCodigo(e.getCodigo());
+//                    pessoa.setNome(e.getNome());
+//                    pessoa.setSenha(e.getSenha());
+//                    pessoa.setEmail(e.getEmail());
+//                }
+//                if (senha == pessoa.getSenha()) {
+//                    JOptionPane.showMessageDialog(this, "Senha errada "
+//                            + "\n digite novamente !");
+//                    jTextFieldRA.setText("");
+//                    jPasswordFieldSenha.setText("");
+//                }
+//            } catch (Exception ex) {
+//                Logger.getLogger(Creditar2.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            return null;
+//
+//        }
+//    }
+
+//    private Produto somandoAConta() {
+//        LoginPessoa().getSaldo();
+//        return produto;
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -253,6 +307,11 @@ public class Debitar extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
+        String RA = jTextFieldRA.getText();
+        String senha = new String(jPasswordFieldSenha.getPassword());
+        String valor = jTextFieldValor.getText();
+        Pessoa p1 = new Pessoa(RA , senha);
+        
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jButtonAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarProdutoActionPerformed
@@ -272,7 +331,7 @@ public class Debitar extends javax.swing.JFrame {
         try {
             int linha = jTable1.getSelectedRow();
 
-            Produto p = daoP.list().get(linha);
+            Produto p = daoProduto.list().get(linha);
             System.out.println(p.toString());
 
 //            this.setEnabled(false);
@@ -289,7 +348,6 @@ public class Debitar extends javax.swing.JFrame {
                     options[1]);
             if (n == JOptionPane.YES_OPTION) {
                 //codigo para remover da tabela do carrinho
-                
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -354,9 +412,15 @@ public class Debitar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Debitar d = new Debitar();
-                d.setVisible(true);
-                d.setLocationRelativeTo(null);
+                Debitar d;
+                try {
+                    d = new Debitar();
+                    d.setVisible(true);
+                    d.setLocationRelativeTo(null);
+                } catch (Exception ex) {
+                    Logger.getLogger(Debitar.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
 
             }
         });
@@ -380,17 +444,17 @@ public class Debitar extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void carregarProduto() throws Exception {
-        List<Produto> lista = daoP.list();
-        
+        List<Produto> lista = daoProduto.list();
+
         DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
         modelo.addColumn("Nome");
         modelo.addColumn("Preço Venda");
-        
-          if (lista.size() == 0) {
+
+        if (lista.size() == 0) {
             modelo.addRow(new String[]{"Não tem produto",
-                 null});
-            }
-  
+                null});
+        }
+
         for (int i = 0; i < lista.size(); i++) {
             Produto p = lista.get(i);
             modelo.addRow(new String[]{

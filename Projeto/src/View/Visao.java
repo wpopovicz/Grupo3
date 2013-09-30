@@ -22,7 +22,6 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
-import org.hibernate.Session;
 
 /**
  *
@@ -73,11 +72,9 @@ public class Visao extends javax.swing.JFrame {
         jMenuItemProdutoAlterar = new javax.swing.JMenuItem();
         jMenu6Creditar = new javax.swing.JMenu();
         jMenu7Debitar = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItemProdutoFaltando = new javax.swing.JMenuItem();
-        jMenuItemCompra = new javax.swing.JMenuItem();
-        jMenu1Ajuda = new javax.swing.JMenu();
+        jMenuRelatorio = new javax.swing.JMenu();
         jMenu2Sobre = new javax.swing.JMenu();
+        jMenu1Ajuda = new javax.swing.JMenu();
 
         jButton3.setText("jButton3");
 
@@ -131,7 +128,7 @@ public class Visao extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(88, 88, 88)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -193,25 +190,17 @@ public class Visao extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1Cliente);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1380342968_category_item.png"))); // NOI18N
+        jMenu2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Goiabinha\\Desktop\\Grupo3.git\\Projeto\\src\\Imagem\\1380342968_category_item.png")); // NOI18N
         jMenu2.setToolTipText("Categoria");
 
-        jMenuItem2.setText("Gerenciar");
+        jMenuItem2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Goiabinha\\Desktop\\Grupo3.git\\Projeto\\src\\Imagem\\1380342950_category_item.png")); // NOI18N
+        jMenuItem2.setText("Categoria");
         jMenuItem2.setToolTipText("Cadastrar Categoria");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
         jMenu2.add(jMenuItem2);
 
-        jMenuItem4.setText("Cadastrar");
+        jMenuItem4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Goiabinha\\Desktop\\Grupo3.git\\Projeto\\src\\Imagem\\1373341694_search_magnifying_glass_find.png")); // NOI18N
+        jMenuItem4.setText("Localizar");
         jMenuItem4.setToolTipText("Localizar Categoria");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
         jMenu2.add(jMenuItem4);
 
         jMenuBar1.add(jMenu2);
@@ -243,16 +232,11 @@ public class Visao extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2Produto);
 
-        jMenu6Creditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1373340942_03.png"))); // NOI18N
+        jMenu6Creditar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Goiabinha\\Desktop\\Grupo3.git\\Projeto\\src\\Imagem\\dinheiro2.png")); // NOI18N
         jMenu6Creditar.setToolTipText("Creditar");
         jMenu6Creditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu6CreditarMouseClicked(evt);
-            }
-        });
-        jMenu6Creditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu6CreditarActionPerformed(evt);
             }
         });
         jMenuBar1.add(jMenu6Creditar);
@@ -266,30 +250,23 @@ public class Visao extends javax.swing.JFrame {
         });
         jMenuBar1.add(jMenu7Debitar);
 
-        jMenu1.setToolTipText("Relatório");
-        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuRelatorio.setIcon(new javax.swing.ImageIcon("C:\\Users\\Goiabinha\\Desktop\\Grupo3.git\\Projeto\\src\\Imagem\\relatorio.png")); // NOI18N
+        jMenuRelatorio.setToolTipText("Relatório de produtos em falta");
+        jMenuRelatorio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu1MouseClicked(evt);
+                jMenuRelatorioMouseClicked(evt);
             }
         });
+        jMenuBar1.add(jMenuRelatorio);
 
-        jMenuItemProdutoFaltando.setText("de  produto faltando");
-        jMenuItemProdutoFaltando.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemProdutoFaltandoActionPerformed(evt);
+        jMenu2Sobre.setIcon(new javax.swing.ImageIcon("C:\\Users\\Goiabinha\\Desktop\\Grupo3.git\\Projeto\\src\\Imagem\\1380342675_Information.png")); // NOI18N
+        jMenu2Sobre.setToolTipText("Sobre");
+        jMenu2Sobre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2SobreMouseClicked(evt);
             }
         });
-        jMenu1.add(jMenuItemProdutoFaltando);
-
-        jMenuItemCompra.setText("de venda");
-        jMenuItemCompra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemCompraActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItemCompra);
-
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenu2Sobre);
 
         jMenu1Ajuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/siteajuda.png"))); // NOI18N
         jMenu1Ajuda.setToolTipText("Ajuda");
@@ -299,14 +276,6 @@ public class Visao extends javax.swing.JFrame {
             }
         });
         jMenuBar1.add(jMenu1Ajuda);
-
-        jMenu2Sobre.setToolTipText("Sobre");
-        jMenu2Sobre.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu2SobreMouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(jMenu2Sobre);
 
         setJMenuBar(jMenuBar1);
 
@@ -332,9 +301,16 @@ public class Visao extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Debitar d = new Debitar();
-        d.setVisible(true);
-        d.setLocationRelativeTo(null);
+        this.setEnabled(false);
+        Debitar d;
+        try {
+            d = new Debitar();
+            d.setVisible(true);
+            d.setLocationRelativeTo(null);
+        } catch (Exception ex) {
+            Logger.getLogger(Visao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
@@ -347,12 +323,14 @@ public class Visao extends javax.swing.JFrame {
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         // TODO add your handling code here:
+        this.setEnabled(false);
         Credito s = new Credito();
         s.setVisible(true);
         s.setLocationRelativeTo(null);
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jMenuItemClienteAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteAlterarActionPerformed
+        this.setEnabled(false);
         NewConsulta q = new NewConsulta();
         q.setVisible(true);
         q.setLocationRelativeTo(null);
@@ -380,7 +358,7 @@ public class Visao extends javax.swing.JFrame {
         try {
             String local = System.getProperty("user.dir");
             //uri = new URI("C:\\Users\\willian\\Desktop\\Grupo3\\Projeto\\Site");
-            uri = new URI(local + "\\Site\\Help.xhtml");
+            uri = new URI(local + "/Site/Help.xhtml");
             desktop.browse(uri);
         } catch (IOException ioe) {
             ioe.printStackTrace();
@@ -390,21 +368,30 @@ public class Visao extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1AjudaMouseClicked
 
     private void jMenu2SobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2SobreMouseClicked
+        this.setEnabled(false);
         Sobre w = new Sobre();
         w.setVisible(true);
         w.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenu2SobreMouseClicked
 
     private void jMenu6CreditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu6CreditarMouseClicked
+        this.setEnabled(false);
         Credito s = new Credito();
         s.setVisible(true);
         s.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenu6CreditarMouseClicked
 
     private void jMenu7DebitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7DebitarMouseClicked
-        Debitar d = new Debitar();
-        d.setVisible(true);
-        d.setLocationRelativeTo(null);
+        this.setEnabled(false);
+        Debitar d;
+        try {
+            d = new Debitar();
+            d.setVisible(true);
+            d.setLocationRelativeTo(null);
+        } catch (Exception ex) {
+            Logger.getLogger(Visao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jMenu7DebitarMouseClicked
 
     private void jMenuItemProdutoAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoAlterarActionPerformed
@@ -426,23 +413,18 @@ public class Visao extends javax.swing.JFrame {
         l.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItemProdutoCadastroActionPerformed
 
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-    }//GEN-LAST:event_jMenu1MouseClicked
-
-    private void jMenuItemProdutoFaltandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoFaltandoActionPerformed
+    private void jMenuRelatorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuRelatorioMouseClicked
         try {
             // obtem o arquivo de relatorio compilado
-            URL arquivo = getClass().getResource("ProdutoEmFalta.jasper");
+            URL arquivo = getClass().getResource("relatorio.jasper");
 
             // carrega o relatorio
             JasperReport jasperReport = (JasperReport) JRLoader.loadObject(arquivo);
 
             // preenche o relatorio com os dados do BD
-
             EntityManager em = HibernateFactory.getEntityManager();
             em.getTransaction().begin();
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, new HashMap());
-            em.getTransaction().commit();
 
             // cria visualizador de relatorio
             JasperViewer jrviewer = new JasperViewer(jasperPrint, false);
@@ -454,47 +436,26 @@ public class Visao extends javax.swing.JFrame {
             frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
             frame.setVisible(true);
 
+
         } catch (Exception e) {
-            e.printStackTrace();
             JOptionPane.showMessageDialog(null, "ERRO: " + e);
-
         }
-    }//GEN-LAST:event_jMenuItemProdutoFaltandoActionPerformed
 
-    private void jMenuItemCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCompraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemCompraActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        try {
-            this.setVisible(false);
-            CategoriaManager c = new CategoriaManager(this, rootPaneCheckingEnabled);
-            c.setVisible(true);
-            c.setLocationRelativeTo(null);
-        } catch (Exception ex) {
-            Logger.getLogger(Visao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void jMenu6CreditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu6CreditarActionPerformed
-        this.setVisible(false);
-        CategoriaInsert d = new CategoriaInsert();
-        d.setVisible(true);
-        d.setLocationRelativeTo(null);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu6CreditarActionPerformed
+    }//GEN-LAST:event_jMenuRelatorioMouseClicked
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+        /*
+         * Set the Nimbus look and feel
+         */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        /*
+         * If Nimbus (introduced in Java SE 6) is not available, stay with the
+         * default look and feel. For details see
+         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -514,8 +475,11 @@ public class Visao extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /*
+         * Create and display the form
+         */
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 Visao v = new Visao();
                 v.setVisible(true);
@@ -529,7 +493,6 @@ public class Visao extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu1Ajuda;
     private javax.swing.JMenu jMenu1Cliente;
     private javax.swing.JMenu jMenu2;
@@ -548,10 +511,9 @@ public class Visao extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItemClienteAlterar;
     private javax.swing.JMenuItem jMenuItemClienteCadastrar;
-    private javax.swing.JMenuItem jMenuItemCompra;
     private javax.swing.JMenuItem jMenuItemProdutoAlterar;
     private javax.swing.JMenuItem jMenuItemProdutoCadastro;
-    private javax.swing.JMenuItem jMenuItemProdutoFaltando;
+    private javax.swing.JMenu jMenuRelatorio;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;

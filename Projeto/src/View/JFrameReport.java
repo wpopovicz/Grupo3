@@ -1,13 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * JFrameReport.java
- *
- * Created on 08/06/2011, 17:23:45
- */
 
 package View;
 
@@ -15,7 +5,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author marcos
+ * @author Popovicz
  */
 public class JFrameReport extends javax.swing.JFrame {
 

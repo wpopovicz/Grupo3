@@ -88,11 +88,6 @@ public class NewConsulta extends javax.swing.JFrame {
                 jTextFieldPesquisarFocusGained(evt);
             }
         });
-        jTextFieldPesquisar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldPesquisarKeyTyped(evt);
-            }
-        });
 
         jButtonPesquisar.setText("Pesquisar");
         jButtonPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -296,13 +291,6 @@ public class NewConsulta extends javax.swing.JFrame {
         this.telaAnterior.toFront();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextFieldPesquisarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPesquisarKeyTyped
-        String caracteres = "0987654321.";
-        if (!caracteres.contains(evt.getKeyChar() + "")) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_jTextFieldPesquisarKeyTyped
-
     /**
      * @param args the command line arguments
      */
@@ -393,7 +381,7 @@ public class NewConsulta extends javax.swing.JFrame {
         categoria = new Categoria();
         Pessoa p = new Pessoa();
         DaoPessoa daoP = new DaoPessoa();
-
+        
         String consulta = s;
 //        ArrayList<Produto> lista;
 //        lista = (ArrayList<Produto>) produto.list("produto" , Operator.LIKE , consulta);

@@ -56,7 +56,9 @@ public class Pessoa implements Serializable{
     public String getSenha() {
         return senha;
     }
-
+    public void setSenha(char[] senha) {
+        this.senha = new String(senha);
+    }
     public void setSenha(String senha) {
         this.senha = senha;
     }

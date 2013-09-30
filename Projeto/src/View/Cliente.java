@@ -278,17 +278,21 @@ public class Cliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Informe um RA!");
         }
 //        categoria.setCargo(jComboBoxFuncao.getSelectedItem().toString());
-        
+
         p.setCategoria(categoria);
         int cod = Integer.parseInt(jTextFieldRA.getText());
         p.setCodigo(cod);
         p.setNome(jTextFieldNome.getText());
         p.setEmail(jTextFieldEmail.getText());
-        String senha = new String(jPasswordField1.getPassword());
-        p.setSenha(senha);
+        p.setSenha(jPasswordField1.getPassword());
+
         try {
             daoPessoa.persist(p);
             JOptionPane.showMessageDialog(this, "Cadastro realizado com Sucesso");
+            jTextFieldEmail.setText("");
+            jTextFieldNome.setText("");
+            jPasswordField1.setText("");
+            jTextFieldRA.setText("");
         } catch (Exception ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -302,7 +306,7 @@ public class Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldRAActionPerformed
 
     private void jTextFieldRAKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldRAKeyTyped
-        String caracteres = "0987654321.";
+        String caracteres = "0987654321";
         if (!caracteres.contains(evt.getKeyChar() + "")) {
             evt.consume();
         }
@@ -319,10 +323,14 @@ public class Cliente extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+        /*
+         * Set the Nimbus look and feel
+         */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        /*
+         * If Nimbus (introduced in Java SE 6) is not available, stay with the
+         * default look and feel. For details see
+         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -342,8 +350,11 @@ public class Cliente extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /*
+         * Create and display the form
+         */
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 new Cliente().setVisible(true);
             }
@@ -367,11 +378,11 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldRA;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
-private void carregarPessoaNosCampos() {
+    private void carregarPessoaNosCampos() {
         String s = String.valueOf(this.p.getCodigo());
         jTextFieldRA.setText(s);
-        jTextFieldEmail.setText(this.p.getEmail()+ "");
-        jTextFieldNome.setText(this.p.getNome()+ "");
+        jTextFieldEmail.setText(this.p.getEmail() + "");
+        jTextFieldNome.setText(this.p.getNome() + "");
         jComboBoxFuncao.setSelectedItem(this.p.getCategoria());
     }
 }

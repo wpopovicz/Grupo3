@@ -22,30 +22,30 @@ import javax.swing.JOptionPane;
  */
 public class Creditar2 extends javax.swing.JFrame {
 
-    // faz o seguinte, cadastra mais dois usuarios com ra 12 e ra 1234 e tenta alterar o saldo desses 3 cara.
+    
+       // faz o seguinte, cadastra mais dois usuarios com ra 12 e ra 1234 e tenta alterar o saldo desses 3 cara.
     Pessoa p;
     DaoPessoa daoP = new DaoPessoa();
     Categoria cat = new Categoria();
     DaoCategoria dcat = new DaoCategoria();
     HibernateDao hib = new HibernateDao();
-    private Credito telaAnterior;
 
     /**
      * Creates new form Creditar2
      */
-    public Creditar2(String cod) {
+    public  Creditar2(String cod) {
         initComponents();
         this.setLocationRelativeTo(null);
 
         String consulta = cod;
         DaoPessoa dao2 = new DaoPessoa();
-
+        
         Filter f = new Filter("codigo", Operator.EQUAL, consulta);
         // codigo é unico né, entao a lista só tem uma pessoa né, logo ela é a 0 da lista.
         List<Pessoa> lista;
         try {
             lista = dao2.list(f);
-            p = lista.get(0);
+            p = lista.get(0);   
             // vc tava criando outra pesssoa, aqui vc ta pegando a pessoa do banco n criando.
             for (Pessoa e : lista) {
                 jTextField1.setText(e.getNome());
@@ -115,11 +115,6 @@ public class Creditar2 extends javax.swing.JFrame {
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
-            }
-        });
-        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField3KeyTyped(evt);
             }
         });
 
@@ -226,8 +221,8 @@ public class Creditar2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-
+        
+        
         if (jTextField3.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Informe um valor!");
 //        } else if (p.getSaldo() == null) {
@@ -240,12 +235,12 @@ public class Creditar2 extends javax.swing.JFrame {
 //            } catch (Exception ex) {
 //                Logger.getLogger(Creditar2.class.getName()).log(Level.SEVERE, null, ex);
 //            }
-        } else {
-            double cod1 = Double.parseDouble(jTextField3.getText());
-            double cod = p.getSaldo();
-            double saldo = cod + cod1;
-            p.setSaldo(cod + cod1);
-
+        }else{
+             double cod1 = Double.parseDouble(jTextField3.getText());
+             double cod = p.getSaldo();
+             double saldo = cod+cod1;
+            p.setSaldo(cod+cod1);
+            
             System.out.println(p);
             try {
                 daoP.persist(p);
@@ -263,17 +258,11 @@ public class Creditar2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.dispose();
-        telaAnterior.setEnabled(true);
-        this.telaAnterior.toFront();
+        this.setVisible(false);
+        Credito d = new Credito();
+        d.setVisible(true);
+        d.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
-        String caracteres = "0987654321.";
-        if (!caracteres.contains(evt.getKeyChar() + "")) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_jTextField3KeyTyped
 
     /**
      * @param args the command line arguments

@@ -4,8 +4,12 @@
  */
 package servelets;
 
+import Beans.Pessoa;
+import Model.HibernateDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +35,7 @@ public class NewServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -61,16 +65,26 @@ public class NewServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
         PrintWriter out = response.getWriter();
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
-        if(senha.equals("123mudar")){
-        response.sendRedirect("ConsultaCredito.jsp");
+        HibernateDao hibernatedao = new HibernateDao();
+        Pessoa p;
+        try {
+            p = (Pessoa) hibernatedao.retrieve(email);
+
+            if (!senha.equals(p.getSenha())){
+                response.sendRedirect("inicial.jsp");
+            } else {
+                response.sendRedirect("ConsultaCredito.jsp");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(NewServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
+
     }
 
     /**

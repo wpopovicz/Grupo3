@@ -93,28 +93,28 @@
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagem/1380342968_category_item.png"/>
+              <Image iconType="2" name="C:\Users\Goiabinha\Desktop\Grupo3.git\Projeto\src\Imagem\1380342968_category_item.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Categoria"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Gerenciar"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\Goiabinha\Desktop\Grupo3.git\Projeto\src\Imagem\1380342950_category_item.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Categoria"/>
                 <Property name="toolTipText" type="java.lang.String" value="Cadastrar Categoria"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
-              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cadastrar"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\Users\Goiabinha\Desktop\Grupo3.git\Projeto\src\Imagem\1373341694_search_magnifying_glass_find.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Localizar"/>
                 <Property name="toolTipText" type="java.lang.String" value="Localizar Categoria"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem4ActionPerformed"/>
-              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -161,13 +161,12 @@
         <Menu class="javax.swing.JMenu" name="jMenu6Creditar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagem/1373340942_03.png"/>
+              <Image iconType="2" name="C:\Users\Goiabinha\Desktop\Grupo3.git\Projeto\src\Imagem\dinheiro2.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Creditar"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu6CreditarMouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu6CreditarActionPerformed"/>
           </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu7Debitar">
@@ -181,31 +180,27 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu7DebitarMouseClicked"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
+        <Menu class="javax.swing.JMenu" name="jMenuRelatorio">
           <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="Relat&#xf3;rio"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="C:\Users\Goiabinha\Desktop\Grupo3.git\Projeto\src\Imagem\relatorio.png"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Relat&#xf3;rio de produtos em falta"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu1MouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenuRelatorioMouseClicked"/>
           </Events>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemProdutoFaltando">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="de  produto faltando"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemProdutoFaltandoActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemCompra">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="de venda"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemCompraActionPerformed"/>
-              </Events>
-            </MenuItem>
-          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu2Sobre">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="C:\Users\Goiabinha\Desktop\Grupo3.git\Projeto\src\Imagem\1380342675_Information.png"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Sobre"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu2SobreMouseClicked"/>
+          </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu1Ajuda">
           <Properties>
@@ -218,14 +213,6 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu1AjudaMouseClicked"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2Sobre">
-          <Properties>
-            <Property name="toolTipText" type="java.lang.String" value="Sobre"/>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu2SobreMouseClicked"/>
-          </Events>
-        </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>
@@ -235,7 +222,6 @@
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
