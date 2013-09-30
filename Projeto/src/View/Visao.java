@@ -4,6 +4,7 @@
  */
 package View;
 
+import Model.DBConnection;
 import Model.HibernateDao;
 import Model.HibernateFactory;
 import java.awt.Desktop;
@@ -22,6 +23,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import org.eclipse.persistence.sessions.Session;
 
 /**
  *
@@ -128,7 +130,7 @@ public class Visao extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(88, 88, 88)
                 .addComponent(jLabel1)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -190,15 +192,15 @@ public class Visao extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1Cliente);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Goiabinha\\Desktop\\Grupo3.git\\Projeto\\src\\Imagem\\1380342968_category_item.png")); // NOI18N
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1380342968_category_item.png"))); // NOI18N
         jMenu2.setToolTipText("Categoria");
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Goiabinha\\Desktop\\Grupo3.git\\Projeto\\src\\Imagem\\1380342950_category_item.png")); // NOI18N
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1380342950_category_item.png"))); // NOI18N
         jMenuItem2.setText("Categoria");
         jMenuItem2.setToolTipText("Cadastrar Categoria");
         jMenu2.add(jMenuItem2);
 
-        jMenuItem4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Goiabinha\\Desktop\\Grupo3.git\\Projeto\\src\\Imagem\\1373341694_search_magnifying_glass_find.png")); // NOI18N
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1375980081_find.png"))); // NOI18N
         jMenuItem4.setText("Localizar");
         jMenuItem4.setToolTipText("Localizar Categoria");
         jMenu2.add(jMenuItem4);
@@ -232,7 +234,7 @@ public class Visao extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2Produto);
 
-        jMenu6Creditar.setIcon(new javax.swing.ImageIcon("C:\\Users\\Goiabinha\\Desktop\\Grupo3.git\\Projeto\\src\\Imagem\\dinheiro2.png")); // NOI18N
+        jMenu6Creditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/dinheiro2.png"))); // NOI18N
         jMenu6Creditar.setToolTipText("Creditar");
         jMenu6Creditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -250,7 +252,7 @@ public class Visao extends javax.swing.JFrame {
         });
         jMenuBar1.add(jMenu7Debitar);
 
-        jMenuRelatorio.setIcon(new javax.swing.ImageIcon("C:\\Users\\Goiabinha\\Desktop\\Grupo3.git\\Projeto\\src\\Imagem\\relatorio.png")); // NOI18N
+        jMenuRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/relatorio.png"))); // NOI18N
         jMenuRelatorio.setToolTipText("Relatório de produtos em falta");
         jMenuRelatorio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -259,7 +261,7 @@ public class Visao extends javax.swing.JFrame {
         });
         jMenuBar1.add(jMenuRelatorio);
 
-        jMenu2Sobre.setIcon(new javax.swing.ImageIcon("C:\\Users\\Goiabinha\\Desktop\\Grupo3.git\\Projeto\\src\\Imagem\\1380342675_Information.png")); // NOI18N
+        jMenu2Sobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1380342675_Information.png"))); // NOI18N
         jMenu2Sobre.setToolTipText("Sobre");
         jMenu2Sobre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -422,10 +424,10 @@ public class Visao extends javax.swing.JFrame {
             JasperReport jasperReport = (JasperReport) JRLoader.loadObject(arquivo);
 
             // preenche o relatorio com os dados do BD
-            EntityManager em = HibernateFactory.getEntityManager();
-            em.getTransaction().begin();
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, new HashMap());
 
+        
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, new HashMap(),DBConnection.getConnection());
+                
             // cria visualizador de relatorio
             JasperViewer jrviewer = new JasperViewer(jasperPrint, false);
 
