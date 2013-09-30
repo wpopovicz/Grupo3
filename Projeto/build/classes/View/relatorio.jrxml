@@ -95,10 +95,6 @@ FROM
 	</background>
 	<title>
 		<band height="70" splitType="Stretch">
-			<image>
-				<reportElement uuid="0e429280-9d0c-44c2-bffb-562d25682823" x="275" y="0" width="300" height="64"/>
-				<imageExpression><![CDATA["leaf_banner_green.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement uuid="95a7c47e-1808-4bc8-af1c-e6a41730477c" style="Title" x="0" y="13" width="263" height="33"/>
 				<textElement verticalAlignment="Middle"/>

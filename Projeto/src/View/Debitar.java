@@ -6,13 +6,10 @@ package View;
 
 import Model.DaoPessoa;
 import Model.DaoProduto;
-import Model.Filter;
 import Model.HibernateDao;
-import Model.Operator;
 import entities.Categoria;
 import entities.Pessoa;
 import entities.Produto;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -99,6 +96,7 @@ public class Debitar extends javax.swing.JFrame {
 //        return produto;
 //    }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

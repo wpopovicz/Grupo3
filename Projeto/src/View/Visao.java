@@ -6,7 +6,6 @@ package View;
 
 import Model.DBConnection;
 import Model.HibernateDao;
-import Model.HibernateFactory;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
@@ -15,7 +14,6 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.EntityManager;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -23,7 +21,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
-import org.eclipse.persistence.sessions.Session;
+
 
 /**
  *

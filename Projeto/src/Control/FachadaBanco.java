@@ -6,6 +6,7 @@ package Control;
 
 import entities.Pessoa;
 
+
 /**
  *
  * @author Popovicz
@@ -25,6 +26,7 @@ public class FachadaBanco {
         if (p != null) {
             gerenciaTransacoes.debitar(p, valor);
             System.out.println("Debitado com sucesso!");
+            JOptionPane.showMessageDialog(this, "Atualizado com sucesso");
         } else {
             System.out.println("Erro: Usuário Inexistente!");
         }
