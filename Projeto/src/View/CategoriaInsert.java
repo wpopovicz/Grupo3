@@ -15,12 +15,32 @@ import javax.swing.JOptionPane;
  * @author a1294083
  */
 public class CategoriaInsert extends javax.swing.JFrame {
-    
+
+    private CategoriaManager categoriaManager;
+    private Categoria categoria;
+    private Visao telaAnterior;
+    private Cliente cliente;
+    private String tela;
+
     /**
      * Creates new form CategoriaInsert
      */
     public CategoriaInsert() {
         initComponents();
+        this.setLocationRelativeTo(null);
+    }
+
+    public CategoriaInsert(CategoriaManager categoriaManager, Categoria c) {
+        this();
+
+        this.categoriaManager = categoriaManager;
+        this.categoria = c;
+        carregarCategoriaNosCampos();
+    }
+
+    public CategoriaInsert(Visao telaAnterior) {
+        this();
+        this.telaAnterior = telaAnterior;
     }
 
     /**
@@ -41,6 +61,11 @@ public class CategoriaInsert extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setText("Nome da categoria:");
 
@@ -132,38 +157,57 @@ public class CategoriaInsert extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        HibernateDao h = new HibernateDao();
         if (jTextField1.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(this, "Informe um Nome!");}
-            if (jTextField2.getText().trim().equals("")) {
-                JOptionPane.showMessageDialog(this, "Informe um Valor!");}
-
-                Categoria c = new Categoria();
-                HibernateDao h = new HibernateDao();
-                c.setCargo(jTextField1.getText());
-                double aDouble = Double.parseDouble(jTextField2.getText());
-                c.setRefeicao(aDouble);
-                try {
-                    h.persist(c);
-                    JOptionPane.showMessageDialog(this, "Cadastro realizado com sucesso!");
-                } catch (Exception ex) {
-                    Logger.getLogger(CategoriaInsert.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            JOptionPane.showMessageDialog(this, "Informe um Nome!");
+        }
+        if (jTextField2.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "Informe um Valor!");
+        }
+        if (categoria == null) {
+            Categoria c = new Categoria();
+            c.setCargo(jTextField1.getText());
+            double aDouble = Double.parseDouble(jTextField2.getText());
+            c.setRefeicao(aDouble);
+            try {
+                h.persist(c);
+                JOptionPane.showMessageDialog(this, "Cadastro realizado com sucesso!");
+            } catch (Exception ex) {
+                Logger.getLogger(CategoriaInsert.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            categoria.setCargo(jTextField1.getText());
+            double aDouble = Double.parseDouble(jTextField2.getText());
+            categoria.setRefeicao(aDouble);
+            try {
+                h.persist(categoria);
+                JOptionPane.showMessageDialog(this, "Cadastro realizado com sucesso!");
+            } catch (Exception ex) {
+                Logger.getLogger(CategoriaInsert.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.setVisible(false);
-        Cliente c = new Cliente(null);
-        c.setVisible(true);
-        c.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-            /**
-             * @param args the command line arguments
-             */
-    
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        if (categoriaManager != null) {
+            this.dispose();
+            categoriaManager.setEnabled(true);
+            this.categoriaManager.toFront();
+        }else if (cliente != null) {
+            this.dispose();
+            cliente.setEnabled(true);
+            this.cliente.toFront();
+        } 
+    }//GEN-LAST:event_formWindowClosed
 
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -204,4 +248,15 @@ public class CategoriaInsert extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
+
+    private void carregarCategoriaNosCampos() {
+        String s = String.valueOf(this.categoria.getRefeicao());
+        jTextField1.setText(this.categoria.getCargo() + "");
+        jTextField2.setText(s);
+    }
+
+    public CategoriaInsert(Cliente cliente) {
+        this();
+        this.cliente = cliente;
+    }
 }

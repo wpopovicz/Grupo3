@@ -22,7 +22,6 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
-
 /**
  *
  * @author a1294121
@@ -201,6 +200,11 @@ public class Visao extends javax.swing.JFrame {
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1375980081_find.png"))); // NOI18N
         jMenuItem4.setText("Localizar");
         jMenuItem4.setToolTipText("Localizar Categoria");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem4);
 
         jMenuBar1.add(jMenu2);
@@ -237,6 +241,11 @@ public class Visao extends javax.swing.JFrame {
         jMenu6Creditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu6CreditarMouseClicked(evt);
+            }
+        });
+        jMenu6Creditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu6CreditarActionPerformed(evt);
             }
         });
         jMenuBar1.add(jMenu6Creditar);
@@ -324,9 +333,7 @@ public class Visao extends javax.swing.JFrame {
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         // TODO add your handling code here:
         this.setEnabled(false);
-        Credito s = new Credito();
-        s.setVisible(true);
-        s.setLocationRelativeTo(null);
+        new Credito(this).setVisible(true);
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jMenuItemClienteAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteAlterarActionPerformed
@@ -423,9 +430,9 @@ public class Visao extends javax.swing.JFrame {
 
             // preenche o relatorio com os dados do BD
 
-        
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, new HashMap(),DBConnection.getConnection());
-                
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, new HashMap(), DBConnection.getConnection());
+
             // cria visualizador de relatorio
             JasperViewer jrviewer = new JasperViewer(jasperPrint, false);
 
@@ -443,6 +450,23 @@ public class Visao extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jMenuRelatorioMouseClicked
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        this.setEnabled(false);
+        CategoriaManager a = null;
+        try {
+            a = new CategoriaManager(this);
+        } catch (Exception ex) {
+            Logger.getLogger(Visao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        a.setVisible(true);
+        a.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenu6CreditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu6CreditarActionPerformed
+        this.setEnabled(false);
+        new Credito(this).setEnabled(true);
+    }//GEN-LAST:event_jMenu6CreditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -479,7 +503,6 @@ public class Visao extends javax.swing.JFrame {
          * Create and display the form
          */
         java.awt.EventQueue.invokeLater(new Runnable() {
-
             public void run() {
                 Visao v = new Visao();
                 v.setVisible(true);

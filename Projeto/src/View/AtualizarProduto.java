@@ -9,10 +9,12 @@ import Model.Filter;
 import Model.HibernateDao;
 import Model.Operator;
 import entities.Produto;
+import java.awt.Color;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -334,6 +336,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
+        
         Produto p;
         String consulta = jTextFieldConsultar.getText();
 
@@ -378,7 +381,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
                 p.isHabilitadoVendas() + ""});
         }
         jTable2.setModel(modelo);
-    
+        
     }//GEN-LAST:event_jButtonConsultarActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed

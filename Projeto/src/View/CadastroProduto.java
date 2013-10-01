@@ -7,9 +7,11 @@ package View;
 import Control.ControleProduto;
 import entities.Produto;
 import Model.HibernateDao;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -293,6 +295,11 @@ public class CadastroProduto extends javax.swing.JFrame {
                     } else {
                         JOptionPane.showMessageDialog(this, "Cadastro Não realizado. "
                                 + "\n\nFaltando dados");
+             jTextFieldnome.setBorder(new LineBorder(Color.red));
+             jTextFieldcusto.setBorder(new LineBorder(Color.red));
+             jTextFieldvenda.setBorder(new LineBorder(Color.red));
+             jTextArea1.setBorder(new LineBorder(Color.red));
+        
                     }
                 } catch (Exception ex) {
                     Logger.getLogger(CadastroProduto.class.getName()).log(Level.SEVERE, null, ex);

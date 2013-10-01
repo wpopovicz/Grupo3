@@ -257,10 +257,8 @@ public class Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.setVisible(false);
-        CategoriaInsert ct = new CategoriaInsert();
-        ct.setVisible(true);
-        ct.setLocationRelativeTo(null);
+        this.setEnabled(false);
+        new CategoriaInsert(this).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBoxFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFuncaoActionPerformed
