@@ -166,9 +166,9 @@ public class CompraProduto extends javax.swing.JFrame {
             System.out.println(p.toString());
 
             jButtonAdicionar.setEnabled(true);
-            telaAnterior.add(this, p);
+            telaAnterior.carregarProduto(p);
         } catch (Exception e) {
-
+            e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Selecione um produto!");
             jButtonAdicionar.setEnabled(true);
         }

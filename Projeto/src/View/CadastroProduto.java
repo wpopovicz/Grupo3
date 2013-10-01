@@ -227,9 +227,13 @@ public class CadastroProduto extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // cancelar
-        this.dispose();
-        telaAnterior.setEnabled(true);
-        this.telaAnterior.toFront();
+        if (this.produto == null) {
+            telaAnterior.setEnabled(true);
+            this.telaAnterior.toFront();
+        } else {
+            atualizarProduto.setEnabled(true);
+            atualizarProduto.toFront();
+        }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
