@@ -4,6 +4,7 @@
  */
 package View;
 
+import Control.FachadaBanco;
 import Model.DaoPessoa;
 import Model.DaoProduto;
 import Model.HibernateDao;
@@ -37,7 +38,11 @@ public class Debitar extends javax.swing.JFrame {
      */
     public Debitar() throws Exception {
         initComponents();
-        carregarProduto();
+         DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
+        modelo.addColumn("Nome");
+        modelo.addColumn("Preço Venda");
+        jTable1.setModel(modelo);
+//        carregarProduto();
         setLocationRelativeTo(null);
     }
 
@@ -52,50 +57,6 @@ public class Debitar extends javax.swing.JFrame {
         this.atualizarProduto = atualizarProduto;
         this.produto = p;
     }
-
-//    private Produto login() {
-//            Filter f = new Filter("codigo", Operator.EQUAL, RA);
-//            // codigo é unico né, entao a lista só tem uma pessoa né, logo ela é a 0 da lista.
-//            List<Pessoa> lista;
-//
-//            try {
-//                lista = daoP.list(f);
-//                pessoa = lista.get(0);
-//                if (lista.get(0) == null) {
-//                    JOptionPane.showMessageDialog(this, "Não existe esse RA/SIAPE"
-//                            + "\n digite novamente !");
-//                    jTextFieldRA.setText("");
-//                    jPasswordFieldSenha.setText("");
-//                }
-//
-//                for (Pessoa e : lista) {
-//                    pessoa.setId(e.getId());
-//                    pessoa.setSaldo(e.getSaldo());
-//                    pessoa.setCategoria(e.getCategoria());
-//                    pessoa.setCodigo(e.getCodigo());
-//                    pessoa.setNome(e.getNome());
-//                    pessoa.setSenha(e.getSenha());
-//                    pessoa.setEmail(e.getEmail());
-//                }
-//                if (senha == pessoa.getSenha()) {
-//                    JOptionPane.showMessageDialog(this, "Senha errada "
-//                            + "\n digite novamente !");
-//                    jTextFieldRA.setText("");
-//                    jPasswordFieldSenha.setText("");
-//                }
-//            } catch (Exception ex) {
-//                Logger.getLogger(Creditar2.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//            return null;
-//
-//        }
-//    }
-
-//    private Produto somandoAConta() {
-//        LoginPessoa().getSaldo();
-//        return produto;
-//    }
-
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -300,7 +261,7 @@ public class Debitar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextFieldValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldValorActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextFieldValorActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
@@ -308,7 +269,12 @@ public class Debitar extends javax.swing.JFrame {
         String RA = jTextFieldRA.getText();
         String senha = new String(jPasswordFieldSenha.getPassword());
         String valor = jTextFieldValor.getText();
-        Pessoa p1 = new Pessoa(RA , senha);
+        
+        FachadaBanco facade = new FachadaBanco();
+        facade.addPessoa(pessoa);
+        
+        facade.debitar(RA , senha, valor);
+        
         
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
@@ -316,7 +282,7 @@ public class Debitar extends javax.swing.JFrame {
         // Abrir a tela para adicionar o produto e valor para ser comprado:
         CompraProduto k = null;
         try {
-            k = new CompraProduto();
+            k = new CompraProduto(this);
         } catch (Exception ex) {
             Logger.getLogger(Debitar.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -361,7 +327,7 @@ public class Debitar extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         if (this.produto != null) {
             try {
-                carregarProduto();
+                carregarProduto(null);
             } catch (Exception ex) {
                 Logger.getLogger(Debitar.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -441,23 +407,14 @@ public class Debitar extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 
-    private void carregarProduto() throws Exception {
-        List<Produto> lista = daoProduto.list();
+    public void carregarProduto(Produto pes) throws Exception {
 
-        DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
-        modelo.addColumn("Nome");
-        modelo.addColumn("Preço Venda");
-
-        if (lista.size() == 0) {
-            modelo.addRow(new String[]{"Não tem produto",
-                null});
-        }
-
-        for (int i = 0; i < lista.size(); i++) {
-            Produto p = lista.get(i);
-            modelo.addRow(new String[]{
-                p.getNome(),
-                p.getPrecoVenda() + ""});
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        
+        if(pes != null){
+        modelo.addRow(new String[]{
+                pes.getNome(),
+                pes.getPrecoVenda() + ""});
         }
         jTable1.setModel(modelo);
     }

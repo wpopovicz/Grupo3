@@ -21,12 +21,11 @@ public class FachadaBanco {
         gerenciaTransacoes = new GerenciaTransacoes();
     }
 
-    public void deposito(int codigo, String senha, float valor) {
+    public void debitar(int codigo, String senha, float valor) {
         Pessoa p = gerenciaLogin.localizarPessoa(codigo, senha);
         if (p != null) {
             gerenciaTransacoes.debitar(p, valor);
             System.out.println("Debitado com sucesso!");
-            JOptionPane.showMessageDialog(this, "Atualizado com sucesso");
         } else {
             System.out.println("Erro: Usuário Inexistente!");
         }
@@ -44,5 +43,9 @@ public class FachadaBanco {
 
     public void addPessoa(Pessoa p) {
         gerenciaLogin.addPessoa(p);
+    }
+
+    public void debitar(String RA, String senha, String valor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

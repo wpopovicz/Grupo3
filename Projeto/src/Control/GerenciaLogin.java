@@ -4,28 +4,32 @@
  */
 package Control;
 
+import Model.DaoPessoa;
 import entities.Pessoa;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Popovicz
  */
 public class GerenciaLogin {
-    
-    private ArrayList<Pessoa> pessoa;
+    private DaoPessoa daoPessoa = new DaoPessoa();
+    private Pessoa pessoa;
+    private List<Pessoa> lista;
+//    private ArrayList<Pessoa> pessoa;
     
 
-        public GerenciaLogin() {
-            pessoa = new ArrayList<>();
+        public GerenciaLogin() throws Exception {
+            lista = daoPessoa.list();
         }
 
         public void addPessoa(Pessoa p) {
-            pessoa.add(p);
+            lista.add(p);
         }
 
         public Pessoa localizarPessoa(int codigo , String senha) {
-            for(Pessoa p : pessoa){
+            for(Pessoa p : lista){
                 if (p.getCodigo() == codigo){
                     if (p.getSenha().equals(senha)){
                         return p;

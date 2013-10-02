@@ -4,6 +4,7 @@
  */
 package Control;
 
+import Model.HibernateDao;
 import entities.Pessoa;
 
 /**
@@ -11,10 +12,12 @@ import entities.Pessoa;
  * @author Popovicz
  */
 public class GerenciaTransacoes {
-    public void debitar(Pessoa pes, float valor){
-        pes.setSaldo(pes.getSaldo() - valor);
+    private HibernateDao hibernatedao = new HibernateDao();
+    public void debitar(Pessoa p, float valor) throws Exception{
+        p.setSaldo(p.getSaldo() - valor);
+        hibernatedao.persist(p);
     }
-    public void creditar(Pessoa pes, float valor){
-        pes.setSaldo(pes.getSaldo() + valor);
+    public void creditar(Pessoa p, float valor){
+        p.setSaldo(p.getSaldo() + valor);
     }
 }
