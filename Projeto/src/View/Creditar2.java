@@ -22,47 +22,55 @@ import javax.swing.JOptionPane;
  */
 public class Creditar2 extends javax.swing.JFrame {
 
-    
-       // faz o seguinte, cadastra mais dois usuarios com ra 12 e ra 1234 e tenta alterar o saldo desses 3 cara.
+    // faz o seguinte, cadastra mais dois usuarios com ra 12 e ra 1234 e tenta alterar o saldo desses 3 cara.
     Pessoa p;
     DaoPessoa daoP = new DaoPessoa();
     Categoria cat = new Categoria();
     DaoCategoria dcat = new DaoCategoria();
     HibernateDao hib = new HibernateDao();
+    Credito creditar;
 
     /**
      * Creates new form Creditar2
      */
-    public  Creditar2(String cod) {
+    public Creditar2(String cod, Credito credito) {
         initComponents();
+        this.creditar = credito;
         this.setLocationRelativeTo(null);
 
         String consulta = cod;
         DaoPessoa dao2 = new DaoPessoa();
-        
+
         Filter f = new Filter("codigo", Operator.EQUAL, consulta);
         // codigo é unico né, entao a lista só tem uma pessoa né, logo ela é a 0 da lista.
         List<Pessoa> lista;
         try {
             lista = dao2.list(f);
-            p = lista.get(0);   
             // vc tava criando outra pesssoa, aqui vc ta pegando a pessoa do banco n criando.
-            for (Pessoa e : lista) {
-                jTextField1.setText(e.getNome());
-                String saldo = String.valueOf(e.getSaldo());
-                jTextField2.setText(saldo);
-                p.setId(e.getId());
-                p.setSaldo(e.getSaldo());
-                p.setCategoria(e.getCategoria());
-                p.setCodigo(e.getCodigo());
-                p.setNome(e.getNome());
-                p.setSenha(e.getSenha());
-                p.setEmail(e.getEmail());
-            }
+            if (lista.size() > 0) {
+                p = lista.get(0);
+                for (Pessoa e : lista) {
+                    jTextField1.setText(e.getNome());
+                    String saldo = String.valueOf(e.getSaldo());
+                    jTextField2.setText(saldo);
+                    p.setId(e.getId());
+                    p.setSaldo(e.getSaldo());
+                    p.setCategoria(e.getCategoria());
+                    p.setCodigo(e.getCodigo());
+                    p.setNome(e.getNome());
+                    p.setSenha(e.getSenha());
+                    p.setEmail(e.getEmail());
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Cliente não encontrado!");
+                this.setVisible(false);
+                dispose();
+        }
         } catch (Exception ex) {
             Logger.getLogger(Creditar2.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return;
+
+            }
+
     }
 
     private Creditar2() {
@@ -91,6 +99,11 @@ public class Creditar2 extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setText("Nome:");
 
@@ -221,8 +234,8 @@ public class Creditar2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        
+
+
         if (jTextField3.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Informe um valor!");
 //        } else if (p.getSaldo() == null) {
@@ -235,12 +248,12 @@ public class Creditar2 extends javax.swing.JFrame {
 //            } catch (Exception ex) {
 //                Logger.getLogger(Creditar2.class.getName()).log(Level.SEVERE, null, ex);
 //            }
-        }else{
-             double cod1 = Double.parseDouble(jTextField3.getText());
-             double cod = p.getSaldo();
-             double saldo = cod+cod1;
-            p.setSaldo(cod+cod1);
-            
+        } else {
+            double cod1 = Double.parseDouble(jTextField3.getText());
+            double cod = p.getSaldo();
+            double saldo = cod + cod1;
+            p.setSaldo(cod + cod1);
+
             System.out.println(p);
             try {
                 daoP.persist(p);
@@ -258,11 +271,14 @@ public class Creditar2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.setVisible(false);
-        Credito d = new Credito();
-        d.setVisible(true);
-        d.setLocationRelativeTo(null);
+       dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+       this.dispose();
+       creditar.setEnabled(true);
+       this.creditar.toFront();
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

@@ -338,9 +338,11 @@ public class Visao extends javax.swing.JFrame {
 
     private void jMenuItemClienteAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteAlterarActionPerformed
         this.setEnabled(false);
-        NewConsulta q = new NewConsulta();
-        q.setVisible(true);
-        q.setLocationRelativeTo(null);
+        try {
+            new NewConsulta(this, null).setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(Visao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuItemClienteAlterarActionPerformed
 
     private void jMenuBar1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jMenuBar1FocusGained

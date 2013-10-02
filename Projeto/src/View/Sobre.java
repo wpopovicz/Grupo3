@@ -34,10 +34,8 @@ public class Sobre extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
         jPanel1.setBackground(java.awt.Color.white);
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cartão Universitário", 0, 0, new java.awt.Font("Dialog", 1, 18), java.awt.Color.black)); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cartão Universitário", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), java.awt.Color.black)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("DejaVu Sans", 1, 13)); // NOI18N
         jLabel1.setText("Criadores do Programa");

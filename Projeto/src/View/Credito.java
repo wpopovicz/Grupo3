@@ -87,8 +87,8 @@ private Visao visao;
             JOptionPane.showMessageDialog(this, "Informe um RA/Siape");
         } else {
 
-            this.setVisible(false);
-            new Creditar2(cod).setVisible(true);
+            this.setEnabled(false);
+            new Creditar2(cod,this).setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -34,6 +34,7 @@ public class NewConsulta extends javax.swing.JFrame {
      */
     public NewConsulta() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -53,6 +54,12 @@ public class NewConsulta extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -287,9 +294,13 @@ public class NewConsulta extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        this.dispose();
         telaAnterior.setEnabled(true);
         this.telaAnterior.toFront();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
