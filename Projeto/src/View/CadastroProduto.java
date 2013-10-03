@@ -29,6 +29,7 @@ public class CadastroProduto extends javax.swing.JFrame {
      */
     private CadastroProduto() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     public CadastroProduto(Visao telaAnterior) {

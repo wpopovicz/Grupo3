@@ -51,8 +51,4 @@ public class HibernateFactory {
         }
         return entityManager;
     }
-
-    public static Connection getConnection() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

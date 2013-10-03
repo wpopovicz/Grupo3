@@ -35,6 +35,7 @@ public class Visao extends javax.swing.JFrame {
      */
     public Visao() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -89,7 +90,12 @@ public class Visao extends javax.swing.JFrame {
 
         jMenuItem1.setText("jMenuItem1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setBackground(java.awt.Color.white);
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cartão Universitário", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), javax.swing.UIManager.getDefaults().getColor("Button.darkShadow"))); // NOI18N
@@ -154,11 +160,11 @@ public class Visao extends javax.swing.JFrame {
         jButton4.setText("jButton4");
 
         jMenuBar1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jMenuBar1FocusGained(evt);
-            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jMenuBar1FocusLost(evt);
+            }
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jMenuBar1FocusGained(evt);
             }
         });
 
@@ -311,14 +317,9 @@ public class Visao extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.setEnabled(false);
-        Debitar d;
-        try {
-            d = new Debitar();
-            d.setVisible(true);
-            d.setLocationRelativeTo(null);
-        } catch (Exception ex) {
-            Logger.getLogger(Visao.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        DebitarRefeicao dr = new DebitarRefeicao();
+        dr.setVisible(true);
+        dr.setLocationRelativeTo(null);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -391,15 +392,10 @@ public class Visao extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu6CreditarMouseClicked
 
     private void jMenu7DebitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7DebitarMouseClicked
-        this.setEnabled(false);
-        Debitar d;
-        try {
-            d = new Debitar();
-            d.setVisible(true);
-            d.setLocationRelativeTo(null);
-        } catch (Exception ex) {
-            Logger.getLogger(Visao.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       this.setEnabled(false);
+        DebitarRefeicao dr = new DebitarRefeicao();
+        dr.setVisible(true);
+        dr.setLocationRelativeTo(null);
 
     }//GEN-LAST:event_jMenu7DebitarMouseClicked
 
@@ -470,6 +466,10 @@ public class Visao extends javax.swing.JFrame {
         new Credito(this).setEnabled(true);
     }//GEN-LAST:event_jMenu6CreditarActionPerformed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        System.exit(0);
+    }//GEN-LAST:event_formWindowClosed
+
     /**
      * @param args the command line arguments
      */
@@ -506,9 +506,10 @@ public class Visao extends javax.swing.JFrame {
          */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Visao v = new Visao();
-                v.setVisible(true);
-                v.setLocationRelativeTo(null);
+//                Visao v = new Visao();
+//                v.setVisible(true);
+//                v.setLocationRelativeTo(null);
+                 new Visao().setVisible(true);
 
             }
         });

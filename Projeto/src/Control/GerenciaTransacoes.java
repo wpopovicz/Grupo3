@@ -17,7 +17,8 @@ public class GerenciaTransacoes {
         p.setSaldo(p.getSaldo() - valor);
         hibernatedao.persist(p);
     }
-    public void creditar(Pessoa p, float valor){
+    public void creditar(Pessoa p, float valor) throws Exception{
         p.setSaldo(p.getSaldo() + valor);
+        hibernatedao.persist(p);
     }
 }

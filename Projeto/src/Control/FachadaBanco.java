@@ -5,6 +5,8 @@
 package Control;
 
 import entities.Pessoa;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -16,13 +18,18 @@ public class FachadaBanco {
     private GerenciaLogin gerenciaLogin;
     private GerenciaTransacoes gerenciaTransacoes;
 
-    public FachadaBanco() {
-        gerenciaLogin = new GerenciaLogin();
-        gerenciaTransacoes = new GerenciaTransacoes();
+    public FachadaBanco(){
+        try {
+            gerenciaLogin = new GerenciaLogin();
+        } catch (Exception ex) {
+            Logger.getLogger(FachadaBanco.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            gerenciaTransacoes = new GerenciaTransacoes();
+        
     }
 
-    public void debitar(int codigo, String senha, float valor) {
-        Pessoa p = gerenciaLogin.localizarPessoa(codigo, senha);
+    public void debitar(int codigo, float valor) throws Exception {
+        Pessoa p = gerenciaLogin.localizarPessoa(codigo);
         if (p != null) {
             gerenciaTransacoes.debitar(p, valor);
             System.out.println("Debitado com sucesso!");
@@ -31,8 +38,8 @@ public class FachadaBanco {
         }
     }
 
-    public void creditar(int codigo, String senha, float valor) {
-        Pessoa p = gerenciaLogin.localizarPessoa(codigo, senha);
+    public void creditar(int codigo, float valor) throws Exception {
+        Pessoa p = gerenciaLogin.localizarPessoa(codigo);
         if (p != null) {
             gerenciaTransacoes.creditar(p, valor);
             System.out.println("Creditado com sucesso!");

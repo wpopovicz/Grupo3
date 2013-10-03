@@ -65,9 +65,9 @@ public class credito extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        String email = request.getParameter("email");
-        String passoword = request.getParameter("passoword");
-        String valor = request.getParameter("valor");
+        String credito = request.getParameter("credito");
+        String pessoalogada = request.getParameter("pessoa");
+        
     }
 
     @Override

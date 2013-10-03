@@ -9,12 +9,10 @@ import Model.Filter;
 import Model.HibernateDao;
 import Model.Operator;
 import entities.Produto;
-import java.awt.Color;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,7 +20,6 @@ import javax.swing.table.DefaultTableModel;
  * @author a1294121
  */
 public class AtualizarProduto extends javax.swing.JDialog {
-
     private Visao telaAnterior;
     private HibernateDao hibernatedao = new HibernateDao();
     private DaoProduto daoProduto = new DaoProduto();

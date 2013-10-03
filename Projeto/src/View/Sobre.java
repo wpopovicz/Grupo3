@@ -9,12 +9,17 @@ package View;
  * @author a1294121
  */
 public class Sobre extends javax.swing.JFrame {
-
+ private Visao telaAnterior;
+ 
     /**
      * Creates new form Sobre
      */
     public Sobre() {
         initComponents();
+    }
+    public Sobre(Visao telaAnterior) {
+        this();
+        this.telaAnterior = telaAnterior;
     }
 
     /**
@@ -33,6 +38,12 @@ public class Sobre extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setBackground(java.awt.Color.white);
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cartão Universitário", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 18), java.awt.Color.black)); // NOI18N
@@ -108,6 +119,12 @@ public class Sobre extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        this.dispose();
+        telaAnterior.setEnabled(true);
+        telaAnterior.toFront();
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

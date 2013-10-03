@@ -30,6 +30,7 @@ public class Creditar2 extends javax.swing.JFrame {
     HibernateDao hib = new HibernateDao();
     Credito creditar;
 
+
     /**
      * Creates new form Creditar2
      */

@@ -5,9 +5,13 @@
 package servelets;
 
 import Beans.Pessoa;
+import Model.DaoPessoa;
+import Model.Filter;
 import Model.HibernateDao;
+import Model.Operator;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -65,25 +69,36 @@ public class NewServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+           throws ServletException, IOException {
         processRequest(request, response);
         PrintWriter out = response.getWriter();
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
-        HibernateDao hibernatedao = new HibernateDao();
-        Pessoa p;
-        try {
-            p = (Pessoa) hibernatedao.retrieve(email);
+        String wil = "popovicz.wil@gmail.com";
+//        DaoPessoa daoP = new DaoPessoa();
+//        Pessoa p = 
 
-            if (!senha.equals(p.getSenha())){
-                response.sendRedirect("inicial.jsp");
-            } else {
-                response.sendRedirect("ConsultaCredito.jsp");
+//        Filter f = new Filter("email", Operator.EQUAL, email);
+//        // codigo é unico né, entao a lista só tem uma pessoa né, logo ela é a 0 da lista.
+//        List<Pessoa> lista;
+//        try {
+//            lista = daoP.list(f);
+//            p = lista.get(0);
+//            for (Pessoa e : lista) {
+//                p.setId(e.getId());
+//                p.setSaldo(e.getSaldo());
+//                p.setCategoria(e.getCategoria());
+//                p.setCodigo(e.getCodigo());
+//                p.setNome(e.getNome());
+//                p.setSenha(e.getSenha());
+//                p.setEmail(e.getEmail());
+//                
+//            }
+//        try {
+            if(wil.equals(email)){ 
+//                request.setAttribute("pessoa", p);
+                response.sendRedirect("ConsultaCredito.jsp");             
             }
-        } catch (Exception ex) {
-            Logger.getLogger(NewServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
 
     }
 
