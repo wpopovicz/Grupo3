@@ -5,7 +5,11 @@
 package View;
 
 import Model.DBConnection;
+import Model.DaoCategoria;
 import Model.HibernateDao;
+import entities.Categoria;
+import entities.Pessoa;
+import entities.Produto;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
@@ -59,6 +63,7 @@ public class Visao extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1Cliente = new javax.swing.JMenu();
@@ -126,6 +131,13 @@ public class Visao extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/a1.jpg"))); // NOI18N
 
+        jButton2.setText("Preencher o banco");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -139,14 +151,19 @@ public class Visao extends javax.swing.JFrame {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGap(18, 50, Short.MAX_VALUE)
                 .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
+                .addGap(40, 40, 40))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,7 +318,7 @@ public class Visao extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -392,7 +409,7 @@ public class Visao extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu6CreditarMouseClicked
 
     private void jMenu7DebitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7DebitarMouseClicked
-       this.setEnabled(false);
+        this.setEnabled(false);
         DebitarRefeicao dr = new DebitarRefeicao();
         dr.setVisible(true);
         dr.setLocationRelativeTo(null);
@@ -470,6 +487,58 @@ public class Visao extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_formWindowClosed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            preencherBanco();
+        } catch (Exception ex) {
+            Logger.getLogger(Visao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+    private void preencherBanco() throws Exception{
+        HibernateDao hb = new HibernateDao();
+            Categoria c = new Categoria();
+        DaoCategoria dc = new DaoCategoria();
+        for (int i = 0; i < 3; i++) {
+             c = new Categoria();
+            c.setCargo("Categoria" + i);
+            c.setRefeicao(i);
+            try {
+                dc.persist(c);
+            } catch (Exception ex) {
+                Logger.getLogger(Visao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        for (int i = 0; i < 3; i++) {
+            Pessoa p = new Pessoa();
+            p.setNome("Pessoa" + i);
+            p.setCategoria(c);
+            p.setEmail("Email" + i + "@email.com");
+            p.setCodigo(i);
+            p.setSaldo(10);
+            try {
+                hb.persist(p);
+            } catch (Exception ex) {
+                Logger.getLogger(Visao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        for (int i = 0; i < 3; i++) {
+            Produto pr = new Produto();
+            pr.setNome("Produto" + i);
+            pr.setPrecoCusto(1.0f);
+            pr.setPrecoVenda(2.0f);
+            pr.setEspecificacoes("Produto" + i);
+            pr.setHabilitadoVendas(true);
+            try {
+                hb.persist(pr);
+            } catch (Exception ex) {
+                Logger.getLogger(Visao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    
+    
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -509,13 +578,14 @@ public class Visao extends javax.swing.JFrame {
 //                Visao v = new Visao();
 //                v.setVisible(true);
 //                v.setLocationRelativeTo(null);
-                 new Visao().setVisible(true);
+                new Visao().setVisible(true);
 
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;

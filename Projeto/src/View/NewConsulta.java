@@ -35,6 +35,7 @@ public class NewConsulta extends javax.swing.JFrame {
     public NewConsulta() {
         initComponents();
         this.setLocationRelativeTo(null);
+        jButtonPesquisarActionPerformed(null);
     }
 
     /**
@@ -55,6 +56,7 @@ public class NewConsulta extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);

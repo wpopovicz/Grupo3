@@ -4,7 +4,7 @@
  */
 package entities;
 
-import Model.DaoPessoa;
+import Model.HibernateDao;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -58,6 +58,13 @@ public class Categoria implements Serializable{
         return this.getCargo();
     }
     
-    
+    public static void main(String[] args) throws Exception {
+        Pessoa p = new Pessoa();
+        p.setId(515);
+        p.setNome("test");
+        HibernateDao h = new HibernateDao();
+        h.persist(p);
+    }
+   
   
 }
