@@ -204,19 +204,19 @@ public class DebitarRefeicao extends javax.swing.JFrame {
                 Categoria c = p.getCategoria();
                 hibernatedao.retrieve(c.getId());
                 valor = c.getRefeicao();
-                Object[] options = {"Debitar Refeição \ne Comprar Produto",
-                    "Comprar produto",
-                    "Cancel"};
+                Object[] options = {"Debitar refeição e comprar produto",
+                    "Somente comprar produto",
+                    "Somente debitar a refeição"};
                 int n = JOptionPane.showOptionDialog(this,
-                        "Somente debitar a refeição "
-                        + c.getRefeicao() + " ? ou tem mais produto ?", "Debitar",
+                        "O valor da sua refeição é R$"
+                        + c.getRefeicao() + " ! escolha sua opção abaixo", "Debitar",
                         JOptionPane.YES_NO_CANCEL_OPTION,
                         JOptionPane.QUESTION_MESSAGE,
                         null,
                         options,
                         options[2]);
-                if (n == JOptionPane.YES_OPTION) {                   
-                    if (p.getSaldo() > valor) {                      
+                if (n == JOptionPane.YES_OPTION) {
+                    if (p.getSaldo() > valor) {
                         double cod = p.getSaldo();
                         double saldo = cod - valor;
                         p.setSaldo(cod - valor);
@@ -254,8 +254,27 @@ public class DebitarRefeicao extends javax.swing.JFrame {
                         Logger.getLogger(Visao.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
+                if (n == JOptionPane.CANCEL_OPTION) {
+                    if (p.getSaldo() > valor) {
+                        double cod = p.getSaldo();
+                        double saldo = cod - valor;
+                        p.setSaldo(cod - valor);
+                        System.out.println(p);
+                        try {
+                            daoP.persist(p);
+                            JOptionPane.showMessageDialog(null, "Debitado com Sucesso!");
+                        } catch (Exception ex) {
+                            Logger.getLogger(Creditar2.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "não foi possivel efetuar o debébito! Crédito isuficiente");
+                    }
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Senha errada");
             }
         } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "RA/SIAPE errado");
             Logger.getLogger(Debitar.class.getName()).log(Level.SEVERE, null, ex);
         }
 

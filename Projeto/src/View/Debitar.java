@@ -36,7 +36,7 @@ public class Debitar extends javax.swing.JFrame {
     private DaoProduto daoProduto = new DaoProduto();
     private DaoPessoa daoPessoa = new DaoPessoa();
     private HibernateDao hibernatedao = new HibernateDao();
-    private Pessoa pessoa;
+    private Pessoa pessoa = new Pessoa();
 
     /**
      * Creates new form Debitar
@@ -102,7 +102,7 @@ public class Debitar extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Traditional Arabic", 3, 24)); // NOI18N
         jLabel1.setText("R$");
 
-        jLabel2.setText("Nome do Cliente:");
+        jLabel2.setText("RA/SIAPE:");
 
         jTextFieldRA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -324,30 +324,33 @@ public class Debitar extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here: 
-        carregarPessoa(pessoa);
-        Pessoa p = pessoa;
+        Pessoa p = new Pessoa();
+        DaoPessoa daoP = new DaoPessoa();
         int RA = Integer.parseInt(jTextFieldRA.getText());
         float valor = Float.parseFloat(jTextFieldValor.getText());
         //cria a fachada com o banco
-        FachadaBanco facade = new FachadaBanco();
-        facade.addPessoa(p);
+        Filter f = new Filter("codigo", Operator.EQUAL, RA);
+        List<Pessoa> lista;
         try {
+            lista = daoP.list(f);
+            p = (Pessoa) lista.get(0);
+            for (Pessoa e : lista) {
+                p.setId(e.getId());
+                p.setSaldo(e.getSaldo());
+                p.setCategoria(e.getCategoria());
+                p.setCodigo(e.getCodigo());
+                p.setNome(e.getNome());
+                p.setSenha(e.getSenha());
+                p.setEmail(e.getEmail());
+
+            }
             if (p.getSaldo() > valor) {
-                List<Produto> lista = null;
-                for (int i = 0; i < jTable1.getRowCount(); i++) {
-                lista = (List<Produto>) jTable1.getClientProperty(produto);                 
-                }
-                for (Object e : lista) {
-                    produto.getId();
-                    produto.getNome();
-                    produto.getEspecificacoes();
-                    produto.getPrecoCusto();
-                    produto.getPrecoVenda();
-                    produto.isHabilitadoVendas();                 
-                }
-                facade.debitar(RA, valor);
+                double cod = p.getSaldo();
+                double saldo = cod - valor;
+                p.setSaldo(cod - valor);
+                System.out.println(p);
                 compra.setDataCompra(Calendar.getInstance());
-                compra.setProdutos((Set<Produto>)produto);
+                compra.setProdutos((Set<Produto>) produto);
                 compra.setPessoa(p);
                 hibernatedao.persist(compra);
                 JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!");
@@ -355,15 +358,16 @@ public class Debitar extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "saldo insulficiente!");
             }
         } catch (Exception ex) {
+            
             Logger.getLogger(Debitar.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextFieldRAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldRAActionPerformed
-        carregarPessoa(pessoa);
-        jTextFieldRA.setText(pessoa.getNome());
     }//GEN-LAST:event_jTextFieldRAActionPerformed
 
     /**
@@ -440,7 +444,8 @@ public class Debitar extends javax.swing.JFrame {
     //Pega pessoa do debitar
 
     public void carregarPessoa(Pessoa p) {
-        Pessoa pes = p;
+        Pessoa pessoa = p;
+        jTextFieldRA.setText(String.valueOf(pessoa.getCodigo()));
     }
 
     public void atualizarModelo() {

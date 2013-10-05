@@ -332,13 +332,13 @@ public class AtualizarProduto extends javax.swing.JDialog {
 
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
         
-        Produto p;
+       Produto p = new Produto();
         String consulta = jTextFieldConsultar.getText();
 
 //        ArrayList<Produto> lista;
 //        lista = (ArrayList<Produto>) produto.list("produto" , Operator.LIKE , consulta);
 
-        Filter f = new Filter("produto", Operator.LIKE, consulta);
+        Filter f = new Filter("nome", Operator.LIKE, consulta);
         List lista = null;
         try {
             lista = daoProduto.list(f);
@@ -347,7 +347,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
         } catch (Exception ex) {
             Logger.getLogger(AtualizarProduto.class.getName()).log(Level.SEVERE, null, ex);
         }       
-
+        for(Object e : lista) {
         DefaultTableModel modelo = new javax.swing.table.DefaultTableModel();
         modelo.addColumn("Id");
         modelo.addColumn("Nome");
@@ -356,7 +356,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
         modelo.addColumn("Habilitado");
 
         if (lista.size() == 0) {
-            modelo.addRow(new String[]{"Sem dados",
+            modelo.addRow(new String[]{"não tem nenhum produto cadastrado",
                 null,
                 null,
                 null,
@@ -376,6 +376,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
                 p.isHabilitadoVendas() + ""});
         }
         jTable2.setModel(modelo);
+        }
         
     }//GEN-LAST:event_jButtonConsultarActionPerformed
 

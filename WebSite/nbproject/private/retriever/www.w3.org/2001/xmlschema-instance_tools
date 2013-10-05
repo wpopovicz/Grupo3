@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+<title>About http://www.w3.org/2001/XMLSchema-instance</title>
+  <meta name="revision"
+   content="$Id: comma-tools.php3,v 1.92 2013-09-23 09:30:16 denis Exp $" />
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="stylesheet" type="text/css" href="/StyleSheets/tools.css" />
+  <link rel="stylesheet" type="text/css" href="/StyleSheets/base.css" />
+  <style type="text/css">
+table {
+  margin-left:auto;
+  margin-right:auto;
+  width:80%;
+}
+th {
+  text-align:left;
+}
+td,th {
+  padding: 0.3em;
+  margin: 0.2em;
+}
+</style>
+</head>
+
+<body>
+
+<p>
+  <a href="/"><img src="/Icons/WWW/w3c_home"
+    alt="W3C" width="72" /></a>
+</p>
+
+<h1>About <a href="/2001/XMLSchema-instance">http://www.w3.org/2001/XMLSchema-instance</a></h1>
+
+<form action="/Help/comma-tools.php3" method="get">
+<p>
+ <label id="uri-label" for="uri">Enter another URI:</label>
+ <input id="uri" name="uri" type="text" size="60" value="/2001/XMLSchema-instance" />
+</p>
+</form>
+
+<h2>Administrative pages</h2>
+
+<p>
+The following W3C administrative information is available about
+"<a href="/2001/XMLSchema-instance">http://www.w3.org/2001/XMLSchema-instance</a>".
+Some of these pages can also be accessed by adding the comma prefix shown to the document Web address &mdash; these so called <em>"comma-tools"</em> work on any <code>www.w3.org</code> or <code>dev.w3.org</code> page.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>For this page</th>
+  <th>General tool</th>
+  <th>,shortcut</th>
+  <th>Access control</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <!-- only show if public -->
+  <td class="tool"><a href="/2001/XMLSchema-instance,text">A plain text version of the page,
+  handy for pasting into email.</a></td>
+  <td class="desc"><a href="/services/html2txt">HTML to Text converter</a></td>
+  <td class="shortcut">,text</td>
+  <td class="desc">Same as the document</td>
+</tr>
+
+<tr>
+  <td class="tool"><a href="/2001/XMLSchema-instance,checklink">List of bad links in the page</a></td>
+  <td class="desc"><a href="http://validator.w3.org/checklink">Link Checker</a></td>
+  <td class="shortcut">,checklink</td>
+  <td class="desc">Same as the document</td>
+</tr>
+
+
+<tr>
+  <td class="tool"><a href="/2001/XMLSchema-instance,rchecklink">Bad links in a page and in pages linked from it</a></td>
+  <td class="desc"><a href="http://validator.w3.org/checklink">Link Checker</a></td>
+  <td class="shortcut">,rchecklink</td>
+  <td class="desc">Same as the document</td>
+</tr>
+
+<tr>
+  <td class="tool"><a href="/2001/XMLSchema-instance,validate">List of HTML markup errors.</a></td>
+  <td class="desc"><a href="http://validator.w3.org/">HTML Validator</a></td>
+  <td class="shortcut">,validate</td>
+  <td class="desc">Same as the document</td>
+</tr>
+<tr>
+  <td class="tool"><a href="/2001/XMLSchema-instance,spell">List of spelling errors.</a></td>
+  <td class="desc"><a href="http://www.w3.org/2002/01/spellchecker">W3C Spellchecker</a></td>
+  <td class="shortcut">,spell</td>
+  <td class="desc">Same as the document</td>
+</tr>
+<tr>
+  <td class="tool"><a href="/2001/XMLSchema-instance,cssvalidate">List of style CSS errors.</a></td>
+  <td class="desc"><a href="http://jigsaw.w3.org/css-validator/">CSS Validator</a></td>
+  <td class="shortcut">,cssvalidate</td>
+  <td class="desc">Works only on public pages.</td>
+</tr>
+
+<tr>
+  <!-- If it is a "file" -->
+  <td class="tool"> <a href="/2001/XMLSchema-instance,cvslog">Log of changes to the document</a></td>
+  <td class="desc"> CVS Log</td>
+  <td class="shortcut">,cvslog</td>
+  <td class="desc">Public on <code>dev.w3.org</code>, Team-only on <code>www.w3.org</code></td>
+</tr>
+<tr>
+  <td class="tool"><a href="/2001/XMLSchema-instance,headers">HTTP headers sent by the server</a></td>
+  <td class="desc">Headers</td>
+  <td class="shortcut">,headers</td>
+  <td class="desc">Same as the document</td>
+</tr>
+<tr>
+ <td class="tool"><a href="http://www.w3.org/2001/XMLSchema-instance,pubrules">Check the compliance of  this document</a> to the <a href="http://www.w3.org/Guide/pubrules">W3C publication rules</a></td>
+ <td class="desc"><a href="http://www.w3.org/Guide/pubrules">the pubrules checker</a></td>
+ <td class="shortcut">,pubrules</td>
+  <td class="desc">Same as the document</td>
+</tr>
+<tr>
+ <td class="tool"><a href="http://www.w3.org/2001/XMLSchema-instance,pubruleserrors">Check the compliance of  this document</a> to the <a href="http://www.w3.org/Guide/pubrules">W3C publication rules</a>, only displaying errors</td>
+ <td class="desc"><a href="http://www.w3.org/Guide/pubrules">the pubrules checker</a></td>
+ <td class="shortcut">,pubruleserrors</td>
+  <td class="desc">Same as the document</td>
+</tr>
+</tbody>
+</table>
+
+<p>The following services have shortcuts available only on <code>www.w3.org</code>:</p>
+
+<table>
+<thead>
+<tr>
+  <th>For this page</th>
+  <th>General tool</th>
+  <th>,shortcut</th>
+  <th>Access control</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td class="tool"><a href="/2001/XMLSchema-instance,tablin">Version with the tables linearized.</a></td>
+  <td class="desc"><a href="http://jigsaw.w3.org:8000/tablin/">WAI HTML Table Linearizer Entry Form</a></td>
+  <td class="shortcut">,tablin</td>
+  <td class="desc">Works only on public pages</td>
+</tr>
+
+<tr>
+  <td class="tool"><a href="/2001/XMLSchema-instance,translations">List of translations for the current document.</a></td>
+  <td class="desc"><a href="/Consortium/Translation/">Translations</a></td>
+  <td class="shortcut">,translations</td>
+  <td class="desc">Public</td>
+</tr>
+
+<tr>
+  <td class="tool"><a href="/2001/XMLSchema-instance,translations">List of translations for the current document in the specified language (where XX stands for: fr, it, nl, ja...).</a></td>
+  <td class="desc"><a href="/Consortium/Translation/">Translations</a></td>
+  <td class="shortcut">,translations-XX</td>
+  <td class="desc">Public</td>
+</tr>
+
+<tr>
+  <td class="tool"><a href="/2001/XMLSchema-instance,minutes">Generate formatted minutes of a meeting IRC log</a></td>
+  <td class="desc"><a href="/2005/02/minutes">Online Minutes Generator</a></td>
+  <td class="shortcut">,minutes</td>
+  <td class="desc">Same as the document</td>
+</tr>
+<tr>
+ <td class="tool"><a href="http://www.w3.org/services/tidy?docAddr=http://www.w3.org/2001/XMLSchema-instance">Tidied version of the page</a></td>
+ <td class="desc"><a href="http://www.w3.org/services/tidy">HTML Tidy</a></td>
+ <td class="shortcut">,tidy</td>
+  <td class="desc">Same as the document</td>
+</tr>
+
+<tr>
+  <td class="tool">
+  <!-- only show the appropriate one -->
+    <a href="/2001/XMLSchema-instance,access">Access control for file</a> or
+    <a href="/2001/XMLSchema-instance*,access">directory</a></td>
+  <td class="desc"><a href="/Systems/Acl/UserDoc">Access Control</a></td>
+  <td class="shortcut">.../file,access or .../dir/*,access</td>
+<td class="desc">Per document/directory dependent</td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>Public services</h2>
+
+<p>These are provided by various sites.</p>
+
+<table>
+<thead>
+<tr>
+  <th>Service</th>
+  <th>Provider</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <!-- only show if public -->
+  <td class="tool"><a href="https://www.google.com/?q=link:http://www.w3.org/2001/XMLSchema-instance">List of Web pages that link to it</a></td>
+  <td class="desc"> <a
+  href="http://www.google.com/">Google Backlinks</a></td>
+</tr>
+
+<tr>
+  <!-- only show if public -->
+  <td class="tool"> <a href="http://www.deja.com/=sa/dnquery.xp?ST=QS&amp;DBS=1&amp;QRY=http%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema-instance&amp;svcclass=dnserver">Public messages mentioning it</a></td>
+  <td class="desc"> <a
+  href="http://groups.google.com/">Google groups</a></td>
+</tr>
+
+<tr>
+  <!-- only show if public -->
+  <td class="tool"><a
+  href="http://www.ircache.net/cgi-bin/cacheability.py?descend=on&amp;query=http%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema-instance">Data about caching it</a></td>
+  <td class="desc"> <a
+  href="http://www.mnot.net/cacheability/">Cacheability Engine</a></td>
+</tr>
+</tbody>
+</table>
+
+<h2>Team access only</h2>
+
+<table>
+<thead>
+<tr>
+  <th>For this page</th>
+  <th>General tool</th>
+  <th>,shortcut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td class="tool"><a href="/2001/XMLSchema-instance,ls">Browse Web space</a></td>
+  <td class="desc">List of files and directories under the current directory in Web space</td>
+  <td class="shortcut">,ls</td>
+</tr>
+
+<tr>
+  <!-- If it is a "file" -->
+  <td class="tool"><a href="/2001/XMLSchema-instance,mirror">Status of this resource on various mirrors</a></td>
+  <td class="desc"><a href="http://www.w3.org/Systems/Mirroring/">Mirroring</a></td>
+  <td class="shortcut">,mirror</td>
+</tr>
+
+<tr>
+  <td class="tool"><a href="/2001/XMLSchema-instance,pdf">PDF rendering of this page</a></td>
+  <td class="desc"><a href="/Team/html2pdf">Generate a PDF for a given
+  URL.</a> “,pdf” generates pages suitable for A4 paper, “,pdfl” for
+  US Letter paper, and “,pdfui” opens a form to adjust the
+  parameters. (<a
+  href="https://cvs.w3.org/Team/WWW/Systems/Http/cgi-bin/html2pdf/">source</a>)</td>
+  <td class="shortcut">,pdf<br>,pdfl<br>,pdfui</td>
+</tr>
+
+<tr>
+  <td class="tool"><em>n/a</em></td>
+  <td class="desc"><a href="http://www.w3.org/2004/09/annospam/">Mark messages as spam</a>
+  in <a href="http://lists.w3.org/">W3C's mailing list archives</a> (apply to 
+  URIs on <code>lists.w3.org</code>)</td>
+  <td class="shortcut">,spam</td>
+</tr>
+
+<tr>
+  <td class="tool"><a href="/2001/XMLSchema-instance,shorten">Shorten this URI</a></td>
+  <td class="desc"><a href="/2012/shorten/">URI Shortener</a><br /><small>Redirection service to shorten a long w3.org uri into a more convenient one, eg <a href="http://w3.org/brief/1">http://w3.org/brief/1</a>. Should not be used for high volume requests.</small></td>
+  <td class="shortcut">,shorten</td>
+</tr>
+
+</tbody>
+</table>
+
+<h2>Todo</h2>
+
+<ul>
+  <li>add a section with metadata about the resource: owner
+  email, last modified date, content-type, MD5 checksum, etc.</li>
+</ul>
+
+<hr />
+<address>
+  <a href="http://validator.w3.org/check?uri=referer"><img
+     src="http://www.w3.org/Icons/valid-xhtml10"
+     alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
+  <a href="/Help/Webmaster">Webmaster</a><br />
+  made with <a href="http://www.php.net/">PHP</a>; see <a
+  href="/Help/comma-tools.phps">Source code</a><br />
+  Last modified $Date: 2013-09-23 09:30:16 $
+  by $Author: denis $
+</address>
+
+</body>
+</html>
+
