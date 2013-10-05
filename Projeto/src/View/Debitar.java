@@ -28,7 +28,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Debitar extends javax.swing.JFrame {
 
-    private Visao telaAnterior;
+    private DebitarRefeicao telaAnterior;
     private AtualizarProduto atualizarProduto;
     private Produto produto;
     private Compra compra = new Compra();
@@ -52,7 +52,7 @@ public class Debitar extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
-    public Debitar(Visao telaAnterior) throws Exception {
+    public Debitar(DebitarRefeicao telaAnterior) throws Exception {
         this();
         this.telaAnterior = telaAnterior;
     }
@@ -307,15 +307,13 @@ public class Debitar extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        this.dispose();
-        telaAnterior.setEnabled(true);
-        this.telaAnterior.toFront();
+
+        this.dispose();       
     }//GEN-LAST:event_formWindowClosed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
-        this.dispose();
-        telaAnterior.setEnabled(true);
-        this.telaAnterior.toFront();
+
+        this.dispose(); 
     }//GEN-LAST:event_CancelarActionPerformed
 
     private void jTextFieldValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldValorActionPerformed
@@ -348,20 +346,22 @@ public class Debitar extends javax.swing.JFrame {
                 double cod = p.getSaldo();
                 double saldo = cod - valor;
                 p.setSaldo(cod - valor);
+                daoP.persist(p);
                 System.out.println(p);
                 compra.setDataCompra(Calendar.getInstance());
                 compra.setProdutos((Set<Produto>) produto);
                 compra.setPessoa(p);
-                hibernatedao.persist(compra);
-                JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!");
+                hibernatedao.persist(compra);                
+                JOptionPane.showMessageDialog(null, "Compra efetuada com sucesso!"); 
+                this.dispose(); 
             } else {
                 JOptionPane.showMessageDialog(null, "saldo insulficiente!");
             }
         } catch (Exception ex) {
-            
+
             Logger.getLogger(Debitar.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+         
 
 
 

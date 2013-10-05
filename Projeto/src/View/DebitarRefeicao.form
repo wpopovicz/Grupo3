@@ -77,8 +77,7 @@
                           <EmptySpace pref="75" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jRadioButtonRefeição" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Component id="jButtonDebitar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jButtonCancelar" min="-2" max="-2" attributes="0"/>
@@ -103,7 +102,6 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jRadioButtonRefeição" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonDebitar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -153,15 +151,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPasswordFieldSenhaActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButtonRefei&#xe7;&#xe3;o">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Refei&#xe7;&#xe3;o"/>
-            <Property name="toolTipText" type="java.lang.String" value="Selecionando refei&#xe7;&#xe3;o ter&#xe1; o pre&#xe7;o para debitar do cliente"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonRefei&#xe7;&#xe3;oActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

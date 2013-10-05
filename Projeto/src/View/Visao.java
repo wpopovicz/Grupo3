@@ -338,7 +338,7 @@ public class Visao extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.setEnabled(false);
+//        this.setEnabled(false);
         DebitarRefeicao dr = new DebitarRefeicao();
         dr.setVisible(true);
         dr.setLocationRelativeTo(null);
@@ -402,14 +402,14 @@ public class Visao extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1AjudaMouseClicked
 
     private void jMenu2SobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2SobreMouseClicked
-        this.setEnabled(false);
+//        this.setEnabled(false);
         Sobre w = new Sobre();
         w.setVisible(true);
         w.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenu2SobreMouseClicked
 
     private void jMenu7DebitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7DebitarMouseClicked
-        this.setEnabled(false);
+//        this.setEnabled(false);
         DebitarRefeicao dr = new DebitarRefeicao();
         dr.setVisible(true);
         dr.setLocationRelativeTo(null);

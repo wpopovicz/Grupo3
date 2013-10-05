@@ -56,7 +56,6 @@ public class DebitarRefeicao extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextFieldRA = new javax.swing.JTextField();
         jPasswordFieldSenha = new javax.swing.JPasswordField();
-        jRadioButtonRefeição = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -100,14 +99,6 @@ public class DebitarRefeicao extends javax.swing.JFrame {
             }
         });
 
-        jRadioButtonRefeição.setText("Refeição");
-        jRadioButtonRefeição.setToolTipText("Selecionando refeição terá o preço para debitar do cliente");
-        jRadioButtonRefeição.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonRefeiçãoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -125,8 +116,7 @@ public class DebitarRefeicao extends javax.swing.JFrame {
                             .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
                         .addContainerGap(75, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jRadioButtonRefeição)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButtonDebitar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonCancelar)
@@ -145,10 +135,9 @@ public class DebitarRefeicao extends javax.swing.JFrame {
                     .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButtonRefeição)
                     .addComponent(jButtonDebitar)
                     .addComponent(jButtonCancelar))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -164,7 +153,7 @@ public class DebitarRefeicao extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -225,7 +214,6 @@ public class DebitarRefeicao extends javax.swing.JFrame {
                             daoP.persist(p);
                             JOptionPane.showMessageDialog(null, "Debitado com Sucesso!");
                             String sal = String.valueOf(saldo);
-                            this.dispose();
                             Debitar d;
                             try {
                                 d = new Debitar();
@@ -243,7 +231,6 @@ public class DebitarRefeicao extends javax.swing.JFrame {
                     }
                 }
                 if (n == JOptionPane.NO_OPTION) {
-                    this.dispose();
                     Debitar d;
                     try {
                         d = new Debitar();
@@ -280,17 +267,14 @@ public class DebitarRefeicao extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonDebitarActionPerformed
 
-    private void jRadioButtonRefeiçãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonRefeiçãoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonRefeiçãoActionPerformed
-
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        dispose();
+
+        this.dispose(); 
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        telaAnterior.setEnabled(true);
-        this.telaAnterior.toFront();
+//        telaAnterior.setEnabled(true);
+//        this.telaAnterior.toFront();
     }//GEN-LAST:event_formWindowClosed
 
     /**
@@ -334,7 +318,6 @@ public class DebitarRefeicao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordFieldSenha;
-    private javax.swing.JRadioButton jRadioButtonRefeição;
     private javax.swing.JTextField jTextFieldRA;
     // End of variables declaration//GEN-END:variables
 }
