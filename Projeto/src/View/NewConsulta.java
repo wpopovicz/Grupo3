@@ -255,10 +255,9 @@ public class NewConsulta extends javax.swing.JFrame {
             this.setEnabled(false);
             jButton2.setEnabled(true);
             new Cliente(this, p).setVisible(true);
-            this.setVisible(false);
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(this, "Selecione um produto!");
+            JOptionPane.showMessageDialog(this, "Selecione uma pessoa!");
             jButton2.setEnabled(true);
         }
 
@@ -299,7 +298,6 @@ public class NewConsulta extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        this.dispose();
         telaAnterior.setEnabled(true);
         this.telaAnterior.toFront();
     }//GEN-LAST:event_formWindowClosed

@@ -281,9 +281,7 @@ public class AtualizarProduto extends javax.swing.JDialog {
 
     private void jButtonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVoltarActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        telaAnterior.setEnabled(true);
-        this.telaAnterior.toFront();
+        dispose();
     }//GEN-LAST:event_jButtonVoltarActionPerformed
 
     private void jTable2InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTable2InputMethodTextChanged
@@ -382,7 +380,6 @@ public class AtualizarProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonConsultarActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-       this.dispose();
         telaAnterior.setEnabled(true);
         this.telaAnterior.toFront();
     }//GEN-LAST:event_formWindowClosed

@@ -37,6 +37,7 @@ public class CategoriaInsert extends javax.swing.JFrame {
         this.categoria = c;
         carregarCategoriaNosCampos();
     }
+    
 
     public CategoriaInsert(Visao telaAnterior) {
         this();
@@ -195,14 +196,16 @@ public class CategoriaInsert extends javax.swing.JFrame {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         if (categoriaManager != null) {
-            this.dispose();
             categoriaManager.setEnabled(true);
             this.categoriaManager.toFront();
         }else if (cliente != null) {
-            this.dispose();
             cliente.setEnabled(true);
             this.cliente.toFront();
-        } 
+        } else if (telaAnterior != null){
+            telaAnterior.setEnabled(true);
+            this.telaAnterior.toFront();
+        }
+            
     }//GEN-LAST:event_formWindowClosed
 
     /**

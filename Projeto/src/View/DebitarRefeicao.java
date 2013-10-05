@@ -266,13 +266,10 @@ public class DebitarRefeicao extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonRefeiçãoActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        this.dispose();
-        telaAnterior.setEnabled(true);
-        this.telaAnterior.toFront();
+        dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        this.dispose();
         telaAnterior.setEnabled(true);
         this.telaAnterior.toFront();
     }//GEN-LAST:event_formWindowClosed

@@ -240,9 +240,13 @@ public class Cliente extends javax.swing.JFrame {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // CloseOperation
-        this.dispose();
+        if (telaAnterior != null){
         telaAnterior.setEnabled(true);
         this.telaAnterior.toFront();
+        }else if (newConsulta != null){
+            newConsulta.setEnabled(true);
+        this.newConsulta.toFront();
+        }
     }//GEN-LAST:event_formWindowClosed
     public Cliente(NewConsulta newConsulta, Pessoa p) {
         this();

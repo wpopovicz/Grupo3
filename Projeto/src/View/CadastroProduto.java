@@ -228,13 +228,7 @@ public class CadastroProduto extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // cancelar
-        if (this.produto == null) {
-            telaAnterior.setEnabled(true);
-            this.telaAnterior.toFront();
-        } else {
-            atualizarProduto.setEnabled(true);
-            atualizarProduto.toFront();
-        }
+        dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
@@ -336,10 +330,10 @@ public class CadastroProduto extends javax.swing.JFrame {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // quando fechar ou ativa a visão ou atualizaproduto
-        if (this.produto == null) {
+        if (telaAnterior != null) {
             telaAnterior.setEnabled(true);
             this.telaAnterior.toFront();
-        } else {
+        } else if (atualizarProduto != null) {
             atualizarProduto.setEnabled(true);
             atualizarProduto.toFront();
         }

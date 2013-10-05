@@ -75,7 +75,8 @@ public class Visao extends javax.swing.JFrame {
         jMenu2Produto = new javax.swing.JMenu();
         jMenuItemProdutoCadastro = new javax.swing.JMenuItem();
         jMenuItemProdutoAlterar = new javax.swing.JMenuItem();
-        jMenu6Creditar = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu7Debitar = new javax.swing.JMenu();
         jMenuRelatorio = new javax.swing.JMenu();
         jMenu2Sobre = new javax.swing.JMenu();
@@ -163,7 +164,7 @@ public class Visao extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,11 +178,11 @@ public class Visao extends javax.swing.JFrame {
         jButton4.setText("jButton4");
 
         jMenuBar1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jMenuBar1FocusLost(evt);
-            }
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jMenuBar1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jMenuBar1FocusLost(evt);
             }
         });
 
@@ -218,6 +219,11 @@ public class Visao extends javax.swing.JFrame {
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1380342950_category_item.png"))); // NOI18N
         jMenuItem2.setText("Categoria");
         jMenuItem2.setToolTipText("Cadastrar Categoria");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1375980081_find.png"))); // NOI18N
@@ -259,19 +265,18 @@ public class Visao extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2Produto);
 
-        jMenu6Creditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/dinheiro2.png"))); // NOI18N
-        jMenu6Creditar.setToolTipText("Creditar");
-        jMenu6Creditar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu6CreditarMouseClicked(evt);
-            }
-        });
-        jMenu6Creditar.addActionListener(new java.awt.event.ActionListener() {
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1373340942_03.png"))); // NOI18N
+
+        jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem6.setText("Creditar");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu6CreditarActionPerformed(evt);
+                jMenuItem6ActionPerformed(evt);
             }
         });
-        jMenuBar1.add(jMenu6Creditar);
+        jMenu1.add(jMenuItem6);
+
+        jMenuBar1.add(jMenu1);
 
         jMenu7Debitar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1373341100_shopping_cart.png"))); // NOI18N
         jMenu7Debitar.setToolTipText("Debitar");
@@ -376,6 +381,8 @@ public class Visao extends javax.swing.JFrame {
         Cliente c = new Cliente(this);
         c.setVisible(true);
         c.setLocationRelativeTo(null);
+
+
     }//GEN-LAST:event_jMenuItemClienteCadastrarActionPerformed
 
     private void jMenu1AjudaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1AjudaMouseClicked
@@ -400,13 +407,6 @@ public class Visao extends javax.swing.JFrame {
         w.setVisible(true);
         w.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenu2SobreMouseClicked
-
-    private void jMenu6CreditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu6CreditarMouseClicked
-        this.setEnabled(false);
-        Credito s = new Credito();
-        s.setVisible(true);
-        s.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jMenu6CreditarMouseClicked
 
     private void jMenu7DebitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7DebitarMouseClicked
         this.setEnabled(false);
@@ -478,11 +478,6 @@ public class Visao extends javax.swing.JFrame {
         a.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void jMenu6CreditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu6CreditarActionPerformed
-        this.setEnabled(false);
-        new Credito(this).setEnabled(true);
-    }//GEN-LAST:event_jMenu6CreditarActionPerformed
-
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         System.exit(0);
     }//GEN-LAST:event_formWindowClosed
@@ -493,13 +488,14 @@ public class Visao extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(Visao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        }
-    private void preencherBanco() throws Exception{
+    }
+
+    private void preencherBanco() throws Exception {
         HibernateDao hb = new HibernateDao();
-            Categoria c = new Categoria();
+        Categoria c = new Categoria();
         DaoCategoria dc = new DaoCategoria();
         for (int i = 0; i < 3; i++) {
-             c = new Categoria();
+            c = new Categoria();
             c.setCargo("Categoria" + i);
             c.setRefeicao(i);
             try {
@@ -534,10 +530,24 @@ public class Visao extends javax.swing.JFrame {
                 Logger.getLogger(Visao.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    
-    
+
+        JOptionPane.showMessageDialog(this, "Dados inseridos no banco!");
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        this.setEnabled(false);
+        CategoriaInsert dr = new CategoriaInsert(this);
+        dr.setVisible(true);
+        dr.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        this.setEnabled(false);
+        Credito c = new Credito(this);
+        c.setVisible(true);
+        c.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -589,6 +599,7 @@ public class Visao extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu1Ajuda;
     private javax.swing.JMenu jMenu1Cliente;
     private javax.swing.JMenu jMenu2;
@@ -597,7 +608,6 @@ public class Visao extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6Creditar;
     private javax.swing.JMenu jMenu7Debitar;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
@@ -605,6 +615,7 @@ public class Visao extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItemClienteAlterar;
     private javax.swing.JMenuItem jMenuItemClienteCadastrar;
     private javax.swing.JMenuItem jMenuItemProdutoAlterar;
