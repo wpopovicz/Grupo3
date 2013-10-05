@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Compra" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="71fa32ec-6ad6-4de3-8055-c33c24548112">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     compra.`id` AS compra_id,
+     compra.`dataCompra` AS compra_dataCompra,
+     compra.`pessoa_id` AS compra_pessoa_id,
+     pessoa.`id` AS pessoa_id,
+     pessoa.`codigo` AS pessoa_codigo,
+     pessoa.`email` AS pessoa_email,
+     pessoa.`nome` AS pessoa_nome,
+     pessoa.`saldo` AS pessoa_saldo,
+     pessoa.`senha` AS pessoa_senha,
+     pessoa.`categoria_id` AS pessoa_categoria_id,
+     categoria.`id` AS categoria_id,
+     categoria.`cargo` AS categoria_cargo,
+     categoria.`refeicao` AS categoria_refeicao
+FROM
+     `pessoa` pessoa INNER JOIN `compra` compra ON pessoa.`id` = compra.`pessoa_id`
+     INNER JOIN `categoria` categoria ON pessoa.`categoria_id` = categoria.`id`]]>
+	</queryString>
+	<field name="compra_dataCompra" class="java.sql.Date"/>
+	<field name="pessoa_nome" class="java.lang.String"/>
+	<field name="categoria_cargo" class="java.lang.String"/>
+	<field name="categoria_refeicao" class="java.lang.Double"/>
+	<group name="compra_dataCompra">
+		<groupExpression><![CDATA[$F{compra_dataCompra}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<textField>
+					<reportElement uuid="039da642-887d-43ac-9a56-c9c94dcfb81b" style="SubTitle" x="47" y="13" width="506" height="24" forecolor="#CC0000"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{compra_dataCompra}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement uuid="f3dcfd7a-3945-4b19-a68f-7fe14d8b8a17" mode="Opaque" x="0" y="13" width="36" height="24" forecolor="#CCCCCC" backcolor="#CCCCCC"/>
+				</rectangle>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<group name="pessoa_nome">
+		<groupExpression><![CDATA[$F{pessoa_nome}]]></groupExpression>
+		<groupHeader>
+			<band height="30">
+				<textField>
+					<reportElement uuid="c8aa87e8-7264-4ef8-8827-5257d325d68c" style="SubTitle" x="0" y="4" width="149" height="20"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pessoa_nome}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="5513e3bc-a312-4f17-8fee-dc023eb9b835" x="371" y="4" width="116" height="20"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{categoria_refeicao}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="cca8833d-2c4b-4360-8268-57585857906f" x="149" y="4" width="100" height="20"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{categoria_cargo}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="2ff28306-642d-4d14-bdd1-e95800197afb" x="263" y="4" width="103" height="20"/>
+					<textElement/>
+					<text><![CDATA[Valor da RefeiçãoR$]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="categoria_cargo">
+		<groupExpression><![CDATA[$F{categoria_cargo}]]></groupExpression>
+	</group>
+	<group name="categoria_refeicao">
+		<groupExpression><![CDATA[$F{categoria_refeicao}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="0eb06143-c701-437b-88af-687ffa38ca29" style="Title" x="0" y="13" width="263" height="33"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Relatório]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="50318614-613b-43ad-a55b-37ef0a855817" style="SubTitle" x="117" y="46" width="157" height="22"/>
+				<textElement/>
+				<text><![CDATA[de Compras]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement uuid="88d0052c-437e-4cb7-a3bc-9d50b03b8b7c" positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement uuid="70de2b39-89e4-40f6-95c8-d82e156b3243" positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement uuid="8a0763f7-e6df-4d67-9ece-1dfacdbee252" positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="0d3d1106-8b57-4f9d-810b-3776e1381a6f" style="Column header" x="433" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="0a2d3760-4fc6-4072-aad6-403e1f46a4ca" style="Column header" x="513" y="0" width="40" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="757a2474-7461-4f68-a078-241624b0beea" style="Column header" x="0" y="0" width="197" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

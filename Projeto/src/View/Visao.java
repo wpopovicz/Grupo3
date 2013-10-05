@@ -79,6 +79,8 @@ public class Visao extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu7Debitar = new javax.swing.JMenu();
         jMenuRelatorio = new javax.swing.JMenu();
+        jMenuItemrelatoriodeprodutofaltando = new javax.swing.JMenuItem();
+        jMenurelatoriodecompra = new javax.swing.JMenuItem();
         jMenu2Sobre = new javax.swing.JMenu();
         jMenu1Ajuda = new javax.swing.JMenu();
 
@@ -289,11 +291,27 @@ public class Visao extends javax.swing.JFrame {
 
         jMenuRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/relatorio.png"))); // NOI18N
         jMenuRelatorio.setToolTipText("Relatório de produtos em falta");
-        jMenuRelatorio.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuRelatorioMouseClicked(evt);
+
+        jMenuItemrelatoriodeprodutofaltando.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1381001869_report_picture.png"))); // NOI18N
+        jMenuItemrelatoriodeprodutofaltando.setText("Relatório de produtos em falta");
+        jMenuItemrelatoriodeprodutofaltando.setToolTipText("Relatório de produtos em flata");
+        jMenuItemrelatoriodeprodutofaltando.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemrelatoriodeprodutofaltandoActionPerformed(evt);
             }
         });
+        jMenuRelatorio.add(jMenuItemrelatoriodeprodutofaltando);
+
+        jMenurelatoriodecompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1381001869_report_picture.png"))); // NOI18N
+        jMenurelatoriodecompra.setText("Relatório de Compra");
+        jMenurelatoriodecompra.setToolTipText("Relatório de Compra");
+        jMenurelatoriodecompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenurelatoriodecompraActionPerformed(evt);
+            }
+        });
+        jMenuRelatorio.add(jMenurelatoriodecompra);
+
         jMenuBar1.add(jMenuRelatorio);
 
         jMenu2Sobre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagem/1380342675_Information.png"))); // NOI18N
@@ -435,37 +453,6 @@ public class Visao extends javax.swing.JFrame {
         l.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItemProdutoCadastroActionPerformed
 
-    private void jMenuRelatorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuRelatorioMouseClicked
-        try {
-            // obtem o arquivo de relatorio compilado
-            URL arquivo = getClass().getResource("relatorio.jasper");
-
-            // carrega o relatorio
-            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(arquivo);
-
-            // preenche o relatorio com os dados do BD
-
-
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, new HashMap(), DBConnection.getConnection());
-
-            // cria visualizador de relatorio
-            JasperViewer jrviewer = new JasperViewer(jasperPrint, false);
-
-            // adicionar visualizador ao frame
-            JFrameReport frame = new JFrameReport();
-            // adicionamos o visualizador a um JPanel dentro do JFrame
-            frame.getjPanelReport().add(jrviewer.getContentPane());
-            frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-            frame.setVisible(true);
-
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "ERRO: " + e);
-        }
-
-
-    }//GEN-LAST:event_jMenuRelatorioMouseClicked
-
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         this.setEnabled(false);
         CategoriaManager a = null;
@@ -549,6 +536,68 @@ public class Visao extends javax.swing.JFrame {
         c.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
+    private void jMenuItemrelatoriodeprodutofaltandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemrelatoriodeprodutofaltandoActionPerformed
+         try {
+            // obtem o arquivo de relatorio compilado
+            URL arquivo = getClass().getResource("relatorio.jasper");
+
+            // carrega o relatorio
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(arquivo);
+
+            // preenche o relatorio com os dados do BD
+
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, new HashMap(), DBConnection.getConnection());
+
+            // cria visualizador de relatorio
+            JasperViewer jrviewer = new JasperViewer(jasperPrint, false);
+
+            // adicionar visualizador ao frame
+            JFrameReport frame = new JFrameReport();
+            // adicionamos o visualizador a um JPanel dentro do JFrame
+            frame.getjPanelReport().add(jrviewer.getContentPane());
+            frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            frame.setVisible(true);
+
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERRO: " + e);
+        }
+
+
+    }//GEN-LAST:event_jMenuItemrelatoriodeprodutofaltandoActionPerformed
+
+    private void jMenurelatoriodecompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenurelatoriodecompraActionPerformed
+         try {
+            // obtem o arquivo de relatorio compilado
+            URL arquivo = getClass().getResource("compra.jasper");
+
+            // carrega o relatorio
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObject(arquivo);
+
+            // preenche o relatorio com os dados do BD
+
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, new HashMap(), DBConnection.getConnection());
+
+            // cria visualizador de relatorio
+            JasperViewer jrviewer = new JasperViewer(jasperPrint, false);
+
+            // adicionar visualizador ao frame
+            JFrameReport frame = new JFrameReport();
+            // adicionamos o visualizador a um JPanel dentro do JFrame
+            frame.getjPanelReport().add(jrviewer.getContentPane());
+            frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            frame.setVisible(true);
+
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERRO: " + e);
+        }
+
+
+    }//GEN-LAST:event_jMenurelatoriodecompraActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -620,7 +669,9 @@ public class Visao extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemClienteCadastrar;
     private javax.swing.JMenuItem jMenuItemProdutoAlterar;
     private javax.swing.JMenuItem jMenuItemProdutoCadastro;
+    private javax.swing.JMenuItem jMenuItemrelatoriodeprodutofaltando;
     private javax.swing.JMenu jMenuRelatorio;
+    private javax.swing.JMenuItem jMenurelatoriodecompra;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
